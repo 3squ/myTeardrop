@@ -1,0 +1,13 @@
+{
+    "name": "myTeardrop",
+    "icons": [
+        {
+            "src": "icons/512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "./index.html?pwa=true",
+    "display": "fullscreen",
+    "version": "1.3"
+}
