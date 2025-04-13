@@ -8,7 +8,13 @@
     -webkit-user-select: none;
     -webkit-user-drag: none;
 }
-
+#announcements {
+    display: inline-block;
+}
+#announcements p {
+    width: 60%;
+    font-size: 24px;
+}
 body {
     background: url(./images/RepeatingUI0005.png), linear-gradient(#66ccff, #ffffff);
     background-size: 5%;

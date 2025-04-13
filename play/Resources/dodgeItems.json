@@ -1,0 +1,51 @@
+﻿{"frames": {
+
+"dodgeItems0000":
+{
+	"frame": {"x":5,"y":5,"w":33,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":36,"w":100,"h":100},
+	"sourceSize": {"w":100,"h":100}
+},
+"dodgeItems0001":
+{
+	"frame": {"x":43,"y":5,"w":33,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":36,"w":100,"h":100},
+	"sourceSize": {"w":100,"h":100}
+},
+"dodgeItems0002":
+{
+	"frame": {"x":81,"y":5,"w":31,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":36,"w":100,"h":100},
+	"sourceSize": {"w":100,"h":100}
+},
+"dodgeItems0003":
+{
+	"frame": {"x":117,"y":5,"w":30,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":35,"w":100,"h":100},
+	"sourceSize": {"w":100,"h":100}
+},
+"dodgeItems0004":
+{
+	"frame": {"x":5,"y":40,"w":100,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+	"sourceSize": {"w":100,"h":100}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "24.0.0.305",
+	"image": "dodgeItems.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":256},
+	"scale": "1"
+}
+}

@@ -1,80 +1,220 @@
 {
     "costumes": {
+        "_td_costume8": {
+            "expiry": 1740780369346,
+            "price": 1
+        },
+        "_td_costume9": {
+            "expiry": 1740175539821,
+            "price": 1
+        },
+        "none": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
         "uglysweater": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "uglysweater2": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "_td_costume1": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "_td_costume2": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "_td_costume3": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "_td_costume4": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "_td_costume5": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "honeydrop": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "orangedrop": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "drippydrop": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "glassdrop": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "classic": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "outline": {
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "golden": {
-            "price": 0.25,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "light": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "magician": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "oyuidrop": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "chocodrop": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "pineapple": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
         },
         "mintdrop": {
-            "price": 0.5,
-            "expiry": 1724777553571
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "oildrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "knightdrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "galaxydrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "sundrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "coladrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "tropical": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "moondrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "clouddrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "sealdrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "aoracedrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "gumdrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "softdrink": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "glorp": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "waffle": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "popdrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "potiondrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "voiddrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "mariposa": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "snowdrop": {
+            "expiry": 1740175539821,
+            "price": 1
+        },
+        "dinodrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "_td_costume7": {
+            "expiry": 1740175539821,
+            "price": 1
+        },
+        "snowglobe": {
+            "expiry": 1740175539821,
+            "price": 1
+        },
+        "snowflake": {
+            "expiry": 1740175539821,
+            "price": 1
+        },
+        "treedrop": {
+            "expiry": 1740175539821,
+            "price": 1
+        },
+        "giant": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "lemon": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "sportsdrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "limedrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "jockdrop": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "energydrink": {
+            "expiry": 1739743502589,
+            "price": 0.73
+        },
+        "_td_costume6": {
+            "expiry": 1739743502589,
+            "price": 0.73
         }
     }
 }

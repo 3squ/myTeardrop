@@ -1,0 +1,267 @@
+﻿{"frames": {
+
+"Eyes0000":
+{
+	"frame": {"x":2,"y":2,"w":25,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":34,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0001":
+{
+	"frame": {"x":29,"y":2,"w":18,"h":33},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":37,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0002":
+{
+	"frame": {"x":49,"y":2,"w":19,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":39,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0003":
+{
+	"frame": {"x":70,"y":2,"w":18,"h":33},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":37,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0004":
+{
+	"frame": {"x":90,"y":2,"w":20,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":40,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0005":
+{
+	"frame": {"x":112,"y":2,"w":16,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":50,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0006":
+{
+	"frame": {"x":130,"y":2,"w":14,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":50,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0007":
+{
+	"frame": {"x":146,"y":2,"w":14,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":51,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0008":
+{
+	"frame": {"x":162,"y":2,"w":14,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":50,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0009":
+{
+	"frame": {"x":178,"y":2,"w":20,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":40,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0010":
+{
+	"frame": {"x":200,"y":2,"w":14,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":50,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0011":
+{
+	"frame": {"x":216,"y":2,"w":16,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":50,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0012":
+{
+	"frame": {"x":234,"y":2,"w":9,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":51,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0013":
+{
+	"frame": {"x":2,"y":40,"w":19,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":42,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0014":
+{
+	"frame": {"x":23,"y":40,"w":19,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":42,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0015":
+{
+	"frame": {"x":44,"y":40,"w":18,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":44,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0016":
+{
+	"frame": {"x":64,"y":40,"w":16,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":52,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0017":
+{
+	"frame": {"x":82,"y":40,"w":15,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":53,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0018":
+{
+	"frame": {"x":99,"y":40,"w":16,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":52,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0019":
+{
+	"frame": {"x":117,"y":40,"w":21,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":51,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0020":
+{
+	"frame": {"x":140,"y":40,"w":21,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":51,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0021":
+{
+	"frame": {"x":163,"y":40,"w":17,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":48,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0022":
+{
+	"frame": {"x":182,"y":40,"w":17,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":53,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0023":
+{
+	"frame": {"x":201,"y":40,"w":17,"h":10},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":57,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0024":
+{
+	"frame": {"x":220,"y":40,"w":16,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":51,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0025":
+{
+	"frame": {"x":238,"y":40,"w":15,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":51,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0026":
+{
+	"frame": {"x":2,"y":70,"w":16,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":51,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0027":
+{
+	"frame": {"x":20,"y":70,"w":18,"h":12},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":54,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0028":
+{
+	"frame": {"x":40,"y":70,"w":19,"h":10},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":55,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0029":
+{
+	"frame": {"x":61,"y":70,"w":18,"h":6},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":57,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0030":
+{
+	"frame": {"x":81,"y":70,"w":13,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":51,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+},
+"Eyes0031":
+{
+	"frame": {"x":96,"y":70,"w":120,"h":120},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":120},
+	"sourceSize": {"w":120,"h":120}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "24.0.0.305",
+	"image": "Eyes.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":256},
+	"scale": "1"
+}
+}

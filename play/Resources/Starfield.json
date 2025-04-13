@@ -1,0 +1,19 @@
+﻿{"frames": {
+
+"Starfield0000":
+{
+	"frame": {"x":2,"y":2,"w":699,"h":460},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":699,"h":460},
+	"sourceSize": {"w":699,"h":460}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "24.0.1.329",
+	"image": "Starfield.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":512},
+	"scale": "1"
+}
+}

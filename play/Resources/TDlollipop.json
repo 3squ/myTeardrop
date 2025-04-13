@@ -1,0 +1,27 @@
+﻿{"frames": {
+
+"TDlollipop0000":
+{
+	"frame": {"x":5,"y":5,"w":213,"h":361},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":50,"w":300,"h":450},
+	"sourceSize": {"w":300,"h":450}
+},
+"TDlollipop0001":
+{
+	"frame": {"x":223,"y":5,"w":300,"h":450},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":450},
+	"sourceSize": {"w":300,"h":450}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "24.0.0.305",
+	"image": "TDlollipop.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":512},
+	"scale": "1"
+}
+}

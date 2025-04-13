@@ -29,7 +29,8 @@
         <div id="belowScreen"></div>
         <img id="logo" src="./images/Logo.png">
         <div style="padding:10%;padding-top: 30px;padding-bottom: 30px;">
-            <p style="font-size: 24px;">Take care of your awesome little Teardrop. You could also just feed her lemons for her entire life! All that matters is that you're now Teardrop's best friend.</p>
+            <p style="font-size: 24px;">Take care of your awesome little Teardrop. You could also just feed her lemons
+                for her entire life! All that matters is that you're now Teardrop's best friend.</p>
         </div>
 
         <div style="width: 100%;display: -webkit-box;
@@ -39,12 +40,25 @@
     
         justify-content: center;
         align-items: center;">
-            <div class="button" onclick="window.open(`https://x.com/vendormint`)"><img src="./images/Buttons0003.png"></div>
-            <div class="button" onclick="window.open(`https://discord.gg/QNFcdJCjVp`)"><img
+            <div class="button" id="twitter" onclick="window.open(`https://x.com/vendormint`)"><img src="./images/Buttons0003.png">
+            </div>
+            <div class="button" id="discord" onclick="window.open(`https://discord.gg/QNFcdJCjVp`)"><img
                     src="./images/Buttons0002.png"></div>
+            <div class="button" id="wiki" onclick="window.open(`https://myteardrop.fandom.com`)"><img
+                    src="./images/Buttons0004.png"></div>
         </div>
-        <div id="screenshots"><div id="screenshotsItems"></div></div>
+        <div id="screenshots">
+            <div id="screenshotsItems"></div>
+        </div>
         <div style="height: 80px;"></div>
+        <div id="announcements" style="padding:10%;padding-top: 30px;padding-bottom: 30px;">
+            <p>10/31/2024</p>
+            <h1>THE WORLD IS ENDING!! Or is it..</h1>
+            <p style="float:left;">A little rumor about myTeardrop being cancelled on 22nd of May has been
+                spreading around recently. Do not worry! myTeardrop is completely fine and 1.4 is being worked on. Any announcement about myTeardrop will be made in the discord server, or at the VENDORMINT youtube channel.</p>
+                <img src="./images/dropletSprites.png" style="position: relative;width:40%;transform: scale(150%);">
+        </div>
+        <div style="height: 50px;"></div>
     </div>
 </body>
 
@@ -52,7 +66,7 @@
 <script>
     let screenshots = document.getElementById("screenshotsItems");
     for (let i = 0; i < 11; i++) {
-        screenshots.appendChild((function(img=document.createElement("img")){
+        screenshots.appendChild((function (img = document.createElement("img")) {
             img.src = "screenshots/screenshot" + i + ".png";
             return img;
         })());
@@ -98,7 +112,7 @@
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile) {
         document.getElementById('belowScreen').appendChild(runGame);
-        document.head.innerHTML += `<link rel="stylesheet" href="bfdi_mobile.css">`;
+        document.head.innerHTML += `<link rel="stylesheet" href="bfdi_mobile.css?v=1.3.1.1">`;
         play.style.display = 'none';
         let full = true;
         play.classList.add('fullscreenFrame');
@@ -117,7 +131,7 @@
         };
     } else {
         fullButton.style.display = `none`;
-        document.head.innerHTML += `<link rel="stylesheet" href="bfdi.css">`;
+        document.head.innerHTML += `<link rel="stylesheet" href="bfdi.css?v=1.3.1.1">`;
         fullButton.onclick = function (e) {
             if ((/iPad/i.test(navigator.userAgent) || "ontouchstart" in document.documentElement) && localStorage.alerted != 'yes') {
                 localStorage.alerted = 'yes';

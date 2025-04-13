@@ -1,0 +1,51 @@
+﻿{"frames": {
+
+"BGLayer0000":
+{
+	"frame": {"x":2,"y":2,"w":185,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":61,"y":117,"w":307,"h":300},
+	"sourceSize": {"w":307,"h":300}
+},
+"BGLayer0001":
+{
+	"frame": {"x":191,"y":2,"w":207,"h":109},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":96,"w":307,"h":300},
+	"sourceSize": {"w":307,"h":300}
+},
+"BGLayer0002":
+{
+	"frame": {"x":402,"y":2,"w":307,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":92,"w":307,"h":300},
+	"sourceSize": {"w":307,"h":300}
+},
+"BGLayer0003":
+{
+	"frame": {"x":713,"y":2,"w":79,"h":79},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":114,"y":111,"w":307,"h":300},
+	"sourceSize": {"w":307,"h":300}
+},
+"BGLayer0004":
+{
+	"frame": {"x":2,"y":123,"w":300,"h":300},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":307,"h":300},
+	"sourceSize": {"w":307,"h":300}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "24.0.1.329",
+	"image": "BGLayer.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":512},
+	"scale": "1"
+}
+}

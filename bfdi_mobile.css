@@ -8,9 +8,21 @@
     -webkit-user-select: none;
     -webkit-user-drag: none;
 }
-
+#wiki {
+    display: none;
+}
+#announcements {
+    display: inline-block;
+}
+#announcements p {
+    width: 100%;
+    font-size: 20px;
+}
+#announcements img {
+    display: none;
+}
 body {
-    background: url(images/RepeatingUI0005.png), linear-gradient(#66ccff, #ffffff);
+    background: url(./images/RepeatingUI0005.png), linear-gradient(#66ccff, #ffffff);
     background-size: 5%;
     margin: 12px;
     margin: 0px;
@@ -72,7 +84,7 @@ body {
 #fullscreen {
     width: 40px;
     height: 40px;
-    background-image: url(images/fullscreen.png);
+    background-image: url(./images/fullscreen.png);
     background-size: 100%;
     position: absolute;
     bottom: 10px;

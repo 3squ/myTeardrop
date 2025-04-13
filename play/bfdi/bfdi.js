@@ -1,1 +1,7526 @@
-(()=>{"use strict";var e={d:(t,i)=>{for(var n in i)e.o(i,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:i[n]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t)};e.d({},{Do:()=>Ve,oG:()=>Ye,YO:()=>ze,id:()=>He,CV:()=>Qe,IW:()=>_e,WK:()=>We});let t={coins:20,fridge:["","","","","","","","","","","","","","","","","","","","","","",""]},i={happiness:15,hunger:20,sleep:20,sleeping:!1,progress:0,progressNeeded:200},n={level:1,skipIntro:!1,costume:"none",lastLogin:Date.now(),inGame:!1,sfx:!0,music:!0,minigameMusic:!0,minigameCostumes:!0,drinksFed:0,lemonsFed:0,totalSlaps:0,lastFridgePage:0,HQSprites:!1,language:"en-US",temporaryInGameTime:0,musicVolume:1,sfxVolume:1,HDrecommendation:!1,introMode:!1,gameStartDate:0,saveFileWarning:!1,levelUpCostumes:!0,privateBeta:!1,safeArea:!1,controllerProfile:{GTTTATINT:{buttons:{a:{x:-150,y:-50,lock:1},d:{x:-50,y:-50,lock:1}," ":{x:100,y:-50,lock:0}},buttonScale:.5}}};function a(e="",t=16,i="left",n="top",a){let o="MenuShag";1==a&&(o="ShagBlack"),2==a&&(o="ShagBlueNumber");let r=new PIXI.BitmapText(e,{fontSize:t,fontName:o,align:i});return"center"==i&&r.anchor.set(.5,.5),"middle"==n&&r.anchor.set(0,.5),r}n.privateBeta&&(n.level=0,i.progressNeeded=2**32,i.progress=0,n.skipIntro=!0,t.coins=1e6,i.hunger=100,i.sleep=100,i.happiness=100,n.saveFileWarning=!0);let o={settings:{HQSprites:"HD Sprites",music:"Music",minigameMusic:"Minigame Music",minigameCostumes:"Minigame Costumes",sfx:"SFX",enableReload:"Enabling this requires a reload of the game!",disableReload:"Disabling this requires a reload of the game!"},intro:{mail:"You've got mail! Click/Tap on it.",hey:"HEY!",who:"Who was that?"},dialogue:{greet:"Hi, I am teardrop! Thank you for looking after my package. Sorry if I startled you!",greet2:"What a great start! I'm Teardrop. Nice to meet you!",yoyleberryinvitation:"Let's snack on some regular cake!",fridgeHelp:"Put the food in the plate by going to the fridge!",wheelHelp:"Press and hold the happiness button to launch the wheel of fun."},food:{regularcake:"Regular Cake",icecreamcake:"Ice Cream Cake",icycake:"Icy Cake",limecake:"Lime Cake",blueberry:"Blueberry",strawberry:"Strawberry",strawberrycake:"Strawberry Cake",candy:"Candy Bar",sleeppotion:"Awakening Potion",maxpotion:"Max Potion",sourlemon:"Lemon",fries:"Fries",donut:"Donut",burntTaco:"Burnt Taco"},ui:{shop:"SHOP",fridge:"FRIDGE",owned:"OWNED",preview:"PREVIEW",get:"GET",wear:"WEAR",wearing:"WEARING",continue:"Continue",mph:"mph",score:"Score",skipIntro:"Skip Intro",gameOver:"Game Over!",gamePaused:"Game Paused",comingsoon:"more coming soon..",info:"INFO",artist:"Artist",achievements:"Achievements",games:"Games",wardrobe:"Wardrobe",settings:"Settings",reload:"Reload",cancel:"Cancel",home:"Home",play:"Play",newLevel:"New level",continueUpperCase:"CONTINUE",notEnoughCoins:"Not enough coins!",notEnoughSpace:"Not enough space!",altitude:"altitude",accuracy:"Accuracy",leave:"Leave",next:"Next",average:"Average",ignore:"Ignore",translator:"Translator",language:"Language"},message:{obtainCostume:"To obtain this costume, complete the {achievement} achievement.",hungry:"Teardrop is really hungry! Let's feed her.",sleepy:"Teardrop is feeling a little sleepy. Let her get some rest!",sleeping:"Teardrop is taking a nap.",updateWarning:"New update is out!\nCurrent version: {currentVersion}\nLatest version: {latest}\nThe game will be automatically updated after reloading."},crashHandler:{whoops:"Whoops!\nmyTeardrop has run into a problem...",description:"The game might work fine if you continue,\nbut I recommend you to reload anyway.\n\nIf the problem persists, please report the error\nby copying the error text and sending it\n over to the discord server.",copyErrorText:"Copy Error Text"},games:{gtttatint:"GTTTATINT101",dropdodge:"Drop Dodge",tennis:"Drop Tennis",match:"Face Match",cakewalk:"CAKEWALK"},costumes:{none:"NONE",uglysweater:"Ugly Sweater",uglysweater2:"tennis sweater",_td_costume1:"Water Moth",_td_costume2:"Marauder Droplet",_td_costume3:"La larme",_td_costume4:"Wine Drop",_td_costume5:"Blood Drop",honeydrop:"Honey Drop",orangedrop:"Orange Drop",drippydrop:"Drippy Drop",glassdrop:"Glass Drop",classic:"The Silent Type",golden:"Golden Drop",light:"Light Teardrop",magician:"Magician Drop",oyuidrop:"Oyui Drop",lemon:"Lemonade",sportsdrop:"Sportsdrop",limedrop:"Lime Drop",jockdrop:"Jock Drop",energydrink:"Energy Drink"},get2763intennis:{title:"Drop Tennis",description:"Get 2763 score in Drop Tennis minigame"},winagameoftennis:{title:"Drop Tennis",name:"Drop Tennis Victory",description:"Win a game of Drop Tennis"},get2763gtttatint:{title:"GTTTATINT",description:"Get 2763 score in GTTTATINT"},slapTD2763:{title:"Ultimate Slapper",description:"Slap Teardrop 2763 times"},get2763:{title:"2763...",description:"Complete every achievement about the number 2763"},lemons:{title:"Lemon Factory",name:"Lemon Factory",description:"Feed Teardrop 100 lemons"},get10perfectsCAKEWALK:{title:"Easy as Cake!",description:"Get 10 perfects in a row on CAKEWALK"},"2763lemons":{title:"Soured out!",name:"Soured out!",description:"Feed Teardrop 2763 lemons"},perfectfacematch:{title:"No difference",name:"No difference",description:"Get a 100% in Face Match"},"10energydrinks":{title:"No sleep",name:"No sleep",description:"Feed Teardrop 10 Awakening Potions"},"5minuteGTTTATINT":{title:"Leg Day",name:"Leg Day",description:"Spend 2 minutes at 2mph or higher in GTTTATINT in a single game"},score:{perfect:"PERFECT",good:"Good!",nice:"Nice!",meh:"Meh",bad:"BAD"}},r=(window.innerWidth,window.innerWidth/window.innerHeight*640>=360),s=window.innerHeight/640,l=window.innerWidth/window.innerHeight*640,d=640;0==r&&(l=360,d=window.innerHeight/window.innerWidth*360,s=window.innerWidth/360),l=Math.min(1500,l),d=Math.min(1e3,d);const c=new PIXI.Application({background:"#00000000",width:l,height:d,resolution:s*window.devicePixelRatio});window.onresize=function(){r=window.innerWidth/window.innerHeight*640>=360,s=window.innerHeight/640,l=window.innerWidth/window.innerHeight*640,d=640,0==r&&(l=360,d=window.innerHeight/window.innerWidth*360,s=window.innerWidth/360),c.renderer.resolution=s,l=Math.min(1500,l),d=Math.min(1e3,d),c.renderer.resize(l,d),Ve&&(Le.width=c.screen.width,Le.height=c.screen.height,Xe.width=c.screen.width,Xe.height=c.screen.height)};let h={_linear:function(e,t,i,n){return e*(1-i)+t*i},linear:function(e,t,i,n=1){if(1==n)return h._linear(e,t,i);let a=n,o=1-i;return h._linear(e,t,1-Math.pow(o,a))}},u=[],p=0,m={get2763intennis:{title:"Drop Tennis",description:"Get 2763 score in Drop Tennis minigame",icon:29},winagameoftennis:{title:"Drop Tennis",name:"Drop Tennis Victory",description:"Win a game of Drop Tennis",icon:29},get2763gtttatint:{title:"GTTTATINT",description:"Get 2763 score in GTTTATINT",icon:30},slapTD2763:{title:"Ultimate Slapper",description:"Slap Teardrop 2763 times",icon:37,getProgress:function(){let e=n.totalSlaps+" / 2763";return n.totalSlaps>2763&&(e=n.totalSlaps),e}},get2763:{title:"2763...",description:"Complete every achievement about the number 2763",icon:35,getProgress:function(){let e=["get2763intennis","get2763gtttatint","slapTD2763","2763lemons"],t=0;for(let i=0;i<e.length;i++)m[e[i]].done&&t++;return t+" / "+e.length}},lemons:{title:"Lemon Factory",name:"Lemon Factory",description:"Feed Teardrop 100 lemons",icon:36,getProgress:function(){let e=n.lemonsFed+" / 100";return n.lemonsFed>100&&(e=n.lemonsFed),e}},get10perfectsCAKEWALK:{title:"Easy as Cake!",description:"Get 10 perfects in a row on CAKEWALK",icon:38},"2763lemons":{title:"Gimme my lime!",name:"Gimme my lime!",description:"Feed Teardrop 2763 lemons",icon:40,getProgress:function(){let e=n.lemonsFed+" / 2763";return n.lemonsFed>2763&&(e=n.lemonsFed),e}},perfectfacematch:{title:"No difference",name:"No difference",description:"Get a 100% in Face Match",icon:39},"10energydrinks":{title:"No sleep",name:"No sleep",description:"Feed Teardrop 10 Awakening Potions",icon:6,getProgress:function(){let e=n.drinksFed+" / 10";return n.drinksFed>10&&(e=n.drinksFed),e}},"5minuteGTTTATINT":{title:"Leg Day",name:"Leg Day",description:"Spend 5 minutes at 2mph or higher in GTTTATINT in a single game",icon:30},tauntLogo:{title:"Obscure mischief",description:"Taunt the logo seen in the settings menu",icon:37,secret:!0},oddDroplets40:{title:"The Detective",description:"Find the Odd Droplet 40 times in a row",icon:37},"750altitudeCAKEWALK":{title:"Mile High Pie!",name:"Mile High Pie!",description:"Get to 500 altitude in CAKEWALK",icon:38},get15000gtttatint:{title:"Reach the Galaxy",name:"Reach the Galaxy",description:"Get 15000 score in GTTTATINT",icon:30},"1000altitudeCAKEWALK":{title:"Too High!!!",name:"Too High!!!",description:"Get to 1000 altitude in CAKEWALK",icon:38}};for(let e in m)null!=o[e]&&(m[e].title=o[e].title,m[e].name=o[e].name,m[e].description=o[e].description);let y={tearDropWatch:{Idle:{start:0,end:239,loop:!0},percent90:{start:240,end:319,loop:!1},percent75:{start:320,end:399,loop:!1},percent50:{start:400,end:479,loop:!1},percent10:{start:480,end:559,loop:!1},Laugh:{start:560,end:803,loop:!1},percent100:{start:805,end:887,loop:!1}},Box:{Jump:{start:0,end:239,loop:!0},Click1:{start:240,end:299,loop:!1},Click2:{start:300,end:351,loop:!1},Steal:{start:359,end:376,loop:!1}},Teardrop:{Eat:{start:1001,end:1123,loop:!1},Wave:{start:0,end:328,loop:!1},Slap:{start:329,end:453,loop:!1},BookOpen:{start:509,end:730,loop:!1},Write:{start:731,end:857,loop:!0},SendMessage:{start:858,end:1e3,loop:!1},Nope:{start:1125,end:1198,loop:!1},Look:{start:1199,end:1336,loop:!1},Look2:{start:1337,end:1468,loop:!1},Pat:{start:1468,end:1511,loop:!1},PatStop:{start:1512,end:1545,loop:!1},Idle:{start:315,end:328,loop:!0},Realize:{start:1546,end:1685,loop:!1},EatSour:{start:1686,end:1869,loop:!1}},TeardropTired:{Sleep:{start:441,end:474,loop:!1},Sleepy:{start:350,end:440,loop:!1},Eat:{start:1001,end:1123,loop:!1},Wave:{start:0,end:328,loop:!1},Idle:{start:0,end:239,loop:!0},Slap:{start:240,end:349,loop:!1},BookOpen:{start:509,end:730,loop:!1},Write:{start:731,end:857,loop:!0},SendMessage:{start:858,end:1e3,loop:!1},Nope:{start:1125,end:1198,loop:!1},Look:{start:1199,end:1336,loop:!1},Look2:{start:1337,end:1468,loop:!1},Pat:{start:483,end:527,loop:!1},PatStop:{start:528,end:577,loop:!1}},Needle:{0:{start:0,end:20,loop:!0},1:{start:57,end:193,loop:!1},2:{start:331,end:440,loop:!1}},Leafy:{0:{start:0,end:20,loop:!0},1:{start:57,end:193,loop:!1},2:{start:331,end:440,loop:!1}},Coiny:{0:{start:0,end:39,loop:!0},1:{start:40,end:221,loop:!1},2:{start:222,end:329,loop:!1}},Spongy:{0:{start:0,end:39,loop:!0},1:{start:40,end:221,loop:!1},2:{start:222,end:329,loop:!1}},Pin:{0:{start:0,end:39,loop:!0},1:{start:40,end:221,loop:!1},2:{start:222,end:329,loop:!1}},Rocky:{0:{start:0,end:39,loop:!0},1:{start:40,end:221,loop:!1},2:{start:222,end:329,loop:!1}},"Ice Cube":{0:{start:0,end:39,loop:!0},1:{start:40,end:221,loop:!1},2:{start:222,end:329,loop:!1}},tearDropTennis:{prepare:{start:0,end:11,loop:!1},hit:{start:12,end:65,loop:!1}}},g=function(e,t,i,n){return Math.sqrt((e-i)**2+(t-n)**2)},f=function(e,t,i){return e.x+e.width>=t.x&&e.x<=t.x+t.width&&e.y+e.height>=t.y&&e.y<=t.y+t.height},x={},w=0;function v(e,t,i=!0){e.originalSize={x:e.scale.x,y:e.scale.y},e.animate=i,e.animationSize=e.originalSize,e.destinationSize=e.originalSize,e.animationTime=0,e.on("pointerover",(function(){i&&(e.animationSize={x:e.scale.x,y:e.scale.y},e.destinationSize={x:1.1*e.originalSize.x,y:1.1*e.originalSize.y}),e.animationTime=0,e.hover=!0})),e.on("pointerout",(function(){i&&(e.animationSize={x:e.scale.x,y:e.scale.y},e.animationTime=0,e.destinationSize={x:1*e.originalSize.x,y:1*e.originalSize.y}),e.hover=!1})),e.on("pointerdown",(function(){e.disableTrigger=!1,i&&(e.destinationSize={x:.95*e.originalSize.x,y:.95*e.originalSize.y},e.animationSize={x:e.scale.x,y:e.scale.y}),e.animationTime=0,e.pressing=!0})),e.disableTrigger=!1,e.resetSize=function(){e.animationSize={x:e.scale.x,y:e.scale.y},e.destinationSize={x:e.originalSize.x,y:e.originalSize.y},e.animationTime=0},e.on("pointerup",(function(){e.pressing&&0==e.disableTrigger&&t(),e.interactive&&(e.pressing=!1,i&&(e.animationSize={x:e.scale.x,y:e.scale.y},e.destinationSize={x:1.1*e.originalSize.x,y:1.1*e.originalSize.y}),e.animationTime=0)}))}function I(e,t=new PIXI.Rectangle(-100,-100,200,200),i,n=0){e.canDrag=!0,e.hitArea=t,e.dragScale=n,e.originalHitArea=t,i&&(e.x2=e.x,e.y2=e.y),e.on("pointerdown",(function(t){e.hitArea=new PIXI.Rectangle(-3e3,-3e3,6e3,6e3),e.dragging=!0,e.originalPosition={x:e.x,y:e.y};let i=t.clientX/s,n=t.clientY/s;0!=e.dragScale&&(i/=e.dragScale,n/=e.dragScale),e.dragOffset={x:i-e.x,y:n-e.y}})),e.on("pointermove",(function(t){let n=t.clientX/s,a=t.clientY/s;0!=e.dragScale&&(n/=e.dragScale,a/=e.dragScale),e.dragging&&(i?(e.x2=n-e.dragOffset.x,e.y2=a-e.dragOffset.y):(e.x=n-e.dragOffset.x,e.y=a-e.dragOffset.y),g(e.originalPosition.x,e.originalPosition.y,e.x,e.y)>1&&(e.disableTrigger=!0))})),e.on("pointerup",(function(){e.dragging=!1,e.hitArea=e.originalHitArea}))}class S{constructor(e,t,i,n=!1,a=!0){this.buttonContainer=new PIXI.Container,this.selected=new PIXI.Sprite($["Sprites/GameUI"][8]),this.selected.anchor.set(.5,.5),this.buttonContainer.addChild(this.selected),this.selected.blendMode=PIXI.BLEND_MODES.ADD,this.empty=new PIXI.Sprite(e),this.empty.anchor.set(.5,.5),this.buttonContainer.addChild(this.empty),this.size=e.trim.width,this.fullMask=new PIXI.Graphics,this.fullMask.beginFill(16777215),this._offset=Math.min(1,Math.max(0,i)),this.pieChart=n,n||this.fullMask.drawRect(-this.size/2,-this.size/2+(this.size-this.size*this._offset),this.size,this.size*this._offset),this.fullMask.endFill(),this.empty.addChild(this.fullMask),this.full=new PIXI.Sprite(t),this.full.anchor.set(.5,.5),this.empty.addChild(this.full),this.full.mask=this.fullMask,this.percentage=new PIXI.BitmapText(Math.round(100*this._offset)+"%",{fontSize:16,fontName:"MenuShag"}),this.percentage.y=this.size/2+10,this.percentage.anchor.set(.5,.5),a&&this.buttonContainer.addChild(this.percentage),this.buttonContainer.hitArea=new PIXI.Rectangle(-this.size/2,-this.size/2,this.size,this.size),this.buttonContainer.interactive=!0,this.id=w,x[w++]=this.buttonContainer}set offset(e){if(this.fullMask.clear(),this._offset=Math.min(1,Math.max(0,e)),this.fullMask.beginFill(16777215),this.pieChart&&this._offset<.99){let e=this.size,t=[0,0,0,-e];this._offset>.125&&(t.push(e),t.push(-e)),this._offset>.25&&(t.push(e),t.push(0)),this._offset>.375&&(t.push(e),t.push(e)),this._offset>.5&&(t.push(0),t.push(e)),this._offset>.625&&(t.push(-e),t.push(e)),this._offset>.75&&(t.push(-e),t.push(0)),this._offset>.875&&(t.push(-e),t.push(-e)),t.push(e*Math.cos(this._offset*Math.PI*2-Math.PI/2)),t.push(e*Math.sin(this._offset*Math.PI*2-Math.PI/2)),this.fullMask.drawPolygon(...t)}else this.fullMask.drawRect(-this.size/2,-this.size/2+(this.size-this.size*this._offset),this.size,this.size*this._offset);this.fullMask.endFill(),this.percentage.text=Math.round(100*this._offset)+"%"}destroy(){this.selected.destroy(),this.empty.destroy(),this.fullMask.destroy(),this.full.destroy(),this.percentage.destroy(),this.buttonContainer.destroy(),delete x[this.id]}}let C=null;class b{constructor(e,t,i,n,a,o,r,s){this.ninesliceplane=new PIXI.NineSlicePlane($.inputNineSlice[0],15,15,15,15),this.ninesliceplane.width=i,this.ninesliceplane.height=n,this.ninesliceplane.x=e,this.ninesliceplane.y=t,this.ninesliceplane.interactive=!0,this.ninesliceplane.on("click",(()=>{C=this.inputText,this.inputText.alpha=1,this.inputText.text=this.inputText.value,document.addEventListener("keydown",this.type),document.addEventListener("pointerdown",this.disable)})),this.type=e=>{" 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?\"'".includes(e.key)&&o>this.inputText.value.length&&(this.inputText.value+=e.key),"Backspace"==e.key&&(this.inputText.value=this.inputText.value.slice(0,-1)),"Enter"!=e.key?(this.inputText.scale.x=1,this.inputText.text=this.inputText.value,this.inputText.width>this.ninesliceplane.width-2*this.inputText.x&&(this.inputText.width=this.ninesliceplane.width-2*this.inputText.x),this.inputText.scale.y=this.inputText.scale.x):this.confirmation()},this.disabled=!1,this.disable=()=>{""==this.inputText.value&&(this.inputText.text=a,this.inputText.alpha=.5),C=-1,document.removeEventListener("keydown",this.type),document.removeEventListener("pointerdown",this.disable)},this.inputText=new PIXI.BitmapText(a,{fontSize:n-7,fontName:"ShagBlack"}),this.inputText.value="",this.inputText.alpha=.5,this.inputText.anchor.set(0,.5),this.inputText.x=n/2-2,this.inputText.y=this.ninesliceplane.height/2,this.ninesliceplane.addChild(this.inputText),this.ninesliceplane.pivot.x=i*r,this.ninesliceplane.pivot.y=n*s,this.element=this.ninesliceplane,this.confirmation=function(){}}_destroy(){this.ninesliceplane.interactive=!1,this.disable(),this.inputText.parent.removeChild(this.inputText),this.inputText.destroy(),this.ninesliceplane.destroy(),this.ninesliceplane.removeAllListeners()}destroy(){this._destroy()}}class M extends b{constructor(e=function(){},t,i,n,a,o,r,s,l,d=1,c="left"){super(t,i,n,a,o,r,.5,.5),this.ninesliceplane.texture=$.inputNineSlice[d],this.inputText.fontName="MenuShag",this.inputText.fontSize=a-7,this.inputText.x=a/2-2,"center"==c&&(this.inputText.x=n/2,this.inputText.anchor.set(.5,.5)),this.inputText.alpha=1,this.type=function(){},this.ninesliceplane.removeAllListeners(),this.id=w,x[w++]=this.element,this.ninesliceplane.x+=.5*n-n*s,this.ninesliceplane.y+=.5*a-a*l,v(this.element,e)}destroy(){delete x[this.id],this._destroy()}}class P{constructor(e=function(){},t,i){this.sprite=new PIXI.Sprite(t);let n=100;null!=this.sprite.texture.trim&&(n=this.sprite.texture.trim.width,this.sprite.hitArea=new PIXI.Rectangle(-n/2,-n/2,n,n)),this.sprite.interactive=!0,this.sprite.anchor.set(.5,.5);for(let e in i)this.sprite[e]=i[e];this.id=w,x[w++]=this.sprite,v(this.sprite,e,!0)}destroy(){delete x[this.id],this.sprite.interactive=!1,this.sprite.destroy(),this.sprite.removeAllListeners()}}function T(){return w++}let k,A,E={regularcake:{name:o.food.regularcake,texture:1,cost:15,adds:40},icecreamcake:{name:o.food.icecreamcake,texture:5,cost:20,adds:60},icycake:{name:o.food.icycake,texture:4,cost:1,adds:1},limecake:{name:o.food.limecake,texture:6,cost:10,adds:20},blueberry:{name:o.food.blueberry,texture:7,cost:2,adds:10},strawberry:{name:o.food.strawberry,texture:8,cost:1,adds:8},strawberrycake:{name:o.food.strawberrycake,texture:9,cost:8,adds:15},candy:{name:o.food.candy,texture:10,cost:5,adds:12},cherrypan:{name:"cherrypan",texture:11,cost:1e3,adds:100,hidden:!0},sleeppotion:{name:o.food.sleeppotion,texture:12,cost:100,adds:5,hidden:!1},maxpotion:{name:o.food.maxpotion,texture:13,cost:300,adds:0,hidden:!0},sourlemon:{name:o.food.sourlemon,texture:14,cost:3,adds:-4},donut:{name:o.food.donut,texture:16,cost:12,adds:30,requiredLevel:5},fries:{name:o.food.fries,texture:15,cost:50,adds:75,requiredLevel:10},burntTaco:{name:o.food.burntTaco,texture:17,cost:100,adds:90,requiredLevel:20}},L={awake:"Teardrop",tired:"TeardropTired"},X="Teardrop",N="TeardropTired",D={teardrop:{name:"tear_drop_bfb"},jacknjellify:{name:"jacknjellify"},vendormint:{name:"vendormint"},stevencrack:{name:"stevencrack"},thinking909:{name:"Oyui"},briteideajuni:{name:"Juniper/Noelle"},bluesky:{name:"BlueSky"},cringeindividual:{name:"Roxamations"},jampu:{name:"Jampu"},kyle:{name:"kyle9341"},tyblade:{name:"tyblade9"},maple2:{name:"maple_two"},dialup:{name:"dialup"},coconut7:{name:"coconut7"}};function G(e,t,i=1){let n=[];for(let e=0;e<$["Sprites/Bodies"].length;e++)n.push($["Sprites/Bodies"][e]);n[47]=$["Sprites/BodiesCostume_"+i][t],n[48]=$["Sprites/BodiesCostume_"+i][t+1];let a=e.currentFrame;e.textures=n,e.gotoAndStop(a)}let B={none:{name:o.costumes.none,sprite:0,cost:0,owned:!0,apply:function(e,t=0){let i;switch(t){case 0:i=[e.b,e.c,e.a.d,e.a.e,e.a.f,e.a.g,e.a.h,e.a.i,e.a.j,e.a.k];break;case 1:i=[e.a.d,e.a.e,e.a.f,e.a.g,e.a.h,e.a.i,e.a.j,e.a.k]}for(let e=0;e<i.length;e++){let t=i[e],n=t.symbol.split("/")[1];O(t,"Sprites/"+n)}}},uglysweater:{name:o.costumes.uglysweater,sprite:2,artist:D.jacknjellify,cost:600,owned:!1,apply:function(e,t){B.none.apply(e,t),G(e.a.i,0),O(e.a.j,"Sprites/LimbsCostume1"),O(e.a.k,"Sprites/LimbsCostume1")}},uglysweater2:{name:"tennis sweater",sprite:2,artist:D.jacknjellify,cost:0,owned:!1,hidden:!0,apply:function(e,t){B.none.apply(e,t),G(e.a.i,4),O(e.a.j,"Sprites/LimbsCostume1"),O(e.a.k,"Sprites/LimbsCostume1")}},_td_costume1:{name:o.costumes._td_costume1,sprite:3,artist:D.teardrop,cost:600,owned:!1,apply:function(e,t){B.none.apply(e,t),O(e.a.d,"Sprites/Empty"),G(e.a.i,2)}},_td_costume2:{name:o.costumes._td_costume2,artist:D.teardrop,sprite:4,cost:600,owned:!1,apply:function(e,t){B.none.apply(e,t),G(e.a.i,6)}},_td_costume3:{name:o.costumes._td_costume3,artist:D.teardrop,sprite:5,cost:500,owned:!1,apply:function(e,t){B.none.apply(e,t),G(e.a.i,8)}},_td_costume4:{name:o.costumes._td_costume4,sprite:10,cost:500,owned:!1,color:16753054,artist:D.teardrop,apply:function(e,t){B.none.apply(e,t),G(e.a.i,18),O(e.a.d,"Sprites/MouthsCostume10")}},_td_costume5:{name:o.costumes._td_costume5,sprite:19,cost:1600,owned:!1,color:16739174,artist:D.teardrop,apply:function(e,t){B.none.apply(e,t),G(e.a.i,39);let i=new PIXI.Sprite($["Sprites/BodiesCostume_1"][41]);U(i,e.a,0,.95,20),i.x=15,i.y=120,i.zIndex=-1,i.scale.x=-1;let n=new PIXI.Sprite($["Sprites/BodiesCostume_1"][41]);U(n,e.a,0,.95,20),n.x=110.5,n.y=120,n.zIndex=-1,e.a.sortableChildren=!0,e.destroyCostume=function(){n.destroyPhysics(),i.destroyPhysics()}},applyMinigame:function(e,t){B.none.apply(e,t),G(e.a.i,42)}},honeydrop:{name:o.costumes.honeydrop,sprite:11,cost:700,owned:!1,color:16772979,artist:D.briteideajuni,apply:function(e,t){B.none.apply(e,t),G(e.a.i,20)}},orangedrop:{name:o.costumes.orangedrop,sprite:12,cost:500,owned:!1,color:16768184,artist:D.thinking909,apply:function(e,t){B.none.apply(e,t),G(e.a.i,22)}},drippydrop:{name:o.costumes.drippydrop,sprite:14,cost:500,owned:!1,artist:D.bluesky,apply:function(e,t){B.none.apply(e,t),G(e.a.i,24)}},glassdrop:{name:o.costumes.glassdrop,sprite:13,cost:300,owned:!1,color:12113151,artist:D.cringeindividual,apply:function(e,t){B.none.apply(e,t),G(e.a.i,26)}},classic:{name:o.costumes.classic,sprite:1,artist:D.jacknjellify,cost:200,owned:!1,apply:function(e,t=0){let i;switch(t){case 0:i=[e.b,e.c,e.a.d,e.a.e,e.a.f,e.a.g,e.a.h,e.a.i,e.a.j,e.a.k];break;case 1:i=[e.a.d,e.a.e,e.a.f,e.a.g,e.a.h,e.a.i,e.a.j,e.a.k]}for(let e=0;e<i.length;e++){let t=i[e],n=t.symbol.split("/")[1];O(t,"oldiesCostume/"+n)}}},outline:{name:"teardrop's deep dark secret. do not use this costume under any circumstances!",sprite:1,artist:D.jacknjellify,cost:0,owned:!1,hidden:!0,apply:function(e,t=0){let i;switch(t){case 0:i=[e.b,e.c,e.a.d,e.a.e,e.a.f,e.a.g,e.a.h,e.a.i,e.a.j,e.a.k];break;case 1:i=[e.a.d,e.a.e,e.a.f,e.a.g,e.a.h,e.a.i,e.a.j,e.a.k]}for(let e=0;e<i.length;e++){let t=i[e];null!=$[t.symbol+"OUTLINE12"]&&O(t,t.symbol+"OUTLINE12")}}},golden:{name:o.costumes.golden,sprite:6,cost:5e4,owned:!1,color:16774556,artist:D.vendormint,apply:function(e,t){B.none.apply(e,t),G(e.a.i,10)}},light:{name:o.costumes.light,sprite:8,cost:200,owned:!1,artist:D.stevencrack,apply:function(e,t){B.none.apply(e,t),G(e.a.i,14)}},magician:{name:o.costumes.magician,sprite:16,cost:300,owned:!1,artist:D.kyle,apply:function(e,t){B.none.apply(e,t),G(e.a.i,30)}},oyuidrop:{name:o.costumes.oyuidrop,sprite:18,cost:1600,color:13369246,owned:!1,artist:D.thinking909,apply:function(e,t){B.none.apply(e,t),G(e.a.i,34),O(e.a.j,"Sprites/Empty"),O(e.a.k,"Sprites/Empty");let i=new PIXI.Sprite($["Sprites/BodiesCostume_1"][37]);U(i,e.a,0,.95,10),i.x=100,i.y=20;let n=new PIXI.Sprite($["Sprites/BodiesCostume_1"][36]);U(n,e.a,0,.95,15),n.x=90,n.y=120,n.zIndex=-1,e.a.sortableChildren=!0,e.destroyCostume=function(){i.destroyPhysics(),n.destroyPhysics()}},applyMinigame:function(e,t){B.none.apply(e,t),G(e.a.i,38),O(e.a.j,"Sprites/Empty"),O(e.a.k,"Sprites/Empty")}},chocodrop:{name:"Choco-Drop",sprite:21,cost:800,owned:!1,color:14917741,artist:D.vendormint,apply:function(e,t){B.none.apply(e,t),G(e.a.i,45)}},pineapple:{name:"Pineapple",sprite:22,cost:1e3,owned:!1,color:16766369,artist:{name:D.thinking909.name+", "+D.dialup.name},apply:function(e,t){B.none.apply(e,t),G(e.a.i,47)}},mintdrop:{name:"Minty Drop",sprite:23,cost:600,owned:!1,color:12779497,artist:D.vendormint,apply:function(e,t){B.none.apply(e,t),G(e.a.i,49)}},oildrop:{name:"Oil Drop",sprite:24,artist:D.coconut7,cost:700,owned:!1,animation:{tired:"TeardropTiredOIL",awake:"TeardropOIL"},facePosition:{x:0,y:0},generateAnimations:function(){let e=function(e,t){let i=JSON.parse(JSON.stringify(ee[e]));return i.symbols.TeardropBody=ee[t],i};ee.TeardropOIL=e("Teardrop","oilTeardropBody"),ee.TeardropTiredOIL=e("TeardropTired","oilTeardropTiredBody")},apply:function(e,t=0){B.none.apply(e,t),G(e.a.i,51),O(e.a.e,"Sprites/EyesCostume25"),O(e.a.f,"Sprites/EyesCostume25"),O(e.a.g,"Sprites/EyesCostume25"),O(e.a.h,"Sprites/EyesCostume25"),O(e.a.d,"Sprites/MouthsCostume25")}},knightdrop:{name:"Knight Drop",requiredLevel:25,sprite:25,cost:1400,owned:!1,color:16766369,animation:{tired:"TeardropTiredKNIGHT",awake:"TeardropKNIGHT"},artist:{name:D.thinking909.name+", "+D.dialup.name},facePosition:{x:0,y:0},generateAnimations:function(){let e=function(e){let t=JSON.parse(JSON.stringify(ee[e])),i=t.symbols.TeardropBody;function n(e,t,i,n=1){for(let a=0;a<e.frames.length;a++){let o=e.frames[a];null!=o[1]&&(o[1]+=t,o[2]+=i,o[3]*=n,o[6]*=n)}}return n(i.layers.d,-3,5,.9),n(i.layers.e,-3,7),n(i.layers.g,-3,7),n(i.layers.f,-3,7),n(i.layers.h,-3,7),t};ee.TeardropKNIGHT=e("Teardrop"),ee.TeardropTiredKNIGHT=e("TeardropTired")},apply:function(e,t,i=!0){B.none.apply(e,t),G(e.a.i,53)},applyMinigame:function(e){G(e.a.i,53)}},galaxydrop:{name:"Galaxy Drop",sprite:27,artist:D.dialup,cost:-1,owned:!1,achievement:["get15000gtttatint","1000altitudeCAKEWALK"],checkAvailability:function(){let e=["get15000gtttatint","1000altitudeCAKEWALK"],t=!0;for(let i=0;i<e.length;i++)1!=m[e[i]].done&&(t=!1);return t},apply:function(e,t=0){B.none.apply(e,t),G(e.a.i,57),O(e.a.e,"Sprites/EyesCostume25"),O(e.a.f,"Sprites/EyesCostume25"),O(e.a.g,"Sprites/EyesCostume25"),O(e.a.h,"Sprites/EyesCostume25"),O(e.a.d,"Sprites/MouthsCostume25")}},giant:{name:"Giant",sprite:1,artist:D.bluesky,cost:0,owned:!1,secret:!0,applyMinigame:function(){},apply:function(e,t=0){let i;switch(e.size=1.25,e.scale.x*=1.25,e.scale.y*=1.25,e.destroyCostume=function(){e.size=1,e.scale.x/=1.25,e.scale.y/=1.25},t){case 0:i=[e.b,e.c,e.a.d,e.a.e,e.a.f,e.a.g,e.a.h,e.a.i,e.a.j,e.a.k];break;case 1:i=[e.a.d,e.a.e,e.a.f,e.a.g,e.a.h,e.a.i,e.a.j,e.a.k]}for(let e=0;e<i.length;e++){let t=i[e],n=t.symbol.split("/")[1];console.log("Sprites/"+n+"Costume21"),O(t,"Sprites/"+n+(n.includes("Mouth")?"s":"")+"Costume21")}}},lemon:{name:o.costumes.lemon,sprite:7,cost:-1,achievement:"lemons",owned:!1,color:16770969,artist:D.vendormint,apply:function(e,t){B.none.apply(e,t),G(e.a.i,12)}},sportsdrop:{name:o.costumes.sportsdrop,sprite:9,cost:-1,achievement:"winagameoftennis",owned:!1,artist:D.vendormint,apply:function(e,t){B.none.apply(e,t),G(e.a.i,16)}},limedrop:{name:o.costumes.limedrop,sprite:15,cost:-1,achievement:"2763lemons",owned:!1,color:5234769,artist:D.jampu,apply:function(e,t){B.none.apply(e,t),G(e.a.i,28)}},jockdrop:{name:o.costumes.jockdrop,sprite:17,cost:-1,achievement:"5minuteGTTTATINT",owned:!1,artist:D.maple2,apply:function(e,t){B.none.apply(e,t),G(e.a.i,32),O(e.a.j,"Sprites/LimbsCostume17"),O(e.a.k,"Sprites/LimbsCostume17")}},energydrink:{name:o.costumes.energydrink,sprite:20,cost:-1,achievement:"10energydrinks",owned:!1,artist:D.tyblade,apply:function(e,t){B.none.apply(e,t),G(e.a.i,43)}},_td_costume6:{name:"Cakepop-Chip",sprite:26,cost:-1,achievement:"750altitudeCAKEWALK",owned:!1,color:16739174,artist:D.teardrop,apply:function(e,t){B.none.apply(e,t),G(e.a.i,55)}}},U=function(e,t,i,n,a){e.anchor.set(.5,.5),t.addChild(e),e.actualAngle=0,e.angleVelocity=0;let o=function(){e.rotation=-t.rotation+i,e.actualAngle+=e.angleVelocity,e.rotation+=e.actualAngle,e.angleVelocity+=(t.rotation+i-e.actualAngle)/a,e.angleVelocity*=n};c.ticker.add(o),e.destroyPhysics=function(){c.ticker.remove(o),e.destroy()}};function O(e,t){let i=e.currentFrame;e.textures=$[t],e.gotoAndStop(i)}function R(e){return e.split("").reverse().join("")}function F(e){return R(btoa(JSON.stringify(e)))}let _=!1;function z(e,t){try{return null==e?t:JSON.parse(atob(R(e)))}catch(e){return alert("Error with save file. Potential corruption!"),_=!0,0}}function W(){if(n.privateBeta)return;if(n.introMode)return;let e=[];e.push(F(t.coins)),e.push(F(t.fridge)),e.push(F(i.happiness)),e.push(F(i.hunger)),e.push(F(i.sleep)),e.push(F(n.skipIntro)),e.push(F(n.costume));let a={};for(let e in B)a[e]=B[e].owned;e.push(F(a)),e.push(F(n.lastLogin)),e.push(F(i.sleeping)),e.push(F(n.sfx)),e.push(F(n.music)),e.push(F(n.minigameMusic)),e.push(F(i.progress)),e.push(F(i.progressNeeded)),e.push(F(n.level));let o={};for(let e in m)o[e]=m[e].done;e.push(F(o)),e.push(F(n.lemonsFed)),e.push(F(n.totalSlaps)),e.push(F(n.minigameCostumes)),e.push(F(n.lastFridgePage)),e.push(F(n.drinksFed)),e.push(F(n.HQSprites)),e.push(F(n.language)),e.push(F(n.sfxVolume)),e.push(F(n.musicVolume)),e.push(F(n.HDrecommendation)),0==n.gameStartDate&&(n.gameStartDate=Date.now()),e.push(F(n.gameStartDate)),e.push(F(n.saveFileWarning)),e.push(F(n.levelUpCostumes)),e.push(F(n.safeArea)),e.push(F(n.controllerProfile.GTTTATINT)),localStorage.setItem("myTeardrop",F(JSON.stringify(e)))}let j=setInterval((function(){W()}),1e4);function H(e){_=!1;let t=JSON.parse(z(e));return{coins:z(t[0]),fridge:z(t[1]),happiness:z(t[2]),hunger:z(t[3]),sleep:z(t[4]),skipIntro:z(t[5]),costume:z(t[6]),boughtCostumes:z(t[7]),lastLogin:z(t[8]),sleeping:z(t[9]),sfx:z(t[10],!0),music:z(t[11],!0),minigameMusic:z(t[12],!0),progress:z(t[13],0),progressNeeded:z(t[14],200),level:z(t[15],1),completedAchievements:z(t[16],{}),lemonsFed:z(t[17],0),totalSlaps:z(t[18],0),minigameCostumes:z(t[19],!0),lastFridgePage:z(t[20],0),drinksFed:z(t[21],0),HQSprites:z(t[22],!1),language:z(t[23],"en-US"),sfxVolume:z(t[24],1),musicVolume:z(t[25],1),HDrecommendation:z(t[26],!1),gameStartDate:z(t[27],Date.now()),saveFileWarning:z(t[28],!1),levelUpCostumes:z(t[29],!0),safeArea:z(t[30],!1),gtttatintProfile:z(t[31],n.controllerProfile.GTTTATINT)}}if(null==localStorage.getItem("myTeardrop"))W();else if(!n.privateBeta){let e=H(localStorage.getItem("myTeardrop"));t.coins=e.coins,t.fridge=e.fridge,i.happiness=e.happiness,i.hunger=e.hunger,i.sleep=e.sleep,n.skipIntro=e.skipIntro,n.lastLogin=e.lastLogin,i.sleeping=e.sleeping,"string"==typeof e.costume&&(Object.keys(B).includes(e.costume)||(e.costume="none"),n.costume=e.costume);for(let t in B){let i=!1;null!=e.boughtCostumes[t]&&(i=e.boughtCostumes[t]),B[t].owned=i}n.sfx=e.sfx,n.music=e.music,n.minigameMusic=e.minigameMusic,n.minigameCostumes=e.minigameCostumes,i.progress=e.progress,i.progressNeeded=e.progressNeeded,n.level=e.level,n.lemonsFed=e.lemonsFed,n.drinksFed=e.drinksFed,n.totalSlaps=e.totalSlaps,n.lastFridgePage=e.lastFridgePage,n.HQSprites=e.HQSprites,n.language=e.language,n.sfxVolume=e.sfxVolume,n.musicVolume=e.musicVolume,n.HDrecommendation=e.HDrecommendation,n.gameStartDate=e.gameStartDate,n.saveFileWarning=e.saveFileWarning,n.levelUpCostumes=e.levelUpCostumes,n.safeArea=e.safeArea,n.controllerProfile.GTTTATINT=e.gtttatintProfile;for(let t in m){let i=!1;null!=e.completedAchievements[t]&&(i=e.completedAchievements[t]),m[t].done=i}}if(null!=localStorage.getItem(n.language)){let e=JSON.parse(localStorage.getItem(n.language).replaceAll("\n","\\n"));for(let t in e)for(let i in e[t])"version"!=t&&(o[t][i]=e[t][i]);for(let e in o.costumes)B[e].name=o.costumes[e]}else n.language="en-US";let Q=o.message.obtainCostume;o.message.obtainCostume=function(e){return Q.replace("{achievement}",'"'+e+'"')};let V=o.message.updateWarning;o.message.updateWarning=function(e,t){return V.replace("{currentVersion}",e).replace("{latest}",t)},window.innerWidth,window.devicePixelRatio;let Y=0,K=0;function J(e,t){Y++,Z||(document.getElementById("bar").style.width=Y/K*100+"%"),Y==K&&(Z||(document.getElementById("loader").style.color="white",document.getElementById("loader").innerHTML+="<p>Tap/Click to play</p>"),Z||(Z=!0,te.music=new Pizzicato.Group(te.music),te.sfx=new Pizzicato.Group(te.sfx),te.sfx.volume=n.sfxVolume,te.music.volume=n.musicVolume,Ye()))}let q,Z=!1,$={},ee={},te={music:[],sfx:[]};function ie(e,t,i){K++,PIXI.Assets.load("./Sprites/"+e+".json").then((e=>{$[i]=[];for(let n=0;n<e._frameKeys.length;n++){let e=t+(n+1e4).toString().slice(1);$[i].push(PIXI.Texture.from(e))}J()}))}function ne(e,t,i){let a={},o=t;$[i]=[];for(let r=0;r<t;r++){a[r]=0,K++;let s=(r+10001).toString().slice(1);1==t&&(s=""),PIXI.Assets.load("./Sprites/"+e+s+".png").then((e=>{a[r]=e,n.HQSprites&&e.baseTexture.setResolution(2),o--,0==o&&($[i]=a),J()}))}}function ae(e){K++,PIXI.Assets.load("./Fonts/"+e+".fnt").then((e=>{J()}))}function oe(e,t){K++,PIXI.Assets.load("./Animations/"+e+".json").then((e=>{ee[t]=e,ee[t].animation=t,J()}))}function re(e,t,i=0){K++,te[t]=new Pizzicato.Sound("./Audio/"+e+".mp3",(function(){te[t].volume=1,te[t].loaded=!0,null!=te[t].onloadAudio&&te[t].onloadAudio(),J()})),te[t].loaded=!1,0==i?te.music.push(te[t]):te.sfx.push(te[t])}console.warn=function(){};let se={loadAttempts:0},le=localStorage.getItem("loaderData");if(null==le)q={loadAttempts:0};else try{q=JSON.parse(le)}catch(e){q=se}function de(){localStorage.setItem("loaderData",JSON.stringify(q))}q.loadAttempts++,q.loadAttempts>=3&&(n.HQSprites=!1),de();let ce="",he="";"en-US"!=n.language&&(he="Unicode"),n.HQSprites&&(ce="hd/"),ae("MenuShag"+he),ae("arial"),ae("ShagBlueNumber"),ae("ShagBlack"+he),ae("IndieFlower"),oe("Teardrop","Teardrop"),oe("oil/Teardrop.TeardropBody","oilTeardropBody"),oe("oil/TeardropTired.TeardropBody","oilTeardropTiredBody"),oe("healthLose","healthLose"),oe("loading","loading"),oe("bfb","bfb"),oe("TeardropTired","TeardropTired"),oe("tearDropWatch","tearDropWatch"),oe("tearDropLevelUp","tearDropLevelUp"),oe("faceMinigame","faceMinigame"),oe("oddDroplets","oddDroplets"),oe("tearDropTennis","tearDropTennis"),oe("GTTTATINT","GTTTATINT"),oe("GTTTATINTLOSE","GTTTATINTLOSE"),oe("Box","Box"),oe("SkewMatrix","SkewMatrix"),ie(ce+"GameThumbnails","GameThumbnails","Sprites/GameThumbnails"),ie("tennisBall","tennisBall","Sprites/tennisBall"),ie("BGLayer","BGLayer","BGLayer"),ne(ce+"Rooms/Rooms",21,"Sprites/Rooms"),ne("Logo",1,"Logo"),ie(ce+"Food","Food","Sprites/Food"),ie("Empty","Empty","Sprites/Empty"),re("wave","wave",1),re("yeah","yeah"),re("brittlerille","brittlerille"),re("LevelUp","levelup"),re("Achievement","achievement"),re("switchoff","switchoff",1),re("switchon","switchon",1),re("purchase","purchase",1),re("fail","fail",1),re("coinlarge","coinlarge",1),re("coinmedium","coinmedium",1),re("coinsmall","coinsmall",1),re("consume","consume",1),re("slap1","slap1",1),re("slap2","slap2",1),re("slap3","slap3",1),re("slap4","slap4",1),re("collect","collect",1),ie("Oldies/Bodies/1","Bodies","oldiesCostume/Bodies"),ie("Oldies/Mouths","Mouth","oldiesCostume/Mouth"),ie("Oldies/Limbs","Limbs","oldiesCostume/Limbs"),ie("Oldies/Eyes","Eyes","oldiesCostume/Eyes"),ie(ce+"Bodies/1","Bodies","Sprites/Bodies"),ie(ce+"Outline/BodiesOUTLINE12","BodiesOUTLINE12","Sprites/BodiesOUTLINE12"),ie(ce+"Bodies/BodiesCostume_1","BodiesCostume_1","Sprites/BodiesCostume_1"),ie("MouthsCostume10","MouthsCostume10","Sprites/MouthsCostume10"),ie("MouthsCostume21","MouthsCostume21","Sprites/MouthsCostume21"),ie("MouthsCostume25","MouthsCostume25","Sprites/MouthsCostume25"),ie("EyesCostume25","EyesCostume25","Sprites/EyesCostume25"),ie("LimbsCostume17","LimbsCostume17","Sprites/LimbsCostume17"),ie("LimbsCostume21","LimbsCostume21","Sprites/LimbsCostume21"),ie("Bodies/BodiesCostume21","BodiesCostume21","Sprites/BodiesCostume21"),ie(ce+"Mouths","Mouth","Sprites/Mouth"),ie(ce+"Limbs","Limbs","Sprites/Limbs"),ie(ce+"Outline/LimbsOUTLINE12","LimbsOUTLINE12","Sprites/LimbsOUTLINE12"),ie("LimbsCostume1","LimbsCostume1","Sprites/LimbsCostume1"),ie(ce+"Eyes","Eyes","Sprites/Eyes"),ie(ce+"Outline/EyesOUTLINE12","EyesOUTLINE12","Sprites/EyesOUTLINE12"),ie("EyesCostume21","EyesCostume21","Sprites/EyesCostume21"),ie("CakeSlicePlane","CakeSlicePlane","Sprites/CakeSlicePlane"),ie("Clouds","Clouds","Sprites/Clouds"),ie(ce+"Poses","Poses","Sprites/Poses"),ie("Blur","Blur","Sprites/Blur"),ie("Box","Box","Sprites/Box"),ie(ce+"GameUI","GameUI","Sprites/GameUI"),ie("Placeholders","Placeholders","Sprites/Placeholders"),ie("Starfield","Starfield","Backgrounds/Starfield"),ie("RepeatingUI","RepeatingUI","Sprites/RepeatingUI"),ie(ce+"inputNineSlice","inputNineSlice","inputNineSlice");function ue(e,t=0){return{scale:{x:Math.sqrt(e.a**2+e.b**2),y:Math.sqrt(e.c**2+e.d**2)},skew:{x:180/Math.PI*Math.atan2(e.d,e.c)-90,y:180/Math.PI*Math.atan2(e.b,e.a)},rotation:t,skewing:null==t}}let pe=0,me=1,ye=2,ge=3,fe=4,xe=5,we=6,ve=7,Ie=8,Se=9,Ce=10,be=11,Me=12,Pe=13;function Te(e,t){let i=0,n=new PIXI.Container;n.animationName=e.animation,n.idle=-1,n.frameCount=e.frameCount,n.customs=[],n.layers=[];let a={};for(let t in e.layers)e.layers[t].isCustom?(a[t]=Te(e.symbols[e.layers[t].symbol]),a[t].symbol=e.layers[t].symbol,n.customs.push(a[t])):a[t]=new PIXI.AnimatedSprite($[e.layers[t].symbol]),n.layers.push(t),a[t].symbol=e.layers[t].symbol,n.addChild(a[t]),n[t]=a[t],"FireyFlame"==e.layers[t].symbol&&(a[t].gotoAndPlay(0),a[t].animationSpeed=.4);function o(t,i=!0){let n=a[t].curframe==e.layers[t].frames.length-1?0:e.layers[t].frames[a[t].curframe+1],o=e.layers[t].frames[a[t].curframe];if(a[t].inactive=null==o[1],a[t].inactive)a[t].alpha=0;else{if(a[t].pivot.x=o[Ie],a[t].pivot.y=o[Se],a[t].alpha=1,0!=n&&-2!=o[Me]&&i){let e=a[t].frameProgress-1,i=new PIXI.Matrix(o[ge],o[fe],o[xe],o[we],0,0),r=new PIXI.Matrix(n[ge],n[fe],n[xe],n[we],0,0),s=ue(i,o[ve]),l=ue(r,n[ve]),d=l.rotation-s.rotation;d>180&&(d=-180-(180-d)),d<-180&&(d=180+(180+d));let c=l.skew.x-s.skew.x;c>180&&(c=-180-(180-c)),c<-180&&(c=180+(180+c));let h=l.skew.y-s.skew.y;h>180&&(h=-180-(180-h)),h<-180&&(h=180+(180+h));let u={skew:{x:ease[o[Me]+1](e,s.skew.x,c,o[pe]),y:ease[o[Me]+1](e,s.skew.y,h,o[pe])},scale:{x:ease[o[Me]+1](e,s.scale.x,l.scale.x-s.scale.x,o[pe]),y:ease[o[Me]+1](e,s.scale.y,l.scale.y-s.scale.y,o[pe])},rotation:ease[o[Me]+1](e,s.rotation,d,o[pe])};s.skewing||l.skewing?u.rotation=0:(u.skew.x=0,u.skew.y=0),a[t].transform.setFromMatrix(function(e){let t=e.rotation*(Math.PI/180),i=e.skew.x*(Math.PI/180),n=e.skew.y*(Math.PI/180);isNaN(i)&&(i=0),isNaN(n)&&(n=0);let a=e.scale.x,o=e.scale.y,r=new PIXI.Matrix(1,0,0,1,0,0);return r.a*=Math.cos(n),r.b=Math.sin(n),r.c=-Math.sin(i),r.d*=Math.cos(i),r.a*=Math.cos(t),r.b+=Math.sin(t),r.c-=Math.sin(t),r.d*=Math.cos(t),r.a*=a,r.b*=a,r.c*=o,r.d*=o,r}(u)),a[t].scale.x=u.scale.x,a[t].scale.y=u.scale.y,a[t].x=ease[o[Me]+1](e,o[me],n[me]-o[me],o[pe]),a[t].y=ease[o[Me]+1](e,o[ye],n[ye]-o[ye],o[pe]);let p=o[Pe],m=n[Pe];p==m&&a[t].alpha==m||(a[t].alpha=ease[o[Me]+1](e,p,m-p,o[pe]))}else{let e=new PIXI.Matrix(o[ge],o[fe],o[xe],o[we],0,0);a[t].transform.setFromMatrix(e),a[t].x=o[me],a[t].y=o[ye],a[t].alpha=o[Pe]}if(e.layers[t].isCustom||(o[Ce]=o[Ce]%a[t].textures.length),!e.layers[t].isCustom&&"FireyFlame"!=e.layers[t].symbol){let e=o[Ce];null!=a[t].overrideSprite&&null!=a[t].overrideSprite[e]&&(e=a[t].overrideSprite[e]),a[t].gotoAndStop(e)}}}function r(t,i){let n=i.frames,a=0;t=Math.min(e.frameCount-1,t);for(let e=0;e<n.length;e++){if(t>=a&&a+n[e][0]>t)return[e,t-a];a+=n[e][0]}}new PIXI.Transform;let s=!1;return n.fps=0,n.onAnimationEnd=function(){},n.gotoAndStop=function(e){n.goto(e),n.stop()},n.gotoAndPlay=function(e,t){n.goto(e),n.play(t)},n.parts=t,n.currentPart=-1,n.gotoPart=function(e){null!=n.parts[e]&&n.currentPart!=e&&(n.currentPart=e,n.goto(n.parts[e].start),n.firstFrame=n.parts[e].start,n.playUntil=n.parts[e].end,n.loop=n.parts[e].loop)},n.goto=function(t){s=!1,null==t&&(t=0),i=t;for(let i in a){let n=r(t,e.layers[i]);a[i].curframe=n[0],a[i].frameProgress=n[1]+1,e.layers[i].isCustom&&null!=e.layers[i].frames[a[i].curframe][Ce]&&(a[i].goto(e.layers[i].frames[a[i].curframe][Ce]+(2==e.layers[i].frames[a[i].curframe][be]?0:a[i].frameProgress-1)),a[i].l=e.layers[i].frames[a[i].curframe][be]),o(i,!1),o(i)}},n.animationData=e,n.destroyAnimation=function(){n.stop();for(let e in a)a[e].parent.removeChild(a[e]),null!=a[e].destroyAnimation?a[e].destroyAnimation():a[e].destroy({children:!0});null!=n.parent&&n.parent.removeChild(n),n.destroy({children:!0})},n.onNextFrame=-1,n.play=function(e=60){n.fps=e,clearInterval(n.interval),-1!=n.onNextFrame?n.interval=setInterval((function(){n.nextFrame(),n.onNextFrame(n)}),1e3/e):n.interval=setInterval((function(){n.nextFrame()}),1e3/e)},n.playUntil=-1,n.firstFrame=0,n.stop=function(e){clearInterval(n.interval)},n.getCurFrame=function(){return i},n.goto(0),n.nextFrame=function(){let t=n.playUntil;if(-1==n.playUntil&&(t=e.frameCount-1),i++,t<i)return n.loop&&n.goto(n.firstFrame),void(0==s&&(s=!0,-1!=n.idle&&n.gotoPart(n.idle),n.onAnimationEnd()));for(let t in a){if(a[t].inactive=!1,null==a[t].curframe&&(a[t].curframe=0),null==a[t].frameProgress)a[t].frameProgress=1;else{let i=e.layers[t].frames[a[t].curframe];e.layers[t].isCustom&&2!=i[be]&&a[t].nextFrame(),a[t].frameProgress>=e.layers[t].frames[a[t].curframe][pe]&&(a[t].frameProgress=0,a[t].curframe<e.layers[t].frames.length-1?(a[t].curframe++,e.layers[t].isCustom&&(a[t].goto(e.layers[t].frames[a[t].curframe][Ce]),a[t].l=i[be])):a[t].inactive=!0),a[t].frameProgress++}o(t)}},n.switchData=function(t){e=t;for(let e=0;e<n.customs.length;e++)n.customs[e].switchData(t.symbols[n.customs[e].symbol]);n.animationName=e.animation},n.switchParts=function(e){n.parts=e},n}let ke={"en-US":{lang:"English",button:["DOWNLOAD","USE","UPDATE"],downloaded:!0},"tr-TR":{lang:"Türkçe",translator:D.vendormint,file:"./Languages/tr-TR",available:!1,button:["INDIR","KULLAN","GUNCELLE"]},"fr-FR":{lang:"Français",translator:D.teardrop,file:"./Languages/fr-FR",button:["TELECHARGER","UTILISER","MISE À JOUR"]},"es-ES":{lang:"Türkçe",translator:{name:D.stevencrack.name+", "+D.thinking909.name},file:"./Languages/es-ES",available:!1,button:["DESCARGAR","USAR","ACTUALIZAR"]}};for(let e in ke)e in localStorage&&(ke[e].downloaded=!0);let Ae,Ee,Le,Xe,Ne={0:{name:"Match",id:0,available:!1},1:{name:"Pencil",id:1,available:!1},2:{name:"Bubble",id:2,available:!1},5:{width:100,height:100,name:"Ice Cube",id:5,available:!0},6:{width:100,height:100,name:"Leafy",id:6,available:!0},9:{width:100,height:100,name:"Rocky",id:9,available:!0},13:{name:"Woody",id:13,available:!1},19:{width:300,height:200,name:"Spongy",id:19,available:!0},22:{name:"Tennis Ball",id:22,available:!1},23:{name:"Pen",id:23,available:!1},31:{width:75,height:100,name:"Coiny",id:31,available:!0},32:{width:75,height:100,name:"Pin",id:32,available:!0},33:{name:"Firey",id:33,available:!1},34:{width:60,height:100,name:"Needle",id:34,available:!0},39:{name:"Golf Ball",id:39,available:!1},44:{name:"Blocky",id:44,available:!1},51:{name:"Eraser",id:51,available:!1},54:{name:"Flower",id:54,available:!1},57:{name:"Snowball",id:57,available:!1},62:{name:"Teardrop",id:62,available:!1}},De=function(e=function(){}){let t=function(){n.music&&te.clouddancer.play()};n.music&&(te.brittlerille.pause(),te.clouddancer.play(),te.clouddancer.volume=.5,te.clouddancer.release=1,te.clouddancer.on("end",t));let i=new PIXI.Sprite($["Sprites/Rooms"][18]);c.stage.addChild(i),i.tint=8818106,i.interactive=!0,i.x=c.screen.width/2,i.y=c.screen.height/2,i.anchor.set(.5,.5),i.scale.x=1.5,i.scale.y=1.5;let o=new PIXI.Container;c.stage.addChild(o);let r={},l=0,d=0,u=[],p=a("",32,"center");p.x=c.screen.width/2,p.y=c.screen.height-150,n.costume;let m=new PIXI.Container;m.hitArea=new PIXI.Rectangle(-5e3,-5e3,1e4,1e4);let y=new PIXI.Graphics;m.mask=y,c.stage.addChild(m),m.x=0,m.y=0;let g=c.screen.width,f=c.screen.height;y.beginFill(0),y.drawRect(m.x,m.y,g,f),y.endFill(),m.interactive=!0,m.on("pointerdown",(function(e){let t=e.clientY/s;m.dragOffset={y:t-m.y},m.prevY=m.y,m.vy=0,m.scrolling=!0}));let x=function(e){if(!m.scrolling)return;let t=e.clientY/s;m.prevY=m.y,m.y=t-m.dragOffset.y},w=function(){m.scrolling=!1};document.addEventListener("pointermove",x),document.addEventListener("pointerup",w),m.vy=0;let v=function(){let e=80-S-50+f;m.vy=h.linear(m.vy,-.5,.05,Qe),m.scrolling?m.vy=m.y-m.prevY:m.y+=m.vy,I.targetAlpha=1,m.y>=0&&(m.y=0,m.vy=0),m.y<=e&&(I.targetAlpha=0,m.y=e,m.vy=0),I.alpha=h.linear(I.alpha,I.targetAlpha,.1,Qe),i.y=h.linear(i.y,m.y/40+80+50,.1,Qe)};c.ticker.add(v);let I=new PIXI.Sprite($["Sprites/Rooms"][11]);I.x=m.x,I.y=m.y+f-90,I.width=g,I.height=100;let S=0,C={"User Interface":["VENDORMINT"],Characters:[],"Early Supporters":["semihasem142","albertito9736","leafsterzx","rat_real.","yourgurllucy","infected_came_back.","generalbonnie","riverplayerone","jampu","tear_drop_bfb / pilowd","alexpple","donutmations","orphan / cherryjrtheorphan_.","coiny68617"],"Beta Testers":["tear_drop_bfb / pilowd","oyui / thinking909","NOOB / tyblade9","BlueSky","freesmart","stevencrack","ultimate1duck","flanimations","kenzie._kenz","kyl9341","veetheglaceon","donutmations",D.thinking909.name,"anni_on_ayanna","beetlebrick_",D.cringeindividual.name,"tawnypawzz","geebweezer","fridgethewhat123","lufafa13","infationtoons","mationsBOMB","lach15bro","NOOB / tyblade9","ricol3","maple_two","jampu","mizosis",D.briteideajuni.name],"Costume Artists":[],Animation:["VENDORMINT","jacknjellify"],"Graphic Design":["VENDORMINT"],"Original Games":["Cary Huang - GTTTATINT101"],"Minigame Help":["Flanimations - Odd Droplets Posing",D.dialup.name+" - Odd Droplets Posing"],Programming:["VENDORMINT"],Music:["Kevin Macleod - New Friendly","Kevin Macleod - Radio Martini","Kevin Macleod - Brittle Rille","Kevin Macleod - Shiny Tech","Kevin Macleod - Pamgaea","Kevin Macleod - Cloud Dancer","FannToons - papshru"]};for(let e in Ne)C.Characters.push("jacknjellify - "+Ne[e].name);for(let e in D)C["Costume Artists"].push(D[e].name);S+=200;let b=new PIXI.Sprite($.Logo[0]);b.width=200,b.scale.y=b.scale.x,b.x=c.screen.width/2,b.y=100,u.push(b),b.anchor.set(.5,.5),m.addChild(b);for(let e in C){let t=a(e,32,"center");t.y=S,S+=48,m.addChild(t);for(let t=0;t<C[e].length;t++){let i=a(C[e][t],16,"center");i.y=S,S+=32,m.addChild(i),i.x=c.screen.width/2,C[e][t].toLowerCase().includes("teardrop")&&(i.tint=6737151)}S+=30,t.x=c.screen.width/2}S+=100;let M=Fe.exitButton((function(){e(),Fe.flash(!1,k)}),c.screen.width-40,40,.4,0);c.stage.addChild(M.sprite),o.origX=0,o.time=50;let P=!1,T=function(){P||(o.x=0,l>.01&&(o.x+=Math.cos(d)*l*5,d+=.5*Qe,l=h.linear(l,0,.1,Qe)),p.alpha>0&&(p.alpha-=.04))};function k(){n.music&&(te.brittlerille.play(),te.clouddancer.stop(),te.clouddancer.off("end",t),delete te.clouddancer),c.ticker.remove(v),document.removeEventListener("pointermove",x),document.removeEventListener("pointerup",w);for(let e in r)null!=r[e].destroy&&r[e].destroy(),delete r[e];p.destroy(),M.destroy(),i.destroy();for(let e=0;e<u.length;e++)u[e].destroyed||u[e].destroy();c.ticker.remove(T),P=!0}c.ticker.add(T),c.stage.addChild(p),u.push(I),u.push(m),u.push(y)},Ge=[{name:o.settings.music,value:n.music,enable:function(){n.music=!0,te.brittlerille.volume=.5,te.brittlerille.play()},disable:function(){te.brittlerille.pause(),n.music=!1}},{name:o.settings.minigameMusic,value:n.minigameMusic,enable:function(){n.minigameMusic=!0},disable:function(){n.minigameMusic=!1}},{name:o.settings.sfx,value:n.sfx,enable:function(){n.sfx=!0},disable:function(){n.sfx=!1}},{name:o.settings.minigameCostumes,value:n.minigameCostumes,enable:function(){n.minigameCostumes=!0},disable:function(){n.minigameCostumes=!1}},{name:"Experimental Costumes",value:n.levelUpCostumes,enable:function(){n.levelUpCostumes=!0},disable:function(){n.levelUpCostumes=!1}},{name:"Safe Screen Area",value:n.safeArea,mobile:!0,enable:function(){n.safeArea=!0,A()},disable:function(){n.safeArea=!1,A()}},{name:"Credits",type:"button",flash:!0,enable:function(){clearTimeout(Ae),Fe.loader(De,[["clouddancer","clouddancer"]])}},{name:"SFX Volume",type:"slider",enable:function(e){n.sfxVolume=e,te.sfx.volume=e},value:n.sfxVolume,preview:function(){clearTimeout(Ae),n.music&&(te.brittlerille.pause(),Ae=setTimeout((function(){n.music&&te.brittlerille.play()}),2e3)),te.consume.stop(),te.consume.play()}},{name:"Music Volume",type:"slider",preview:function(){te.achievement.stop(),clearTimeout(Ae),n.music&&(te.brittlerille.pause(),Ae=setTimeout((function(){n.music&&te.brittlerille.play()}),2e3)),te.achievement.play(),te.achievement.sourceNode.playbackRate.value=1.1},enable:function(e){n.musicVolume=e,te.music.volume=e},value:n.musicVolume},{name:"Controls",type:"button",flash:!0,mobile:!0,enable:function(){Be((function(){n.controllerProfile.GTTTATINT=a;for(let e=0;e<r.length;e++)r[e].destroy()}),[{name:"Button Size",type:"slider",enable:function(t){e(t),a.buttonScale=t},preview:function(){},value:.5},{name:"Align",type:"button",enable:function(){Fe.message("Align controllers",void 0,(function(){let e=(t[" "].sprite.y+t.a.sprite.y+t.d.sprite.y)/3;t.a.sprite.y=e,t.d.sprite.y=e,t[" "].sprite.y=e;for(let e in t)t[e].refreshProfile()}),(function(){let e=(t.a.sprite.y+t.d.sprite.y)/2;t.a.sprite.y=e,t.d.sprite.y=e;for(let e in t)t[e].refreshProfile()}),["All","Left/Right"])}},{name:"Reset",type:"button",enable:function(){Fe.message("Are you sure you want to reset the controller configuration?",void 0,(function(){for(let e in a.buttons)a.buttons[e].x=i.buttons[e].x,a.buttons[e].y=i.buttons[e].y,a.buttons[e].lock=i.buttons[e].lock;for(let e in t)t[e].refresh();a.buttonScale=i.buttonScale,e(a.buttonScale)}),(function(){}),["Yes","Cancel"])}}],"GTTTATINT Controller Profile");let e=function(e){for(let i in t)t[i].sprite.scale.x=e+.5,t[i].sprite.scale.y=e+.5,t[i].sprite.originalSize={x:t[i].sprite.scale.x,y:t[i].sprite.scale.y},t[i].sprite.destinationSize=t[i].sprite.originalSize,t[i].sprite.animationSize=t[i].sprite.originalSize,t[i].sprite.animationTime=0},t={},i={buttons:{a:{x:-150,y:-50,lock:1},d:{x:-50,y:-50,lock:1}," ":{x:100,y:-50,lock:0}},buttonScale:.5},a=n.controllerProfile.GTTTATINT;function o(e,i,n,o){let r=a.buttonScale+.5,s=new P((function(){Fe.message("Lock position to",void 0,(function(){1==a.buttons[o].lock&&(a.buttons[o].x+=c.screen.width),a.buttons[o].lock=0,s.refresh()}),(function(){0==a.buttons[o].lock&&(a.buttons[o].x-=c.screen.width),a.buttons[o].lock=1,s.refresh()}),["Bottom Left","Bottom Right"])}),$["Sprites/GameUI"][n],{x:e,y:i,scale:{x:r,y:r}});s.sprite.on("pointerdown",(function(){for(let e in t)t[e].sprite.interactive=!1;s.sprite.interactive=!0})),s.sprite.on("pointermove",(function(){s.refreshProfile()})),s.refreshProfile=function(){0==a.buttons[o].lock?(a.buttons[o].x=s.sprite.x,a.buttons[o].y=s.sprite.y-c.screen.height):(a.buttons[o].x=s.sprite.x-c.screen.width,a.buttons[o].y=s.sprite.y-c.screen.height)},s.sprite.on("pointerup",(function(){for(let e in t)t[e].sprite.interactive=!0,t[e].refresh()})),I(s.sprite,s.sprite.hitArea),t[o]=s,c.stage.addChild(s.sprite)}o(0,0,21,"a"),o(0,0,22,"d"),o(0,0,23," ");let r=[];for(let e in t){let i=new PIXI.Sprite($["Sprites/GameUI"][7]);t[e].sprite.addChild(i),t[e].refresh=function(){t[e].sprite.x=c.screen.width*a.buttons[e].lock+a.buttons[e].x,t[e].sprite.y=c.screen.height+a.buttons[e].y,i.anchor.set(.5,.5),i.x=-t[e].sprite.texture.trim.width/2+a.buttons[e].lock*t[e].sprite.texture.trim.width,i.y=t[e].sprite.texture.trim.height/2,i.scale.x=.25,i.scale.y=.25,i.rotation=(1-a.buttons[e].lock)*Math.PI/2-Math.PI/4},r.push(i),r.push(t[e]),t[e].refresh()}}},{name:"Backup",type:"button",flash:!0,hidden:n.privateBeta,enable:function(){let e=-1;Be((function(){-1!=e&&document.body.removeChild(e)}),[{name:"Download",type:"button",flash:!1,enable:function(){let e=document.createElement("a"),t=localStorage.myTeardrop;e.setAttribute("href","data:text/plain;charset=utf-8,"+encodeURIComponent(t)),e.setAttribute("download","myTeardrop.txt"),e.style.display="none",document.body.appendChild(e),e.click(),document.body.removeChild(e)}},{name:"Upload",type:"button",flash:!1,enable:function(){Fe.message("This will overwrite your current save file and is an irreversible action.",$["Sprites/GameUI"][24],(function(){let t=function(t=document.createElement("button"),i=document.createElement("input")){return t.innerText="Upload",i.type="file",i.style.display="none",t.style="position:fixed;z-index: 100;top:0px;left:0px;",e=t,t.onclick=function(){i.click(),i.onchange=function(){let e=new FileReader;e.onload=function(e){H(e.currentTarget.result),_?Fe.message("Not genuine save file. Action cancelled",$["Sprites/GameUI"][24],(function(){})):(Fe.message("Success! Reloading game...",$["Sprites/GameUI"][24],(function(){})),localStorage.setItem("myTeardrop",e.currentTarget.result),setTimeout((function(){window.location=window.location}),500))},e.readAsText(i.files[0])}},document.body.appendChild(i),t}();t.onclick(),document.body.appendChild(t)}),(function(){}),["Upload","Cancel"])}},{name:"Clear",type:"button",flash:!1,enable:function(){Fe.message("This action is irreversible and will completely wipe your save file!",$["Sprites/GameUI"][24],(function(){setTimeout((function(){Fe.message("Are you really sure??",$["Sprites/GameUI"][24],(function(){clearInterval(j),localStorage.removeItem("myTeardrop"),setTimeout((function(){window.location=window.location}),500)}),(function(){}),["Proceed","Cancel"])}),500)}),(function(){}),["Proceed","Cancel"])}}],"Savefile tools")}}],Be=function(e=function(){},t=Ge,i=ze+(We?"(release, offline)":"(release)")){let n=new PIXI.Sprite($["Sprites/Rooms"][13]);c.stage.addChild(n),n.interactive=!0,n.x=c.screen.width/2,n.y=c.screen.height/2,n.anchor.set(.5,.5),n.scale.x=1,n.scale.y=1;let o=new PIXI.Container;c.stage.addChild(o);let r=Fe.exitButton((function(){e(),W(),Fe.flash(!1,S)}),c.screen.width-40,40,.4,0);c.stage.addChild(r.sprite),o.origX=0,o.time=50;let l=!1,d=function(){l||(o.x=0)},h=0,u=10;c.ticker.add(d);let p=[],g=new PIXI.Sprite($.Logo[0]);g.width=200,g.scale.y=g.scale.x,g.x=80,g.y=20,g.id=T(),v(g,(function(){if(u--,0==u){if(m.tauntLogo.done)return Fe.message("GET OUT!",-1),void setTimeout((function(){setInterval((function(){let e=Te(ee.Teardrop,y.Teardrop),t=[];for(let e in B)B[e].owned&&t.push(B[e]);t[Math.floor(Math.random()*t.length)].apply(e),e.x=c.screen.width*Math.random(),e.y=c.screen.height*Math.random(),e.rotation=Math.random()*Math.PI*4,e.play(60);let i=Object.keys(y.Teardrop);e.gotoPart(i[Math.floor(Math.random()*i.length)]),c.stage.addChild(e)}),1e3/60),setTimeout((function(){window.location=window.location}),1e3)}),500);switch(h){case 0:u=10,Fe.message("don't.",-1);break;case 1:u=10,Fe.message("no.",-1);break;case 2:u=5,Fe.message("stop...",-1);break;case 3:u=20,Fe.message("STOP!!",-1);break;case 4:case 6:u=10,Fe.message("...",-1);break;case 5:u=10,Fe.message("Will you leave me alone if I give you a costume?",-1,(function(){setTimeout((function(){Fe.message("I'll think about it.",-1,(function(){})),u=10}),500)}),(function(){setTimeout((function(){Fe.message("get out.",-1,(function(){e(),Fe.flash(!1,S)}))}),1e3)}),["Yes","No"]);break;case 7:{function t(){setTimeout((function(){Fe.message("Just kidding! Or am I... ok now please actually leave me alone here's your costume",-1,(function(){Fe.blurPan(c.stage,(function(){S(),Fe.achievementQueue("tauntLogo"),B.giant.owned=!0}))})),u=10}),500)}u=10,Fe.message("WARNING: THIS ACTION WILL COMPLETELY ERASE YOUR SAVE FILE!",-1,t,t,["Continue","Continue"])}}h++}})),x[g.id]=g,g.interactive=!0,p.push(g),c.stage.addChild(g),g.anchor.set(.5,.5),g.x+=g.width/2,g.y+=g.height/2;let f=a(i,16);f.x=90,f.y=g.y+g.height/2,p.push(f),c.stage.addChild(f);let w=80,I=0;for(let e=0;e<t.length;e++){let i=t[e];if(!i.hidden&&(c.touchScreen||!i.mobile))if(null==i.type){let e=new P((function(){e.activated=!e.activated,e.activated?(e.sprite.texture=$["Sprites/GameUI"][26],i.enable(e),i.value=!0):(e.sprite.texture=$["Sprites/GameUI"][25],i.disable(e),i.value=!1)}),i.value?$["Sprites/GameUI"][26]:$["Sprites/GameUI"][25],{scale:{x:.75,y:.75}});e.sprite.x=w,e.sprite.y=150+I,c.stage.addChild(e.sprite),e.activated=i.value;let t=a(i.name,24,"left","middle");t.x=110,t.y=148+I,t.width>c.screen.width-w-t.x&&(t.width=c.screen.width-w-t.x,t.scale.y=t.scale.x),c.stage.addChild(t),p.push(e),p.push(t),I+=40}else if("button"==i.type){let e=new M((function(){i.flash?Fe.flash(!1,i.enable):i.enable()}),w,150+I,200,30,i.name,0,0,.5,1,"center");c.stage.addChild(e.element),p.push(e),I+=50}else if("slider"==i.type){let e=200,t=10,n=w,o=a(i.name,24,"left","middle");o.x=w,o.y=148+I-10,c.stage.addChild(o);let r=150+I+20;I+=60;let l=new PIXI.NineSlicePlane($.inputNineSlice[17],25,25,25,25);l.width=e+5+t,l.height=t+5,c.stage.addChild(l),l.x=n-2.5-t/2,l.y=r-2.5-t/2;let d=new PIXI.NineSlicePlane($.inputNineSlice[15],25,25,25,25);d.width=e+t,d.height=t,c.stage.addChild(d),d.x=n-t/2,d.y=r-t/2;let h=new PIXI.NineSlicePlane($.inputNineSlice[16],25,25,25,25);h.width=e/2-4+t,h.height=t-4,c.stage.addChild(h),h.x=n+2-t/2,h.y=r+2-t/2;let u=new P((function(){}),$["Sprites/GameUI"][43],{scale:{x:.5,y:.5}});u.sprite.x=n,u.sprite.y=r,c.stage.addChild(u.sprite),u.sprite.originalHitArea=u.sprite.hitArea,u.sprite.on("pointerdown",(function(e){u.sprite.hitArea=new PIXI.Rectangle(-3e3,-3e3,6e3,6e3),u.sprite.dragging=!0;let t=e.clientX/s,i=e.clientY/s;u.sprite.dragOffset={x:t-u.sprite.x,y:i-u.sprite.y}})),u.sprite.on("pointermove",(function(t){let a=t.clientX/s;t.clientY,u.sprite.dragging&&(u.sprite.x=Math.min(n+e,Math.max(n,a-u.sprite.dragOffset.x)),h.width=u.sprite.x-h.x,i.enable((u.sprite.x-n)/e),i.value=(u.sprite.x-n)/e)})),u.sprite.on("pointerup",(function(){u.sprite.dragging=!1,u.sprite.hitArea=u.sprite.originalHitArea,i.preview()})),p.push(u),p.push(h),p.push(d),p.push(l),i.set=function(i){h.width=e*i-4+t,u.sprite.x=n+e*i},i.set(i.value),p.push(o)}}function S(){W();for(let e=0;e<p.length;e++)p[e].destroy();r.destroy(),n.destroy(),o.destroy(),c.ticker.remove(d),l=!0,delete x[g.id]}},Ue=function(e){let t=Math.floor(e/1e3),i=t%60+"s",n=Math.floor(t/60)%60+"m";return Math.floor(t/3600)+"h "+n+" "+i},Oe=[],Re=function(e=0,i=0,o="gtttatint"){let r=[],s=function(){};if("tennis"==o||"tennis2"==o){let e=new PIXI.Sprite($["Sprites/Rooms"][15]);e.interactive=!0,e.x=c.screen.width/2,e.y=c.screen.height/2,e.anchor.set(.5,.5),e.tint=12576249,c.stage.addChild(e),r.push(e);let t=function(e){let t=new PIXI.Container;c.stage.addChild(t),t.pivot.x=-c.screen.width/2,t.pivot.y=-c.screen.height/2;let i=Matter.Engine.create(),n={},a=!1;document.addEventListener("keydown",(function(e){let t=e.key.toLowerCase();"ArrowLeft"==e.key&&(t="a"),"ArrowRight"==e.key&&(t="d"),"ArrowUp"==e.key&&(t=" "),"w"==e.key&&(t=" "),n[t]=!0,["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"," "].includes(e.key)&&e.preventDefault()})),document.addEventListener("keyup",(function(e){let t=e.key.toLowerCase();"ArrowLeft"==e.key&&(t="a"),"ArrowRight"==e.key&&(t="d"),"ArrowUp"==e.key&&(t=" "),"w"==e.key&&(t=" "),n[t]=!1})),document.addEventListener("pointerdown",(function(){a=!0})),document.addEventListener("pointerup",(function(){a=!1}));let o=[],r=[];if(e){let e={},i=1,n=Matter.Bodies.polygon(50*(Math.random()-.5),-600,16,100);e.box=n;let a=Te(ee.faceMinigame);a.goto(98),a.scale.x=i,a.scale.y=i,t.addChild(a),e.sprite=a,a.interactive=!0,a.hitArea=new PIXI.Rectangle(-100,-100,200,200),v(a,(function(){a.goto(97)})),a.buttonId=T(),x[a.buttonId]=a,o.push(e),r.push(n)}for(let e=0;e<c.screen.width/360*150;e++){let i={},n=.5+Math.random()/2,a=Matter.Bodies.polygon(400*(Math.random()-.5),-400-20*e,16,30*n);i.box=a;let s=new PIXI.Sprite($["Sprites/tennisBall"][Math.floor(Math.random()*$["Sprites/tennisBall"].length)]);s.scale.x=n,s.scale.y=n,s.anchor.set(.5,.5),t.addChild(s),i.sprite=s,o.push(i),r.push(a)}let s=Matter.Bodies.rectangle(0,150,16e3,120,{isStatic:!0}),l=Matter.Bodies.rectangle(-c.screen.width/2-100,-0,20,900,{isStatic:!0}),d=Matter.Bodies.rectangle(c.screen.width/2+100,-0,20,900,{isStatic:!0});Matter.Composite.add(i.world,[s,...r,l,d]);let h=function(e){for(let e=0;e<o.length;e++){let t=o[e].sprite,i=o[e].box;t.rotation=i.angle,t.x=i.position.x,t.y=i.position.y}Matter.Engine.update(i,e*(1e3/60))};return c.ticker.add(h),function(){c.ticker.remove(h),Matter.World.clear(i.world),Matter.Engine.clear(i);for(let e=0;e<o.length;e++)null!=o[e].sprite.destroyAnimation?(o[e].sprite.destroyAnimation(),delete x[o[e].sprite.buttonId]):o[e].sprite.destroy()}}("tennis2"==o),i=new PIXI.Sprite($["Sprites/Rooms"][20]);i.x=0,i.y=0,c.stage.addChild(i),i.blendMode=PIXI.BLEND_MODES.ADD,i.tint=6737151,i.anchor.set(.5,.5),i.x=c.screen.width/2,i.y=c.screen.height/2,i.scale.y=2,i.rotation=1,i.alpha=.25,s=function(){i.destroy(),t()}}if("gtttatint"==o){let e=new PIXI.Sprite($["Sprites/Rooms"][15]);e.interactive=!0,e.x=c.screen.width/2,e.y=c.screen.height/2,e.anchor.set(.5,.5),e.tint=12576249,c.stage.addChild(e),r.push(e);let t=Math.random,i={},n=0;for(let e=0;e<60;e++){let a=new PIXI.Sprite($["Sprites/Clouds"][Math.floor(3*t())]);c.stage.addChild(a),a.anchor.set(.5,.5),a.y=t()*c.screen.height,a.orig={y:a.y},a.scale.x=.2+e/150,a.scale.y=.2+e/150,a.speed=1,a.x=c.screen.width/2+(t()-.5)*h.linear(c.screen.width,360,.25)*h.linear(a.scale.x,1,.5),t()>.5&&(a.scale.x*=-1);let o=a.texture.trim;null==o&&(o=a.texture._frame),a.pivot.y=-o.height,i[n++]=a}for(let e=0;e<10;e++){$.inputNineSlice[6];let a=new PIXI.Sprite($["Sprites/Clouds"][3]);c.stage.addChild(a),a.y=c.screen.height/10*e,a.orig={y:a.y},a.scale.x=1,a.scale.y=1,a.speed=8,a.x=c.screen.width/2+360*(t()-.5)*h.linear(a.scale.x,1,.5),t()>.5&&(a.scale.x*=-1);let o=a.texture.trim;null==o&&(o=a.texture._frame),a.pivot.y=-o.height,i[n++]=a}let a=Te(ee.GTTTATINTLOSE);a.loop=!0,a.play(),a.x=c.screen.width/2,a.y=0,c.stage.addChild(a);let o=1e3*Math.random(),l=function(){a.x=h.linear(a.x,c.screen.width/2+10*Math.cos(o/25),.025,Qe),a.y=h.linear(a.y,c.screen.height/2-50+10*Math.cos(o/30),.025,Qe),a.rotation=h.linear(a.rotation,.1*Math.cos(o/20),.1,Qe),o+=Qe;for(let e in i)i[e].y-=i[e].scale.y*i[e].speed*2*Qe,i[e].y<-100&&(i[e].y=c.screen.height)};c.ticker.add(l);let d=new PIXI.Sprite($["Sprites/Rooms"][20]);d.x=0,d.y=0,c.stage.addChild(d),d.blendMode=PIXI.BLEND_MODES.ADD,d.tint=16776960,d.anchor.set(.5,.5),d.x=c.screen.width/2,d.y=c.screen.height/2,d.scale.y=2,d.rotation=1,d.alpha=.1,s=function(){for(let e in i)i[e].destroy(),delete i[e];d.destroy(),a.destroyAnimation(),c.ticker.remove(l)}}let l=function(){d.y=h.linear(d.y,c.screen.height/2+80,.1,Qe)},d=(new PIXI.Container,new PIXI.NineSlicePlane($.inputNineSlice[10],15,15,15,15));d.x=0,d.y=c.screen.height,d.width=c.screen.width,d.height=c.screen.height/2+100,c.stage.addChild(d);let u=a("Game Over!",32,"center");"tennis2"==o&&(u.text="Completed!"),u.x=c.screen.width/2,u.y=30,d.addChild(u);let p=["Score: "+e,"Coins: "+i];for(let e=0;e<p.length;e++){let t=a(p[e],20,"left");t.x=c.screen.width/2-u.width/2-30,t.y=70+30*e,d.addChild(t),r.push(t)}let m=!1,y=function(){m||(m=!0,i>0&&n.sfx&&(te.collect.stop(),te.collect.play()),function(){c.ticker.add(C);for(let e=0;e<S;e++){let e=new PIXI.Sprite($["Sprites/GameUI"][14]);e.scale.x=.4+.5*Math.random(),e.scale.y=e.scale.x,e.anchor.set(.5,.5),e.y=f.transform.worldTransform.ty,e.vr=Math.random()-.5,e.facing=Math.random()*Math.PI*2;let t=1+8*Math.random();e.vx=t*Math.cos(e.facing),e.vy=t*Math.sin(e.facing),e.x=f.transform.worldTransform.tx,c.stage.addChild(e),w[I++]=e}0!=S&&(f.visible=!1),setTimeout((function(){t.coins+=i,W()}),500)}())},f=new PIXI.Sprite($["Sprites/GameUI"][14]);d.addChild(f),f.x=c.screen.width/2-u.width/2-50,f.y=112,f.scale.x=.5,f.scale.y=.5,f.anchor.set(.5,.5),c.ticker.add(l);let w={},I=0,S=Math.min(1e4,i),C=function(){for(let e in w){let t=w[e];t.y+=t.vy*Qe,t.x+=t.vx*Qe;let i=50,n=50;t.facing=Math.atan2(n-t.y,i-t.x);let a=8,o=g(t.x,t.y,i,n);o<50?(t.vx=a*Math.cos(t.facing),t.vy=a*Math.sin(t.facing)):(t.vx=h.linear(t.vx,a*Math.cos(t.facing),.02,Qe),t.vy=h.linear(t.vy,a*Math.sin(t.facing),.02,Qe)),t.rotation+=t.vr/10*Qe,o<5*Qe&&(t.destroy(),S--,delete w[e]),S<=0&&c.ticker.remove(C)}k&&(b.updateCounter(h.linear(b.getCounterAmount(),t.coins,.05,Qe)),b.y=h.linear(b.y,20,.1,Qe))},b=Fe.coinCounter();function M(){c.ticker.remove(l),s(),u.destroy(),b.destroyCounter(),k=!1;for(let e=0;e<r.length;e++)r[e].destroy()}b.x=20,b.y=-80,c.stage.addChild(b);let k=!0,A=!1,E=new P((function(){A||(A=!0,y(),setTimeout((function(){Fe.blurPan(c.stage,(function(){M(),Fe.gameList()}))}),1e3))}),$["Sprites/GameUI"][49],{x:c.screen.width/2-80,y:170,scale:{x:.75,y:.75}});d.addChild(E.sprite);let L=new P((function(){A||(A=!0,y(),setTimeout((function(){Fe.blurPan(c.stage,(function(){M(),Fe[o]()}))}),1e3))}),$["Sprites/GameUI"][50],{x:c.screen.width/2+80,y:170,scale:{x:.75,y:.75}});d.addChild(L.sprite);let X=a("Home",20,"center");d.addChild(X),X.x=E.sprite.x,X.y=E.sprite.y+50;let N=a("Retry",20,"center");d.addChild(N),N.x=L.sprite.x,N.y=L.sprite.y+50,r.push(N),r.push(X),r.push(E),r.push(L),r.push(d)};n.hideFridgeExit=!0;const Fe={language:function(e=function(){}){let t=new PIXI.Sprite($["Sprites/Rooms"][12]);c.stage.addChild(t),t.interactive=!0,t.x=c.screen.width/2,t.y=c.screen.height/2,t.anchor.set(.5,.5),t.scale.x=1,t.scale.y=1;let i=new PIXI.Container;c.stage.addChild(i);let r=0,l={},d=[],h=a("",32,"center");h.x=c.screen.width/2,h.y=c.screen.height-150,n.costume;let u={},p=new PIXI.Container,m=new PIXI.Graphics;p.mask=m,c.stage.addChild(p),p.x=40,p.y=80;let y=c.screen.width-80,g=c.screen.height-80;m.beginFill(0),m.drawRect(p.x,p.y,y,g),m.endFill(),p.interactive=!0,p.on("pointerdown",(function(e){let t=e.clientY/s;p.dragOffset={y:t-p.y},p.prevY=p.y,p.vy=0,p.scrolling=!0})),p.vy=0;let f=new PIXI.Sprite($["Sprites/Rooms"][11]);f.alpha=0,c.stage.addChild(f),f.x=p.x,f.y=p.y+g-100,f.width=y,f.height=100;for(let e in ke){let t=ke[e];if(t.hidden)continue;let i=!1;t.owned||-1!=t.cost||(i=!0);let s=new M((function(){h.text=""}),0,0+84*r,y,80,"",0,0,0,2);u[e]=s,s.element.interactive=!1,p.addChild(s.element),new PIXI.Rectangle(0,0,0,0);let l,c=new PIXI.BitmapText(t.lang,{fontSize:24,fontName:"arial"});if(c.x=20,c.y=5,s.element.addChild(c),null!=t.translator){let e=a(o.ui.translator+": "+t.translator.name,12,"left","middle",1);e.x=20,e.y=50,s.element.addChild(e)}c.width>y-50&&(c.width=y-50),c.scale.y=c.scale.x,-1==t.sprite&&(l.x-=80,c.x-=80),console.log(t);let m=new M((function(){if(t.downloaded)return void Fe.message(o.settings.enableReload,$["Sprites/GameUI"][24],(function(){n.language=e,W(),setTimeout((function(){window.location=window.location}),500)}),(function(){}),[o.ui.reload,o.ui.cancel]);let i=Fe.message("Downloading...",$["Sprites/GameUI"][24]);PIXI.Assets.load(t.file+".json").then((t=>{setTimeout((function(){i.exit(),t.version=g,localStorage.setItem(e,JSON.stringify(t)),n.language=e,W(),setTimeout((function(){window.location=window.location}),500)}),2e3)}))}),y-10,70,100,20,t.button[t.downloaded?1:0],0,1,1,1,"center"),g="";PIXI.Assets.load(t.file+"-version.json").then((i=>{if(g=i.version,null!=localStorage.getItem(e))try{let n=JSON.parse(localStorage.getItem(e));i.version!=n.version&&(m.inputText.text=t.button[2],t.downloaded=!1)}catch(i){}})),s.element.addChild(m.element),d.push(c),d.push(s),r++}let x=Fe.exitButton((function(){e(),W(),Fe.flash(!1,v)}),c.screen.width-40,40,.4,0);c.stage.addChild(x.sprite);let w=!1;function v(){for(let e in l)null!=l[e].destroy&&l[e].destroy(),delete l[e];h.destroy(),x.destroy(),t.destroy();for(let e=0;e<d.length;e++)d[e].destroyed||d[e].destroy();w=!0}c.stage.addChild(h),d.push(f),d.push(p),d.push(m)},oddDroplets:function(e="",t=!1){let i=function(){n.minigameMusic&&te.howitbegins.play()};te.howitbegins.on("end",i),n.minigameMusic&&(te.howitbegins.play(),te.howitbegins.volume=1);let r=new PIXI.Sprite($["Sprites/Rooms"][19]);r.interactive=!0,r.x=c.screen.width/2,r.y=c.screen.height/2,r.anchor.set(.5,.5),c.stage.addChild(r);let s,l=Date.now(),d=new PIXI.Container,h=0,u=0,p=function(){let e=[];s=function(){for(let t=0;t<e.length;t++)e[t].destroy()};let t=4,i=2,a=1,o={x:c.screen.width/2.5,y:c.screen.height/3};switch(u){case 1:t=6,c.screen.width>640?(i=3,a=.9,o.x=c.screen.width/3.5):(o.y/=1.25,a=.92);break;case 2:t=10,c.screen.width>640?(i=5,a=.9,o.x=c.screen.width/6):(o.y/=2,i=2,a=.5);break;case 3:t=15,c.screen.width>640?(i=5,a=.75,o.x=c.screen.width/6,o.y*=.9):(o.y/=2,i=3,o.x*=.75,a=.5);break;case 4:t=24,c.screen.width>640?(i=6,a=.5,o.x=c.screen.width/6,o.y=c.screen.height/6):(o.x=c.screen.width/5,o.y=c.screen.height/7,i=4,a=.4)}let l=0,h=Math.floor(Math.random()*t),p=2*Math.floor(20*Math.random());for(let r=0;r<t;r++){let t=Te(ee.oddDroplets),s=Te(ee.oddDroplets);for(let e=0;e<s.layers.length;e++){let i=s[t.layers[e]];null!=$[i.symbol+"OUTLINE12"]&&O(i,i.symbol+"OUTLINE12")}e[r]={destroy:function(){t.destroyAnimation(),s.destroyAnimation()},disableInteractivity:function(){t.interactive=!1}};let u=p+(r==h?1:0);t.hitArea=new PIXI.Rectangle(-45,-75,90,150),t.goto(u),t.x=c.screen.width/2-(i-1)/2*o.x+o.x*(r%i),t.y=c.screen.height/2+Math.floor(r/i)*o.y,l=Math.floor(r/i),t.scale.x=a,t.scale.y=a,s.goto(u),s.x=t.x,s.y=t.y,s.scale.x=a,s.scale.y=a,d.addChild(s),d.addChild(t),t.interactive=!0,t.on("pointerup",(function(){for(let t=0;t<e.length;t++)e[t].disableInteractivity();let i=1+Math.floor(4*Math.random());n.sfx&&(te["slap"+i].attack=0,te["slap"+i].stop(),te["slap"+i].play());let o=Te(ee.Teardrop,y.Teardrop);B.outline.apply(o);let l=Te(ee.Teardrop,y.Teardrop);d.addChild(o),d.addChild(l),o.gotoPart("Slap"),o.d.visible=!1,o.play(),o.x=t.x,o.y=t.y+80*a,o.scale.x=a,o.scale.y=a,l.gotoPart("Slap"),l.d.visible=!1,l.play(),l.x=t.x,l.y=t.y+80*a,l.scale.x=a,l.scale.y=a,t.destroy(),s.destroy(),e[r]={destroy:function(){o.destroyAnimation(),l.destroyAnimation()}},h==r?(f++,40==f&&Fe.achievementQueue("oddDroplets40"),m+=w):(f=0,m-=w,te.fail.play(),A()),m<0&&(m=0),S.text="score: "+m,v=x+60}))}c.stage.addChild(d),r.scale.x=.95,r.scale.y=.95,x=0,d.pivot.x=c.screen.width/2,d.pivot.y=c.screen.height/2- -l*o.y/2,d.x=d.pivot.x,d.y=d.pivot.y+-l*o.y/2},m=0,g=function(){te.howitbegins.off("end",i),te.howitbegins.stop(),S.destroy();for(let e=0;e<T.length;e++)T[e].destroyAnimation();r.destroy(),c.ticker.remove(I),Fe.gameList("oddDroplets"),Fe.results(m,Math.floor(m/100)),P.destroyPause(),s(),window.onblur=function(){}},f=0,x=0;p();let w=0,v=-1,I=function(){let e=600*(u/2+1);if(w=Math.floor(eases.easeOutQuint(Math.max(0,Math.min(e,x-60)),200,-190,e)*(u/2+1)),d.scale.x=eases.easeOutQuad(Math.min(50,x),.9,.1,50),d.scale.y=d.scale.x,r.scale.x=d.scale.x/2+.5,r.scale.y=r.scale.x,x+=Qe,v<=x&&-1!=v){if(v=-1,P.interactive=!1,k<=-1)return void Fe.blurPan(c.stage,g);Fe.blurPan(c.stage,(function(){if(P.interactive=!0,s(),h++,u=Math.floor(h/10),u>=5){let e=[0,0,1,1,1,1,2,2,2,0,0,1,1,1,1,2,2,2,3,4];u=e[Math.floor(Math.random()*e.length)]}p()}))}};c.ticker.add(I);let S=a("score: 0",32);S.anchor.set(0,0),S.x=20,S.y=20,c.stage.addChild(S),window.onblur=function(){C||M()};let C=!1,b=0;function M(){C=!C,P.changePause(C),C?(n.inGame=!1,c.ticker.remove(I),b=-Date.now(),te.howitbegins.pause(),Fe.message(o.ui.gamePaused,$["Sprites/GameUI"][32],(function(){M()}),(function(){Fe.blurPan(c.stage,(function(){g()}))}),[o.ui.play,o.ui.home],!1)):(b+=Date.now(),l+=b,n.inGame=!0,n.minigameMusic&&te.howitbegins.play(),c.ticker.add(I))}let P=Fe.pauseButton((function(){M()}),.4);c.stage.addChild(P),P.x=c.screen.width-40,P.y=40;let T=[];for(let e=0;e<3;e++){let t=Te(ee.healthLose);c.stage.addChild(t),t.gotoAndStop(0),t.x=c.screen.width-90-35*e,t.y=40,t.scale.x=.4,t.scale.y=.4,T.push(t)}let k=2,A=function(){k--;for(let e=0;e<T.length;e++)e>k&&T[e].play()}},setUpTints:function(){Ee=new PIXI.Sprite($["Sprites/Blur"][1]),Le=new PIXI.Sprite($["Sprites/RepeatingUI"][2]),Xe=new PIXI.Sprite($["Sprites/RepeatingUI"][3])},achievementQueue:function(e,t=!1){0==u.length&&(p=0),t&&0!=u.length&&(p++,Fe.achievement(e,(function(){u.shift(),Fe.achievementQueue(u[0],!0)}))),t||m[e].done||(u.push(e),m[e].done=!0,1==u.length&&Fe.achievement(e,(function(){u.shift(),Fe.achievementQueue(u[0],!0)})))},achievement:function(e,t=function(){}){let i=["get2763intennis","get2763gtttatint","slapTD2763","2763lemons"],a=0;for(let e=0;e<i.length;e++)m[i[e]].done&&a++;a==i.length&&Fe.achievementQueue("get2763"),n.sfx&&(te.achievement.stop(),te.achievement.play(),te.achievement.sourceNode.playbackRate.value=1+p/16);let o=m[e],r=new PIXI.NineSlicePlane($.inputNineSlice[2]);r.width=320,r.x=c.screen.width/2,r.y=-500,c.stage.addChild(r);let s=new PIXI.BitmapText(o.title,{fontName:"ShagBlack",fontSize:24});r.height=s.height+50,s.anchor.set(0,.5),s.x=80,s.y=20,r.addChild(s);let l=new PIXI.BitmapText(o.description,{fontName:"ShagBlack",fontSize:16,breakWords:!0,wordWrap:!0,wordWrapWidth:200,maxWidth:r.width-80,whiteSpace:"normal"});l.anchor.set(0,0),r.height+=l.height,l.anchor.set(0,.5),l.x=80,l.y=35+l.height/2,r.addChild(l),r.pivot.set(r.width/2,r.height/2),null==o.icon&&(o.icon=11);let d=$["Sprites/GameUI"][o.icon],h=new PIXI.Sprite(d);r.addChild(h),h.anchor.set(.5,.5),h.y=r.height/2-5,h.x=40,h.scale.x=.5,h.scale.y=.5;let u=0,y=Math.random()-.5;setTimeout((function(){g.x=r.x,g.y=r.y,g.rotation=r.rotation,g.scale=r.scale,r.closing=!0,u=0}),2500);let g={x:c.screen.width/2,y:-r.height/2,rotation:y,scale:.5};r.onDestroyed=function(){},r.destroyBook=function(){r.onDestroyed(),c.ticker.remove(f),s.destroy(),h.destroy(),r.destroy({children:!0}),t()};let f=function(){if(r.closing){if(r.y=ease[16](Math.min(40,u),g.y,-g.y-r.height,40),r.rotation=ease[1](Math.min(70,u),g.rotation,y,70),u>40)return void r.destroyBook()}else r.x=ease[17](Math.min(80,u),g.x,0,80),r.y=ease[8](Math.min(70,u),g.y,r.height+20,70);r.scale.y=r.scale.x,u+=Qe};return c.ticker.add(f),r},updateWarning:function(){Fe.message(o.message.updateWarning(ze,_e),$["Sprites/GameUI"][24],(function(){window.location=window.location}),(function(){}),[o.ui.reload,o.ui.ignore]),console.log(o.ui)},exitButton:function(e=function(){},t,i,n=1,a=0){let o=!1,r=new P((function(){o||(o=!0,e())}),$["Sprites/GameUI"][11],{scale:{x:n,y:n},x:t,y:i},!0);return r.sprite.on("pointerover",(function(){r.sprite.texture=$["Sprites/GameUI"][12]})),r.sprite.on("pointerout",(function(){r.sprite.texture=$["Sprites/GameUI"][11]})),r},pauseButton:function(e=function(){},t=1){let i=new PIXI.Sprite($["Sprites/GameUI"][32]);i.anchor.set(.5,.5),i.interactive=!0;let n=$["Sprites/GameUI"][32].trim;return i.scale.x=t,i.scale.y=t,i.hitArea=new PIXI.Rectangle(-n.width/2,-n.height/2,n.width,n.height),i.id=w,x[T()]=i,v(i,e),i.destroyPause=function(){delete x[i.id],i.destroy()},i.changePause=function(e){e?(i.texture=$["Sprites/GameUI"][34],i.interactive=!1):(i.texture=$["Sprites/GameUI"][32],i.interactive=!0)},i},skew:function(){let e=Te(ee.SkewMatrix);e.play(20),c.stage.addChild(e),e.x=180,e.y=320,setInterval((function(){}),1e3/60)},fade:function(e,t=20,i=20){c.stage.children.includes(Le)&&c.stage.removeChild(Le),Le.interactive=!0,c.stage.addChild(Le),Le.alpha=0;let n=1/t,a=!1;c.ticker.add((function t(){Le.alpha+=n*Qe,Le.alpha>=1&&(Le.alpha=1,a||(a=!0,e()),c.stage.removeChild(Le),c.stage.addChild(Le),n=-1/i),Le.alpha<0&&(c.ticker.remove(t),c.stage.removeChild(Le))}))},flash:function(e=!1,t=function(){},i=!1){let n=new PIXI.Sprite($["Sprites/RepeatingUI"][3]);n.width=c.screen.width,n.height=c.screen.height,c.stage.addChild(n),n.alpha=e?1:0;let a=e?-1/60:1/8;i?(n.interactive=!0,a/=4):n.interactive=!1;let o=!1;c.ticker.add((function i(){n.alpha+=a*Qe,n.alpha>=1&&!e&&(n.alpha=1,o||(o=!0,t(),n.interactive=!1),c.stage.removeChild(n),c.stage.addChild(n),a=-1/60),n.alpha<0&&(c.ticker.remove(i),n.destroy())}))},blackTint:function(e=.5,t=!0){let i=new PIXI.Sprite($["Sprites/RepeatingUI"][3]);function n(){i.alpha+=o*Qe,i.alpha>=e&&(i.alpha=e,o=0),i.alpha<0&&(i.alpha=0,i.delete&&(c.ticker.remove(n),c.stage.removeChild(i)))}i.interactive=!0,i.width=c.screen.width,i.height=c.screen.height,t?(i.blendMode=PIXI.BLEND_MODES.SUBTRACT,i.tint=16777215):(i.blendMode=PIXI.BLEND_MODES.NORMAL,i.tint=0),c.stage.children.includes(i)&&c.stage.removeChild(i),c.stage.addChild(i);let a=!1;i.start=function(){o=1/60,a||(a=!0,c.ticker.add(n))},i.end=function(){o=-1/60},i.delete=!0,i.alpha=0;let o=1/60;return i},book:function(e,t=function(){},i=30){let n=Fe.blackTint(.2);n.start();let a=new PIXI.Sprite($["Sprites/GameUI"][10]);a.x=c.screen.width/2,a.y=c.screen.height/2,a.anchor.set(.5,.5),c.stage.addChild(a);let o=[],r=0,s=0,l=[],d=e.split(" "),h="",u=new PIXI.BitmapText(e,{fontName:"IndieFlower",fontSize:24});for(let e=0;e<d.length;e++){let t=h;h+=d[e]+" ",u.text=h,u.width>200&&(l.push(t),e--,h="")}""!=h&&l.push(h),u.destroy();let p=0,m=2*Math.round(Math.random())-1,y=l;for(let e=0;e<y.length;e++){let t=new PIXI.BitmapText("",{fontName:"IndieFlower",fontSize:24});t.x=-70,t.y=29.5*e-195,a.addChild(t),o.push(t)}let g,f=function(){o[s].text+=y[s][r],r>=y[s].length-1&&(s++,r=-1),r++,s==o.length&&clearInterval(g)};setTimeout((function(){g=setInterval(f,1e3/i)}),500);let x=Fe.exitButton((function(){x.interactive=!1,w.x=a.x,w.y=a.y,w.rotation=a.rotation,w.scale=a.scale,a.closing=!0,p=0}),150,-220,.4,.1);x.sprite.alpha=0,a.addChild(x.sprite),x.sprite.interactive=!1,x.show=!1,setTimeout((function(){x.show=!0,x.sprite.interactive=!0}),1500);let w={x:0,y:c.screen.height+500,rotation:m,scale:.5};a.onDestroyed=function(){},a.destroyBook=function(){a.onDestroyed(),c.ticker.remove(v);for(let e=0;e<o.length;e++)o[e].parent.removeChild(o[e]),o[e].destroy();x.destroy(),a.destroy({children:!0}),t()};let v=function(){if(x.show&&(x.sprite.alpha+=.05),x.sprite.alpha>=1&&(x.sprite.alpha=1,x.show=!1),a.closing){if(a.y=ease[16](Math.min(40,p),w.y,-w.y+c.screen.height+500,40),a.rotation=ease[1](Math.min(70,p),w.rotation,m,70),p>40)return n.end(),void a.destroyBook()}else a.x=ease[17](Math.min(80,p),w.x,c.screen.width/2,80),a.y=ease[8](Math.min(70,p),w.y,-c.screen.height/2-29.5*(y.length+5),70),a.rotation=ease[17](Math.min(90,p),w.rotation,-m,90),a.scale.x=ease[17](Math.min(90,p),w.scale,.5,90);a.scale.y=a.scale.x,p+=Qe};return c.ticker.add(v),a},blurPan:function(e,t=function(){}){Ee.visible=!0,Ee.x=4*-Ee.texture.orig.width/2,Ee.y=c.screen.height/2,Ee.scale.x=4,Ee.scale.y=4,Ee.anchor.set(.5,.5),e.addChild(Ee);let i=!1,n=function(){Ee.x+=300*Qe,Ee.x>c.screen.width/2&&!i&&(t(),i=!0,e.addChild(Ee)),Ee.x>c.screen.width+4*Ee.texture.orig.width/2&&(c.ticker.remove(n),e.removeChild(Ee),Ee.visible=!1)};c.ticker.add(n)},animationSelector:function(){let e=0,t=[];function i(){for(let e=0;e<t.length;e++)t[e].destroy()}for(let n in ee){let a=new M((function(){let e={};null!=y[n]&&(e=y[n]),i(),Fe.animationTester(ee[n],e)}),20,20+28*e,c.screen.width-40,24,n,10,0,0);c.stage.addChild(a.element),t.push(a),e++}return{destroy:i}},animationTester:function(e,t){let i=Te(e,t),n=new PIXI.Sprite(PIXI.Texture.from("./Sprites/anchor.png"));n.anchor.set(.5,.5),i.addChild(n),c.stage.addChild(i),i.x=c.screen.width/2,i.y=c.screen.height/2,i.onNextFrame=function(){r.value=i.getCurFrame()};let o=0,r=new class{constructor(e,t){this._value=t,this.info=e,this.text=a(this.info+": "+this._value,12,"left"),this.text.x=20,this.text.y=c.screen.height-60-16*o,o++,c.stage.addChild(this.text)}set value(e){this._value=e,this.text.text=this.info+": "+this._value}}("Frame","0");i.play(60),i.interactive=!0,I(i);let s=new b(20,c.screen.height-20,150,20,"FPS",10,0,1);s.confirmation=function(){i.play(parseInt(s.inputText.value))},c.stage.addChild(s.element);let l=0,d=new M((function(){i.currentPart=-1,i.playUntil=-1,i.loop=!0}),20,20+20*l,90,18,"none",10,0,0);c.stage.addChild(d.element),l++;for(let e in t){let t=new M((function(){i.gotoPart(e)}),20,20+20*l,90,18,e,10,0,0);c.stage.addChild(t.element),l++}},intro:function(e=!1){if(0==e)return loadAudio("plodder","plodder"),void(onresourceload=function(){Fe.intro(!0)});let t=0;doubleanimation(ee.bfb),ee.bfb.frameCount*=2;for(let e in ee.bfb.layers){for(let i=0;i<ee.bfb.layers[e].frames.length;i++){let n=ee.bfb.layers[e].frames[i];n[fE.firstFrame]=t,n[fE.loopMode]=2,n[fE.tween]=0}t+=5}ee.bfb.symbols.Test=ee.faceMinigame;let i=n.music;setTimeout((function(){n.music=!1,te.brittlerille.stop(),te.plodder.play(),te.plodder.sourceNode.playbackRate.value=1,te.plodder.on("end",(function(){o.destroyAnimation(),a.destroy(),n.music=i,i&&te.brittlerille.play()}))}),10/24*1e3);let a=new PIXI.Sprite($["Sprites/RepeatingUI"][3]);a.width=c.screen.width+80,a.height=c.screen.height+80,a.tint=13421772,a.x=-40,a.y=-40,c.stage.addChild(a);let o=Te(ee.bfb);c.stage.addChild(o),o.play(48),o.scale.x=1/.56,o.scale.y=1/.56,o.x=-2762,o.y=-1736},myTeardrop:function(){let e=Math.floor((Date.now()-n.lastLogin)/1e3),r=288;if(i.happiness-=e/180,i.hunger-=e/108,i.sleeping){let D=i.sleep;i.sleep+=e/r*8,i.sleep>100&&(i.sleep=100),i.progress+=4*(i.sleep-D)}i.sleep>=100&&(i.sleeping=!1),i.happiness=Math.max(0,i.happiness),i.hunger=Math.max(0,i.hunger),i.sleep=Math.max(0,i.sleep);let l=function(){},d=new PIXI.Container;c.stage.addChild(d),d.x=c.screen.width/2,d.y=c.screen.height/2;let u="livingRoom",p=new PIXI.Sprite($["Sprites/Rooms"][8]);d.addChild(p),p.x=0,p.y=-100,p.anchor.set(.5,.5),p.scale.x=1,p.scale.y=1;let f=new PIXI.Sprite($["Sprites/Rooms"][8]);d.addChild(f),f.x=0,f.y=0,f.anchor.set(.5,.5),f.scale.x=1,f.scale.y=1;let x=new PIXI.Sprite($["Sprites/Rooms"][0]);x.x=0,x.y=0,x.anchor.set(.5,.5),x.scale.x=1,x.scale.y=1;let w=n.skipIntro,I=1,C=0,b=new PIXI.BitmapText(o.intro.mail,{fontSize:24,fontName:"MenuShag"});function T(){setInterval((function(){n.inGame?(i.happiness+=.2,i.progress+=1):i.happiness-=1/180;let e=1/108;n.inGame&&(e*=8),i.hunger-=e;let t=.003472222222222222;n.inGame&&(t*=16,n.temporaryInGameTime++),i.sleeping?(i.sleep+=.027777777777777776,i.progress+=.1111111111111111):n.introMode||(i.sleep-=t),n.lastLogin=Date.now(),i.happiness=Math.max(0,i.happiness),i.hunger=Math.max(0,i.hunger),i.sleep=Math.max(0,i.sleep),i.happiness=Math.min(100,i.happiness),i.hunger=Math.min(100,i.hunger),i.sleep=Math.min(100,i.sleep),i.sleeping||(i.sleep<20&&!k.tired&&(k.tired=!0,k.switchData(ee[L.tired]),k.switchParts(y[N]),k.gotoPart("Sleepy")),i.sleep>20&&k.tired&&(k.tired=!1,k.switchData(ee[L.awake]),k.switchParts(y[X]),k.gotoPart("Realize")),i.progress>i.progressNeeded&&!n.inGame&&n.canLevelUp&&(Fe.flash(!1,(function(){n.level++,J.text=n.level,i.progress=i.progress-i.progressNeeded,i.progressNeeded=200+(n.level-1)**1.25*20,K.offset=i.progress/i.progressNeeded,Fe.levelUp(),W()})),n.canLevelUp=!1),i.progress<0&&(i.progress=0))}),1e3),n.canLevelUp=!0;let e=new PIXI.Sprite($["Sprites/GameUI"][19]);e.anchor.set(.5,.5),e.scale.x=.1,e.scale.y=.1,e.rotation=-1;let r=new P((function(){e.active=!1,Fe.flash(!1,(function(){Fe.wardrobe((function(){Y.updateCounter(t.coins),null!=k.destroyCostume&&(k.destroyCostume(),k.destroyCostume=void 0),B[n.costume].apply(k),k.applyCostumeAnimations()}))}))}),$["Sprites/GameUI"][17],{x:100,y:100,scale:{x:.6,y:.6}}),p=new P((function(){e.active=!1,Fe.flash(!1,(function(){Fe.gameList()}))}),$["Sprites/GameUI"][20],{x:100,y:100,scale:{x:.6,y:.6}}),I=new P((function(){e.active=!1,Fe.flash(!1,(function(){Fe.settings()}))}),$["Sprites/GameUI"][33],{x:100,y:100,scale:{x:.4,y:.4}});I.sprite.title=[o.ui.settings,32],p.sprite.title=[o.ui.games,24],r.sprite.title=[o.ui.wardrobe,24];let b=new P((function(){e.active=!1,Fe.flash(!1,(function(){Fe.achievements()}))}),$["Sprites/GameUI"][35],{x:100,y:100,scale:{x:.6,y:.6}});b.sprite.title=[o.ui.achievements,24];let T=[r.sprite,p.sprite,b.sprite],D=[I.sprite];for(let t=0;t<T.length;t++){let i=T[t],n=a(i.title[0],i.title[1],"center");i.addChild(n),n.y=-80;let o=Math.cos((t+.5-2)/8*Math.PI*2),r=Math.sin((t+.5-2)/8*Math.PI*2);i.x=100*o,i.y=100*r,i.original={x:i.x,y:i.y},e.addChild(i),i.speed=.05}for(let t=0;t<D.length;t++){let i=D[t];T.push(i),i.speed=.03;let n=a(i.title[0],i.title[1],"center");i.addChild(n),n.y=-80;let o=Math.cos((t+1-2)/8*Math.PI*2),r=Math.sin((t+1-2)/8*Math.PI*2);i.x=160*o,i.y=160*r,i.original={x:i.x,y:i.y},e.addChild(i)}c.stage.addChild(e);let G=function(r,p=!1){if(u==r&&"livingRoom"==r?(e.x=j.buttonContainer.x,e.y=j.buttonContainer.y,n.introMode||(e.active=!e.active)):e.active=!1,u==r)return;u=r,f.interactive=!1,f.removeAllListeners();let g=function(){if(i.sleeping&&(k.visible=!1),l(),j.selected.visible=!1,H.selected.visible=!1,Q.selected.visible=!1,k.rotation=0,"livingRoom"==r&&(f.texture=$["Sprites/Rooms"][8],x.texture=$["Sprites/Rooms"][0],x.visible=!1,k.x=0,k.y=100,j.selected.visible=!0),"kitchen"==r){function e(){for(let e=0;e<3;e++)""!=t.fridge[20+e]&&null!=t.fridge[20+e]?(p[e].eated=!1,p[e].x=u.x-50+50*e,p[e].interactive=!0,p[e].y=u.y,p[e].alpha=1,p[e].eating=!1,p[e].visible=!0,p[e].food=t.fridge[20+e],p[e].foodId=20+e,p[e].texture=$["Sprites/Food"][E[t.fridge[20+e]].texture]):p[e].visible=!1}w||(U=1.5),f.interactive=!0,f.hitArea=new PIXI.Rectangle(100,-290,300,350),f.on("pointerdown",(function(){f.interactive=!1,2==U&&(U=3),Fe.flash(!1,(function(){Fe.fridge((function(){Y.updateCounter(t.coins),e(),n.introMode&&(Y.visible=!0)})),f.interactive=!0}))})),x.visible=!0,f.texture=$["Sprites/Rooms"][1],x.texture=$["Sprites/Rooms"][2],d.addChild(x),k.x=-10,k.y=100,H.selected.visible=!0;let u=new PIXI.Sprite($["Sprites/Food"][0]);u.anchor.set(.5,.5),u.x=0,u.y=70,d.addChild(u);let p=[];for(let I=0;I<3;I++){let S=new PIXI.Sprite($["Sprites/Food"][1]);S.visible=!0,S.x=u.x-50+50*I,S.y=u.y,S.x2=S.x,S.y2=S.y,S.anchor.set(.5,.5),d.addChild(S),S.interactive=!0,S.hitArea=new PIXI.Rectangle(-S.texture.trim.width/2,-S.texture.trim.height,2*S.texture.trim.width,2*S.texture.trim.height),S.on("pointerdown",(function(e){S.hitArea=new PIXI.Rectangle(-3e3,-3e3,6e3,6e3),S.dragging=!0;let t=e.clientX/s,i=e.clientY/s;S.dragOffset={x:t-S.x,y:i-S.y};for(let e=0;e<p.length;e++)p[e].interactive=!1;S.interactive=!0})),S.on("pointermove",(function(e){let t=e.clientX/s,i=e.clientY/s;S.dragging&&(S.x2=t-S.dragOffset.x,S.y2=i-S.dragOffset.y)})),S.eated=!1,S.on("pointerup",(function(e){n.introMode&&U<=3&&setTimeout((function(){i.sleep=19,U=4,V.alpha=0,V.rotation=0,Q.buttonContainer.alpha=0,Q.buttonContainer.visible=!0}),2e3),S.hitArea=new PIXI.Rectangle(-S.texture.trim.width/2,-S.texture.trim.height,2*S.texture.trim.width,2*S.texture.trim.height),S.dragging=!1;for(let e=0;e<p.length;e++)p[e].interactive=!0;if(S.x2=u.x-50+50*I,S.y2=u.y,i.sleeping)return;if(S.eated)return;S.eated=!0;let a=E[S.food].adds;if("lemon"==n.costume&&("sourlemon"==S.food?a=12:a/=3),!S.food.includes("potion")){if(k.tired)return;if(i.hunger+a/2>=100)return S.eated=!1,k.gotoPart("Nope"),void(k.currentPart=-1)}S.eating=!0,k.interactive=!1,setTimeout((function(){"sleeppotion"==S.food&&(i.sleep=100,n.drinksFed+=1,10==n.drinksFed&&(Fe.achievementQueue("10energydrinks"),B.energydrink.owned=!0)),"maxpotion"==S.food&&(i.sleep=0,i.happiness=100,i.hunger=100),k.food.textures=[S.texture],"sourlemon"==S.food&&"lemon"!=n.costume?k.gotoPart("EatSour"):k.gotoPart("Eat"),"sourlemon"==S.food&&(n.lemonsFed+=1,n.lemonsFed>=2763&&!m["2763lemons"].done&&Fe.flash(!1,(function(){B.limedrop.apply(k),B.limedrop.owned=!0,n.costume="limedrop",W(),Fe.achievementQueue("2763lemons")}),!0),n.lemonsFed>=100&&!m.lemons.done&&Fe.flash(!1,(function(){B.lemon.apply(k),B.lemon.owned=!0,n.costume="lemon",W(),Fe.achievementQueue("lemons")}),!0),W()),n.sfx&&(te.consume.stop(),te.consume.play()),t.fridge[S.foodId]="",setTimeout((function(){i.hunger+=a,i.progress+=20+E[S.food].adds/4,i.happiness+=Math.round(Math.max(0,(40-i.happiness)/2)),i.hunger>=100&&(i.hunger=100),k.currentPart=-1}),400),k.onAnimationEnd=function(){k.interactive=!0,k.onAnimationEnd=function(){}}}),100)})),p.push(S)}e();let g=function(){if(!v)for(let e=0;e<p.length;e++){let t=p[e];t.dragging?(t.x=h.linear(t.x,t.x2,.4,Qe),t.y=h.linear(t.y,t.y2,.4,Qe)):t.eating?(t.x=h.linear(t.x,k.x-75,.2,Qe),t.y=h.linear(t.y,k.y-100,.3,Qe),t.alpha=h.linear(t.alpha,0,.2,Qe),t.interactive=!1):(t.x=h.linear(t.x,t.x2,.2,Qe),t.y=h.linear(t.y,t.y2,.3,Qe)),t.rotation=(t.x-t.x2)/100+(t.y-t.y2)/100,t.scale.x=1+(t.y-u.y)/600+Math.abs(t.x-t.x2)/100-Math.abs(t.y-t.y2)/100,t.scale.y=t.scale.x+Math.abs(t.y-t.y2)/100-Math.abs(t.x-t.x2)/100}},v=!1;c.ticker.add(g),l=function(){v=!0,c.ticker.remove(g);for(let e=0;e<p.length;e++){let t=p[e];t.parent.removeChild(t),t.destroy()}u.parent.removeChild(u),u.destroy(),f.removeAllListeners(),l=function(){}}}if("bedroom"==r){k.visible=!0,x.visible=!0,f.texture=$["Sprites/Rooms"][3],x.texture=$["Sprites/Rooms"][4],f.hitArea=new PIXI.Rectangle(-160,-140,100,150),f.interactive=!0,f.lit=!i.sleeping;let b=new PIXI.ColorMatrixFilter;b.matrix=[.2,0,0,0,0,0,.2,0,0,0,0,0,.5,0,0,0,0,0,1,0],f.lit||(d.filters=[b]),f.on("pointerdown",(function(){n.introMode&&Fe.fade((function(){!function(e=function(){}){let t=new PIXI.Sprite($["Sprites/Rooms"][15]);t.tint=0,t.x=c.screen.width/2,t.y=c.screen.height/2,t.anchor.set(.5,.5),c.stage.addChild(t),t.interactive=!0;let i=new PIXI.BitmapText("Open the Wheel of Fun by holding down the happiness button.",{fontSize:24,fontName:"MenuShag",breakWords:!0,wordWrap:!0,wordWrapWidth:300,maxWidth:300,whiteSpace:"normal",align:"center"});c.stage.addChild(i),i.anchor.set(.5,.5),i.x=c.screen.width/2,i.y=c.screen.height/2;let n=0,r=new PIXI.Sprite($["Sprites/GameUI"][19]);r.anchor.set(.5,.5),r.scale.x=.1,r.scale.y=.1,r.rotation=-1,r.visible=!1,c.stage.addChild(r);let s=new PIXI.Sprite($["Sprites/GameUI"][17]),l=new PIXI.Sprite($["Sprites/GameUI"][20]),d=new PIXI.Sprite($["Sprites/GameUI"][33]);d.title=[o.ui.settings,32],l.title=[o.ui.games,24],s.title=[o.ui.wardrobe,24];let u=new PIXI.Sprite($["Sprites/GameUI"][35]);u.title=[o.ui.achievements,24];let p=[s,l,u],m=[d];for(let e=0;e<p.length;e++){let t=p[e];t.anchor.set(.5,.5),t.scale.x=.6,t.scale.y=.6;let i=a(t.title[0],t.title[1],"center");t.addChild(i),i.y=-80;let n=Math.cos((e+.5-2)/8*Math.PI*2),o=Math.sin((e+.5-2)/8*Math.PI*2);t.x=100*n,t.y=100*o,t.original={x:t.x,y:t.y},r.addChild(t),t.speed=.05}for(let e=0;e<m.length;e++){let t=m[e];t.anchor.set(.5,.5),t.scale.x=.4,t.scale.y=.4,p.push(t),t.speed=.03;let i=a(t.title[0],t.title[1],"center");t.addChild(i),i.y=-80;let n=Math.cos((e+1-2)/8*Math.PI*2),o=Math.sin((e+1-2)/8*Math.PI*2);t.x=160*n,t.y=160*o,t.original={x:t.x,y:t.y},r.addChild(t)}let y=new PIXI.Sprite($["Sprites/GameUI"][0]);c.stage.addChild(y),y.anchor.set(.5,.5),y.x=c.screen.width/2,y.y=c.screen.height/2,y.alpha=0;let g=!1,f=new M((function(){g||(g=!0,Fe.blurPan(c.stage,(function(){!function(){t.destroy();for(let e=0;e<p.length;e++)p[e].destroy();r.destroy(),y.destroy(),f.destroy(),i.destroy(),c.ticker.remove(x)}(),e()})))}),c.screen.width/2,c.screen.height/2+200,180,40,o.ui.continueUpperCase,0,.5,.5,1,"center");f.element.visible=!1,c.stage.addChild(f.element);let x=function(){if(n+=Qe,n>=130){let e=n-130;y.alpha=window.eases.easeOutQuad(Math.min(20,e),0,1,20),y.scale.x=window.eases.easeOutElastic(Math.min(100,e),.1,.9,100)}if(n>=230){let e=n-230;y.scale.x=window.eases.easeOutBack(Math.min(30,e),1,-.1,30)}if(n>=260){let e=n-260;y.scale.x=window.eases.easeOutBack(Math.min(30,e),.9,.1,30),r.x=y.x,r.y=y.y,r.scale.x=h.linear(r.scale.x,1,.05,Qe),r.rotation=h.linear(r.rotation,12,.05,Qe),r.scale.y=r.scale.x,r.visible=!0,i.y=h.linear(i.y,c.screen.height/2-250,.05,Qe);for(let e=0;e<p.length;e++)p[e].rotation=-r.rotation,p[e].x=h.linear(p[e].x,p[e].original.x,p[e].speed,Qe),p[e].y=h.linear(p[e].y,p[e].original.y,p[e].speed,Qe)}if(n>=320){let e=n-320;f.element.alpha=window.eases.easeOutQuad(Math.min(20,e),0,1,20),f.element.visible=!0}if(y.scale.y=y.scale.x,n>=100&&n<260){let e=n-100;i.y=c.screen.height/2+window.eases.easeInOutQuad(Math.min(60,e),0,-100,60)}};c.ticker.add(x)}((function(){f.lit=!1,k.tired=!1,k.switchData(ee[L.awake]),k.switchParts(y[X]),i.sleeping=!1,k.gotoPart("Wave"),i.happiness=20,i.hunger=50,i.sleep=80,j.offset=i.happiness/100,H.offset=i.hunger/100,Q.offset=i.sleep/100,d.filters=[],G("livingRoom",!0),C=0,n.skipIntro=!0,setTimeout((function(){0==C&&n.sfx&&te.wave.play()}),2e3),n.music&&te.brittlerille.play(),n.introMode=!1,W()}))}),120,30),f.lit=!f.lit,f.lit?(n.sfx&&(te.switchon.attack=0,te.switchon.stop(),te.switchon.play()),d.filters=[]):(k.idle=-1,i.sleeping=!0,te.brittlerille.pause(),k.canPat=!1,k.tired?k.gotoPart("Sleep"):(k.tired=!0,k.switchData(ee[L.tired]),k.switchParts(y[N]),k.gotoPart("Sleepy"),k.onAnimationEnd=function(){k.gotoPart("Sleep")}),d.filters=[b],n.sfx&&(te.switchoff.attack=0,te.switchoff.stop(),te.switchoff.play())),W()})),l=function(){d.filters=[],f.removeAllListeners(),l=function(){}},d.addChild(x),k.x=20,k.y=80,k.rotation=.2,Q.selected.visible=!0}};p?g():Fe.blurPan(c.stage,g)};k=Te(ee[L.awake],y[L.awake]),k.size=1,k.applyCostumeAnimations=function(){let e=B[n.costume];null!=e.generateAnimations&&e.generateAnimations(),null!=e.animation?(L.tired=e.animation.tired,L.awake=e.animation.awake):(L.tired="TeardropTired",L.awake="Teardrop"),k.animationName.includes("Tired")?k.switchData(ee[L.tired]):k.switchData(ee[L.awake])},"none"!=n.costume&&(B[n.costume].apply(k),k.applyCostumeAnimations()),k.write=function(e=!0,t=1,i="Book Text"){k.interactive=!1,e?k.gotoPart("BookOpen"):(t--,k.gotoPart("Write")),k.onAnimationEnd=function(){t--,k.gotoPart("Write"),-1==t&&(k.gotoPart("SendMessage"),k.onAnimationEnd=function(){},setTimeout((function(){k.interactive=!0,Fe.book(i)}),750))}},d.addChild(k),k.play(60),i.sleep<20?(k.tired=!0,k.switchData(ee[L.tired]),k.switchParts(y[N]),k.gotoPart("Idle")):(k.tired=!1,k.gotoPart("Wave")),i.sleeping?(te.brittlerille.pause(),k.visible=!1,k.tired=!0,k.switchData(ee[L.tired]),k.switchParts(y[N]),k.idle=-1,k.gotoPart("Sleep")):k.idle="Idle",k.canPat=!1,setTimeout((function(){0==C&&(i.sleeping||i.sleep<20||n.sfx&&te.wave.play())}),2e3),w&&setTimeout((function(){i.sleeping||(k.canPat=!0)}),4e3);let U=-1;function O(){H.buttonContainer.visible=!0,H.buttonContainer.alpha=0,U=0,k.canPat=!0;let e=0;V.visible=!0,V.alpha=0,c.ticker.add((function t(){if(e+=Qe,2==U&&V.alpha<=1&&(V.alpha+=1/30),0==U)H.empty.scale.x=1+Math.abs(Math.sin(e/10))/16,H.empty.scale.y=H.empty.scale.x,V.alpha<=1&&(V.alpha+=1/30),e>30*Math.PI&&(U=1);else if(1==U||1.5==U){if(H.empty.scale.x=1,H.empty.scale.y=H.empty.scale.x,V.alpha<0)return 1.5==U&&(U=2),e=0,void(V.rotation=-Math.PI/2);V.alpha-=1/30}if(0!=U&&1!=U||(V.x=c.screen.width/2,V.y=H.buttonContainer.y-100+5*Math.sin(e/10)),4==U)Q.empty.scale.x=1+Math.abs(Math.sin(e/10))/16,Q.empty.scale.y=Q.empty.scale.x,V.alpha<=1&&(V.alpha+=1/30),e>30*Math.PI&&(U=5);else if(5==U){if(Q.empty.scale.x=1,Q.empty.scale.y=Q.empty.scale.x,V.alpha<0)return e=0,void c.ticker.remove(t);V.alpha-=1/30}4!=U&&5!=U||(V.x=Q.buttonContainer.x,V.y=Q.buttonContainer.y-100+5*Math.sin(e/10)),2!=U&&3!=U||(V.x=c.screen.width/2+5*Math.sin(e/10),V.y=100),2==U&&e>30*Math.PI&&(U=3),3==U&&(V.alpha<0&&(e=0),V.alpha-=1/30),V.alpha>=1&&(V.alpha=1)}))}function R(){w||(k.gotoPart("SendMessage"),setTimeout((function(){Fe.book(o.dialogue.yoyleberryinvitation,O),k.interactive=!0}),750),k.onAnimationEnd=function(){})}w||(n.introMode=!0,k.onAnimationEnd=function(){k.interactive=!1,k.gotoPart("BookOpen"),k.onAnimationEnd=function(){k.gotoPart("Write"),k.onAnimationEnd=function(){k.gotoPart("Write"),k.onAnimationEnd=function(){k.gotoPart("SendMessage"),setTimeout((function(){C<5?Fe.book(o.dialogue.greet,R):(i.happiness-=10,Fe.book(o.dialogue.greet2,R))}),750),k.onAnimationEnd=function(){k.gotoPart("BookOpen"),k.onAnimationEnd=function(){k.gotoPart("Write")}}}}}}),k.x=0,k.y=100;let F=new PIXI.Rectangle(-60,-160,120,180);k.hitArea=F,k.interactive=!0,k.pointerPressing=!1,k.pointer={},k.pointerDistance={},k.patting=!1;let _=0;k.on("pointerdown",(function(e){k.pointer={x:e.clientX/s,y:e.clientY/s},k.pointerPressing=!0,_=Date.now()})),k.on("pointermove",(function(e){let t={x:e.clientX/s,y:e.clientY/s};g(k.pointer.x,k.pointer.y,t.x,t.y)>10&&k.pointerPressing&&k.canPat&&(k.patting?(i.happiness+=.02,i.progress+=.02,k.patAnimationForce+=.05,k.patAnimationForce>.2&&(k.patAnimationForce=.2)):(k.hitArea=new PIXI.Rectangle(-90,-200,180,220),k.patAnimationForce=.1,k.idle=-1,k.patting=!0,k.patAnimation=0,k.gotoPart("Pat"),k.pointer={x:e.clientX/s,y:e.clientY/s})),k.pointerDistance={x:t.x-k.pointer.x,y:t.y-k.pointer.y}})),k.on("pointerout",(function(e){1==k.patting&&(k.gotoPart("PatStop"),k.patting=!1,k.hitArea=F,k.idle="Idle"),k.pointerPressing=!1})),k.on("pointerup",(function(){if(1==k.patting&&(k.gotoPart("PatStop"),k.patting=!1,k.idle="Idle",k.hitArea=F),k.pointerPressing=!1,Date.now()-_<200){k.canPat=!0,n.totalSlaps++,C++,2763==n.totalSlaps&&(Fe.achievementQueue("slapTD2763"),W());let e=1+Math.floor(4*Math.random());te.wave.stop(),n.sfx&&(te["slap"+e].attack=0,te["slap"+e].stop(),te["slap"+e].play()),k.gotoPart("Slap"),i.sleeping&&n.music&&te.brittlerille.play(),f.lit=!0,d.filters=[],k.idle="Idle",i.sleeping=!1,k.currentPart=-1}}));let z=n.safeArea?-20:0,j=new S($["Sprites/GameUI"][1],$["Sprites/GameUI"][0],i.happiness/100);j.buttonContainer.x=60,j.buttonContainer.y=c.screen.height-60+z,j.buttonContainer.scale.x=.8,j.buttonContainer.scale.y=.8,c.stage.addChild(j.buttonContainer),e.x=j.buttonContainer.x,e.y=j.buttonContainer.y,v(j.buttonContainer,(function(){j.holding&&G("livingRoom")})),j.holding=!1,j.buttonContainer.on("pointerdown",(function(){j.holding=!0,setTimeout((function(){j.holding&&(j.holding=!1,j.buttonContainer.emit("pointerup"),n.introMode||(e.active=!e.active))}),250)})),j.buttonContainer.on("pointerup",(function(){j.holding=!1}));let H=new S($["Sprites/GameUI"][4],$["Sprites/GameUI"][3],i.hunger/100);H.buttonContainer.x=c.screen.width/2,H.buttonContainer.y=c.screen.height-60+z,H.buttonContainer.scale.x=.8,H.buttonContainer.scale.y=.8,c.stage.addChild(H.buttonContainer),v(H.buttonContainer,(function(){G("kitchen")})),H.selected.visible=!1;let Q=new S($["Sprites/GameUI"][6],$["Sprites/GameUI"][5],i.sleep/100);Q.buttonContainer.x=c.screen.width-60,Q.buttonContainer.y=c.screen.height-60+z,Q.buttonContainer.scale.x=.8,Q.buttonContainer.scale.y=.8,c.stage.addChild(Q.buttonContainer),v(Q.buttonContainer,(function(){G("bedroom")})),Q.selected.visible=!1,A=function(){z=n.safeArea?-20:0,j.buttonContainer.y=c.screen.height-60+z,H.buttonContainer.y=c.screen.height-60+z,Q.buttonContainer.y=c.screen.height-60+z};let V=new PIXI.Sprite($["Sprites/GameUI"][7]);V.x=100,V.y=100,V.visible=!1,V.anchor.set(.5,.5),c.stage.addChild(V);let Y=Fe.coinCounter();Y.x=20,Y.y=20,c.stage.addChild(Y);let K=new S($["Sprites/GameUI"][28],$["Sprites/GameUI"][27],i.progress/i.progressNeeded,!0,!1);K.buttonContainer.x=c.screen.width-60,K.buttonContainer.y=60,c.stage.addChild(K.buttonContainer),K.selected.visible=!1,v(K.buttonContainer,(function(){}));let J=a(n.level,32,"center",void 0,2);J.y=-2,K.buttonContainer.addChild(J);let q=new P((function(){Fe.flash(!1,(function(){Fe.settings((function(){}))}))}),$["Sprites/GameUI"][24]);q.sprite.x=c.screen.width-20+Y.pivot.y,q.sprite.y=20-Y.pivot.y,w||(Q.buttonContainer.visible=!1,H.buttonContainer.visible=!1,Y.visible=!1),c.ticker.add((function(){if(k.patting){let e=Math.sin(Math.abs(k.pointerDistance.x)/100)/4+Math.cos(k.patAnimation)/50,t=Math.sin(-k.pointerDistance.y/100)/4+Math.sin(k.patAnimation)/50;k.scale.x=h.linear(k.scale.x,(1+e-t)*k.size,.1,Qe),k.scale.y=h.linear(k.scale.y,(1+t-e)*k.size,.1,Qe),k.skew.x=h.linear(k.skew.x,-k.pointerDistance.x/500,.1,Qe),k.patAnimation+=k.patAnimationForce,k.patAnimationForce=h.linear(k.patAnimationForce,0,.01,Qe)}else k.skew.x=h.linear(k.skew.x,0,.1,Qe),k.scale.x=h.linear(k.scale.x,k.size,.1,Qe),k.scale.y=h.linear(k.scale.y,k.size,.1,Qe);e.active?(H.buttonContainer.x=h.linear(H.buttonContainer.x,c.screen.width/2+35,.05,Qe),e.scale.x=h.linear(e.scale.x,j.buttonContainer.scale.x,.05,Qe),e.rotation=h.linear(e.rotation,12,.05,Qe),e.scale.y=e.scale.x):(e.scale.x=h.linear(e.scale.x,.1,.05,Qe),e.rotation=h.linear(e.rotation,-1,.05,Qe),e.scale.y=e.scale.x,H.buttonContainer.x=h.linear(H.buttonContainer.x,c.screen.width/2,.05,Qe));for(let t=0;t<T.length;t++)T[t].rotation=-e.rotation,e.active?(T[t].x=h.linear(T[t].x,T[t].original.x,T[t].speed,Qe),T[t].y=h.linear(T[t].y,T[t].original.y,T[t].speed,Qe)):(T[t].x=h.linear(T[t].x,0,.01,Qe),T[t].y=h.linear(T[t].y,0,.01,Qe));j.offset=h.linear(j._offset,i.happiness/100,.04,Qe),0==i.happiness?j.empty.texture=$["Sprites/GameUI"][2]:j.empty.texture=$["Sprites/GameUI"][1],H.offset=h.linear(H._offset,i.hunger/100,.04,Qe),Q.offset=h.linear(Q._offset,i.sleep/100,.04,Qe),Y.updateCounter(h.linear(Y.getCounterAmount(),t.coins,.05,Qe)),K.offset=h.linear(K._offset,i.progress/i.progressNeeded,.04,Qe),w||-1==U||(H.buttonContainer.alpha=h.linear(H.buttonContainer.alpha,1,.05,Qe)),n.introMode&&U>=4&&(Q.buttonContainer.alpha=h.linear(Q.buttonContainer.alpha,1,.05,Qe))})),new M((function(){let e=Fe.book("This will absolutely \nerase any user data \nfrom localStorage.\nPROCEED WITH \nCAUTION!\n \n \n \n(exit this page to\ncancel)",(function(){}),60);e.onDestroyed=function(){t.destroy()};let t=new M((function(){setInterval((function(){let e=Te(ee.Teardrop,y.Teardrop);e.x=c.screen.width*Math.random(),e.y=c.screen.height*Math.random(),e.rotation=Math.random()*Math.PI*4,e.play(60),e.gotoPart("Wave"),c.stage.addChild(e)}),1e3/60),setInterval((function(){let e=Te(ee.Box,y.Box);e.x=c.screen.width*Math.random(),e.y=c.screen.height*Math.random(),e.rotation=Math.random()*Math.PI*4,e.play(60),e.gotoPart("Jump"),c.stage.addChild(e)}),1e3/60),setTimeout((function(){localStorage.clear(),window.location=window.location}),500)}),-75,0,200,40,"CONTINUE",0,0,0,2,"center");e.addChild(t.element)}),c.screen.width-20,20,80,30,"RESET",0,1,0,1,"center"),window.addEventListener("resize",(function(){e.y=j.buttonContainer.y,d.x=c.screen.width/2,d.y=c.screen.height/2,j.buttonContainer.y=c.screen.height-60+z,H.buttonContainer.y=c.screen.height-60+z,Q.buttonContainer.x=c.screen.width-60,Q.buttonContainer.y=c.screen.height-60+z,q.sprite.x=c.screen.width-20+Y.pivot.y,K.buttonContainer.x=c.screen.width-60}))}if(b.anchor.set(.5,.5),w)T();else{let G;G=new M((function(){w=!0,G.destroy(),b.destroy(),c.ticker.remove(O),U.destroyAnimation(),I=1,f.scale.x=1,f.scale.y=1,T(),Fe.flash(!0),n.skipIntro=!0,W()}),20,c.screen.height-20,100,20,o.ui.skipIntro,0,0,1,2,"center"),G.element.alpha=.5,c.stage.addChild(b),b.x=c.screen.width/2,b.y=c.screen.height/2-100,b.fade=1,b.alpha=0;let U=Te(ee.Box,y.Box);function O(){G.dissapear&&(G.element.hover?G.element.alpha=h.linear(G.element.alpha,.5,.1,Qe):G.element.alpha=h.linear(G.element.alpha,0,.1,Qe)),b.alpha=h.linear(b.alpha,b.fade,.1,Qe),null!=b.shake&&0!=b.shake&&null!=b.orig&&(b.x=b.orig.x+(Math.random()-.5)*b.shake,b.y=b.orig.y+(Math.random()-.5)*b.shake,b.rotation=(Math.random()-.5)*b.shake/50,b.shake=h.linear(b.shake,0,.1,Qe)),b.go&&(b.x+=b.vx*Qe,b.vx+=5*Qe),I=h.linear(I,U.timesBeforeSteal<=0?1:1.5,.05,Qe),U.scale.x=I,U.scale.y=I,f.scale.x=h.linear(1*I,1,.2),f.scale.y=h.linear(1*I,1,.2)}U.timesBeforeSteal=10,d.addChild(U),U.play(60),U.gotoPart("Jump"),U.pivot.y=-100,U.x=0,U.y=0,U.interactive=!0,U.hitArea=new PIXI.Rectangle(-100,-160,200,180),U.on("pointerdown",(function(){G.dissapear=!0,U.timesBeforeSteal<=0||(U.timesBeforeSteal--,0==U.timesBeforeSteal?(b.fade=1,b.text=o.intro.hey,b.orig={x:c.screen.width/2,y:c.screen.height/2+50},setTimeout((function(){b.shake=void 0,b.go=!0,b.vx=0,b.fade=0}),1e3),setTimeout((function(){b.go=!1,b.x=c.screen.width/2,b.y=c.screen.height/2,b.text=o.intro.who,b.fade=1}),2e3),setTimeout((function(){b.destroy(),c.ticker.remove(O),U.destroyAnimation(),Fe.flash(!1,T),W()}),4e3),b.y=c.screen.height/2+50,b.shake=10,b.fontSize=48,U.gotoPart("Steal")):(b.fade=0,"Click1"==U.currentPart?U.gotoPart("Click2"):U.gotoPart("Click1")))})),c.ticker.add(O)}if(n.privateBeta){let R=a("CONFIDENTAL",20);R.x=20,R.y=20;let F=a("Please do not take any screenshots of this myTeardrop build.",12);F.maxWidth=250,F.x=20,F.y=40,F.alpha=.5,R.alpha=.5,c.stage.addChild(F),c.stage.addChild(R)}Fe.flash(!0)},levelUp:function(){n.minigameMusic&&(te.levelup.stop(),te.levelup.play(),te.brittlerille.pause());let e=6737151;null!=B[n.costume].color&&n.levelUpCostumes&&(e=B[n.costume].color);let t=new PIXI.Sprite($["Sprites/Rooms"][15]);t.x=c.screen.width/2,t.y=c.screen.height/2,t.anchor.set(.5,.5),c.stage.addChild(t),t.interactive=!0;let i=new PIXI.Sprite($["Sprites/Rooms"][17]);i.x=c.screen.width/2,i.y=c.screen.height/2-100,i.alpha=.3,i.anchor.set(.5,.5),i.tint=e,c.stage.addChild(i);let r=new PIXI.Sprite($["Sprites/Rooms"][15]);r.tint=e,r.x=c.screen.width/2,r.y=c.screen.height/2,r.anchor.set(.5,0),c.stage.addChild(r);let s=new PIXI.Sprite($["Sprites/Bodies"][68]);s.x=c.screen.width/2,s.y=c.screen.height/2,s.anchor.set(.5,.5),c.stage.addChild(s);let l=new PIXI.Sprite($["Sprites/Bodies"][68]);l.tint=e,l.anchor.set(.5,.5),s.addChild(l),l.scale.x=.8,l.scale.y=.8,l.alpha=.8;let d=new PIXI.Sprite($["Sprites/Rooms"][16]);d.x=c.screen.width/2,d.y=c.screen.height/2,d.anchor.set(.5,.5),c.stage.addChild(d),d.blendMode=PIXI.BLEND_MODES.ADD,d.alpha=0;let h=a(o.ui.newLevel+": "+n.level,48,"center");h.x=c.screen.width/2,h.y=c.screen.height/2-200,h.visible=!1,c.stage.addChild(h);let u=!1,p=new M((function(){u||(u=!0,Fe.blurPan(c.stage,(function(){p.destroy(),i.destroy(),h.destroy(),n.music&&te.brittlerille.play(),n.canLevelUp=!0,t.destroy(),r.destroy(),m.destroyAnimation(),l.destroy(),s.destroy(),d.destroy(),c.ticker.remove(f)})))}),c.screen.width/2,c.screen.height/2+150,180,40,o.ui.continueUpperCase,0,.5,.5,n.levelUpCostumes?2:10,"center");c.stage.addChild(p.element),p.element.alpha=0,setTimeout((function(){p.animationOffset=g,p.visible=!0}),3e3);let m=Te(ee.tearDropLevelUp);c.stage.addChild(m);let y=!0;if("uglysweater"!=n.costume&&"_td_costume1"!=n.costume||(y=!1),n.levelUpCostumes&&y){let e={a:{d:m.a.d,e:m.a.e,f:m.a.f,g:m.a.g,h:m.a.h,i:m.a.i2,j:m.a.j,k:m.a.k},c:m.c,b:m.b};null!=B[n.costume].applyMinigame?(B[n.costume].applyMinigame(m),B[n.costume].applyMinigame(e)):(B[n.costume].apply(m),B[n.costume].apply(e))}m.play(),m.x=c.screen.width/2,m.y=c.screen.height/2;let g=0,f=function(){if(p.visible){let e=g-p.animationOffset;p.element.alpha=eases.easeOutQuint(Math.min(60,e),0,1,60)}if(g>107){let e=g-107;h.visible=!0,h.y=c.screen.height/2-eases.easeOutQuint(Math.min(30,e),150,50,30),h.scale.x=eases.easeOutElastic(Math.min(75,e),.5,.5,75),h.scale.y=eases.easeOutElastic(Math.min(90,e),.5,.5,90)}m.y=c.screen.height/2-eases.easeInOutQuad(Math.min(150,g),-100,50,150),r.y=c.screen.height/2+eases.easeInOutQuad(Math.min(150,g),0,-25,150),m.scale.x=eases.easeInOutQuad(Math.min(120,g),.4,.6,120),m.scale.y=m.scale.x,s.y=m.y,s.scale.x=m.scale.x,s.scale.y=m.scale.y/eases.easeInOutQuad(Math.min(150,g),2,2,150),l.y=eases.easeInOutQuad(Math.min(150,g),16,16,150),i.y=c.screen.height/2+eases.easeInOutQuad(Math.min(150,g),-100,-30,150),i.scale.x=1+eases.easeInOutQuad(Math.min(150,g),0,.025,150),i.scale.y=i.scale.x,d.y=m.y-75*m.scale.x;let e=Math.max(0,g-90);d.alpha=eases.easeInQuint(Math.min(30,e),0,.1,30),g+=Qe};c.ticker.add(f)},coinCounter:function(){let e=new PIXI.Sprite($["Sprites/GameUI"][9]),i=$["Sprites/GameUI"][9].trim;e.pivot.x=-i.width/2,e.pivot.y=-i.height/2,e.anchor.set(.5,.5),c.stage.addChild(e);let a=new PIXI.BitmapText(t.coins,{fontSize:24,fontName:"MenuShag"});a.anchor.set(0,.5),a.width>140&&(a.width=140,a.scale.y=a.scale.x),a.x=-i.width/2+60,a.y=-i.height/2+22,e.addChild(a);let o=t.coins;return e.getCounterAmount=function(){return o},e.updateCounter=function(e){a.text=Math.floor(e),a.scale.x=1,a.width>140&&(a.width=140),a.scale.y=a.scale.x,o=e},e.destroyCounter=function(){e.removeChild(a),a.destroy(),e.destroy()},n.privateBeta&&(e.visible=!1,a.visible=!1),e},loader:function(e,t){let i=[];for(let e=0;e<t.length;e++)null==te[t[e][1]]&&i.push(t[e]);if(0==i.length)return void e();let n=new PIXI.Sprite($["Sprites/Rooms"][15]);c.stage.addChild(n),n.interactive=!0,n.x=c.screen.width/2,n.y=c.screen.height/2,n.anchor.set(.5,.5);let o=["Collecting Droplets...","A bucket of raindrops...","A sea of water...","Loading the awesome...","Teardrop wrote this!","Please wait for the droplet!","Woah.. this is new!","Droplet loading!","Droplet incoming!!","This is a loading message","LOADING: something awesome","WHAT! The game is loading?","Sorry for the wait!","There's a loading circle next to me!","1... 2... 3... LOAD!","Am I taking too long?","There we go!"],r=a(o[Math.floor(Math.random()*o.length)],24,"left",void 0,1);r.x=20,r.y=c.screen.height-20,r.width>c.screen.width-100&&(r.width=c.screen.width-100,r.scale.y=r.scale.x),r.anchor.set(0,1),c.stage.addChild(r);let s=Te(ee.loading);s.x=c.screen.width-40,s.y=c.screen.height-40,s.scale.x=.75,s.scale.y=.75,s.alpha=.5,r.alpha=.5,s.play(),s.loop=!0,c.stage.addChild(s);let l=0;for(let t=0;t<i.length;t++){l++;let n=i[t][0],a=i[t][1];te[a]=new Pizzicato.Sound("./Audio/"+n+".mp3",(function(){te[a].volume=1,te[a].loaded=!0,null!=te[a].onloadAudio&&te[a].onloadAudio(),te.music.addSound(te[a]),l--,0==l&&Fe.flash(!1,(function(){e(),d()}))})),te[a].loaded=!1}let d=function(){s.destroyAnimation(),r.destroy(),n.destroy(),m.destroy(),c.ticker.remove(p),clearTimeout(u)},u=setTimeout((function(){m.sprite.alpha=0,m.sprite.visible=!0,c.ticker.add(p)}),15e3),p=function(){m.sprite.alpha=h.linear(m.sprite.alpha,1,.1,Qe)},m=Fe.exitButton((function(){Fe.flash(!1,(function(){d(),Fe.message("Required resources for the minigame have failed to load!",void 0,(function(){}))}))}),c.screen.width-40,40,.4,0);c.stage.addChild(m.sprite),m.sprite.visible=!1},fridge:function(e=function(){}){let i=new PIXI.Sprite($["Sprites/Rooms"][5]);i.scale.x=1.1,i.scale.y=1.1,i.x=c.screen.width/2,i.y=c.screen.height/2,i.anchor.set(.5,.5),c.stage.addChild(i),i.interactive=!0;let r=new PIXI.Container;c.stage.addChild(r);let l=0,d=0,u=c.screen.width/2-20,p=Fe.coinCounter();r.addChild(p);let m=t.coins;p.x=20,p.y=20;let y={},f=0,x=0,w=0,v=[],S=n.introMode?new PIXI.BitmapText("",{fontSize:24,fontName:"MenuShag",breakWords:!0,wordWrap:!0,wordWrapWidth:300,maxWidth:300,whiteSpace:"normal",align:"center"}):a("",32,"center");S.anchor.set(.5,.5),S.x=c.screen.width/2,S.y=c.screen.height-150;let C=new PIXI.Container,b=new PIXI.Graphics,P=!n.introMode;P&&(C.mask=b),r.addChild(C),r.addChild(S),C.x=5,C.y=80;let T,k,A,L=c.screen.width-10,X=c.screen.height-170;b.beginFill(0),b.drawRect(C.x,C.y,L,X),b.endFill(),C.interactive=!0,P&&(C.on("pointerdown",(function(e){let t=e.clientY/s;C.dragOffset={y:t-C.y},C.prevY=C.y,C.vy=0,C.scrolling=!0,C.origY=C.y})),k=function(e){if(!C.scrolling)return;let t=e.clientY/s;if(Math.abs(C.origY-C.y)>10)for(let e=0;e<C.children.length;e++)C.children[e].emit("pointerout"),C.children[e].interactive=!1;C.prevY=C.y,C.y=t-C.dragOffset.y},A=function(){for(let e=0;e<C.children.length;e++)C.children[e].interactive=!0;C.scrolling=!1},document.addEventListener("pointermove",k),document.addEventListener("pointerup",A),C.vy=0,T=function(){let e=95*Math.ceil(-N/2)+80+X;C.vy=h.linear(C.vy,0,.05,Qe),C.scrolling?C.vy=C.y-C.prevY:C.y+=C.vy,C.y>=80&&(C.y=80,C.vy=0),C.y<=e&&(C.y=e,C.vy=0)},c.ticker.add(T));let N=0;S.targetAlpha=0;for(let e in E){if("regularcake"!=e&&n.introMode)continue;N++;let i=new M((function(){if(r.requiredLevel>n.level)Fe.message("You need atleast level "+r.requiredLevel+" to buy this item!",$["Sprites/GameUI"][35]);else{if(S.text="",n.introMode&&(S.alpha=S.targetAlpha,S.targetAlpha=1,S.y=c.screen.height/2+100,S.text="Go to the fridge using the button below, drag a food item to the plate!"),r.cost>m)return n.sfx&&(te.fail.stop(),te.fail.play()),x<.01&&(w=0),x=2,void(S.text=o.ui.notEnoughCoins);for(let i=0;i<j.length;i++)if(!j[i].full){let a=new PIXI.Sprite($["Sprites/Food"][r.texture]);return a.anchor.set(.5,.5),a.y=-a.texture.trim.height,a.vr=Math.random()-.5,a.vy=2+2*Math.random(),a.x=Math.random()*c.screen.width,c.stage.addChild(a),y[f++]=a,m-=r.cost,n.sfx&&(te.purchase.stop(),te.purchase.play()),t.coins=m,V(e,i),void(t.fridge[i]=e)}x<.01&&(w=0),x=2,S.text=o.ui.notEnoughSpace,n.sfx&&(te.fail.stop(),te.fail.play())}}),c.screen.width/2-u+d%2*(u+5)-2.5,95*Math.floor(d/2),u,90,"",0,0,0,2),r=E[e];1!=r.hidden&&(C.addChild(i.element),d++);let s=new PIXI.Sprite($["Sprites/Food"][r.texture]),l=new PIXI.Rectangle(0,0,0,0);s.hitArea=l,i.element.addChild(s),s.anchor.set(.5,.5),s.x=40,s.y=40;let h=a(r.name,16,"left","middle");h.x=70,h.y=20,i.element.addChild(h),h.width>80&&(h.width=80),h.scale.y=h.scale.x;let p=a(r.cost,16);p.x=100,p.width>60&&(p.width=60),p.scale.y=p.scale.x,p.y=40+(16*-p.scale.y+16)/2,i.element.addChild(p);let g=new PIXI.Sprite($["Sprites/GameUI"][14]);if(i.element.addChild(g),g.x=80,g.y=50,g.scale.x=.75,g.scale.y=.75,g.anchor.set(.5,.5),g.hitArea=l,v.push(g),v.push(p),v.push(h),v.push(i),r.requiredLevel>n.level){let e=new PIXI.NineSlicePlane($.inputNineSlice[14]);e.width=i.element.width,e.height=i.element.height,i.element.addChild(e),e.alpha=.8,e.hitArea=l;let t=new PIXI.Sprite($["Sprites/GameUI"][41]);t.x=i.element.height/2,t.y=i.element.height/2,t.anchor.set(.5,.5),t.scale.x=.75,t.scale.y=.75,i.element.addChild(t),t.hitArea=l;let n=a("LEVEL "+r.requiredLevel,24,"left","middle");n.x=i.element.height/2+40,n.y=i.element.height/2-2,n.width>i.element.width-n.x-20&&(n.width=i.element.width-n.x-20,n.scale.y=n.scale.x),i.element.addChild(n)}}let D=Fe.exitButton((function(){e(),W(),Fe.flash(!1,Y)}),c.screen.width-40,40,.4,0);n.introMode&&n.hideFridgeExit?(D.sprite.targetAlpha=0,D.sprite.visible=!1):D.sprite.targetAlpha=1,c.stage.addChild(D.sprite);let G=50;r.origX=0,r.time=50;let B=!1,U=function(){if(!B){p.updateCounter(h.linear(p.getCounterAmount(),m,.1,Qe));for(let e in y){let t=y[e];t.y+=t.vy*Qe,t.x=h.linear(t.x,c.screen.width/2,.025),t.vy+=.5*Qe,t.rotation+=t.vr/10*Qe,t.y>c.screen.height+200&&(t.destroy(),delete y[e])}r.x=window.eases.easeInOutQuad(G,r.origX,-l*c.screen.width-r.origX,r.time),x>.01&&(r.x+=Math.cos(w)*x*5,w+=.5*Qe,x=h.linear(x,0,.1,Qe)),G+=Qe,r.time<=G&&(r.time=50,G=50),i.x=c.screen.width/2+r.x/50;for(let e=0;e<H.length;e++){let t=H[e];t.dragging?(t.x=h.linear(t.x,t.x2,.4,Qe),t.y=h.linear(t.y,t.y2,.4,Qe),t.rotation=(t.x-t.x2)/100+(t.y-t.y2)/100,t.scale.x=1+Math.abs(t.x-t.x2)/100-Math.abs(t.y-t.y2)/100,t.scale.y=t.scale.x+Math.abs(t.y-t.y2)/100-Math.abs(t.x-t.x2)/100):(t.x=h.linear(t.x,t.x2,.2,Qe),t.y=h.linear(t.y,t.y2,.3,Qe),t.scale.x=h.linear(t.scale.x,1,.2,Qe),t.scale.y=h.linear(t.scale.y,1,.2,Qe),t.rotation=h.linear(t.rotation,0,.3,Qe))}n.introMode&&(S.alpha=h.linear(S.alpha,S.targetAlpha,.1,Qe),D.sprite.alpha=h.linear(D.sprite.alpha,D.sprite.targetAlpha,.1,Qe))}};c.ticker.add(U);let O=new M((function(){0!=l&&(l=0,r.origX=r.x,r.time=Math.min(50,G),G=0)}),c.screen.width/2-2.5,c.screen.height-80,120,30,o.ui.shop,0,1,0,1,"center");c.stage.addChild(O.element);let R=function(){1!=l&&(l=1,r.origX=r.x,r.time=Math.min(50,G),G=0)},F=new M(R,c.screen.width/2+2.5,c.screen.height-80,120,30,o.ui.fridge,0,0,0,1,"center");c.stage.addChild(F.element),1==n.lastFridgePage&&(R(),G=r.time);let _=new PIXI.Container;_.x=c.screen.width,r.addChild(_);let z=new PIXI.Sprite($["Sprites/Food"][0]);z.anchor.set(.5,.5),z.x=c.screen.width/2,z.y=c.screen.height-130,_.addChild(z);let j=[],H=[];new Array(23).fill("");for(let e=0;e<20;e++){let t=new PIXI.Sprite($["Sprites/GameUI"][15]);j.push(t),t.hitArea=new PIXI.Rectangle(-32,-32,64,64),t.x=32+e%4*79+(c.screen.width/2-158)+7.5,t.y=100+79*Math.floor(e/4),t.anchor.set(.5,.5),t.full=!1,_.addChild(t)}for(let e=0;e<3;e++){let t=new PIXI.Sprite($["Sprites/GameUI"][15]);j.push(t),t.hitArea=new PIXI.Rectangle(-32,-32,64,64),t.x=z.x-50+50*e,t.y=z.y,t.anchor.set(.5,.5),t.full=!1,_.addChild(t),t.visible=!1}let Q=0;function V(e,i){let a=j[i];if(""!=e&&null!=e){let o=new PIXI.Sprite($["Sprites/Food"][E[e].texture]);o.scale.x=1,o.scale.y=o.scale.x,o.box=i,o.item=e,a.food=Q,a.full=!0,o.on("pointerdown",(function(){for(let e=0;e<H.length;e++)H[e].interactive=!1;for(let e=0;e<j.length;e++)j[e].interactive=!1;o.interactive=!0,_.addChild(o)})),o.on("pointerup",(function(){for(let e=0;e<H.length;e++)H[e].interactive=!0;let i=!1;null!=o.originalPosition&&g(o.x,o.y,o.originalPosition.x,o.originalPosition.y)<20&&(i=!0);let a=-1;if(i){a=20;for(let e=0;e<3;e++)if(1!=j[e+20].full){a=20+e;break}}else for(let e=0;e<j.length;e++)g(j[e].x,j[e].y,o.x,o.y)<40&&(a=e);let r=a;if(-1!=a)if(a>=20&&n.introMode&&!D.sprite.visible&&(D.sprite.alpha=0,D.sprite.visible=!0,D.sprite.targetAlpha=1,n.hideFridgeExit=!1),0==j[r].full)o.x2=j[r].x,o.y2=j[r].y,j[o.box].full=!1,j[o.box].food=-1,t.fridge[o.box]="",o.box=r,j[o.box].food=o.id,t.fridge[o.box]=e,j[o.box].full=!0;else{let i=H[j[r].food];i.x2=j[o.box].x,i.y2=j[o.box].y,j[o.box].food=j[r].food,i.box=o.box,t.fridge[o.box]=i.item,j[r].food=o.id,o.x2=j[r].x,o.y2=j[r].y,o.box=r,t.fridge[o.box]=e}o.x2=j[o.box].x,o.y2=j[o.box].y,o.interactive=!0})),o.anchor.set(.5,.5),o.x=a.x,o.y=a.y,H.push(o),o.id=Q,Q++,_.addChild(o),o.interactive=!0,I(o,new PIXI.Rectangle(-30,-30,60,60),!0)}}for(let e=0;e<t.fridge.length;e++)V(t.fridge[e],e);function Y(){P&&(c.ticker.remove(T),document.removeEventListener("pointermove",k),document.removeEventListener("pointerup",A)),n.lastFridgePage=l;for(let e in y)null!=y[e].destroy&&y[e].destroy(),delete y[e];S.destroy(),D.destroy(),i.destroy();for(let e=0;e<H.length;e++)H[e].destroy();for(let e=0;e<j.length;e++)j[e].destroy();for(let e=0;e<v.length;e++)v[e].destroy();p.destroyCounter(),z.destroy(),O.destroy(),F.destroy(),c.ticker.remove(U),B=!0}v.push(C),v.push(b)},gameList:function(e){let r={},s=function(e){r[e.key]=!0},l=function(e){r[e.key]=!1};document.addEventListener("keydown",s),document.addEventListener("keyup",l),n.inGame=!1,n.music&&te.brittlerille.play();let d=new PIXI.Sprite($["Sprites/Rooms"][9]);c.stage.addChild(d),d.interactive=!0,d.x=c.screen.width/2,d.y=c.screen.height/2,d.anchor.set(.5,.5),d.scale.x=1,d.scale.y=1;let u=Fe.coinCounter();c.stage.addChild(u),u.x=20,u.y=20;let p=Fe.exitButton((function(){W(),m=!0,Fe.flash(!1,y)}),c.screen.width-40,40,.4,0);c.stage.addChild(p.sprite);let m=!1;function y(){window.removeEventListener("resize",T),p.destroy(),d.destroy();for(let e=0;e<f.length;e++)f[e].destroy();if(u.destroyCounter(),c.ticker.remove(M),document.removeEventListener("keydown",s),document.removeEventListener("keyup",l),m){let e=-1;n.temporaryInGameTime>600?e=["That was tiring. But I had fun!","How long until the next minigame?"]:n.temporaryInGameTime>120&&Math.random()>.8?e=["I saw something weird!","I had so much fun!","Finally.. home!","I missed my notebook!","The grass is so squishy!"]:n.temporaryInGameTime>10&&Math.random()>.95?e=[""]:n.temporaryInGameTime>2&&Math.random()>.98&&(e=["Couldn't we play for more?","That's it?","Go back!! I saw something in that minigame","Only if we played for "+(2763-n.temporaryInGameTime)+" seconds more.."]),n.temporaryInGameTime=0}}let g,f=[],x={gtttatint:{name:o.games.gtttatint,texture:0,run:Fe.gtttatint,runDebug:function(){let e=prompt("ENTER SEED: ");Fe.gtttatint(e,!0)},resource:{audio:[["Radio Martini","radiomartini"]]}},tennis:{name:o.games.tennis,texture:2,run:Fe.tennis,resource:{audio:[["Shiny Tech","shinytech"]]}},match:{name:o.games.match,texture:3,run:Fe.faceMatch,resource:{audio:[["15countdown","countdown"],["faceMatchScores","faceMatchScores"]]}},cakewalk:{name:o.games.cakewalk,texture:5,run:Fe.cakewalk,resource:{audio:[["Pamgaea","Pamgaea"]]}},oddDroplets:{name:"Odd Droplets",texture:7,run:Fe.oddDroplets,resource:{audio:[["papshru","howitbegins"]]}}},w=function(){let t=x[e].resource.audio;for(let e=0;e<t.length;e++)te.music.removeSound(te[t[e][1]]),delete te[t[e][1]],console.log("removing audio file "+t[e][1]+"from memory")};null!=e&&(g=setTimeout(w,5e3));let v=0,I=-1,S=new PIXI.Container,C=2;c.screen.width>576&&(C=3);for(let s in x){let l=new P((function(){if(-1==I)if(i.sleeping)Fe.message(o.message.sleeping,$["Sprites/GameUI"][5]);else if(i.sleep<20)Fe.message(o.message.sleepy,$["Sprites/GameUI"][6]);else if(0==i.hunger&&t.coins>8&&"cakewalk"!=s)Fe.message(o.message.hungry,$["Sprites/GameUI"][4]);else{for(let e=0;e<f.length;e++)f[e].interactive=!1;l.sprite.original={x:l.sprite.x,y:l.sprite.y,scale:l.sprite.scale.x},l.sprite.animate=!1,I=l.sprite,I.zIndex=100,clearTimeout(g),Fe.flash(!1,(function(){s!=e&&null!=e&&w(),y(),n.inGame=!0,te.brittlerille.pause(),r.Shift?null!=x[s].runDebug&&Fe.loader(x[s].runDebug,x[s].resource.audio):(null==x[s].resource&&(x[s].resource={audio:[]}),Fe.loader(x[s].run,x[s].resource.audio))}))}}),$["Sprites/GameThumbnails"][x[s].texture],{width:144,height:144});l.sprite.interactive=!0,l.sprite.x=v%C*154+72-(154*C-10)/2,l.sprite.y=200+154*Math.floor(v/C),S.addChild(l.sprite);let d=a(x[s].name,32,"center");l.sprite.addChild(d),d.y=144/l.sprite.scale.x/2-25,f.push(d),f.push(l),v++}S.x=c.screen.width/2,S.sortableChildren=!0,c.stage.addChild(S),f.push(S);let b=0,M=function(){-1!=I&&(I.x=I.original.x+eases.easeOutQuad(b,0,-I.original.x,20),I.y=I.original.y+eases.easeInQuad(b,0,c.screen.height/2-I.original.y,20),I.scale.x=I.original.scale+eases.easeInQuad(b,0,24,60),I.scale.y=I.scale.x,b+=Qe),u.updateCounter(h.linear(u.getCounterAmount(),t.coins,.05,Qe))};c.ticker.add(M);let T=function(){d.x=c.screen.width/2,d.y=c.screen.height/2,S.x=c.screen.width/2,p.sprite.x=c.screen.width-40};window.addEventListener("resize",T)},faceMatch:function(){let e=!1,t=new PIXI.Sprite($["Sprites/Rooms"][14]);c.stage.addChild(t),t.interactive=!0,t.x=c.screen.width/2,t.y=c.screen.height/2,t.scale.x=1.5,t.scale.y=1.5,t.anchor.set(.5,.5);let i=Te(ee.faceMinigame);c.stage.addChild(i),i.x=c.screen.width/2,i.y=c.screen.height-200;let r=Te(ee.faceMinigame);c.stage.addChild(r),r.x=c.screen.width/2,r.y=200;let s={mouth:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],eye1:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]};s.eye2=s.eye1;let l={eye1:r.eye1,eye2:r.eye2,mouth:r.mouth},d=-1;function u(){for(let e in l)l[e].dragging=!1,l[e].emit("pointerup")}let p=-Date.now(),m=1;function f(){e=!1,i.gotoAndStop(Math.floor(140*Math.random())),r.gotoAndStop(i.getCurFrame());let t=c.screen.height/3/i.body.texture.trim.height;t=Math.min(1,t),i.scale.x=t,i.scale.y=t,r.scale.x=t,r.scale.y=t;let n=[0,1,2];!function(e){for(let t=e.length-1;t>0;t--){let i=Math.floor(Math.random()*(t+1)),n=e[t];e[t]=e[i],e[i]=n}}(n);let a=0;for(let e in l){let i=l[e],o=1;"mouth"==e&&(o=2);let h=Math.floor((i.textures.length-o)*Math.random());"mouth"==e&&h++,i.gotoAndStop(h),i.originalSize={x:i.scale.x,y:i.scale.y},i.destinationSize={x:i.scale.x,y:i.scale.y},i.interactive=!0;let p=i.texture.trim,m=new PIXI.Rectangle(p.x-2,p.y-2,p.width+4,p.height+4);1!=i.canDrag&&(I(i,m,!1,r.scale.x),v(i,(function(){function t(){u(),n.end();for(let e=0;e<o.length;e++)delete x[o[e].id],o[e].item.destroy(),o[e].destroy();d=-1,D=5}d=t;let n=Fe.blackTint(.2);n.start();let a=4;c.screen.width>400&&(a=5);let o=[];for(let n=0;n<s[e].length;n++){let r=new PIXI.Sprite($["Sprites/GameUI"][31]);o.push(r),r.interactive=!0,r.hitArea=new PIXI.Rectangle(-32,-32,64,64),r.x=32+n%a*79-79*a/2+c.screen.width/2+7.5,r.y=79*Math.floor(n/a),r.y+=c.screen.height/2-79*Math.floor((s[e].length-1)/a)/2,r.anchor.set(.5,.5),c.stage.addChild(r);let l=new PIXI.Sprite(i.textures[s[e][n]]),d=l.texture.trim;l.x=-d.x-d.width/2,l.y=-d.y-d.height/2,r.addChild(l),r.item=l,r.id=w,x[T()]=r,v(r,(function(){i.gotoAndStop(s[e][n]);let a=i.texture.trim,o=new PIXI.Rectangle(a.x-2,a.y-2,a.width+4,a.height+4);i.originalHitArea=o,i.hitArea=o,t()}))}}),!1),i.id=w,x[T()]=i),i.originalHitArea=m,i.dragScale=t,i.hitArea=m,i.x=100*(n[a]-1),i.y=-120,i.on("pointerdown",(function(){for(let e in l)l[e].interactive=!1;i.interactive=!0})),i.on("pointerup",(function(){for(let e in l)l[e].interactive=!0})),a++}}f();let S=1e3*Math.random(),C=1,b=function(){(p+Date.now())/1e3*C>m&&(m++,A()),U.alpha-=.02,U.scale.x=h.linear(U.scale.x,1.5,.05,Qe),U.scale.y=U.scale.x,S+=Qe,t.scale.x=h.linear(t.scale.x,1.5,.05,Qe),t.scale.y=t.scale.x,t.rotation=Math.cos(S/100)/10,t.x=c.screen.width/2+20*Math.cos(S/90),t.y=c.screen.width/2+20*Math.cos(S/110)},M=15,k=0;n.minigameMusic&&(te.countdown.attack=1,te.countdown.release=1,te.countdown.play(0,0));let A=function(){-1!=M&&(t.scale.x=1.52,t.scale.y=1.52,1==M&&te.countdown.pause(),0==M?(M=-1,G(),U.text=15):(M--,U.text=M,U.scale.x=1,U.scale.y=1,U.alpha=1))},E=function(){let e=100,t=!1,n=g(i.eye1.x,i.eye1.y,r.eye1.x,r.eye1.y),a=g(i.eye2.x,i.eye2.y,r.eye1.x,r.eye1.y),o=g(i.eye1.x,i.eye1.y,r.eye2.x,r.eye2.y),s=g(i.eye2.x,i.eye2.y,r.eye2.x,r.eye2.y);n>a&&n>a&&(t=!0),0!=r.eye1.alpha&&0!=r.eye2.alpha||(t=!1),t?(i.eye1.currentFrame!=r.eye2.currentFrame&&(e-=10),i.eye2.currentFrame!=r.eye1.currentFrame&&(e-=10),e-=a/3,e-=o/3):(0!=r.eye1.alpha&&(i.eye1.currentFrame!=r.eye1.currentFrame&&(e-=10),e-=n/3),0!=r.eye2.alpha&&(i.eye2.currentFrame!=r.eye2.currentFrame&&(e-=10),e-=s/3));for(let t in l)t.includes("eye")||0!=r.mouth.alpha&&(i[t].currentFrame!=r[t].currentFrame&&(e-=10),e-=g(i[t].x,i[t].y,r[t].x,r[t].y)/3);return e};function L(){-1!=d&&d(),t.destroy(),c.ticker.remove(b);for(let e in l)delete x[l[e].id];if(i.destroyAnimation(),r.destroyAnimation(),O.destroyAnimation(),U.destroy(),z.destroyPause(),W.destroy(),Fe.gameList("match"),0==X.length)return;let e=0;for(let t=0;t<X.length;t++)e+=X[t];e/=X.length,Fe.results(Math.round(e)+"%",Math.floor(N),void 0,o.ui.average),window.onblur=function(){}}let X=[],N=0,D=0;function G(){e=!0,D++,F=!0,u(),-1!=d&&d();let t=E(),i=Math.max(0,Math.round(t));X.push(i),N+=((10+i)/(51-i/2)+i/4)/2;let a=function(){if(2==D)return D++,void setTimeout((function(){Fe.message("Click/Tap on an eye or mouth to switch it to another!",$["Sprites/Mouth"][10],(function(){a()}))}),500);te.countdown.attack=1,k++,k>3&&(C+=.05,k=0),n.minigameMusic&&(te.countdown.play(0,16*k),te.countdown.sourceNode.playbackRate.value=C),M=15,p=-Date.now(),m=1,Fe.blurPan(c.stage,(function(){f(),F=!1,O.gotoPart("Idle")}))};Fe.message(o.ui.accuracy+": "+i+"%",$["Sprites/GameUI"][26],a,(function(){Fe.blurPan(c.stage,(function(){L()}))}),[o.ui.next,o.ui.leave]),100==Math.round(t)?(Fe.achievementQueue("perfectfacematch"),te.faceMatchScores.play(0,0),te.faceMatchScores.stop(),te.yeah.play(),O.gotoPart("percent100")):t>90?(te.faceMatchScores.play(0,8),O.gotoPart("percent90")):t>75?(te.faceMatchScores.play(0,4),O.gotoPart("percent75")):t>50?(te.faceMatchScores.play(0,0),O.gotoPart("percent50")):t>10?O.gotoPart("percent10"):O.gotoPart("Laugh"),t>50&&(te.faceMatchScores.sourceNode.playbackRate.value=C,te.faceMatchScores.attack=0,te.faceMatchScores.release=1/C),setTimeout((function(){te.faceMatchScores.stop()}),2e3/C)}c.ticker.add(b);let U=a(M,32,"center",void 0,2);c.stage.addChild(U),U.x=c.screen.width/2,U.y=c.screen.height/2;let O=Te(ee.tearDropWatch,y.tearDropWatch);O.play(),O.gotoPart("Idle"),O.y=c.screen.height,O.x=c.screen.width/2+120,c.stage.addChild(O),n.minigameCostumes&&(null!=B[n.costume].applyMinigame?B[n.costume].applyMinigame(O,1):B[n.costume].apply(O,1));let R=0,F=!1;function _(){F=!F,z.changePause(F),F?(R=-Date.now(),n.inGame=!1,te.countdown.pause(),c.ticker.remove(b),O.stop(),Fe.message(o.ui.gamePaused,$["Sprites/GameUI"][32],(function(){_()}),(function(){Fe.blurPan(c.stage,(function(){L()}))}),[o.ui.play,o.ui.home],!1)):(R+=Date.now(),p-=R,n.inGame=!0,O.play(),n.minigameMusic&&te.countdown.play(),c.ticker.add(b))}window.onblur=function(){F||_()};let z=Fe.pauseButton((function(){_()}),.4);c.stage.addChild(z),z.x=c.screen.width-40,z.y=40;let W=new P((function(){e||(e=!0,M=-1,te.countdown.stop(),G(),U.text=15)}),$["Sprites/GameUI"][42],{scale:{x:.4,y:.4}});W.sprite.x=c.screen.width-90,W.sprite.y=40,c.stage.addChild(W.sprite)},tennis:function(){n.minigameMusic?te.shinytech.volume=1:te.shinytech.volume=0,te.shinytech.play();let e=new PIXI.Container;e.x=c.screen.width/2,e.y=c.screen.height/2,e.pivot.x=c.screen.width/2,e.pivot.y=c.screen.height/2;let t=new PIXI.Sprite($["Sprites/Rooms"][12]);e.addChild(t),t.interactive=!0,t.x=c.screen.width/2,t.y=c.screen.height/2,t.scale.x=1,t.scale.y=1,t.anchor.set(.5,.5);let i=Te(ee.tearDropTennis,y.tearDropTennis),r={a:{d:i.e,e:i.d,f:i.c,g:i.g,h:i.f,i:i.h,j:i.j,k:i.i},c:i.a,b:i.b};n.minigameCostumes&&("uglysweater"==n.costume?B.uglysweater2.apply(r):null!=B[n.costume].applyMinigame?B[n.costume].applyMinigame(r):B[n.costume].apply(r),"_td_costume1"==n.costume&&(i.sortableChildren=!0,i.i.zIndex=10,i.j.zIndex=10)),i.play(),i.gotoPart("hit"),e.addChild(i),i.x=c.screen.width/2,i.y=c.screen.height/2;let s=0,l=c.screen.width/2+30,d=c.screen.height/2-180;c.stage.addChild(e);let u=a("0",16,"center");u.x=c.screen.width/2,u.y=20,c.stage.addChild(u);let p={},m=0,g=function(){let t=new PIXI.AnimatedSprite($["Sprites/tennisBall"]);t.x=c.screen.width/2+30,t.y=c.screen.height/2-180,t.anchor.set(.5,.5),t.play(),e.addChild(t),t.towards=1,t.animationTimer=0,t.interactive=!0,t.mouseTransform={x:0},t.timerCache=0,t.on("pointerdown",(function(){t.animationTimer>140&&1==t.towards&&(t.towards*=-1,t.vy=-10,t.mouseTransform={x:t.x},t.randomX=c.screen.width*(Math.random()-.5),t.timerCache=t.animationTimer,t.animationSpeed=2)})),t.rotation=0,t.randomX=0,t.r=0,t.id=m,p[m++]=t};g();let f=1,x=a(o.score.perfect,32,"center","middle");x.anchor.set(.5,.5),x.x=c.screen.width/2,x.y=c.screen.height/2+200,c.stage.addChild(x);let w=Date.now();e.sortableChildren=!0;let v=function(){let t=(Date.now()-w)/(6e4/138)/4;t>I&&(I+=4,g()),t>4&&(e.scale.x=eases.easeOutQuad((t+.25)%.5,1.02,-.02,.5),e.scale.y=e.scale.x),x.alpha>0&&(x.scale.x+=.02*Qe,x.scale.y=x.scale.x,x.alpha-=.04*Qe,x.rotation+=x.rotationAmount);for(let e in p){let n=p[e];if(n.animationTimer<0){x.rotation=0,x.rotationAmount=(Math.random()-.5)/100,x.scale.x=1,x.scale.y=1,x.text=o.score.bad;let e=5,i=t%.5;(i<.2||i>.4)&&(x.text=o.score.meh,e=20),(i<.125||i>.375)&&(x.text=o.score.nice,e=50),(i<.05||i>.45)&&(x.text=o.score.perfect,e=100),s+=e,u.text=s}n.animationTimer<=0&&(i.gotoPart("hit"),n.towards=1,n.randomX=c.screen.width/2*(Math.random()-.5),x.alpha=1),n.animationTimer<50&&1!=n.towards&&i.gotoPart("prepare"),n.animationTimer+=4*n.towards*f*Qe,n.scale.x=1+window.eases.easeOutQuad(n.animationTimer,0,2,300),n.scale.y=n.scale.x,n.y=d-window.eases.easeOutQuad(n.animationTimer,0,100,100),n.rotation=n.r/60,n.zIndex=n.scale.x,1==n.towards?n.x=l+window.eases.easeOutQuad(n.animationTimer,0,n.randomX,100):n.x=n.mouseTransform.x+window.eases.easeInOutQuad(Math.min(n.timerCache,n.timerCache-n.animationTimer),0,l-n.mouseTransform.x,n.timerCache),n.animationSpeed=h.linear(n.animationSpeed,.5,.01,Qe),n.r+=n.animationSpeed,n.y>c.screen.height+300&&(s-=10,u.text=s,p[e].destroy(),delete p[e])}f+=5e-5*Qe,0==Object.keys(p).length&&C()},I=4;te.shinytech.release=1,c.ticker.add(v);let S=!1;function C(n=!1){S||(S=!0,te.shinytech.stop(),c.ticker.remove(v),T.destroyPause(),x.destroy(),Fe.fade((function(){for(let e in p)p[e].destroy(),delete p[e];i.destroyAnimation(),e.destroy(),t.destroy(),u.destroy(),n?(Re(s,Math.floor(s/75),"tennis2"),B.sportsdrop.owned=!0,Fe.achievementQueue("winagameoftennis"),W()):Re(s,Math.max(0,Math.floor(s/100)),"tennis"),s>=2763&&Fe.achievementQueue("get2763intennis")})),window.onblur=function(){})}te.shinytech.on("end",(function(){C(!0)}));let b=0;window.onblur=function(){M||P()};let M=!1;function P(){M=!M,T.changePause(M),M?(b=-Date.now(),n.inGame=!1,te.shinytech.pause(),c.ticker.remove(v),i.stop(),Fe.message(o.ui.gamePaused,$["Sprites/GameUI"][32],(function(){P()}),(function(){C()}),[o.ui.play,o.ui.home],!1)):(b+=Date.now(),w+=b,n.inGame=!0,i.play(),te.shinytech.play(),c.ticker.add(v))}let T=Fe.pauseButton((function(){P()}),.4);c.stage.addChild(T),T.x=c.screen.width-40,T.y=40},gtttatint:function(e="",t=!1){let i=function(){n.minigameMusic&&te.radiomartini.play()};te.radiomartini.stopWithStyle=function(){if(!n.minigameMusic)return;let e=function(){null!=te.radiomartini?(te.radiomartini.volume-=1/60*Qe,te.radiomartini.sourceNode.playbackRate.value-=1/120*Qe,te.radiomartini.volume<=.01&&(te.radiomartini.stop(),c.ticker.remove(e))):c.ticker.remove(e)};c.ticker.add(e),te.radiomartini.off("end",i)},n.minigameMusic&&(te.radiomartini.play(),te.radiomartini.sourceNode.playbackRate.value=1,te.radiomartini.volume=1),te.radiomartini.on("end",i);let r=new PIXI.Sprite($["Sprites/Rooms"][10]);r.interactive=!0,r.x=c.screen.width/2,r.anchor.set(.5,0);let s=new PIXI.Sprite($["Backgrounds/Starfield"][0]);c.stage.addChild(r),c.stage.addChild(s),s.anchor.set(.5,.5),s.x=c.screen.width/2-50,s.y=c.screen.height/2-100,s.alpha=0,s.scale.x=1.25,s.scale.y=1.25;let l=new PIXI.Container,d={},u=0;c.stage.addChild(l),r.x=c.screen.width/2-180,r.height=20*c.screen.height;let p={x:0,y:0,vx:0,vy:0,box:new PIXI.Graphics,width:30,height:30,acceleration:0},m=[];m.push(r),m.push(s),m.push(p.box);let y=new PIXI.Container;c.stage.addChild(y),m.push(y);let g={},x=h.linear(c.screen.width-60,300,.75),w=0,v=x/2-60,I=0;function S(e,t,i,n){let a=function(){let a=5*t;return a=9*(a<<7|a>>>25),n^=t,t^=i^=e,e^=n,n=n<<11|n>>>21,(a>>>0)/2**32};for(let e=0;e<100;e++)a();return a}let C=function(e){let t=[];for(let i=0;i<4;i++){let n=2**32;for(let t=0;t<4;t++)n-=(e.charCodeAt(t+4*i)+30*i)**4;t.push(n)}return t};if(""==e){let t=function(){return Math.floor(1e6+9999999*Math.random()).toString(36)};e=t()+t()+t()+t()}if(e.length<16){let t="";for(let i=0;i<16;i++)t+=e,e.length/2==Math.floor(e.length/2)&&(t+="}");e=t}let b=C(e),M=S(b[0],b[1],b[2],b[3]);for(let e=0;e<30;e++){let t=new PIXI.Sprite($["Sprites/Clouds"][Math.floor(3*M())]);l.addChild(t),t.anchor.set(.5,.5),t.y=c.screen.height/2+(M()-.5)*c.screen.height-1200*M(),t.orig={y:t.y},t.scale.x=.2+e/150,t.scale.y=.2+e/150,t.x=c.screen.width/2+(M()-.5)*x*h.linear(t.scale.x,1,.5),M()>.5&&(t.scale.x*=-1);let i=t.texture.trim;null==i&&(i=t.texture._frame),t.pivot.y=-i.height,d[u++]=t}let T=0,k=0;function A(t=!1,i=-1){50*Math.floor(I/50)==I&&0!=I&&(e=function(e){let t="";for(let i=0;i<e.length;i++)t+=0==i?e[e.length-1]:e[i-1];return t}(e),b=C(e),M=S(b[0],b[1],b[2],b[3]));let n=120;n*=(Math.cos(I/10)/2+.5+1)/2;let a=(M()-.5)*w;I>200&&M()>.998&&(k=10+Math.floor(40*M())),k>0&&(a=60*Math.round(a/60),T=T>1?1:0),T>0&&(a/=10,n=70);let o=v+a;(o<0||o>x-n)&&(o=v-a),o<0&&(o=0),100*Math.floor(I/100)==I&&(t=!0),t&&(n=x,o=0),o>x-n&&(o=x-n),t&&T>1&&(T=1),k>0&&(n=60);let r={x:o,y:-60*I,width:n,height:40,id:I,transparent:!1,ladder:T>1};t||(v=r.x),w<x&&(w+=12);let s=M()<.01||1==T;1==T&&(r.y+=30),r.boost=s;let l=s?$.inputNineSlice[7]:$.inputNineSlice[6];T>1&&(l=$.inputNineSlice[8]);let d=new PIXI.NineSlicePlane(l,15,15,15,15);d.width=r.width,d.height=0==I?c.screen.height:r.height/4,k>0&&(d.height=60),T>1&&(d.height*=4),d.pivot.x=r.width/2,d.pivot.y=d.height/2,d.x=r.x+d.pivot.x,d.y=r.y+d.pivot.y,d.vy=0,d.vx=0,(M()<.01+I/1e3&&!t||r.ladder&&!t)&&(d.rotation=M()>.5?.1:-.1,r.broken=!0),y.addChild(d),r.sprite=d,d.zIndex=0,g[I]=r,I++,T--,k--,M()<.005&&(T=20+Math.floor(M()*M()*50))}A(),p.x=g[0].x+g[0].width/2-p.width/2,p.y=g[0].y-p.height,p.zIndex=1e4;let E={},L=function(e){let t=e.key.toLowerCase();"ArrowLeft"==e.key&&(t="a"),"ArrowRight"==e.key&&(t="d"),"ArrowUp"==e.key&&(t=" "),"w"==e.key&&(t=" "),E[t]=!0,["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"," "].includes(e.key)&&e.preventDefault()},X=function(e){let t=e.key.toLowerCase();"ArrowLeft"==e.key&&(t="a"),"ArrowRight"==e.key&&(t="d"),"ArrowUp"==e.key&&(t=" "),"w"==e.key&&(t=" "),E[t]=!1},N=0,D=10;for(let e=0;e<10;e++)A();let G=Te(ee.GTTTATINT);if(n.minigameCostumes){let e={a:{d:G.a_.c,e:G.a_.e,f:G.a_.d,g:G.a_.e,h:G.a_.d,i:G.a_.f,j:G.d,k:G.c},c:G.b.b,b:G.b.a};null!=B[n.costume].applyMinigame?B[n.costume].applyMinigame(e):B[n.costume].apply(e)}let U=!1,O=function(){U=!0},R=function(){U=!1};document.addEventListener("keydown",L),document.addEventListener("keyup",X),document.addEventListener("pointerdown",O),document.addEventListener("pointerup",R),G.onNextFrame=function(e){e.a_.gotoAndStop(Math.min(59,Math.max(0,Math.round(30-30*p.acceleration)))),e.b.scale.x=p.acceleration<0?-1:1,e.c.rotation+=-1.5+Math.abs(2*p.acceleration)+Math.abs(p.vy/4),0==p.vy&&e.a_.c.gotoAndStop(1),E.a||E.d||(e.b.gotoAndStop(20),e.b.a.rotation=-Math.abs(p.vy/4),e.b.b.rotation=-Math.abs(p.vy/4)),e.d.rotation=-e.c.rotation},G.play(),G.loop=!0,G.scale.x=.4,G.scale.y=.4;let F=new PIXI.NineSlicePlane($.inputNineSlice[5],15,15,15,15);F.width=(c.screen.width-x)/2,F.height=c.screen.height,F.x=0,F.y=0,c.stage.addChild(F);let _=new PIXI.NineSlicePlane($.inputNineSlice[5],15,15,15,15);function z(e,t,i,a){let o=1;if(null!=n.controllerProfile.GTTTATINT){let i=n.controllerProfile.GTTTATINT;console.log(i),e=i.buttons[a].x+c.screen.width*i.buttons[a].lock,t=i.buttons[a].y+c.screen.height,o=i.buttonScale+.5}let r=new P((function(){}),$["Sprites/GameUI"][i],{x:e,y:t,scale:{x:o,y:o}});r.sprite.on("pointerdown",(function(){E[a]=!0})),r.sprite.on("pointermove",(function(){U&&r.sprite.emit("pointerdown")})),r.sprite.on("pointerout",(function(){r.sprite.emit("pointerup")})),r.sprite.on("pointerup",(function(){E[a]=!1})),c.stage.addChild(r.sprite),m.push(r)}_.width=(c.screen.width-x)/2,_.height=c.screen.height,_.x=c.screen.width-_.width,_.y=0,c.stage.addChild(_),c.touchScreen&&(z(c.screen.width-150,c.screen.height-50,21,"a"),z(c.screen.width-50,c.screen.height-50,22,"d"),z(100,c.screen.height-50,23," ")),y.y=300;let W=Date.now(),j=-1,H=function(){-1!=j&&(Date.now()-W)/1e3>j&&j++,n.minigameMusic&&(te.radiomartini.sourceNode.playbackRate.value=h.linear(te.radiomartini.sourceNode.playbackRate.value,1-p.vy/400+N/80,.01,Qe)),r.y=-r.height+c.screen.height,r.y+=y.y,s.alpha=(y.y-8e3)/1e3,r.y>0&&(r.y=0),r.y<-r.height+c.screen.height&&(r.y=-r.height+c.screen.height),I-640/60<-p.y/60&&A();for(let e in g)parseInt(e)<Math.floor((y.y-c.screen.height)/60)&&(Y.add(Math.max(1,N)),g[e].sprite.destroy(),delete g[e]);p.isOnGround=!1,G.x=p.x+p.width/2,G.y=p.y+p.height,E.d&&(p.acceleration+=.075*Qe),E.a&&(p.acceleration-=.075*Qe),p.vy+=.4*Qe,p.acceleration=h.linear(p.acceleration,0,1-.95,Qe),p.vx+=p.acceleration*Qe,p.vx=h.linear(p.vx,0,1-.8,Qe),p.y+=p.vy*Qe,p.x+=p.vx*Qe;let e=Math.abs(p.vx/40),t=Math.abs(p.vy/40);G.scale.x=.4*(1+e-t),G.scale.y=.4*(1+t-e),(p.x<0||p.x>x-p.width)&&(p.vx/=-1,p.acceleration/=-1),p.x<0&&(p.x=0),p.x>x-p.width&&(p.x=x-p.width);for(let e in g){let t=g[e];if(t.transparent&&(t.sprite.rotation+=(t.rotateTo<0?-.1:.1)*Qe,t.sprite.x+=t.sprite.vx*Qe,t.sprite.y+=t.sprite.vy*Qe,t.sprite.vy+=.2*Qe,t.sprite.vx=h.linear(t.sprite.vx,0,.05)),f(p,t)&&!t.transparent&&(t.ladder||p.vy>0&&p.y<t.y-p.height+(4+p.vy)*Qe)){if(t.broken&&(t.sprite.vy=p.vy/2,t.transparent=!0,t.rotateTo=p.x+p.width/2-t.sprite.x,t.sprite.vx=10*(Math.random()-.5)),t.ladder||(p.y=t.y-p.height,p.isOnGround=!0),p.vy=0,p.max<t.id&&!t.ladder){let e=t.id-p.max;Y.add(10*(e-1)),D--,0==D&&(N++,2==N&&(W=Date.now(),j=0),K.text=o.ui.mph+": "+N,D=10)}p.max=t.id;let e=7;N>=7&&(e*=2),N>=10&&(e*=1.5),N>=16&&(e*=1.5),N>=20&&(e*=2),t.boost&&(e*=2),(E[" "]||t.boost||t.ladder)&&(t.ladder?(p.y-=2*Qe,p.vy-=10):p.vy-=e+Math.abs(1.5*p.vx))}}y.x=c.screen.width/2-x/2,p.y<c.screen.height/2-y.y-200&&(y.y=h.linear(y.y,c.screen.height/2-p.y-200,.1,Qe)),-y.y+c.screen.height<p.y&&!Q&&(Q=!0,te.radiomartini.stopWithStyle(),Fe.blurPan(c.stage,(function(){J()}))),y.y+=N/2*Qe;for(let e in d)d[e].y=d[e].orig.y+y.y*d[e].scale.y/2,d[e].y>c.screen.height&&(d[e].destroy(),delete d[e])},Q=!1;c.ticker.add(H);let V=0,Y=a(V,32);Y.add=function(e){V+=e,t?(Y.text="Set seed",Y.alpha=.2):Y.text=V},Y.add(0),Y.anchor.set(1,0),Y.x=c.screen.width-20-50,Y.y=20,c.stage.addChild(Y);let K=a(o.ui.mph+": 0",32);K.anchor.set(0,0),K.x=20,K.y=20,c.stage.addChild(K),m.push(K),m.push(Y),m.push(_),m.push(F),y.addChild(G),y.sortableChildren=!0,G.zIndex=1e3,m.push(G);let J=function(){for(let e in g)g[e].sprite.destroy();for(let e in d)d[e].destroy(),delete d[e];for(let e=0;e<m.length;e++)m[e].destroy();document.removeEventListener("keydown",L),document.removeEventListener("keyup",X),document.removeEventListener("pointerdown",O),document.removeEventListener("pointerup",R),c.ticker.remove(H),ne.destroyPause(),t||(N>=5?Re(V,Math.floor(V/50)):(Fe.gameList("gtttatint"),Fe.results(V,Math.floor(V/50)))),j>=120&&(Fe.achievementQueue("5minuteGTTTATINT"),B.jockdrop.owned=!0),V>=2763&&Fe.achievementQueue("get2763gtttatint"),V>=15e3&&Fe.achievementQueue("get15000gtttatint"),window.onblur=function(){}};window.onblur=function(){q||ie()};let q=!1,Z=0;function ie(){q=!q,ne.changePause(q),q?(n.inGame=!1,te.radiomartini.pause(),c.ticker.remove(H),G.stop(),Z=-Date.now(),Fe.message(o.ui.gamePaused,$["Sprites/GameUI"][32],(function(){ie()}),(function(){Fe.blurPan(c.stage,(function(){te.radiomartini.stop(),J()}))}),[o.ui.play,o.ui.home],!1)):(Z+=Date.now(),W+=Z,n.inGame=!0,G.play(),n.minigameMusic&&te.radiomartini.play(),c.ticker.add(H))}let ne=Fe.pauseButton((function(){ie()}),.4);c.stage.addChild(ne),ne.x=c.screen.width-40,ne.y=40},cakewalk:function(e="",t=!1){let r=function(){n.minigameMusic&&(te.Pamgaea.play(),te.Pamgaea.sourceNode.playbackRate.value=1.15)};n.minigameMusic&&(te.Pamgaea.play(),te.Pamgaea.sourceNode.playbackRate.value=1.15,te.Pamgaea.on("end",r));let s=new PIXI.Sprite($["Sprites/Rooms"][10]);s.interactive=!0,s.x=c.screen.width/2,s.anchor.set(.5,0);let l=new PIXI.Sprite($["Backgrounds/Starfield"][0]);c.stage.addChild(s),c.stage.addChild(l),l.anchor.set(.5,.5),l.x=c.screen.width/2-50,l.y=c.screen.height/2-100,l.alpha=0,l.scale.x=1.25,l.scale.y=1.25;let d=new PIXI.Container,u={},p=0;c.stage.addChild(d),s.x=c.screen.width/2-180,s.height=20*c.screen.height;let m={x:0,y:0,vx:0,vy:0,box:new PIXI.Graphics,width:30,height:30,acceleration:0},y=[];y.push(s),y.push(l),y.push(m.box);let g=new PIXI.Container;c.stage.addChild(g),y.push(g);let f=360;if(""==e){let t=function(){return Math.floor(1e6+9999999*Math.random()).toString(36)};e=t()+t()+t()+t()}if(e.length<16){let t="";for(let i=0;i<16;i++)t+=e,e.length/2==Math.floor(e.length/2)&&(t+="}");e=t}let x=function(e){let t=[];for(let i=0;i<4;i++){let n=2**32;for(let t=0;t<4;t++)n-=(e.charCodeAt(t+4*i)+30*i)**4;t.push(n)}return t}(e),w=function(e,t,i,n){let a=function(){let a=5*t;return a=9*(a<<7|a>>>25),n^=t,t^=i^=e,e^=n,n=n<<11|n>>>21,(a>>>0)/2**32};for(let e=0;e<100;e++)a();return a}(x[0],x[1],x[2],x[3]);for(let e=0;e<30;e++){let t=new PIXI.Sprite($["Sprites/Clouds"][Math.floor(3*w())]);d.addChild(t),t.anchor.set(.5,.5),t.y=c.screen.height/2+(w()-.5)*c.screen.height-1200*w(),t.orig={y:t.y},t.scale.x=.2+e/150,t.scale.y=.2+e/150,t.x=c.screen.width/2+(w()-.5)*f*h.linear(t.scale.x,1,.5),w()>.5&&(t.scale.x*=-1);let i=t.texture.trim;null==i&&(i=t.texture._frame),t.pivot.y=-i.height,u[p++]=t}m.zIndex=1e4;let I={},C=function(e){I[e.key.toLowerCase()]=!0},b=function(e){I[e.key.toLowerCase()]=!1},M=!1,P=function(){M=!0},T=function(){M=!1};document.addEventListener("keydown",C),document.addEventListener("keyup",b),document.addEventListener("pointerdown",P),document.addEventListener("pointerup",T);let k=new PIXI.NineSlicePlane($.inputNineSlice[12],2,2,2,2);k.width=(c.screen.width-f)/2,k.height=c.screen.height,k.x=0,k.y=0,c.stage.addChild(k);let A=new PIXI.NineSlicePlane($.inputNineSlice[12],2,2,2,2);A.width=(c.screen.width-f)/2,A.height=c.screen.height,A.x=c.screen.width-A.width,A.y=0,c.stage.addChild(A),g.y=300;let E={},L=0,X=-1,N=-1,D=!0;function G(){let e={x:0,y:-1==X?0:X.y-100,width:-1==X?200:X.width,height:50,speed:1,scaleTimer:0};D&&(e.x=f-e.width,e.speed*=-1),e.width<=100&&(e.x=D?X.x+X.width+40:X.x-e.width-40),e.x<0&&(e.x=0),e.x>f+e.width&&(e.x=f+e.width),D=!D,e.original={y:e.y},-1==X&&(e.scaleTimer=110,e.x=80),e.previous=X,X=e,e.container=new PIXI.Container,e.container.x=e.x,e.container.y=e.y,g.addChild(e.container),e.setWidth=function(t,o){i.width=t,i.tilePosition.x+=o,e.width=t,a.width=t,n.width=t,n.tilePosition.x+=o,i.pivot.x=e.width/2,i.pivot.y=e.height/2,i.x=i.pivot.x,i.y=i.pivot.y},e.destroy=function(){n.destroy(),a.destroy(),i.destroy(),e.container.destroy(),delete E[e.id]};let t=3*Math.floor(3*Math.random());e.texture=t;let i=new PIXI.TilingSprite($["Sprites/CakeSlicePlane"][1+t]);i.pivot.x=e.width/2,i.pivot.y=e.height/2,i.x=i.pivot.x,i.y=i.pivot.y,i.clampMargin=1,i.width=e.width,i.height=50,e.container.addChild(i),e.sprite=i;let n=new PIXI.TilingSprite($["Sprites/CakeSlicePlane"][2+t]);n.y=-90,n.clampMargin=1,e.container.roundPixels=!0,n.width=e.width,n.height=90,i.addChild(n);let a=new PIXI.NineSlicePlane($["Sprites/CakeSlicePlane"][0+t]);i.addChild(a),a.width=e.width,a.height=50,e.id=L,E[L]=e,N=L,L++}let U=new PIXI.NineSlicePlane($.inputNineSlice[13]);g.addChild(U),U.x=-20,U.y=50,U.width=400,U.height=c.screen.height,s.on("pointerdown",(function(){E[N].dropping||(E[N].dropping=!0,E[N].speed=0,E[N].animationTimer=0)})),G(),G();let O=!1,R=0,F={},_=0,z=0,W=function(){if(E[N].x+=E[N].speed*Qe,(E[N].x>f-E[N].width||E[N].x<0)&&(E[N].speed*=-1),E[N].x>f-E[N].width&&(E[N].x=f-E[N].width),E[N].x<0&&(E[N].x=0),E[N].container.x=E[N].x,E[N].dropping){E[N].y=E[N].original.y+eases.easeInQuad(E[N].animationTimer,0,50,24),E[N].container.y=E[N].y,E[N].animationTimer+=Qe;let e=E[N],t=E[N].previous;if((e.x-t.x>t.width||t.x-e.x>e.width)&&(E[N].sprite.rotation=eases.easeInQuad(E[N].animationTimer,0,8,100),O||(O=!0,Z.interactive=!1,setTimeout((function(){Fe.blurPan(c.stage,(function(){K()}))}),500))),E[N].animationTimer>24)if(e.x-t.x>t.width||t.x-e.x>e.width);else{E[N].sprite.scale.x=1,E[N].sprite.scale.y=1,E[N].y=E[N].original.y+50,E[N].container.y=E[N].y;let n=0;Math.abs(t.x-e.x)<30&&(n=o.score.nice),Math.abs(t.x-e.x)<10&&(n=o.score.good);let a={x:e.x,y:e.y,width:100,height:50,vy:0,vx:0,vr:0},r=4;if(e.width<8&&(r=2),Math.abs(t.x-e.x)<r?(a=-1,n=o.score.perfect,e.x=t.x,V.add(100),R++,z++,_<z&&(_=z),R>=3&&e.width<=200&&(e.x-=20,e.width+=40,e.setWidth(e.width,20),e.container.x=e.x,R=1)):(R=0,z=0,V.add(Math.max(10,100-Math.floor(Math.abs(t.x-e.x)))),t.x<e.x&&(e.width-=e.x-t.x,e.setWidth(e.width,0),e.x=t.x+t.width-e.width,a.width=e.x-t.x,a.x=e.x+e.width,a.vx=2+2*Math.random(),a.vr=5+5*Math.random()),t.x>e.x&&(a.width=-(e.x-t.x),e.width-=t.x-e.x,e.setWidth(e.width,e.x-t.x),e.x=t.x,a.x=e.x-a.width,a.vx=2*-Math.random()-2,a.vr=-5-5*Math.random()),a.vy=2*-Math.random()-2),i.hunger+=e.width/1200,e.container.x=e.x,Y.text=o.ui.altitude+": "+L,500==L&&(Fe.achievementQueue("750altitudeCAKEWALK"),B._td_costume6.owned=!0),1e3==L&&Fe.achievementQueue("1000altitudeCAKEWALK"),-1!=a){let t=new PIXI.Container;t.x=a.x,t.y=a.y,g.addChild(t);let i=new PIXI.TilingSprite($["Sprites/CakeSlicePlane"][1+e.texture]);i.clampMargin=1,i.width=a.width,i.height=a.height,i.pivot.x=a.width/2,i.pivot.y=a.height/2,i.x=i.pivot.x,i.y=i.pivot.y,t.addChild(i);let n=new PIXI.NineSlicePlane($["Sprites/CakeSlicePlane"][0+e.texture]);i.addChild(n),n.width=a.width,n.height=50,a.sprite=i,a.container=t,a.id=N,F[N]=a,a.destroy=function(){delete F[a.id],n.destroy(),i.destroy(),t.destroy()}}G(),j.text=n,0!=n&&(j.animationTimer=0,j.rotateTo=D?1:-1)}}j.alpha=eases.easeInQuad(Math.min(100,j.animationTimer),1,-1,50),j.scale.x=eases.easeOutQuad(Math.min(100,j.animationTimer),1,.5,30),j.scale.y=eases.easeOutQuad(Math.min(110,j.animationTimer),1,.5,30),j.rotation=eases.easeInQuad(Math.min(110,j.animationTimer),0,.1*j.rotateTo,40),j.animationTimer+=Qe;for(let e in E){let t=E[e];E[e].sprite.scale.x=eases.easeOutElastic(Math.min(90,E[e].scaleTimer),.1,.9,90),E[e].sprite.scale.y=eases.easeOutElastic(Math.min(80,E[e].scaleTimer),.1,.9,80),E[e].scaleTimer+=Qe,t.container.transform.worldTransform.ty>c.screen.height&&t.destroy()}for(let e in F){let t=F[e];t.x+=t.vx,t.y+=t.vy,t.sprite.rotation+=t.vr/100,t.vy+=.4,t.vx=h.linear(t.vx,0,.02,Qe),t.container.x=t.x,t.container.y=t.y,t.container.transform.worldTransform.ty>c.screen.height+100&&t.destroy()}s.y=-s.height+c.screen.height,s.y+=g.y,l.alpha=(g.y-8e3)/1e3,s.y>0&&(s.y=0),s.y<-s.height+c.screen.height&&(s.y=-s.height+c.screen.height),g.x=c.screen.width/2-180,g.y=h.linear(g.y,c.screen.height/2-E[N].original.y-100,.05,Qe);for(let e in u)u[e].y=u[e].orig.y+g.y*u[e].scale.y/2,u[e].y>c.screen.height&&(u[e].destroy(),delete u[e]);H.offset=h.linear(H._offset,i.hunger/100,.04,Qe)},j=a("Bruh",32,"center");c.stage.addChild(j),j.x=c.screen.width/2,j.y=c.screen.height/2+200;let H=new S($["Sprites/GameUI"][4],$["Sprites/GameUI"][3],i.hunger/100);H.buttonContainer.x=60,H.buttonContainer.y=c.screen.height-60,H.buttonContainer.scale.x=.8,H.buttonContainer.scale.y=.8,c.stage.addChild(H.buttonContainer),v(H.buttonContainer,(function(){})),H.selected.visible=!1,c.ticker.add(W);let Q=0,V=a(Q,32);V.add=function(e){Q+=e,t?(V.text="Set seed",V.alpha=.2):V.text=Q},V.add(0),V.anchor.set(1,0),V.x=c.screen.width-20-50,V.y=20,c.stage.addChild(V);let Y=a(o.ui.altitude+": 1",32);Y.anchor.set(0,0),Y.x=20,Y.y=20,c.stage.addChild(Y),y.push(Y),y.push(V),y.push(A),y.push(k),g.sortableChildren=!0;let K=function(){j.destroy(),H.destroy(),te.Pamgaea.release=.5,n.minigameMusic&&te.Pamgaea.off("end",r),te.Pamgaea.stop();for(let e in E)E[e].destroy();for(let e in F)F[e].destroy();for(let e in u)u[e].destroy(),delete u[e];for(let e=0;e<y.length;e++)y[e].destroy();document.removeEventListener("keydown",C),document.removeEventListener("keyup",b),document.removeEventListener("pointerdown",P),document.removeEventListener("pointerup",T),c.ticker.remove(W),Fe.gameList("cakewalk"),Z.destroyPause(),t||setTimeout((function(){Fe.results(Q,Math.floor(Q/50)),_>=10&&Fe.achievementQueue("get10perfectsCAKEWALK")}),100),window.onblur=function(){}};window.onblur=function(){J||q()};let J=!1;function q(){J=!J,Z.changePause(J),J?(n.inGame=!1,c.ticker.remove(W),n.minigameMusic&&(te.Pamgaea.release=.2,te.Pamgaea.pause()),Fe.message(o.ui.gamePaused,$["Sprites/GameUI"][32],(function(){q()}),(function(){Fe.blurPan(c.stage,(function(){K()}))}),[o.ui.play,o.ui.home],!1)):(n.minigameMusic&&(te.Pamgaea.play(),te.Pamgaea.sourceNode.playbackRate.value=1.15),n.inGame=!0,c.ticker.add(W))}let Z=Fe.pauseButton((function(){q()}),.4);c.stage.addChild(Z),Z.x=c.screen.width-40,Z.y=40},dropdodge:function(){let e=new PIXI.Sprite($["Sprites/RepeatingUI"][3]);e.interactive=!0,c.stage.addChild(e),e.width=c.screen.width,e.height=c.screen.height;let t={x:0,y:0,vx:0,vy:0,box:new PIXI.Graphics,width:30,height:50,acceleration:0},i=[];i.push(e),i.push(t.box);let n=new PIXI.Container;c.stage.addChild(n),i.push(n);let o={},r=3e3;t.x=0,t.y=0,t.zIndex=1e4;let s={},l=function(e){s[e.key]=!0},d=function(e){s[e.key]=!1},u=0,p=15;for(let e=0;e<1e4;e++);let m=Te(ee.GTTTATINT),y=!1,g=function(){y=!0},x=function(){y=!1};document.addEventListener("keydown",l),document.addEventListener("keyup",d),document.addEventListener("pointerdown",g),document.addEventListener("pointerup",x),m.onNextFrame=function(e){s.w||s.a||s.s||s.d||(e.goto(0),e.b.gotoAndStop(20)),e.a_.gotoAndStop(Math.min(59,Math.max(0,Math.round(30-30*t.acceleration)))),e.b.scale.x=t.acceleration<0?-1:1,e.c.rotation+=-1.5+Math.abs(2*t.acceleration),0==t.vy&&e.a_.c.gotoAndStop(1),e.d.rotation=-e.c.rotation},m.play(),m.loop=!0,m.scale.x=.4,m.scale.y=.4;let w=new PIXI.NineSlicePlane($.inputNineSlice[5],15,15,15,15);w.width=100,w.height=r,w.x=r,w.y=0,n.addChild(w);let v=new PIXI.NineSlicePlane($.inputNineSlice[5],15,15,15,15);v.width=100,v.height=r,v.x=-100,v.y=0,n.addChild(v);let I=new PIXI.NineSlicePlane($.inputNineSlice[5],15,15,15,15);I.width=r,I.height=100,I.x=0,I.y=-100,n.addChild(I);let S=new PIXI.NineSlicePlane($.inputNineSlice[5],15,15,15,15);S.width=r,S.height=100,S.x=0,S.y=r,n.addChild(S);let C=function(){t.y;for(let e in o)parseInt(e)<Math.floor((n.y-640)/1)&&(P.add(Math.max(1,u)),o[e].sprite.destroy(),delete o[e]);t.isOnGround=!1,m.x=t.x+t.width/2,m.y=t.y+t.height;let e=.4;s.d&&(t.vx+=e),s.a&&(t.vx-=e),s.w&&(t.vy-=e),s.s&&(t.vy+=e),t.acceleration=h.linear(t.acceleration,t.vx/5,.5,Qe),t.vx*=.9,t.vy*=.9,t.y+=t.vy,t.x+=t.vx;let i=Math.abs(t.vx/40/4),a=Math.abs(t.vy/40/4);m.scale.x=.4*(1+i-a),m.scale.y=.4*(1+a-i),(t.x<0||t.x>r-t.width)&&(t.vx/=-1,t.acceleration/=-1),(t.y<0||t.y>r-t.height)&&(t.vy/=-1),t.x<0&&(t.x=0),t.y<0&&(t.y=0),t.x>r-t.width&&(t.x=r-t.width),t.y>r-t.height&&(t.y=r-t.height);for(let e in o){let i=o[e];if(f(t,i)&&t.vy>0&&t.y<i.y-t.height+4+t.vy){if(t.y=i.y-t.height,t.isOnGround=!0,t.vy=0,t.max<i.id){let e=i.id-t.max;P.add(10*(e-1)),p--,0==p&&(u++,T.text="mph: "+u,p=10)}t.max=i.id;let e=7;u>=7&&(e*=2),u>=10&&(e*=1.5),u>=16&&(e*=1.5),u>=20&&(e*=2),s[" "]&&(t.vy-=e+Math.abs(1.5*t.vx))}}n.x=h.linear(n.x,c.screen.width/2-t.x,.2,Qe),n.y=h.linear(n.y,c.screen.height/2-t.y,.2,Qe),-n.y+c.screen.height<t.y&&!b&&(b=!0,Fe.blurPan(c.stage,(function(){k()}))),n.y+=u/2},b=!1;c.ticker.add(C);let M=0,P=a(M,32);P.add=function(e){M+=e,P.text=M},P.anchor.set(1,0),P.x=c.screen.width-20,P.y=20,c.stage.addChild(P);let T=a("mph: 0",32);T.anchor.set(0,0),T.x=20,T.y=20,c.stage.addChild(T),i.push(T),i.push(P),i.push(S),i.push(w),n.addChild(m),i.push(m);let k=function(){for(let e in o)o[e].sprite.destroy();for(let e=0;e<i.length;e++)i[e].destroy();document.removeEventListener("keydown",l),document.removeEventListener("keyup",d),document.removeEventListener("pointerdown",g),document.removeEventListener("pointerup",x),c.ticker.remove(C),Fe.gameList(),Fe.results(M,Math.floor(M/50))}},results:function(e=10,i=50,r=-1,s=o.ui.score){let l=Fe.blackTint(.2);l.start();let d=new PIXI.NineSlicePlane($.inputNineSlice[2]);d.width=200,d.height=200,d.x=c.screen.width/2,d.y=c.screen.height/2,d.pivot.set(d.width/2,d.height/2),c.stage.addChild(d);let u=new PIXI.BitmapText(-1==r?o.ui.gameOver:r,{fontName:"ShagBlack",fontSize:24});u.anchor.set(.5,0),u.x=d.width/2,u.y=30,d.addChild(u);let p=d.width/2,m=a(s+": "+e,20,"center",void 0,1);m.x=p,m.y=u.y+70,-1==r&&d.addChild(m),[].push(m);let y=0,f=new PIXI.Container,x=new PIXI.Sprite($["Sprites/GameUI"][14]);f.addChild(x),x.x=0,x.y=0,x.scale.x=.75,x.scale.y=.75,x.anchor.set(.5,.5),y+=x.texture.trim.width/2*x.scale.x;let w=a(i,20,"left","center",1);w.anchor.set(0,.5),w.x=y+10,w.y=-2,y+=w.width,f.addChild(w),f.x=p-y/2,f.y=u.y+50,d.addChild(f);let v={},I=0,S=Math.min(1e4,i),C=!1,b=new M((function(){C||(C=!0,i>0&&n.sfx&&(te.collect.stop(),te.collect.play()),function(){for(let e=0;e<S;e++){let e=new PIXI.Sprite($["Sprites/GameUI"][14]);e.scale.x=.4+.5*Math.random(),e.scale.y=e.scale.x,e.anchor.set(.5,.5),e.y=x.transform.worldTransform.ty,e.vr=Math.random()-.5,e.facing=Math.random()*Math.PI*2;let t=1+8*Math.random();e.vx=t*Math.cos(e.facing),e.vy=t*Math.sin(e.facing),e.x=x.transform.worldTransform.tx,c.stage.addChild(e),v[I++]=e}0!=S&&(x.visible=!1),setTimeout((function(){t.coins+=i,W()}),500),k()}())}),20,d.height-20,d.width-40,30,o.ui.continue,0,0,1,1,"center");d.addChild(b.element);let P=0,T=Math.random()-.5,k=function(){b.interactive=!1,A.x=d.x,A.y=d.y,A.rotation=d.rotation,A.scale=d.scale,d.closing=!0,P=0},A={x:c.screen.width/2,y:c.screen.height/2,rotation:T,scale:.5};d.onDestroyed=function(){},d.destroyBook=function(){d.onDestroyed(),c.ticker.remove(L),b.destroy(),x.destroy(),w.destroy(),d.destroy({children:!0})};let E=function(){for(let e in v){let t=v[e];t.y+=t.vy*Qe,t.x+=t.vx*Qe;let i=50,n=50;t.facing=Math.atan2(n-t.y,i-t.x);let a=8,o=g(t.x,t.y,i,n);o<50?(t.vx=a*Math.cos(t.facing),t.vy=a*Math.sin(t.facing)):(t.vx=h.linear(t.vx,a*Math.cos(t.facing),.02,Qe),t.vy=h.linear(t.vy,a*Math.sin(t.facing),.02,Qe)),t.rotation+=t.vr/10*Qe,o<5*Qe&&(t.destroy(),S--,delete v[e]),S<=0&&c.ticker.remove(E)}},L=function(){if(d.closing){if(d.y=ease[16](Math.min(40,P),A.y,-A.y+c.screen.height+500,40),d.rotation=ease[1](Math.min(70,P),A.rotation,T,70),P>40)return l.end(),void d.destroyBook()}else d.x=ease[17](Math.min(80,P),A.x,0,80),d.y=ease[8](Math.min(70,P),A.y,-20,70),d.rotation=window.eases.easeOutElastic(Math.min(100,P),A.rotation,-T,100),d.scale.x=window.eases.easeOutElastic(Math.min(90,P),A.scale,.5,90);d.scale.y=d.scale.x,P+=Qe};return c.ticker.add(L),c.ticker.add(E),d},message:function(e,t=-1,i=function(){},n=-1,a,o=!0){let r=Fe.blackTint(.2,o);r.start();let s=new PIXI.NineSlicePlane($.inputNineSlice[2]);s.width=Math.max(320,c.screen.width/2),s.x=c.screen.width/2,s.y=c.screen.height/2,c.stage.addChild(s);let l=0;-1==t&&(l+=-70);let d,h=new PIXI.BitmapText(e,{fontName:"ShagBlack",fontSize:24,breakWords:!0,wordWrap:!0,wordWrapWidth:200,maxWidth:s.width-90-30-l,whiteSpace:"normal"});s.height=h.height+90,h.anchor.set(0,.5),h.x=110+l,h.y=s.height/2-10,s.addChild(h),-1!=t&&(d=new PIXI.Sprite(t),s.addChild(d),d.anchor.set(.5,.5),d.y=s.height/2-10,d.x=60,d.scale.x=.8,d.scale.y=.8);let u=0;-1!=n&&(s.height+=40),s.pivot.set(s.width/2,s.height/2);let p,m,y,g=Math.random()-.5,f=function(){s.closing||(w.x=s.x,w.y=s.y,w.rotation=s.rotation,w.scale=s.scale,s.closing=!0,u=0)};-1==n?(p=Fe.exitButton(f,s.width-20,20,.3,.1),p.sprite.alpha=0,s.addChild(p.sprite),p.interactive=!1,p.show=!1,setTimeout((function(){p.show=!0,p.sprite.interactive=!0}),500)):(m=new M((function(){x=0,f()}),15,s.height-15,s.width/2-20,30,a[0],0,0,1,1,"center"),s.addChild(m.element),y=new M((function(){i=n,f()}),s.width-15,s.height-15,s.width/2-20,30,a[1],0,1,1,1,"center"),s.addChild(y.element));let x=0,w={x:c.screen.width/2,y:c.screen.height/2,rotation:g,scale:.5};s.onDestroyed=function(){},s.destroyBook=function(){s.onDestroyed(),c.ticker.remove(v),-1==n?p.destroy():(m.destroy(),y.destroy()),h.destroy(),-1!=t&&d.destroy(),s.destroy({children:!0}),i()};let v=function(){if(-1==n&&(p.show&&(p.sprite.alpha+=.05),p.sprite.alpha>=1&&(p.sprite.alpha=1,p.show=!1)),s.closing){if(s.y=ease[16](Math.min(40,u),w.y,-w.y+c.screen.height+500,40),s.rotation=ease[1](Math.min(70,u),w.rotation,g,70),u>40)return r.end(),void s.destroyBook()}else s.x=ease[17](Math.min(80,u),w.x,0,80),s.y=ease[8](Math.min(70,u),w.y,-20,70),s.rotation=window.eases.easeOutElastic(Math.min(100,u),w.rotation,-g,100),s.scale.x=window.eases.easeOutElastic(Math.min(90,u),w.scale,.5,90);s.scale.y=s.scale.x,u+=Qe};return c.ticker.add(v),s.exit=f,s},wardrobe:function(e=function(){}){let r=new PIXI.Sprite($["Sprites/Rooms"][7]);c.stage.addChild(r),r.interactive=!0,r.x=c.screen.width/2,r.y=c.screen.height/2,r.anchor.set(.5,.5),r.scale.x=1,r.scale.y=1;let l=new PIXI.Container;c.stage.addChild(l);let d=0,u=Fe.coinCounter();l.addChild(u);let p=t.coins;u.x=20,u.y=20;let g={},f=0,x=0,w=0,v=[],I=a("",32,"center");I.x=c.screen.width/2,I.y=c.screen.height-150;let S=n.costume,C={},b=new PIXI.Container,P=new PIXI.Graphics;b.mask=P,c.stage.addChild(b),b.x=40,b.y=80;let T=c.screen.width-80,k=c.screen.height-300;P.beginFill(0),P.drawRect(b.x,b.y,T,k),P.endFill(),b.interactive=!0,b.on("pointerdown",(function(e){let t=e.clientY/s;b.dragOffset={y:t-b.y},b.prevY=b.y,b.vy=0,b.scrolling=!0}));let A=function(e){if(!b.scrolling)return;let t=e.clientY/s;b.prevY=b.y,b.y=t-b.dragOffset.y},E=function(){b.scrolling=!1};document.addEventListener("pointermove",A),document.addEventListener("pointerup",E),b.vy=0;let L=0,X=function(){let e=124*-L+80-50+k;b.vy=h.linear(b.vy,0,.05,Qe),b.scrolling?b.vy=b.y-b.prevY:b.y+=b.vy,N.targetAlpha=1,b.y>=80&&(b.y=80,b.vy=0),b.y<=e&&(N.targetAlpha=0,b.y=e,b.vy=0),N.alpha=h.linear(N.alpha,N.targetAlpha,.1,Qe)};c.ticker.add(X);let N=new PIXI.Sprite($["Sprites/Rooms"][11]);c.stage.addChild(N),N.x=b.x,N.y=b.y+k-90,N.width=T,N.height=100;for(let e in B){let r=B[e];if(r.hidden)continue;if(r.secret&&!r.owned)continue;let s=!1;null!=r.checkAvailability&&r.checkAvailability()&&(r.owned=!0),null!=He.costumes[e]&&He.costumes[e].expiry>Date.now()&&0==r.owned&&(s=!0,r.discount=He.costumes[e]),L++;let l=!1;r.owned||-1!=r.cost||(l=!0);let h=new M((function(){I.text=""}),0,0+124*d,T,120,"",0,0,0,l?11:3);C[e]=h,h.element.interactive=!1,b.addChild(h.element);let y=new PIXI.Rectangle(0,0,0,0);if(-1!=r.sprite){let e=new PIXI.Sprite($["Sprites/Poses"][r.sprite]);if(e.scale.x=.5,e.scale.y=.5,e.hitArea=y,h.element.addChild(e),e.anchor.set(.5,.5),e.x=50,e.y=60,l){let t=new PIXI.ColorMatrixFilter;t.matrix=[.5,0,0,0,0,0,.5,0,0,0,0,0,.5,0,0,0,0,0,1,0],t.blackAndWhite(1),e.filters=[t]}}let P,k,A=a(r.name,24,"left","middle");if(l&&(A.text="???"),A.x=100,A.y=20,h.element.addChild(A),null!=r.artist){let e=a(o.ui.artist+": "+r.artist.name,12,"left","middle");e.x=100,e.y=50,h.element.addChild(e)}if(A.width>T-50&&(A.width=T-50),A.scale.y=A.scale.x,r.owned||l)P=a(o.ui.owned,16),l&&(P.text=""),P.x=100,P.scale.y=P.scale.x,P.y=50+(16*-P.scale.y+16)/2+(null==r.artist?0:15),h.element.addChild(P);else{if(P=a(r.cost,16),P.x=130,P.width>60&&(P.width=60),P.scale.y=P.scale.x,P.y=50+(16*-P.scale.y+16)/2+(null==r.artist?0:15),h.element.addChild(P),v.push(P),s){let e=new PIXI.NineSlicePlane($.inputNineSlice[18],15,15,15,15);e.x=P.x-3,e.y=P.y+7,e.width=P.width+6,e.height=P.height-11,h.element.addChild(e),v.push(e);let t=a(r.cost*r.discount.price,16);t.x=130,t.width>60&&(t.width=60),t.scale.y=t.scale.x,t.y=P.y+20,h.element.addChild(t),v.push(t);let i=a(Ue(r.discount.expiry-Date.now()),16);i.y=100,i.x=20;let n=setInterval((function(){s&&(i.text=Ue(r.discount.expiry-Date.now()),Date.now()>r.discount.expiry&&(s=!1,t.destroy(),i.destroy(),e.destroy()))}),1e3);P.destroyDiscount=function(){t.destroy(),i.destroy(),e.destroy()},Oe.push(n),h.element.addChild(i)}k=new PIXI.Sprite($["Sprites/GameUI"][14]),h.element.addChild(k),k.x=110,k.y=60+(null==r.artist?0:15),k.scale.x=.75,k.scale.y=.75,k.anchor.set(.5,.5),k.hitArea=y,v.push(k),-1==r.sprite&&(k.x-=80),0==r.cost&&(P.text="FREE",P.x=100,k.visible=!1)}if(-1==r.sprite&&(P.x-=80,A.x-=80),!r.owned){let e=new M((function(){if(r.requiredLevel>n.level)return void Fe.message("You need atleast level "+r.requiredLevel+" to buy this item!",$["Sprites/GameUI"][35]);if(-1==r.cost){if("object"==typeof r.achievement){let e=m[r.achievement[0]].name;for(let t=1;t<r.achievement.length;t++)console.log(m[r.achievement[t]]),e+=(t==r.achievement.length-1?'" and "':'", "')+m[r.achievement[t]].name;Fe.message(o.message.obtainCostume(e),$["Sprites/GameUI"][m[r.achievement[0]].icon])}else Fe.message(o.message.obtainCostume(m[r.achievement].name),$["Sprites/GameUI"][m[r.achievement].icon]);return}let a=r.cost;if(s&&(a=r.cost*r.discount.price),a>p)return x<.01&&(w=0),x=2,I.text="Not enough coins!",I.alpha=2,void(n.sfx&&(te.fail.stop(),te.fail.play()));s&&P.destroyDiscount();let l=Math.floor(Math.max(600,a)/6);i.happiness+=40-a/100,i.progress+=50;let d=Math.floor(a/10),h=d/l;setTimeout((function(){if(n.sfx){if(0==a)return;a>500?te.coinlarge.play():a>100?te.coinmedium.play():te.coinsmall.play()}}),750);let y=setInterval((function(){if(h<=0||O)clearInterval(y);else{h--;for(let e=0;e<(h<=0?d%l:l);e++){let e=new PIXI.Sprite($["Sprites/GameUI"][14]);e.scale.x=.4+.5*Math.random(),e.scale.y=e.scale.x,e.anchor.set(.5,.5),e.y=u.y+20,e.vr=Math.random()-.5,e.vy=20*(Math.random()-.6),e.vx=20*(Math.random()-.1),e.x=u.x+20,c.stage.addChild(e),g[f++]=e}}}),1e3/24);r.owned=!0,n.sfx&&(te.purchase.stop(),te.purchase.play()),e.destroy(),X.element.y+=30,X.inputText.text=o.ui.wear,p-=a,t.coins=p,k.destroy(),P.text=o.ui.owned,r.owned=!0,0!=r.cost&&(P.x-=30),E()}),T-10,110,80,20,l?o.ui.info:o.ui.get,0,1,1,4,"center");h.element.addChild(e.element)}let E=function(){if(S!=e&&("Look"==_.currentPart?_.onAnimationEnd=function(){_.gotoPart("Look2"),_.onAnimationEnd=function(){_.currentPart=-1}}:(_.gotoPart("Look2"),_.onAnimationEnd=function(){_.currentPart=-1}),U=0,S=e,null!=_.destroyCostume&&(_.destroyCostume(),_.destroyCostume=void 0),r.apply(_),R=1,r.owned)){for(let e in C)C[e].wear.inputText.text==o.ui.wearing&&(C[e].wear.inputText.text=o.ui.wear);n.costume=e,X.inputText.text=o.ui.wearing}},X=new M(E,T-10,110-(r.owned?0:30),80,20,r.owned?n.costume==e?o.ui.wearing:o.ui.wear:o.ui.preview,0,1,1,4,"center");if(h.wear=X,l||h.element.addChild(X.element),v.push(A),v.push(h),r.requiredLevel>n.level){let e=new PIXI.NineSlicePlane($.inputNineSlice[14]);e.tint=0,e.width=h.element.width,e.height=h.element.height,h.element.addChild(e),e.alpha=.8,e.interactive=!0;let t=new PIXI.Sprite($["Sprites/GameUI"][41]);t.x=h.element.height/2,t.y=h.element.height/2,t.anchor.set(.5,.5),t.scale.x=.75,t.scale.y=.75,h.element.addChild(t),t.hitArea=y;let i=a("LEVEL "+r.requiredLevel,24,"left","middle");i.x=h.element.height/2+40,i.y=h.element.height/2-2,i.width>h.element.width-i.x-20&&(i.width=h.element.width-i.x-20,i.scale.y=i.scale.x),h.element.addChild(i)}d++}let D=a(o.ui.comingsoon,24,"center");b.addChild(D),D.x=T/2,D.y=124*L+20;let G=Fe.exitButton((function(){e(),W(),Fe.flash(!1,H)}),c.screen.width-40,40,.4,0);c.stage.addChild(G.sprite);let U=50;l.origX=0,l.time=50;let O=!1,R=0,F=function(){for(let e in g){let t=g[e];t.y+=t.vy*Qe,t.x+=t.vx*Qe,t.vy+=.5*Qe,t.vx=h.linear(t.vx,0,.05,Qe),t.rotation+=t.vr/10*Qe,t.y>c.screen.height+200&&(t.destroy(),delete g[e])}j.matrix=[1-R,0,0,0,R,0,1-R,0,0,R,0,0,1-R,0,R,0,0,0,1,0],j.resolution=s,R=h.linear(R,0,.05,Qe),U<180&&U++,_.scale.x=window.eases.easeOutElastic(U,.9,-.15,180),_.scale.y=window.eases.easeOutElastic(U,.7,.05,180),O||(u.updateCounter(h.linear(u.getCounterAmount(),p,.1,Qe)),l.x=0,x>.01&&(l.x+=Math.cos(w)*x*5,w+=.5*Qe,x=h.linear(x,0,.1,Qe)),I.alpha>0&&(I.alpha-=.04))};c.ticker.add(F);let _=Te(ee.Teardrop,y.Teardrop),z=new PIXI.Rectangle(-60,-160,120,180);_.hitArea=z,_.interactive=!0,_.on("pointerup",(function(){n.totalSlaps++,2763==n.totalSlaps&&(Fe.achievementQueue("slapTD2763"),W());let e=1+Math.floor(4*Math.random());te.wave.stop(),n.sfx&&(te["slap"+e].attack=0,te["slap"+e].stop(),te["slap"+e].play()),_.gotoPart("Slap"),_.currentPart=-1})),_.onAnimationEnd=function(){_.currentPart=-1},i.sleep<20&&(_.visible=!1),B[n.costume].apply(_),c.stage.addChild(_),_.x=c.screen.width/2,_.y=c.screen.height/2+250,_.scale.x=.8,_.scale.y=.8,_.play(60),_.gotoPart("Look");let j=new PIXI.ColorMatrixFilter;function H(){for(let e=0;e<Oe.length;e++)clearInterval(Oe[e]);c.ticker.remove(X),document.removeEventListener("pointermove",A),document.removeEventListener("pointerup",E);for(let e in g)null!=g[e].destroy&&g[e].destroy(),delete g[e];I.destroy(),G.destroy(),r.destroy();for(let e=0;e<v.length;e++)v[e].destroyed||v[e].destroy();u.destroyCounter(),null!=_.destroyCostume&&(_.destroyCostume(),_.destroyCostume=void 0),_.destroyAnimation(),c.ticker.remove(F),O=!0}j.matrix=[0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0],_.filters=[j],c.stage.addChild(I),v.push(N),v.push(b),v.push(P)},achievements:function(e=function(){}){let t=new PIXI.Sprite($["Sprites/Rooms"][18]);c.stage.addChild(t),t.interactive=!0,t.x=c.screen.width/2,t.y=c.screen.height/2,t.anchor.set(.5,.5),t.scale.x=1,t.scale.y=1;let i=new PIXI.Container;c.stage.addChild(i);let r={},l=0,d=0,u=[],p=0;for(let e in m)m[e].done&&p++;let y=new PIXI.BitmapText(o.ui.achievements+": "+p+"/"+Object.keys(m).length,{fontSize:32,fontName:"arial"});y.x=40,y.y=20,y.width>c.screen.width-130&&(y.width=c.screen.width-130,y.scale.y=y.scale.x),c.stage.addChild(y);let g=a("",32,"center");g.x=c.screen.width/2,g.y=c.screen.height-150,n.costume;let f=new PIXI.Container,x=new PIXI.Graphics;f.mask=x,c.stage.addChild(f),f.x=40,f.y=80;let w=c.screen.width-80,v=c.screen.height-80;x.beginFill(0),x.drawRect(f.x,f.y,w,v),x.endFill(),f.interactive=!0,f.on("pointerdown",(function(e){let t=e.clientY/s;f.dragOffset={y:t-f.y},f.prevY=f.y,f.vy=0,f.scrolling=!0}));let I=function(e){if(!f.scrolling)return;let t=e.clientY/s;f.prevY=f.y,f.y=t-f.dragOffset.y},S=function(){f.scrolling=!1};document.addEventListener("pointermove",I),document.addEventListener("pointerup",S),f.vy=0;let C=function(){let e=80-M-50+v;f.vy=h.linear(f.vy,0,.05,Qe),f.scrolling?f.vy=f.y-f.prevY:f.y+=f.vy,b.targetAlpha=1,f.y>=80&&(f.y=80,f.vy=0),f.y<=e&&(b.targetAlpha=0,f.y=e,f.vy=0),b.alpha=h.linear(b.alpha,b.targetAlpha,.1,Qe)};c.ticker.add(C);let b=new PIXI.Sprite($["Sprites/Rooms"][11]);b.x=f.x,b.y=f.y+v-90,b.width=w,b.height=100;let M=0;for(let e in m){let t=m[e];if(t.secret&&!t.done)continue;let i=new PIXI.NineSlicePlane($.inputNineSlice[2]);i.width=w,i.x=0,i.y=M,f.addChild(i);let n=new PIXI.BitmapText(t.title,{fontName:"ShagBlack",fontSize:24});i.height=n.height+50,n.anchor.set(0,.5),n.x=80,n.y=20,i.addChild(n);let o=new PIXI.BitmapText(t.description,{fontName:"ShagBlack",fontSize:16,breakWords:!0,wordWrap:!0,wordWrapWidth:200,maxWidth:i.width-140,whiteSpace:"normal"});o.anchor.set(0,0),i.height+=o.height,o.anchor.set(0,.5),o.x=80,o.y=35+o.height/2,i.addChild(o),null==t.icon&&(t.icon=11);let r=$["Sprites/GameUI"][t.icon],s=new PIXI.Sprite(r);i.addChild(s),s.anchor.set(.5,.5),s.y=i.height/2-5,s.x=40,s.scale.x=.5,s.scale.y=.5,u.push(i);let l=t.done?26:25,d=new PIXI.Sprite($["Sprites/GameUI"][l]);if(d.anchor.set(.5,.5),i.addChild(d),d.x=w-40,d.y=i.height/2-5,null!=t.getProgress){let e=a(t.getProgress(),12,"center",void 0,1);e.x=w-40,e.y=d.y+25,i.addChild(e)}M+=i.height+4}u.push(y);let P=Fe.exitButton((function(){e(),Fe.flash(!1,A)}),c.screen.width-40,40,.4,0);c.stage.addChild(P.sprite),i.origX=0,i.time=50;let T=!1,k=function(){T||(i.x=0,l>.01&&(i.x+=Math.cos(d)*l*5,d+=.5*Qe,l=h.linear(l,0,.1,Qe)),g.alpha>0&&(g.alpha-=.04))};function A(){c.ticker.remove(C),document.removeEventListener("pointermove",I),document.removeEventListener("pointerup",S);for(let e in r)null!=r[e].destroy&&r[e].destroy(),delete r[e];g.destroy(),P.destroy(),t.destroy();for(let e=0;e<u.length;e++)u[e].destroyed||u[e].destroy();c.ticker.remove(k),T=!0}c.ticker.add(k),c.stage.addChild(g),u.push(b),u.push(f),u.push(x)},settings:Be,cargame:function(){let e=new PIXI.TilingSprite($["Sprites/RepeatingUI"][0]);c.stage.addChild(e),e.interactive=!0,e.x=0,e.y=0,e.width=c.screen.width,e.height=c.screen.height,e.clampMargin=1;let t=0,i=!1;window.onblur=function(){i||g()};let a=new PIXI.Container;c.stage.addChild(a),a.pivot.x=-c.screen.width/2,a.pivot.y=-c.screen.height/2;let o=Matter.Engine.create(),r={},s=!1;document.addEventListener("keydown",(function(e){let t=e.key.toLowerCase();"ArrowLeft"==e.key&&(t="a"),"ArrowRight"==e.key&&(t="d"),"ArrowUp"==e.key&&(t=" "),"w"==e.key&&(t=" "),r[t]=!0,["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"," "].includes(e.key)&&e.preventDefault()})),document.addEventListener("keyup",(function(e){let t=e.key.toLowerCase();"ArrowLeft"==e.key&&(t="a"),"ArrowRight"==e.key&&(t="d"),"ArrowUp"==e.key&&(t=" "),"w"==e.key&&(t=" "),r[t]=!1})),document.addEventListener("pointerdown",(function(){s=!0})),document.addEventListener("pointerup",(function(){s=!1}));let l=[],d=[],u={box:Matter.Bodies.rectangle(0,-400,100,100),sprite:function(){let e=new PIXI.NineSlicePlane($.inputNineSlice[5],15,15,15,15);return e.width=100,e.height=100,a.addChild(e),e.pivot.x=50,e.pivot.y=50,e}()};l.push(u),d.push(u.box);for(let e=0;e<500;e++){let t={},i=.1+Math.random()/2,n=Matter.Bodies.polygon(400*(Math.random()-.5),-300-100*e,16,48*i);t.box=n;let o=new PIXI.Sprite($["Sprites/GameUI"][Math.round(6*Math.random())]);o.scale.x=i,o.scale.y=i,o.anchor.set(.5,.5),a.addChild(o),t.sprite=o,l.push(t),d.push(n),t.sprite.tint=16777215*Math.random()}let p=Matter.Bodies.rectangle(0,200,16e3,120,{isStatic:!0});Matter.Composite.add(o.world,[p,...d]);let m=Te(ee.faceMinigame);a.addChild(m);let y=function(t){for(let e=0;e<l.length;e++){let t=l[e].sprite,i=l[e].box;t.rotation=i.angle,t.x=i.position.x,t.y=i.position.y}r.a&&Matter.Body.setAngularVelocity(u.box,u.box.angularVelocity-.01*Qe),r[" "]&&null!=Matter.Collision.collides(p,u.box)&&Matter.Body.setVelocity(u.box,{x:u.box.velocity.x,y:u.box.velocity.y-20}),r.d&&Matter.Body.setAngularVelocity(u.box,u.box.angularVelocity+.01*Qe),m.x=u.sprite.x,m.y=u.sprite.y,m.rotation=u.sprite.rotation,a.x=h.linear(a.x,-l[0].sprite.x,.05,Qe),e.tilePosition.x=a.x/2,Matter.Engine.update(o,t*(1e3/60))};function g(){i=!i,f.changePause(i),i?(t=-Date.now(),n.inGame=!1,c.ticker.remove(y),Fe.message("Game paused",$["Sprites/GameUI"][32],(function(){g()}),(function(){Fe.blurPan(c.stage,(function(){!function(){f.destroyPause(),Matter.World.clear(o.world),Matter.Engine.clear(o);for(let e=0;e<l.length;e++)l[e].sprite.destroy();m.destroyAnimation(),e.destroy()}(),Fe.gameList(),Fe.results(0,0,"what","what")}))}),["Play","Home"],!1)):(n.inGame=!0,c.ticker.add(y))}m.gotoAndStop(Math.floor(100*Math.random())),u.sprite.visible=!1,c.ticker.add(y);let f=Fe.pauseButton((function(){g()}),.4);c.stage.addChild(f),f.x=c.screen.width-40,f.y=40},cargame2:function(){let e=new PIXI.TilingSprite($["Sprites/RepeatingUI"][0]);c.stage.addChild(e),e.interactive=!0,e.x=0,e.y=0,e.width=c.screen.width,e.height=c.screen.height,e.clampMargin=1;let t=0,i=!1;window.onblur=function(){i||g()};let a=new PIXI.Container;c.stage.addChild(a),a.pivot.x=-c.screen.width/2,a.pivot.y=-c.screen.height/2;let o=Matter.Engine.create(),r={},s=!1;document.addEventListener("keydown",(function(e){let t=e.key.toLowerCase();"ArrowLeft"==e.key&&(t="a"),"ArrowRight"==e.key&&(t="d"),"ArrowUp"==e.key&&(t=" "),"w"==e.key&&(t=" "),r[t]=!0,["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"," "].includes(e.key)&&e.preventDefault()})),document.addEventListener("keyup",(function(e){let t=e.key.toLowerCase();"ArrowLeft"==e.key&&(t="a"),"ArrowRight"==e.key&&(t="d"),"ArrowUp"==e.key&&(t=" "),"w"==e.key&&(t=" "),r[t]=!1})),document.addEventListener("pointerdown",(function(){s=!0})),document.addEventListener("pointerup",(function(){s=!1}));let l=[],d=[],u={box:Matter.Bodies.rectangle(0,-400,100,100),sprite:function(){let e=new PIXI.NineSlicePlane($.inputNineSlice[5],15,15,15,15);return e.width=100,e.height=100,a.addChild(e),e.pivot.x=50,e.pivot.y=50,e}()};l.push(u),d.push(u.box);for(let e=0;e<500;e++){let t={},i=.1+Math.random()/2,n=Matter.Bodies.polygon(400*(Math.random()-.5),-300-100*e,16,48*i);t.box=n;let o=new PIXI.Sprite($["Sprites/GameUI"][Math.round(6*Math.random())]);o.scale.x=i,o.scale.y=i,o.anchor.set(.5,.5),a.addChild(o),t.sprite=o,l.push(t),d.push(n),t.sprite.tint=16777215*Math.random()}let p=Matter.Bodies.rectangle(0,200,16e3,120,{isStatic:!0});Matter.Composite.add(o.world,[p,...d]);let m=Te(ee.faceMinigame);a.addChild(m);let y=function(t){for(let e=0;e<l.length;e++){let t=l[e].sprite,i=l[e].box;t.rotation=i.angle,t.x=i.position.x,t.y=i.position.y}r.a&&Matter.Body.setAngularVelocity(u.box,u.box.angularVelocity-.01*Qe),r[" "]&&null!=Matter.Collision.collides(p,u.box)&&Matter.Body.setVelocity(u.box,{x:u.box.velocity.x,y:u.box.velocity.y-20}),r.d&&Matter.Body.setAngularVelocity(u.box,u.box.angularVelocity+.01*Qe),m.x=u.sprite.x,m.y=u.sprite.y,m.rotation=u.sprite.rotation,a.x=h.linear(a.x,-l[0].sprite.x,.05,Qe),e.tilePosition.x=a.x/2,Matter.Engine.update(o,t*(1e3/60))};function g(){i=!i,f.changePause(i),i?(t=-Date.now(),n.inGame=!1,c.ticker.remove(y),Fe.message("Game paused",$["Sprites/GameUI"][32],(function(){g()}),(function(){Fe.blurPan(c.stage,(function(){!function(){f.destroyPause(),Matter.World.clear(o.world),Matter.Engine.clear(o);for(let e=0;e<l.length;e++)l[e].sprite.destroy();m.destroyAnimation(),e.destroy()}(),Fe.gameList(),Fe.results(0,0,"what","what")}))}),["Play","Home"],!1)):(n.inGame=!0,c.ticker.add(y))}m.gotoAndStop(Math.floor(100*Math.random())),u.sprite.visible=!1,c.ticker.add(y);let f=Fe.pauseButton((function(){g()}),.4);c.stage.addChild(f),f.x=c.screen.width-40,f.y=40},crashHandler:function(e,t=-1){let i="Unknown";e.message.includes("(reading 'off')")&&(i="ERR_PIXI_DESTROYOBJECT"),e.message.includes("(reading 'stop')")&&(i="ERR_PIZZICATO_FAILURETOSTOPAUDIO"),e.message.includes("(reading 'buffer')")&&(i="ERR_PIZZICATO_AUDIOBUFFER"),e.message.includes("getRawSourceNode")&&(i="ERR_PIZZICATO_NOTLOADED"),e.message.includes("(setting 'x')")&&(i="ERR_FOODSYSTEM_FAILURETOSETPOSITION"),-1!=t&&(i=t);const n=new PIXI.Application({background:"#000011",width:c.screen.width,height:c.screen.height,resolution:s*window.devicePixelRatio});document.body.appendChild(n.view);let r=new PIXI.Sprite($["Sprites/GameThumbnails"][4]);r.x=n.screen.width/2,r.y=n.screen.height/2-100,r.scale.x=.5,r.scale.y=.5,r.anchor.set(.5,.5),n.stage.addChild(r);let l=a(o.crashHandler.whoops,16,"center");l.x=c.screen.width/2,l.y=c.screen.height/2-200,n.stage.addChild(l);let d=a(i,16,"center");d.x=c.screen.width/2,d.y=c.screen.height/2+175,n.stage.addChild(d);let h=a(o.crashHandler.description,16,"center");h.x=c.screen.width/2,h.y=c.screen.height/2-30,h.anchor.set(.5,0),n.stage.addChild(h);let u=new M((function(){!function(){d.destroy(),h.destroy(),u.destroy(),p.destroy(),m.destroy(),n.destroy(!0);for(let e in te)te[e].volume=te[e].defaultVolume}()}),c.screen.width/2-80,c.screen.height/2+100,150,30,o.ui.continue,0,.5,.5,1,"center");n.stage.addChild(u.element);let p=new M((function(){window.location=window.location,setTimeout((function(){p.inputText.text="Couldn't reload",p.inputText.scale.set(.9,.9)}),100)}),c.screen.width/2+80,c.screen.height/2+100,150,30,o.ui.reload,0,.5,.5,1,"center");n.stage.addChild(p.element);let m=new M((async function(){1==await async function(e){try{return await navigator.clipboard.writeText(e),1}catch(e){return 0}}(JSON.stringify({message:e.message,lineno:e.lineno,colno:e.colno}))&&(m.inputText.text="Copied",m.element.resetSize(),m.element.interactive=!1,m.element.texture=$.inputNineSlice[9])}),c.screen.width/2,c.screen.height/2+100+40,310,30,o.crashHandler.copyErrorText,0,.5,.5,1,"center");n.stage.addChild(m.element);for(let e in te)te[e].defaultVolume=te[e].volume,te[e].volume=0}};let _e,ze="1.3",We=!0,je=!1,He={costumes:{},foods:{}};PIXI.Assets.load("/discount.json?nocache="+Date.now()).then((e=>{He=e})),(async()=>{if("serviceWorker"in navigator)try{await navigator.serviceWorker.register("./sw.js",{scope:"./"})}catch(e){console.log("Service Worker installation failed")}})(),PIXI.Assets.load("./latest.json?nocache="+Date.now()).then((e=>{e.latestVersion!=ze&&(je=!0,_e=e.latestVersion),We=!1}));let Qe=2;/iPhone|iPad|iPod|Android/i.test(navigator.userAgent),window.addEventListener("error",(function(e){setTimeout((function(){Fe.crashHandler(e)}),100)}));let Ve=!1;function Ye(){Fe.setUpTints(),PIXI.settings.MIPMAP_TEXTURES=PIXI.MIPMAP_MODES.OFF,"ontouchstart"in document.documentElement&&(c.touchScreen=!0,ontouchstart=function(e){e.returnValue=!1},ontouchend=function(e){e.returnValue=!1},ontouchmove=function(e){e.returnValue=!1},ontouchcancel=function(e){e.returnValue=!1}),window.book=Fe.book,c.ticker.add((function(){Qe=c.ticker.deltaTime;for(let e in x){let t=x[e];x[e].animate&&(t.animationTime+=Qe,t.scale.x=eases.easeOutBack(Math.min(24,t.animationTime),t.animationSize.x,t.destinationSize.x-t.animationSize.x,24),t.scale.y=eases.easeOutBack(Math.min(24,t.animationTime),t.animationSize.y,t.destinationSize.y-t.animationSize.y,24))}})),Ve=!0;let e=function(){n.music&&te.brittlerille.play(),te.brittlerille.volume=.5,te.brittlerille.pausing=!1,te.brittlerille.attack=2,te.brittlerille.release=3,te.brittlerille.on("end",(function(){n.music&&te.brittlerille.play()})),window.brittlerille=te.brittlerille};0==te.brittlerille.loaded?te.brittlerille.onloadAudio=function(){e()}:e(),window.setFps=function(e){c.ticker.maxFPS=e},document.body.appendChild(c.view),Xe.blendMode=PIXI.BLEND_MODES.SUBTRACT,Xe.interactive=!0,Le.width=c.screen.width,Le.height=c.screen.height,Xe.width=c.screen.width,Xe.height=c.screen.height,Fe.myTeardrop();let t="";onkeydown=function(e){t+=e.key,"bfdibfdiaidfbbfbtpot".includes(t.toLowerCase())&&t.toLowerCase().startsWith("b")?"bfdibfdiaidfbbfbtpot"==t&&(Fe.intro(),t=""):t=""},je&&Fe.updateWarning(),n.lastLogin=Date.now(),W(),(Date.now()-n.gameStartDate)/1e3/60/60/24>.5&&!n.saveFileWarning&&setTimeout((function(){n.saveFileWarning=!0,Fe.message("Your save file is over 2 days old now! Since this is a web game, there's a high chance of your browser removing the game data after 7 days of inactivity. To prevent this, regularly backup/download your save file!",-1,(function(){Fe.flash(!1,(function(){Fe.settings()}))}),(function(){}),["Settings","Ignore"])}),500),q.loadAttempts=0,de()}})();
+(() => {
+	"use strict";
+	var e = {
+		d: (t, i) => {
+			for (var n in i) e.o(i, n) && !e.o(t, n) && Object.defineProperty(t, n, {
+				enumerable: !0,
+				get: i[n]
+			})
+		},
+		o: (e, t) => Object.prototype.hasOwnProperty.call(e, t)
+	};
+	e.d({}, {
+		Do: () => qe,
+		oG: () => Ze,
+		YO: () => Ve,
+		id: () => Ke,
+		CV: () => Je,
+		IW: () => He,
+		WK: () => Ye
+	});
+	let t = {
+			coins: 20,
+			fridge: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+		},
+		i = {
+			happiness: 15,
+			hunger: 20,
+			sleep: 20,
+			sleeping: !1,
+			progress: 0,
+			progressNeeded: 200
+		},
+		n = {
+			level: 1,
+			skipIntro: !1,
+			costume: "none",
+			lastLogin: Date.now(),
+			inGame: !1,
+			sfx: !0,
+			music: !0,
+			minigameMusic: !0,
+			minigameCostumes: !0,
+			drinksFed: 0,
+			lemonsFed: 0,
+			totalSlaps: 0,
+			lastFridgePage: 0,
+			HQSprites: !1,
+			language: "en-US",
+			temporaryInGameTime: 0,
+			musicVolume: 1,
+			sfxVolume: 1,
+			HDrecommendation: !1,
+			introMode: !1,
+			gameStartDate: 0,
+			saveFileWarning: !1,
+			levelUpCostumes: !0,
+			privateBeta: !1,
+			safeArea: !1,
+			controllerProfile: {
+				GTTTATINT: {
+					buttons: {
+						a: {
+							x: -150,
+							y: -50,
+							lock: 1
+						},
+						d: {
+							x: -50,
+							y: -50,
+							lock: 1
+						},
+						" ": {
+							x: 100,
+							y: -50,
+							lock: 0
+						}
+					},
+					buttonScale: .5
+				}
+			},
+			extendAnimationFrames: !1,
+			lollipopMode: -1,
+			defaultAspectRatio: {
+				width: 9,
+				height: 16
+			},
+			events: {
+				christmas: !1
+			},
+			minigames: {
+				faceMatch: {
+					progressState: {}
+				}
+			}
+		};
+
+	function a(e = "", t = 16, i = "left", n = "top", a) {
+		let o = "MenuShag";
+		1 == a && (o = "ShagBlack"), 2 == a && (o = "ShagBlueNumber"), 3 == a && (o = "ShagGoldenNumber");
+		let r = new PIXI.BitmapText(e, {
+			fontSize: t,
+			fontName: o,
+			align: i
+		});
+		return "center" == i && r.anchor.set(.5, .5), "middle" == n && r.anchor.set(0, .5), r
+	}
+	Date.now() < 173611074e4 && (n.events.christmas = !0), n.privateBeta && (n.level = 0, i.progressNeeded = 2 ** 32, i.progress = 0, n.skipIntro = !0, t.coins = 1e6, i.hunger = 100, i.sleep = 100, i.happiness = 100, n.saveFileWarning = !0);
+	let o = {
+			settings: {
+				HQSprites: "HD Sprites",
+				music: "Music",
+				minigameMusic: "Minigame Music",
+				minigameCostumes: "Minigame Costumes",
+				sfx: "SFX",
+				enableReload: "Enabling this requires a reload of the game!",
+				disableReload: "Disabling this requires a reload of the game!"
+			},
+			intro: {
+				mail: "You've got mail! Click/Tap on it.",
+				hey: "HEY!",
+				who: "Who was that?"
+			},
+			dialogue: {
+				greet: "Hi, I am teardrop! Thank you for looking after my package. Sorry if I startled you!",
+				greet2: "What a great start! I'm Teardrop. Nice to meet you!",
+				yoyleberryinvitation: "Let's snack on some regular cake!",
+				fridgeHelp: "Put the food in the plate by going to the fridge!",
+				wheelHelp: "Press and hold the happiness button to launch the wheel of fun."
+			},
+			food: {
+				regularcake: "Regular Cake",
+				icecreamcake: "Ice Cream Cake",
+				icycake: "Icy Cake",
+				limecake: "Lime Cake",
+				blueberry: "Blueberry",
+				strawberry: "Strawberry",
+				strawberrycake: "Strawberry Cake",
+				candy: "Candy Bar",
+				sleeppotion: "Awakening Potion",
+				maxpotion: "Max Potion",
+				sourlemon: "Lemon",
+				fries: "Fries",
+				donut: "Donut",
+				burntTaco: "Burnt Taco"
+			},
+			ui: {
+				shop: "SHOP",
+				fridge: "FRIDGE",
+				owned: "OWNED",
+				preview: "PREVIEW",
+				get: "GET",
+				wear: "WEAR",
+				wearing: "WEARING",
+				continue: "Continue",
+				mph: "mph",
+				score: "Score",
+				skipIntro: "Skip Intro",
+				gameOver: "Game Over!",
+				gamePaused: "Game Paused",
+				comingsoon: "more coming soon..",
+				info: "INFO",
+				artist: "Artist",
+				achievements: "Achievements",
+				games: "Games",
+				wardrobe: "Wardrobe",
+				settings: "Settings",
+				reload: "Reload",
+				cancel: "Cancel",
+				home: "Home",
+				play: "Play",
+				newLevel: "New level",
+				continueUpperCase: "CONTINUE",
+				notEnoughCoins: "Not enough coins!",
+				notEnoughSpace: "Not enough space!",
+				altitude: "altitude",
+				accuracy: "Accuracy",
+				leave: "Leave",
+				next: "Next",
+				average: "Average",
+				ignore: "Ignore",
+				translator: "Translator",
+				language: "Language"
+			},
+			message: {
+				obtainCostume: "To obtain this costume, complete the {achievement} achievement.",
+				hungry: "Teardrop is really hungry! Let's feed her.",
+				sleepy: "Teardrop is feeling a little sleepy. Let her get some rest!",
+				sleeping: "Teardrop is taking a nap.",
+				updateWarning: "New update is out!\nCurrent version: {currentVersion}\nLatest version: {latest}\nThe game will be automatically updated after reloading."
+			},
+			crashHandler: {
+				whoops: "Whoops!\nmyTeardrop has run into a problem...",
+				description: "The game might work fine if you continue,\nbut I recommend you to reload anyway.\n\nIf the problem persists, please report the error\nby copying the error text and sending it\n over to the discord server.",
+				copyErrorText: "Copy Error Text"
+			},
+			games: {
+				gtttatint: "GTTTATINT101",
+				dropdodge: "Drop Dodge",
+				tennis: "Drop Tennis",
+				match: "Face Match",
+				cakewalk: "CAKEWALK"
+			},
+			costumes: {
+				none: "NONE",
+				uglysweater: "Ugly Sweater",
+				uglysweater2: "tennis sweater",
+				_td_costume1: "Water Moth",
+				_td_costume2: "Marauder Droplet",
+				_td_costume3: "La larme",
+				_td_costume4: "Wine Drop",
+				_td_costume5: "Blood Drop",
+				honeydrop: "Honey Drop",
+				orangedrop: "Orange Drop",
+				drippydrop: "Drippy Drop",
+				glassdrop: "Glass Drop",
+				classic: "The Silent Type",
+				golden: "Golden Drop",
+				light: "Light Teardrop",
+				magician: "Magician Drop",
+				oyuidrop: "Oyui Drop",
+				lemon: "Lemonade",
+				sportsdrop: "Sportsdrop",
+				limedrop: "Lime Drop",
+				jockdrop: "Jock Drop",
+				energydrink: "Energy Drink"
+			},
+			get2763intennis: {
+				title: "Drop Tennis",
+				description: "Get 2763 score in Drop Tennis minigame"
+			},
+			winagameoftennis: {
+				title: "Drop Tennis",
+				name: "Drop Tennis Victory",
+				description: "Win a game of Drop Tennis"
+			},
+			get2763gtttatint: {
+				title: "GTTTATINT",
+				description: "Get 2763 score in GTTTATINT"
+			},
+			slapTD2763: {
+				title: "Ultimate Slapper",
+				description: "Slap Teardrop 2763 times"
+			},
+			get2763: {
+				title: "2763...",
+				description: "Complete every achievement about the number 2763"
+			},
+			lemons: {
+				title: "Lemon Factory",
+				name: "Lemon Factory",
+				description: "Feed Teardrop 100 lemons"
+			},
+			get10perfectsCAKEWALK: {
+				title: "Easy as Cake!",
+				description: "Get 10 perfects in a row on CAKEWALK"
+			},
+			"2763lemons": {
+				title: "Soured out!",
+				name: "Soured out!",
+				description: "Feed Teardrop 2763 lemons"
+			},
+			perfectfacematch: {
+				title: "No difference",
+				name: "No difference",
+				description: "Get a 100% in Face Match"
+			},
+			"10energydrinks": {
+				title: "No sleep",
+				name: "No sleep",
+				description: "Feed Teardrop 10 Awakening Potions"
+			},
+			"5minuteGTTTATINT": {
+				title: "Leg Day",
+				name: "Leg Day",
+				description: "Spend 2 minutes at 2mph or higher in GTTTATINT in a single game"
+			},
+			score: {
+				perfect: "PERFECT",
+				good: "Good!",
+				nice: "Nice!",
+				meh: "Meh",
+				bad: "BAD"
+			}
+		},
+		r = (window.innerWidth, window.innerWidth / window.innerHeight * 640 >= 360),
+		s = window.innerHeight / 640,
+		l = window.innerWidth / window.innerHeight * 640,
+		d = 640;
+	0 == r && (l = 360, d = window.innerHeight / window.innerWidth * 360, s = window.innerWidth / 360), l = Math.min(1500, l), d = Math.min(1e3, d);
+	const c = new PIXI.Application({
+		background: "#00000000",
+		width: l,
+		height: d,
+		resolution: s * window.devicePixelRatio
+	});
+	window.onresize = function() {
+		r = window.innerWidth / window.innerHeight * 640 >= 360, s = window.innerHeight / 640, l = window.innerWidth / window.innerHeight * 640, d = 640, 0 == r && (l = 360, d = window.innerHeight / window.innerWidth * 360, s = window.innerWidth / 360), c.renderer.resolution = s, l = Math.min(1500, l), d = Math.min(1e3, d), c.renderer.resize(l, d), qe && (Ue.width = c.screen.width, Ue.height = c.screen.height, _e.width = c.screen.width, _e.height = c.screen.height)
+	};
+	let h = {
+			tearDropWatch: {
+				Idle: {
+					start: 0,
+					end: 239,
+					loop: !0
+				},
+				percent90: {
+					start: 240,
+					end: 319,
+					loop: !1
+				},
+				percent75: {
+					start: 320,
+					end: 399,
+					loop: !1
+				},
+				percent50: {
+					start: 400,
+					end: 479,
+					loop: !1
+				},
+				percent10: {
+					start: 480,
+					end: 559,
+					loop: !1
+				},
+				Laugh: {
+					start: 560,
+					end: 803,
+					loop: !1
+				},
+				percent100: {
+					start: 805,
+					end: 887,
+					loop: !1
+				}
+			},
+			Box: {
+				Jump: {
+					start: 0,
+					end: 239,
+					loop: !0
+				},
+				Click1: {
+					start: 240,
+					end: 299,
+					loop: !1
+				},
+				Click2: {
+					start: 300,
+					end: 351,
+					loop: !1
+				},
+				Steal: {
+					start: 359,
+					end: 376,
+					loop: !1
+				}
+			},
+			Teardrop: {
+				Eat: {
+					start: 1001,
+					end: 1123,
+					loop: !1
+				},
+				Wave: {
+					start: 0,
+					end: 328,
+					loop: !1
+				},
+				Slap: {
+					start: 329,
+					end: 453,
+					loop: !1
+				},
+				BookOpen: {
+					start: 509,
+					end: 730,
+					loop: !1
+				},
+				Write: {
+					start: 731,
+					end: 857,
+					loop: !0
+				},
+				SendMessage: {
+					start: 858,
+					end: 1e3,
+					loop: !1
+				},
+				Nope: {
+					start: 1125,
+					end: 1198,
+					loop: !1
+				},
+				Look: {
+					start: 1199,
+					end: 1336,
+					loop: !1
+				},
+				Look2: {
+					start: 1337,
+					end: 1468,
+					loop: !1
+				},
+				Pat: {
+					start: 1468,
+					end: 1511,
+					loop: !1
+				},
+				PatStop: {
+					start: 1512,
+					end: 1545,
+					loop: !1
+				},
+				Idle: {
+					start: 315,
+					end: 328,
+					loop: !0
+				},
+				Realize: {
+					start: 1546,
+					end: 1685,
+					loop: !1
+				},
+				EatSour: {
+					start: 1686,
+					end: 1869,
+					loop: !1
+				},
+				Look3: {
+					start: 2400,
+					end: 2521,
+					loop: !1
+				},
+				Wave2: {
+					start: 2522,
+					end: 2711,
+					loop: !1
+				},
+				EatVoid: {
+					start: 2712,
+					end: 2834,
+					loop: !1
+				}
+			},
+			TeardropTired: {
+				Sleep: {
+					start: 441,
+					end: 474,
+					loop: !1
+				},
+				Sleepy: {
+					start: 350,
+					end: 440,
+					loop: !1
+				},
+				Eat: {
+					start: 1001,
+					end: 1123,
+					loop: !1
+				},
+				Wave: {
+					start: 0,
+					end: 328,
+					loop: !1
+				},
+				Idle: {
+					start: 0,
+					end: 239,
+					loop: !0
+				},
+				Slap: {
+					start: 240,
+					end: 349,
+					loop: !1
+				},
+				BookOpen: {
+					start: 509,
+					end: 730,
+					loop: !1
+				},
+				Write: {
+					start: 731,
+					end: 857,
+					loop: !0
+				},
+				SendMessage: {
+					start: 858,
+					end: 1e3,
+					loop: !1
+				},
+				Nope: {
+					start: 1125,
+					end: 1198,
+					loop: !1
+				},
+				Look: {
+					start: 1199,
+					end: 1336,
+					loop: !1
+				},
+				Look2: {
+					start: 1337,
+					end: 1468,
+					loop: !1
+				},
+				Pat: {
+					start: 483,
+					end: 527,
+					loop: !1
+				},
+				PatStop: {
+					start: 528,
+					end: 577,
+					loop: !1
+				}
+			},
+			Needle: {
+				0: {
+					start: 0,
+					end: 20,
+					loop: !0
+				},
+				1: {
+					start: 57,
+					end: 193,
+					loop: !1
+				},
+				2: {
+					start: 331,
+					end: 440,
+					loop: !1
+				}
+			},
+			Leafy: {
+				0: {
+					start: 0,
+					end: 20,
+					loop: !0
+				},
+				1: {
+					start: 57,
+					end: 193,
+					loop: !1
+				},
+				2: {
+					start: 331,
+					end: 440,
+					loop: !1
+				}
+			},
+			Coiny: {
+				0: {
+					start: 0,
+					end: 39,
+					loop: !0
+				},
+				1: {
+					start: 40,
+					end: 221,
+					loop: !1
+				},
+				2: {
+					start: 222,
+					end: 329,
+					loop: !1
+				}
+			},
+			Spongy: {
+				0: {
+					start: 0,
+					end: 39,
+					loop: !0
+				},
+				1: {
+					start: 40,
+					end: 221,
+					loop: !1
+				},
+				2: {
+					start: 222,
+					end: 329,
+					loop: !1
+				}
+			},
+			Pin: {
+				0: {
+					start: 0,
+					end: 39,
+					loop: !0
+				},
+				1: {
+					start: 40,
+					end: 221,
+					loop: !1
+				},
+				2: {
+					start: 222,
+					end: 329,
+					loop: !1
+				}
+			},
+			Rocky: {
+				0: {
+					start: 0,
+					end: 39,
+					loop: !0
+				},
+				1: {
+					start: 40,
+					end: 221,
+					loop: !1
+				},
+				2: {
+					start: 222,
+					end: 329,
+					loop: !1
+				}
+			},
+			"Ice Cube": {
+				0: {
+					start: 0,
+					end: 39,
+					loop: !0
+				},
+				1: {
+					start: 40,
+					end: 221,
+					loop: !1
+				},
+				2: {
+					start: 222,
+					end: 329,
+					loop: !1
+				}
+			},
+			tearDropTennis: {
+				prepare: {
+					start: 0,
+					end: 11,
+					loop: !1
+				},
+				hit: {
+					start: 12,
+					end: 65,
+					loop: !1
+				}
+			},
+			dropletDodge: {
+				Idle: {
+					start: 0,
+					end: 239,
+					loop: !0
+				},
+				Running: {
+					start: 240,
+					end: 259,
+					loop: !0
+				},
+				Jump: {
+					start: 260,
+					end: 324,
+					loop: !1
+				},
+				Hurt: {
+					start: 325,
+					end: 432,
+					loop: !1
+				}
+			}
+		},
+		u = {
+			_linear: function(e, t, i, n) {
+				return e * (1 - i) + t * i
+			},
+			linear: function(e, t, i, n = 1) {
+				if (1 == n) return u._linear(e, t, i);
+				let a = n,
+					o = 1 - i;
+				return u._linear(e, t, 1 - Math.pow(o, a))
+			}
+		},
+		p = [],
+		m = 0,
+		y = {
+			get2763intennis: {
+				title: "Drop Tennis",
+				description: "Get 2763 score in Drop Tennis minigame",
+				icon: 29
+			},
+			winagameoftennis: {
+				title: "Drop Tennis",
+				name: "Drop Tennis Victory",
+				description: "Win a game of Drop Tennis",
+				icon: 29
+			},
+			get2763gtttatint: {
+				title: "GTTTATINT",
+				description: "Get 2763 score in GTTTATINT",
+				icon: 30
+			},
+			slapTD2763: {
+				title: "Ultimate Slapper",
+				description: "Slap Teardrop 2763 times",
+				icon: 37,
+				getProgress: function() {
+					let e = n.totalSlaps + " / 2763";
+					return n.totalSlaps > 2763 && (e = n.totalSlaps), e
+				}
+			},
+			get2763: {
+				title: "2763...",
+				description: "Complete every achievement about the number 2763",
+				icon: 35,
+				getProgress: function() {
+					let e = ["get2763intennis", "get2763gtttatint", "slapTD2763", "2763lemons"],
+						t = 0;
+					for (let i = 0; i < e.length; i++) y[e[i]].done && t++;
+					return t + " / " + e.length
+				}
+			},
+			lemons: {
+				title: "Lemon Factory",
+				name: "Lemon Factory",
+				description: "Feed Teardrop 100 lemons",
+				icon: 36,
+				getProgress: function() {
+					let e = n.lemonsFed + " / 100";
+					return n.lemonsFed > 100 && (e = n.lemonsFed), e
+				}
+			},
+			get10perfectsCAKEWALK: {
+				title: "Easy as Cake!",
+				description: "Get 10 perfects in a row on CAKEWALK",
+				icon: 38
+			},
+			"2763lemons": {
+				title: "Gimme my lime!",
+				name: "Gimme my lime!",
+				description: "Feed Teardrop 2763 lemons",
+				icon: 40,
+				getProgress: function() {
+					let e = n.lemonsFed + " / 2763";
+					return n.lemonsFed > 2763 && (e = n.lemonsFed), e
+				}
+			},
+			perfectfacematch: {
+				title: "No difference",
+				name: "No difference",
+				description: "Get a 100% in Face Match",
+				icon: 39
+			},
+			"10energydrinks": {
+				title: "No sleep",
+				name: "No sleep",
+				description: "Feed Teardrop 10 Awakening Potions",
+				icon: 6,
+				getProgress: function() {
+					let e = n.drinksFed + " / 10";
+					return n.drinksFed > 10 && (e = n.drinksFed), e
+				}
+			},
+			"5minuteGTTTATINT": {
+				title: "Leg Day",
+				name: "Leg Day",
+				description: "Spend 5 minutes at 2mph or higher in GTTTATINT in a single game",
+				icon: 30
+			},
+			tauntLogo: {
+				title: "Obscure mischief",
+				description: "Taunt the logo seen in the settings menu",
+				icon: 37,
+				secret: !0
+			},
+			oddDroplets40: {
+				title: "The Detective",
+				description: "Find the Odd Droplet 40 times in a row",
+				icon: 37
+			},
+			"750altitudeCAKEWALK": {
+				title: "Mile High Pie!",
+				name: "Mile High Pie!",
+				description: "Get to 500 altitude in CAKEWALK",
+				icon: 38
+			},
+			get15000gtttatint: {
+				title: "Reach the Galaxy",
+				name: "Reach the Galaxy",
+				description: "Get 15000 score in GTTTATINT",
+				icon: 30
+			},
+			"1000altitudeCAKEWALK": {
+				title: "Too High!!!",
+				name: "Too High!!!",
+				description: "Get to 1000 altitude in CAKEWALK",
+				icon: 38
+			},
+			blockplatformgtttatint: {
+				title: "GTTTATINT",
+				description: "Find Blocky's family in GTTTATINT",
+				icon: 30
+			}
+		};
+	for (let e in y) null != o[e] && (y[e].title = o[e].title, y[e].name = o[e].name, y[e].description = o[e].description);
+	let f = function(e, t, i, n) {
+			return Math.sqrt((e - i) ** 2 + (t - n) ** 2)
+		},
+		g = function(e, t, i) {
+			return e.x + e.width >= t.x && e.x <= t.x + t.width && e.y + e.height >= t.y && e.y <= t.y + t.height
+		},
+		x = {},
+		w = 0;
+
+	function v(e, t, i = !0) {
+		e.originalSize = {
+			x: e.scale.x,
+			y: e.scale.y
+		}, e.animate = i, e.animationSize = e.originalSize, e.destinationSize = e.originalSize, e.animationTime = 0, e.on("pointerover", (function() {
+			i && (e.animationSize = {
+				x: e.scale.x,
+				y: e.scale.y
+			}, e.destinationSize = {
+				x: 1.1 * e.originalSize.x,
+				y: 1.1 * e.originalSize.y
+			}), e.animationTime = 0, e.hover = !0
+		})), e.on("pointerout", (function() {
+			i && (e.animationSize = {
+				x: e.scale.x,
+				y: e.scale.y
+			}, e.animationTime = 0, e.destinationSize = {
+				x: 1 * e.originalSize.x,
+				y: 1 * e.originalSize.y
+			}), e.hover = !1
+		})), e.on("pointerdown", (function() {
+			e.disableTrigger = !1, i && (e.destinationSize = {
+				x: .95 * e.originalSize.x,
+				y: .95 * e.originalSize.y
+			}, e.animationSize = {
+				x: e.scale.x,
+				y: e.scale.y
+			}), e.animationTime = 0, e.pressing = !0
+		})), e.disableTrigger = !1, e.resetSize = function() {
+			e.animationSize = {
+				x: e.scale.x,
+				y: e.scale.y
+			}, e.destinationSize = {
+				x: e.originalSize.x,
+				y: e.originalSize.y
+			}, e.animationTime = 0
+		}, e.on("pointerup", (function() {
+			e.pressing && 0 == e.disableTrigger && t(), e.interactive && (e.pressing = !1, i && (e.animationSize = {
+				x: e.scale.x,
+				y: e.scale.y
+			}, e.destinationSize = {
+				x: 1.1 * e.originalSize.x,
+				y: 1.1 * e.originalSize.y
+			}), e.animationTime = 0)
+		}))
+	}
+
+	function I(e, t = new PIXI.Rectangle(-100, -100, 200, 200), i, n = 0) {
+		e.canDrag = !0, e.hitArea = t, e.dragScale = n, e.originalHitArea = t, e.dragged = !1, i && (e.x2 = e.x, e.y2 = e.y), e.on("pointerdown", (function(t) {
+			e.dragged = !0, e.hitArea = new PIXI.Rectangle(-3e3, -3e3, 6e3, 6e3), e.dragging = !0, e.originalPosition = {
+				x: e.x,
+				y: e.y
+			};
+			let i = t.clientX / s,
+				n = t.clientY / s;
+			0 != e.dragScale && (i /= e.dragScale, n /= e.dragScale), e.dragOffset = {
+				x: i - e.x,
+				y: n - e.y
+			}, null != e.onDragStart && e.onDragStart()
+		})), e.on("pointermove", (function(t) {
+			let n = t.clientX / s,
+				a = t.clientY / s;
+			0 != e.dragScale && (n /= e.dragScale, a /= e.dragScale), e.dragging && (2 == i ? (e.x2 = n - e.dragOffset.x - e.originalPosition.x, e.y2 = a - e.dragOffset.y - e.originalPosition.y) : 1 == i ? (e.x2 = n - e.dragOffset.x, e.y2 = a - e.dragOffset.y) : (e.x = n - e.dragOffset.x, e.y = a - e.dragOffset.y), f(e.originalPosition.x, e.originalPosition.y, e.x, e.y) > 1 && (e.disableTrigger = !0), null != e.onDrag && e.onDrag())
+		})), e.on("pointerup", (function() {
+			e.dragging = !1, e.hitArea = e.originalHitArea, null != e.onDragEnd && e.onDragEnd()
+		}))
+	}
+	class C {
+		constructor(e, t, i, n = !1, a = !0) {
+			this.buttonContainer = new PIXI.Container, this.selected = new PIXI.Sprite(pe["Sprites/GameUI"][8]), this.selected.anchor.set(.5, .5), this.buttonContainer.addChild(this.selected), this.selected.blendMode = PIXI.BLEND_MODES.ADD, this.empty = new PIXI.Sprite(e), this.empty.anchor.set(.5, .5), this.buttonContainer.addChild(this.empty), this.size = e.trim.width, this.fullMask = new PIXI.Graphics, this.fullMask.beginFill(16777215), this._offset = Math.min(1, Math.max(0, i)), this.pieChart = n, n || this.fullMask.drawRect(-this.size / 2, -this.size / 2 + (this.size - this.size * this._offset), this.size, this.size * this._offset), this.fullMask.endFill(), this.empty.addChild(this.fullMask), this.full = new PIXI.Sprite(t), this.full.anchor.set(.5, .5), this.empty.addChild(this.full), this.full.mask = this.fullMask, this.percentage = new PIXI.BitmapText(Math.round(100 * this._offset) + "%", {
+				fontSize: 16,
+				fontName: "MenuShag"
+			}), this.percentage.y = this.size / 2 + 10, this.percentage.anchor.set(.5, .5), a && this.buttonContainer.addChild(this.percentage), this.buttonContainer.hitArea = new PIXI.Rectangle(-this.size / 2, -this.size / 2, this.size, this.size), this.buttonContainer.interactive = !0, this.id = w, x[w++] = this.buttonContainer
+		}
+		set offset(e) {
+			if (this.fullMask.clear(), this._offset = Math.min(1, Math.max(0, e)), this.fullMask.beginFill(16777215), this.pieChart && this._offset < .99) {
+				let e = this.size,
+					t = [0, 0, 0, -e];
+				this._offset > .125 && (t.push(e), t.push(-e)), this._offset > .25 && (t.push(e), t.push(0)), this._offset > .375 && (t.push(e), t.push(e)), this._offset > .5 && (t.push(0), t.push(e)), this._offset > .625 && (t.push(-e), t.push(e)), this._offset > .75 && (t.push(-e), t.push(0)), this._offset > .875 && (t.push(-e), t.push(-e)), t.push(e * Math.cos(this._offset * Math.PI * 2 - Math.PI / 2)), t.push(e * Math.sin(this._offset * Math.PI * 2 - Math.PI / 2)), this.fullMask.drawPolygon(...t)
+			} else this.fullMask.drawRect(-this.size / 2, -this.size / 2 + (this.size - this.size * this._offset), this.size, this.size * this._offset);
+			this.fullMask.endFill(), this.percentage.text = Math.round(100 * this._offset) + "%"
+		}
+		destroy() {
+			this.selected.destroy(), this.empty.destroy(), this.fullMask.destroy(), this.full.destroy(), this.percentage.destroy(), this.buttonContainer.destroy(), delete x[this.id]
+		}
+	}
+	let b = null;
+	class S {
+		constructor(e, t, i, n, a, o, r, s) {
+			this.ninesliceplane = new PIXI.NineSlicePlane(pe.inputNineSlice[0], 15, 15, 15, 15), this.ninesliceplane.width = i, this.ninesliceplane.height = n, this.ninesliceplane.x = e, this.ninesliceplane.y = t, this.ninesliceplane.interactive = !0, this.ninesliceplane.on("click", (() => {
+				b = this.inputText, this.inputText.alpha = 1, this.inputText.text = this.inputText.value, document.addEventListener("keydown", this.type), document.addEventListener("pointerdown", this.disable)
+			})), this.type = e => {
+				" 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?\"'".includes(e.key) && o > this.inputText.value.length && (this.inputText.value += e.key), "Backspace" == e.key && (this.inputText.value = this.inputText.value.slice(0, -1)), "Enter" != e.key ? (this.inputText.scale.x = 1, this.inputText.text = this.inputText.value, this.inputText.width > this.ninesliceplane.width - 2 * this.inputText.x && (this.inputText.width = this.ninesliceplane.width - 2 * this.inputText.x), this.inputText.scale.y = this.inputText.scale.x) : this.confirmation()
+			}, this.disabled = !1, this.disable = () => {
+				"" == this.inputText.value && (this.inputText.text = a, this.inputText.alpha = .5), b = -1, document.removeEventListener("keydown", this.type), document.removeEventListener("pointerdown", this.disable)
+			}, this.inputText = new PIXI.BitmapText(a, {
+				fontSize: n - 7,
+				fontName: "ShagBlack"
+			}), this.inputText.value = "", this.inputText.alpha = .5, this.inputText.anchor.set(0, .5), this.inputText.x = n / 2 - 2, this.inputText.y = this.ninesliceplane.height / 2, this.ninesliceplane.addChild(this.inputText), this.ninesliceplane.pivot.x = i * r, this.ninesliceplane.pivot.y = n * s, this.element = this.ninesliceplane, this.confirmation = function() {}
+		}
+		_destroy() {
+			this.ninesliceplane.interactive = !1, this.disable(), this.inputText.parent.removeChild(this.inputText), this.inputText.destroy(), this.ninesliceplane.destroy(), this.ninesliceplane.removeAllListeners()
+		}
+		destroy() {
+			this._destroy()
+		}
+	}
+	class M extends S {
+		constructor(e = function() {}, t, i, n, a, o, r, s, l, d = 1, c = "left") {
+			super(t, i, n, a, o, r, .5, .5), this.ninesliceplane.texture = pe.inputNineSlice[d], this.inputText.fontName = "MenuShag", this.inputText.fontSize = a - 7, this.inputText.x = a / 2 - 2, "center" == c && (this.inputText.x = n / 2, this.inputText.anchor.set(.5, .5)), this.inputText.alpha = 1, this.type = function() {}, this.ninesliceplane.removeAllListeners(), this.id = w, x[w++] = this.element, this.ninesliceplane.x += .5 * n - n * s, this.ninesliceplane.y += .5 * a - a * l, v(this.element, e)
+		}
+		destroy() {
+			delete x[this.id], this._destroy()
+		}
+	}
+	class k {
+		constructor(e = function() {}, t, i) {
+			this.sprite = new PIXI.Sprite(t);
+			let n = 100;
+			null != this.sprite.texture.trim && (n = this.sprite.texture.trim.width, this.sprite.hitArea = new PIXI.Rectangle(-n / 2, -n / 2, n, n)), this.sprite.interactive = !0, this.sprite.anchor.set(.5, .5);
+			for (let e in i) this.sprite[e] = i[e];
+			this.id = w, x[w++] = this.sprite, this.trigger = e, v(this.sprite, e, !0)
+		}
+		destroy() {
+			delete x[this.id], this.sprite.interactive = !1, this.sprite.destroy(), this.sprite.removeAllListeners()
+		}
+	}
+
+	function P() {
+		return w++
+	}
+	let T, A, L = {
+			regularcake: {
+				name: o.food.regularcake,
+				texture: 1,
+				cost: 15,
+				adds: 40
+			},
+			icecreamcake: {
+				name: o.food.icecreamcake,
+				texture: 5,
+				cost: 20,
+				adds: 60
+			},
+			icycake: {
+				name: o.food.icycake,
+				texture: 4,
+				cost: 1,
+				adds: 1
+			},
+			limecake: {
+				name: o.food.limecake,
+				texture: 6,
+				cost: 10,
+				adds: 20
+			},
+			blueberry: {
+				name: o.food.blueberry,
+				texture: 7,
+				cost: 2,
+				adds: 10
+			},
+			strawberry: {
+				name: o.food.strawberry,
+				texture: 8,
+				cost: 1,
+				adds: 8
+			},
+			strawberrycake: {
+				name: o.food.strawberrycake,
+				texture: 9,
+				cost: 8,
+				adds: 15
+			},
+			candy: {
+				name: o.food.candy,
+				texture: 10,
+				cost: 5,
+				adds: 12
+			},
+			cherrypan: {
+				name: "cherrypan",
+				texture: 11,
+				cost: 1e3,
+				adds: 100,
+				hidden: !0
+			},
+			sleeppotion: {
+				name: o.food.sleeppotion,
+				texture: 12,
+				cost: 100,
+				adds: 5,
+				hidden: !1
+			},
+			maxpotion: {
+				name: o.food.maxpotion,
+				texture: 13,
+				cost: 300,
+				adds: 0,
+				hidden: !0
+			},
+			sourlemon: {
+				name: o.food.sourlemon,
+				texture: 14,
+				cost: 3,
+				adds: -4
+			},
+			donut: {
+				name: o.food.donut,
+				texture: 16,
+				cost: 12,
+				adds: 30,
+				requiredLevel: 5
+			},
+			fries: {
+				name: o.food.fries,
+				texture: 15,
+				cost: 50,
+				adds: 75,
+				requiredLevel: 10
+			},
+			burntTaco: {
+				name: o.food.burntTaco,
+				texture: 17,
+				cost: 8,
+				adds: 20,
+				requiredLevel: 20
+			},
+			heartChocolate: {
+				name: "Heart Chocolate",
+				texture: 18,
+				cost: 15,
+				adds: 50,
+				requiredCostume: "_td_costume9"
+			}
+		},
+		E = {},
+		D = function() {
+			c.ticker.add((function() {
+				for (let e in E) E[e].frame()
+			}))
+		},
+		X = {
+			awake: "Teardrop",
+			tired: "TeardropTired"
+		},
+		O = "Teardrop",
+		N = "TeardropTired",
+		G = {
+			teardrop: {
+				name: "tear_drop_bfb"
+			},
+			jacknjellify: {
+				name: "jacknjellify"
+			},
+			vendormint: {
+				name: "vendormint"
+			},
+			stevencrack: {
+				name: "stevencrack",
+				icon: 3
+			},
+			thinking909: {
+				name: "Oyui"
+			},
+			briteideajuni: {
+				name: "Juniper/Noelle"
+			},
+			bluesky: {
+				name: "doodlesdesire"
+			},
+			cringeindividual: {
+				name: "Roxamations"
+			},
+			jampu: {
+				name: "Jampu"
+			},
+			kyle: {
+				name: "kyle9341"
+			},
+			tyblade: {
+				name: "tyblade9"
+			},
+			maple2: {
+				name: "maple_two"
+			},
+			dialup: {
+				name: "dialup",
+				icon: 2
+			},
+			coconut7: {
+				name: "coconut7"
+			},
+			dopozy: {
+				name: "dopozy"
+			},
+			gstbw: {
+				name: "gst.bw"
+			},
+			forkiplier: {
+				name: "forkiplier"
+			},
+			frostthesleepyone: {
+				name: "FROST"
+			},
+			starspawn: {
+				name: "jimmy / stars.pawn"
+			},
+			flanimations: {
+				name: "Flanimations",
+				icon: 1
+			},
+			zxcubed: {
+				name: "zxcubed",
+				icon: 4
+			},
+			justdanoobxdd: {
+				name: "justdanoobxdd"
+			},
+			bogglesussy: {
+				name: "BoggleRealSussy"
+			},
+			eri_5i: {
+				name: "eri_5i"
+			},
+			swaggerrimunchies: {
+				name: "Swaggers"
+			},
+			hazzrde: {
+				name: "hazzrde"
+			},
+			hbzisback: {
+				name: "Temazu_"
+			},
+			pankocrash: {
+				name: "pankocrash / b-sides"
+			},
+			kaidkrazyest: {
+				name: "Dazzlecat / kaidkrazyest"
+			},
+			adxmz_vll: {
+				name: "Adxmz / Adam"
+			},
+			chaosticies: {
+				name: "Chaosticies - Knifey!!",
+				shortName: "Knifey!!"
+			},
+			gokci: {
+				name: "Gokci"
+			}
+		};
+
+	function B(e, t, i = 1) {
+		let n = [];
+		for (let e = 0; e < pe["Sprites/Bodies"].length; e++) n.push(pe["Sprites/Bodies"][e]);
+		n[47] = pe["Sprites/BodiesCostume_" + i][t], n[48] = pe["Sprites/BodiesCostume_" + i][t + 1];
+		let a = e.currentFrame;
+		e.textures = n, e.gotoAndStop(a)
+	}
+	let R = {
+			none: {
+				name: o.costumes.none,
+				sprite: 0,
+				cost: 0,
+				owned: !0,
+				apply: function(e, t = 0, i, n) {
+					let a;
+					switch (t) {
+						case 0:
+							a = [e.b, e.c, e.a.d, e.a.e, e.a.f, e.a.g, e.a.h, e.a.j, e.a.k, e.a.i];
+							break;
+						case 1:
+							a = [e.a.d, e.a.e, e.a.f, e.a.g, e.a.h, e.a.j, e.a.k, e.a.i]
+					}
+					e.a.sortDirty = !0;
+					for (let e = 0; e < a.length; e++) {
+						let t = a[e];
+						t.layerOffset = void 0, t.scaleOffset = void 0, t.tint = 16777215, t.zIndex = 0;
+						let i = t.symbol.split("/")[1];
+						W(t, "Sprites/" + i)
+					}
+					if (e.a.layerOffset = void 0, e.a.scaleOffset = void 0, 1 != n && null != e.a.children) {
+						for (let t = 0; t < e.a.children.length; t++) e.a.children[t].zIndex = t;
+						e.a.sortableChildren = !1
+					}
+				}
+			},
+			uglysweater: {
+				name: o.costumes.uglysweater,
+				sprite: 2,
+				artist: G.jacknjellify,
+				cost: 600,
+				owned: !1,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 0), W(e.a.j, "Sprites/LimbsCostume1"), W(e.a.k, "Sprites/LimbsCostume1")
+				}
+			},
+			uglysweater2: {
+				name: "tennis sweater",
+				sprite: 2,
+				artist: G.jacknjellify,
+				cost: 0,
+				owned: !1,
+				hidden: !0,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 4), W(e.a.j, "Sprites/LimbsCostume1"), W(e.a.k, "Sprites/LimbsCostume1")
+				}
+			},
+			_td_costume1: {
+				name: o.costumes._td_costume1,
+				sprite: 3,
+				artist: G.teardrop,
+				cost: 600,
+				owned: !1,
+				apply: function(e, t) {
+					R.none.apply(e, t), W(e.a.d, "Sprites/Empty"), B(e.a.i, 2)
+				}
+			},
+			_td_costume2: {
+				name: o.costumes._td_costume2,
+				artist: G.teardrop,
+				sprite: 4,
+				cost: 600,
+				owned: !1,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 6)
+				}
+			},
+			_td_costume3: {
+				name: o.costumes._td_costume3,
+				artist: G.teardrop,
+				sprite: 5,
+				cost: 500,
+				owned: !1,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 8)
+				}
+			},
+			_td_costume4: {
+				name: o.costumes._td_costume4,
+				sprite: 10,
+				cost: 500,
+				owned: !1,
+				color: 16753054,
+				artist: G.teardrop,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 18), W(e.a.d, "Sprites/MouthsCostume10")
+				}
+			},
+			_td_costume5: {
+				name: o.costumes._td_costume5,
+				sprite: 19,
+				cost: 1600,
+				owned: !1,
+				color: 16739174,
+				artist: G.teardrop,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 39);
+					let i = new PIXI.Sprite(pe["Sprites/BodiesCostume_1"][41]);
+					U(i, e.a, 0, .95, 20), i.x = 15, i.y = 120, i.zIndex = -1, i.scale.x = -1;
+					let n = new PIXI.Sprite(pe["Sprites/BodiesCostume_1"][41]);
+					U(n, e.a, 0, .95, 20), n.x = 110.5, n.y = 120, n.zIndex = -1, e.a.sortableChildren = !0, e.destroyCostume = function() {
+						n.destroyPhysics(), i.destroyPhysics()
+					}
+				},
+				applyMinigame: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 42)
+				}
+			},
+			honeydrop: {
+				name: o.costumes.honeydrop,
+				sprite: 11,
+				cost: 700,
+				owned: !1,
+				color: 16772979,
+				artist: G.briteideajuni,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 20)
+				}
+			},
+			orangedrop: {
+				name: o.costumes.orangedrop,
+				sprite: 12,
+				cost: 500,
+				owned: !1,
+				color: 16768184,
+				artist: G.thinking909,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 22)
+				}
+			},
+			drippydrop: {
+				name: o.costumes.drippydrop,
+				sprite: 14,
+				cost: 500,
+				owned: !1,
+				artist: G.bluesky,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 24)
+				}
+			},
+			glassdrop: {
+				name: o.costumes.glassdrop,
+				sprite: 13,
+				cost: 300,
+				owned: !1,
+				color: 12113151,
+				artist: G.cringeindividual,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 26)
+				}
+			},
+			classic: {
+				name: o.costumes.classic,
+				sprite: 1,
+				artist: G.jacknjellify,
+				cost: 200,
+				owned: !1,
+				apply: function(e, t = 0) {
+					let i;
+					switch (R.none.apply(e, t), t) {
+						case 0:
+							i = [e.b, e.c, e.a.d, e.a.e, e.a.f, e.a.g, e.a.h, e.a.i, e.a.j, e.a.k];
+							break;
+						case 1:
+							i = [e.a.d, e.a.e, e.a.f, e.a.g, e.a.h, e.a.i, e.a.j, e.a.k]
+					}
+					for (let e = 0; e < i.length; e++) {
+						let t = i[e],
+							n = t.symbol.split("/")[1];
+						W(t, "oldiesCostume/" + n)
+					}
+				}
+			},
+			outline: {
+				name: "teardrop's deep dark secret. do not use this costume under any circumstances!",
+				sprite: 1,
+				artist: G.jacknjellify,
+				cost: 0,
+				owned: !1,
+				hidden: !0,
+				apply: function(e, t = 0) {
+					let i;
+					switch (t) {
+						case 0:
+							i = [e.b, e.c, e.a.d, e.a.e, e.a.f, e.a.g, e.a.h, e.a.i, e.a.j, e.a.k];
+							break;
+						case 1:
+							i = [e.a.d, e.a.e, e.a.f, e.a.g, e.a.h, e.a.i, e.a.j, e.a.k]
+					}
+					for (let e = 0; e < i.length; e++) {
+						let t = i[e];
+						null != pe[t.symbol + "OUTLINE12"] && W(t, t.symbol + "OUTLINE12")
+					}
+				}
+			},
+			golden: {
+				name: o.costumes.golden,
+				sprite: 6,
+				cost: 5e4,
+				owned: !1,
+				color: 16774556,
+				artist: G.vendormint,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 10)
+				}
+			},
+			light: {
+				name: o.costumes.light,
+				sprite: 8,
+				cost: 200,
+				owned: !1,
+				artist: G.stevencrack,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 14)
+				}
+			},
+			magician: {
+				name: o.costumes.magician,
+				sprite: 16,
+				cost: 300,
+				owned: !1,
+				artist: G.kyle,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 30)
+				}
+			},
+			oyuidrop: {
+				name: o.costumes.oyuidrop,
+				sprite: 18,
+				cost: 1600,
+				color: 13369246,
+				owned: !1,
+				artist: G.thinking909,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 34), W(e.a.j, "Sprites/Empty"), W(e.a.k, "Sprites/Empty");
+					let i = new PIXI.Sprite(pe["Sprites/BodiesCostume_1"][37]);
+					U(i, e.a, 0, .95, 10), i.x = 100, i.y = 20;
+					let n = new PIXI.Sprite(pe["Sprites/BodiesCostume_1"][36]);
+					U(n, e.a, 0, .95, 15), n.x = 90, n.y = 120, n.zIndex = -1, e.a.sortableChildren = !0, e.destroyCostume = function() {
+						i.destroyPhysics(), n.destroyPhysics()
+					}
+				},
+				applyMinigame: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 38), W(e.a.j, "Sprites/Empty"), W(e.a.k, "Sprites/Empty")
+				}
+			},
+			chocodrop: {
+				name: "Choco-Drop",
+				sprite: 21,
+				cost: 800,
+				owned: !1,
+				color: 14917741,
+				artist: G.vendormint,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 45)
+				}
+			},
+			pineapple: {
+				name: "Pineapple",
+				sprite: 22,
+				cost: 1e3,
+				owned: !1,
+				drawnBy: G.dialup,
+				color: 16766369,
+				artist: G.thinking909,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 47)
+				}
+			},
+			mintdrop: {
+				name: "Minty Drop",
+				sprite: 23,
+				cost: 600,
+				owned: !1,
+				color: 12779497,
+				artist: G.vendormint,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 49)
+				}
+			},
+			oildrop: {
+				name: "Oil Drop",
+				sprite: 24,
+				artist: G.coconut7,
+				cost: 700,
+				owned: !1,
+				color: 1184031,
+				animation: {
+					tired: "TeardropTiredOIL",
+					awake: "TeardropOIL"
+				},
+				facePosition: {
+					x: 0,
+					y: 0
+				},
+				generateAnimations: function() {
+					let e = function(e, t) {
+						let i = JSON.parse(JSON.stringify(me[e]));
+						return i.symbols.TeardropBody = me[t], i
+					};
+					me.TeardropOIL = e("Teardrop", "oilTeardropBody"), me.TeardropTiredOIL = e("TeardropTired", "oilTeardropTiredBody")
+				},
+				apply: function(e, t = 0) {
+					R.none.apply(e, t), B(e.a.i, 51), W(e.a.e, "Sprites/EyesCostume25"), W(e.a.f, "Sprites/EyesCostume25"), W(e.a.g, "Sprites/EyesCostume25"), W(e.a.h, "Sprites/EyesCostume25"), W(e.a.d, "Sprites/MouthsCostume25")
+				}
+			},
+			knightdrop: {
+				name: "Knight Drop",
+				requiredLevel: 25,
+				sprite: 25,
+				cost: 1400,
+				owned: !1,
+				color: 16732524,
+				drawnBy: G.dialup,
+				animation: {
+					tired: "TeardropTiredKNIGHT",
+					awake: "TeardropKNIGHT"
+				},
+				artist: G.thinking909,
+				facePosition: {
+					x: 0,
+					y: 0
+				},
+				generateAnimations: function() {
+					let e = function(e) {
+						let t = JSON.parse(JSON.stringify(me[e])),
+							i = t.symbols.TeardropBody;
+
+						function n(e, t, i, n = 1) {
+							for (let a = 0; a < e.frames.length; a++) {
+								let o = e.frames[a];
+								null != o[1] && (o[1] += t, o[2] += i, o[3] *= n, o[6] *= n)
+							}
+						}
+						return n(i.layers.d, -3, 5, .9), n(i.layers.e, -3, 7), n(i.layers.g, -3, 7), n(i.layers.f, -3, 7), n(i.layers.h, -3, 7), t
+					};
+					me.TeardropKNIGHT = e("Teardrop"), me.TeardropTiredKNIGHT = e("TeardropTired")
+				},
+				apply: function(e, t, i = !0) {
+					R.none.apply(e, t), B(e.a.i, 53)
+				},
+				applyMinigame: function(e) {
+					B(e.a.i, 53)
+				}
+			},
+			galaxydrop: {
+				name: "Galaxy Drop",
+				sprite: 27,
+				artist: G.dialup,
+				cost: -1,
+				owned: !1,
+				color: 12880895,
+				achievement: ["get15000gtttatint", "1000altitudeCAKEWALK"],
+				checkAvailability: function() {
+					let e = ["get15000gtttatint", "1000altitudeCAKEWALK"],
+						t = !0;
+					for (let i = 0; i < e.length; i++) 1 != y[e[i]].done && (t = !1);
+					return t
+				},
+				apply: function(e, t = 0) {
+					R.none.apply(e, t), B(e.a.i, 57), W(e.a.e, "Sprites/EyesCostume25"), W(e.a.f, "Sprites/EyesCostume25"), W(e.a.g, "Sprites/EyesCostume25"), W(e.a.h, "Sprites/EyesCostume25"), W(e.a.d, "Sprites/MouthsCostume25")
+				}
+			},
+			sundrop: {
+				name: "Sun Drop",
+				sprite: 28,
+				cost: 1200,
+				owned: !1,
+				color: 16638347,
+				amountOfVotes: 245,
+				artist: G.thinking909,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 0, "september2024")
+				}
+			},
+			coladrop: {
+				name: "Cola Drop",
+				sprite: 29,
+				cost: 800,
+				owned: !1,
+				color: 8737368,
+				amountOfVotes: 192,
+				artist: G.dopozy,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 2, "september2024"), W(e.a.e, "Sprites/EyesCostume25"), W(e.a.f, "Sprites/EyesCostume25"), W(e.a.g, "Sprites/EyesCostume25"), W(e.a.h, "Sprites/EyesCostume25"), W(e.a.d, "Sprites/MouthsCostume25")
+				}
+			},
+			tropical: {
+				name: "Tropical Drop",
+				sprite: 30,
+				cost: 1200,
+				owned: !1,
+				color: 7465469,
+				amountOfVotes: 148,
+				artist: G.gstbw,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 4, "september2024")
+				}
+			},
+			moondrop: {
+				name: "Moon Drop",
+				sprite: 31,
+				cost: 1200,
+				owned: !1,
+				color: 2565182,
+				amountOfVotes: 138,
+				drawnBy: G.stevencrack,
+				artist: G.forkiplier,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 6, "september2024"), e.a.e, e.a.f, e.a.g, e.a.h, e.a.d, W(e.a.e, "Sprites/EyesCostume25"), W(e.a.f, "Sprites/EyesCostume25"), W(e.a.g, "Sprites/EyesCostume25"), W(e.a.h, "Sprites/EyesCostume25"), W(e.a.d, "Sprites/MouthsCostume25"), e.a.f.tint = 2170420, e.a.h.tint = 2170420
+				}
+			},
+			clouddrop: {
+				name: "Cloud Drop",
+				sprite: 32,
+				cost: 1e3,
+				owned: !1,
+				color: 11719153,
+				amountOfVotes: 120,
+				drawnBy: G.flanimations,
+				artist: G.frostthesleepyone,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 8, "september2024");
+					let i = new PIXI.Sprite(pe["Sprites/BodiesCostume_september2024"][10]);
+					U(i, e, 0, .9, 22, !0, e.a), i.offset.x = -50, i.offset.y = -105, i.zIndex = -1, i.scale.x = -1;
+					let n = new PIXI.Sprite(pe["Sprites/BodiesCostume_september2024"][11]);
+					U(n, e, 0, .93, 25, !0, e.a), n.offset.x = 40, n.offset.y = -90, n.zIndex = e.a.i.zIndex + 1, e.sortableChildren = !0, e.destroyCostume = function() {
+						n.destroyPhysics(), i.destroyPhysics()
+					}
+				},
+				applyMinigame: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 12, "september2024")
+				}
+			},
+			sealdrop: {
+				name: "Seal Drop",
+				sprite: 33,
+				cost: 1200,
+				owned: !1,
+				color: 15193786,
+				amountOfVotes: 108,
+				drawnBy: G.flanimations,
+				artist: G.starspawn,
+				apply: function(e, t, i) {
+					R.none.apply(e, t), B(e.a.i, 13, "september2024"), W(e.a.j, "Sprites/Empty"), W(e.a.k, "Sprites/Empty"), W(e.a.d, "Sprites/MouthsCostume10");
+					let n = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					if ("tennis" == i) {
+						for (let e = 0; e < n.length; e++) n[e].layerOffset = {
+							x: 3,
+							y: 15
+						};
+						e.a.d.layerOffset = {
+							x: 3,
+							y: 15
+						}
+					} else if ("faceMatch" == i) {
+						for (let e = 0; e < n.length; e++) n[e].layerOffset = {
+							x: -5,
+							y: 16
+						};
+						e.a.d.layerOffset = {
+							x: -3,
+							y: 12
+						}
+					} else {
+						for (let e = 0; e < n.length; e++) n[e].layerOffset = {
+							x: -3,
+							y: 15
+						};
+						e.a.d.layerOffset = {
+							x: -3,
+							y: 15
+						}
+					}
+				}
+			},
+			aoracedrop: {
+				name: "Aroacedrop",
+				sprite: 34,
+				cost: 1e3,
+				owned: !1,
+				color: 15446392,
+				amountOfVotes: 102,
+				drawnBy: G.dialup,
+				artist: G.justdanoobxdd,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 15, "september2024")
+				}
+			},
+			gumdrop: {
+				name: "Gumdrop",
+				sprite: 35,
+				cost: 1e3,
+				owned: !1,
+				color: 16564468,
+				amountOfVotes: 94,
+				drawnBy: G.stevencrack,
+				artist: G.bogglesussy,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 17, "september2024")
+				}
+			},
+			softdrink: {
+				name: "Softdrink Drop",
+				sprite: 36,
+				cost: 1600,
+				owned: !1,
+				color: 7859168,
+				amountOfVotes: 129,
+				artist: G.eri_5i,
+				drawnBy: G.zxcubed,
+				apply: function(e, t, i) {
+					R.none.apply(e, t), B(e.a.i, 19, "september2024");
+					let n = new PIXI.Sprite(pe["Sprites/BodiesCostume_september2024"][21]);
+					U(n, e.a, 0, .95, 20), n.x = 90, n.y = 130, n.zIndex = -1, e.a.sortableChildren = !0, e.destroyCostume = function() {
+						n.destroyPhysics()
+					};
+					let a = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < a.length; e++) a[e].layerOffset = {
+						x: 0,
+						y: 6
+					};
+					e.a.d.layerOffset = {
+						x: 0,
+						y: 4
+					}
+				},
+				applyMinigame: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 22, "september2024")
+				}
+			},
+			glorp: {
+				name: "Glorplet",
+				sprite: 37,
+				cost: 1600,
+				owned: !1,
+				color: 10485638,
+				amountOfVotes: 120,
+				drawnBy: G.zxcubed,
+				artist: {
+					name: G.swaggerrimunchies.name + ", " + G.hazzrde.name
+				},
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 23, "september2024"), e.a.static = !0, e.b.static = !0, e.c.static = !0, e.d.static = !0, W(e.b, "Sprites/Empty"), W(e.c, "Sprites/Empty");
+					let n = {
+						x: e.a.x,
+						y: e.a.y - 20
+					};
+					e.a.x = -10, e.a.y = -50, _(e.a, n);
+					let a = 1.5 * e.d.scale.x,
+						o = e.d.scale.y,
+						r = function() {
+							e.a.orbitSpeed = u.linear(e.a.orbitSpeed, i.sleeping ? .25 : 1, .01, Je), e.d.x = e.a.x, e.d.scale.x = e.a.y / 60 * a, e.d.scale.y = e.a.y / 60 * o, s.updateTransform(), e.updateTransform(), l.transform.setFromMatrix((new PIXI.Matrix).append(e.a.transform.localTransform, s.transform.localTransform));
+							let t = new PIXI.Matrix(1, 0, 0, 1, s.x, s.y);
+							t.rotate(e.a.rotation), l.x += t.tx, l.y += t.ty
+						};
+					c.ticker.add(r);
+					let s = new PIXI.Sprite(pe["Sprites/BodiesCostume_september2024"][26]);
+					e.a.addChild(s), s.anchor.set(.5, .5), s.x = e.a.i.x, s.y = e.a.i.y, console.log(s.transform);
+					let l = new PIXI.Sprite(pe["Sprites/BodiesCostume_september2024"][25]);
+					e.addChild(l), l.anchor.set(.5, .5), e.sortableChildren = !0, e.a.sortableChildren = !0, l.zIndex = -1, s.zIndex = e.a.i.zIndex + 1, e.a.j.zIndex = e.a.i.zIndex + 2, e.a.k.zIndex = e.a.i.zIndex + 2, setTimeout((function() {
+						e.a.j.lockLayerPosition = !0, e.a.k.lockLayerPosition = !0
+					}), 100), e.a.j.layerOffset = {
+						x: 6,
+						y: -20
+					}, e.a.k.layerOffset = {
+						x: -6,
+						y: -20
+					}, e.destroyCostume = function() {
+						e.a.static = !1, e.b.static = !1, e.c.static = !1, e.d.static = !1, e.a.destroyPhysics(), c.ticker.remove(r), s.destroy(), l.destroy()
+					}
+				},
+				applyMinigame: function(e, t, i) {
+					if (R.none.apply(e, t), B(e.a.i, 27, "september2024"), 1 != t ? (W(e.b, "Sprites/Empty"), W(e.c, "Sprites/Empty"), "level" != i && "levelLayer2" != i && (e.tearDrop.sortableChildren = !0, e.a.j.zIndex = e.a.i.zIndex + 2, e.a.k.zIndex = e.a.i.zIndex + 2)) : e.a.j.layerOffset = {
+							x: 0,
+							y: -10
+						}, "tennis" == i) {
+						let t = {
+							x: e.tearDrop.x,
+							y: e.tearDrop.y
+						};
+						e.tearDrop.x -= 5, e.tearDrop.y -= 8, e.a.k.layerOffset = {
+							x: 0,
+							y: -10
+						}, _(e.tearDrop, t), e.tearDrop.destroyCostume = function() {
+							e.tearDrop.destroyPhysics()
+						}
+					}
+				}
+			},
+			waffle: {
+				name: "Waffle Drop",
+				sprite: 38,
+				cost: 1200,
+				owned: !1,
+				color: 4949483,
+				amountOfVotes: 112,
+				drawnBy: G.zxcubed,
+				artist: G.hbzisback,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 28, "september2024");
+					let i = new PIXI.AnimatedSprite(pe["Sprites/Limbs"]);
+					i.gotoAndStop(8), e.a.addChild(i), e.a.sortableChildren = !0, i.zIndex = -2;
+					let n = new PIXI.AnimatedSprite(pe["Sprites/Limbs"]);
+					n.gotoAndStop(8), e.a.addChild(n), n.zIndex = -2;
+					let a = function() {
+						e.a.k.updateTransform(), n.transform.setFromMatrix(e.a.k.transform.localTransform), n.x = e.a.k.x + 8, n.y = e.a.k.y + 10, n.skew.x += .5, n.skew.y -= .5, n.gotoAndStop(e.a.k.currentFrame), n.pivot.set(e.a.k.pivot.x, e.a.k.pivot.y), e.a.j.updateTransform(), i.transform.setFromMatrix(e.a.j.transform.localTransform), i.x = e.a.j.x - 8, i.y = e.a.j.y + 10, i.skew.x -= .5, i.skew.y += .5, i.gotoAndStop(e.a.j.currentFrame), i.pivot.set(e.a.j.pivot.x, e.a.j.pivot.y)
+					};
+					c.ticker.add(a), e.destroyCostume = function() {
+						c.ticker.remove(a), i.destroy(), n.destroy()
+					}
+				},
+				applyMinigame: function(e, t, i) {
+					if (R.none.apply(e, t, i, !0), B(e.a.i, 28, "september2024"), "levelLayer2" == i) return;
+					let n = new PIXI.AnimatedSprite(pe["Sprites/Limbs"]);
+					n.gotoAndStop(8);
+					let a = new PIXI.AnimatedSprite(pe["Sprites/Limbs"]);
+
+					function o(e) {
+						e.rotation < 0 ? e.rotation += .5 : e.rotation -= .5
+					}
+					a.gotoAndStop(8), "faceMatch" == i || "level" == i ? (e.a.addChild(n), e.a.addChild(a)) : (e.tearDrop.addChild(n), e.tearDrop.addChild(a));
+					let r = function() {
+						e.a.k.updateTransform(), a.transform.setFromMatrix(e.a.k.transform.localTransform), a.gotoAndStop(e.a.k.currentFrame), a.pivot.set(e.a.k.pivot.x, e.a.k.pivot.y), e.a.j.updateTransform(), n.transform.setFromMatrix(e.a.j.transform.localTransform), "level" == i ? (a.x = u.linear(e.a.k.x, e.a.i.x, .2), a.y = e.a.k.y + 10, n.x = u.linear(e.a.j.x, e.a.i.x, .2), n.y = e.a.j.y + 10, o(n), o(a)) : (a.x = e.a.k.x + 8, a.y = e.a.k.y + 10, n.x = e.a.j.x - 8, n.y = e.a.j.y + 10, a.skew.x += .5, a.skew.y -= .5, n.skew.x -= .5, n.skew.y += .5), n.gotoAndStop(e.a.j.currentFrame), n.pivot.set(e.a.j.pivot.x, e.a.j.pivot.y)
+					};
+					c.ticker.add(r), "faceMatch" == i || "level" == i ? (e.sortableChildren = !0, e.destroyCostume = function() {
+						c.ticker.remove(r), n.destroy(), a.destroy()
+					}) : (e.tearDrop.sortableChildren = !0, e.tearDrop.destroyCostume = function() {
+						c.ticker.remove(r), n.destroy(), a.destroy()
+					}), e.a.sortableChildren = !0, n.zIndex = -2, a.zIndex = -2
+				}
+			},
+			popdrop: {
+				name: "Popdrop",
+				sprite: 39,
+				cost: 800,
+				owned: !1,
+				color: 8254719,
+				amountOfVotes: 109,
+				drawnBy: G.zxcubed,
+				artist: G.pankocrash,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 30, "september2024")
+				}
+			},
+			potiondrop: {
+				name: "Potion Drop",
+				sprite: 42,
+				cost: 1500,
+				owned: !1,
+				color: 12891902,
+				amountOfVotes: 81,
+				artist: G.kaidkrazyest,
+				drawnBy: G.flanimations,
+				apply: function(e, t, n) {
+					R.none.apply(e, t), B(e.a.i, 53, "september2024");
+					let a = new PIXI.AnimatedSprite(pe["Sprites/BodiesCostume_september2024"]);
+					a.blendMode = PIXI.BLEND_MODES.ADD;
+					let o = new PIXI.AnimatedSprite(pe["Sprites/BodiesCostume_september2024"]);
+					e.a.i.addChild(o), e.a.i.addChild(a);
+					let r = new PIXI.Graphics;
+					o.mask = r, e.a.i.addChild(r);
+					let s = Math.floor(2763 * Math.random()),
+						l = i.happiness,
+						d = i.hunger,
+						h = i.sleep;
+
+					function p() {
+						let t = (Math.max(100, 125 - l) - 100) / 100,
+							n = (Math.max(100, 120 - d) - 100) / 100;
+						t = u.linear(t, 0, n);
+						let c = (Math.max(100, 120 - h) - 100) / 100;
+						n = u.linear(n, 0, 4 * c);
+						let p = {
+							r: 145 / 255 - t - c + n,
+							g: 70 / 255 + t - c - n,
+							b: 230 / 255
+						};
+						o.tint = new PIXI.Color([p.r, p.g, p.b]), a.gotoAndStop(e.a.i.currentFrame + 8), o.gotoAndStop(e.a.i.currentFrame + 10), r.clear(), r.beginFill(16777215);
+						let m = [600, 600, 200, 600];
+						for (let e = 0; e < 160; e++) m.push(200 + 2.5 * e), m.push(425 + (100 - d) / 8 + 2 * Math.cos(e / 10 + 4 * s) + 10 * Math.cos(e / 5 + s) * Math.cos(e / 30 + s) * Math.cos(e / 100 + s));
+						l = u.linear(l, i.happiness, .05, Je), d = u.linear(d, i.hunger, .05, Je), h = u.linear(h, i.sleep, .05, Je), r.drawPolygon(...m), r.endFill(), s += Je / 40 * (.4 + h / 100 * .6)
+					}
+					"levelLayer2" == n && (e.tearDrop.onNextFrame = function() {
+						a.gotoAndStop(e.a.i.currentFrame + 8), o.gotoAndStop(e.a.i.currentFrame + 10)
+					}), c.ticker.add(p);
+					let m = function() {
+						a.destroy(), o.destroy(), r.destroy(), c.ticker.remove(p)
+					};
+					"tennis" == n ? e.tearDrop.destroyCostume = m : "levelLayer2" == n ? e.tearDrop.destroyCostume2 = m : e.destroyCostume = m
+				}
+			},
+			voiddrop: {
+				name: "Void Drop",
+				sprite: 41,
+				cost: 2e3,
+				owned: !1,
+				color: 10456803,
+				amountOfVotes: 87,
+				drawnBy: G.dialup,
+				artist: G.adxmz_vll,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 36, "september2024"), W(e.a.e, "Sprites/EyesCostume25"), W(e.a.f, "Sprites/EyesCostume25"), W(e.a.g, "Sprites/EyesCostume25"), W(e.a.h, "Sprites/EyesCostume25"), W(e.a.d, "Sprites/Empty");
+					let n = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < n.length; e++) n[e].layerOffset = {
+						x: 0,
+						y: 6
+					};
+					e.a.d.layerOffset = {
+						x: 0,
+						y: 4
+					}, e.a.static = !0, e.b.static = !0, e.c.static = !0, e.d.static = !0, W(e.b, "Sprites/Empty"), W(e.c, "Sprites/Empty");
+					let a = {
+						x: e.a.x,
+						y: e.a.y - 20
+					};
+					e.a.x = -10, e.a.y = -50, _(e.a, a);
+					let o = e.d.scale.x,
+						r = e.d.scale.y,
+						s = function() {
+							e.a.orbitSpeed = u.linear(e.a.orbitSpeed, i.sleeping ? .25 : 1, .01, Je), e.d.x = e.a.x, e.d.scale.x = e.a.y / 60 * o, e.d.scale.y = e.a.y / 60 * r
+						};
+					c.ticker.add(s);
+					let l = [];
+					for (let e = 37; e < 53; e++) l.push(pe["Sprites/BodiesCostume_september2024"][e]);
+					let d = new PIXI.AnimatedSprite(l);
+					d.anchor.set(.5, .5), e.a.addChild(d), d.play(), d.animationSpeed = .4, d.x = e.a.i.x, d.y = e.a.i.y + 70, e.a.sortableChildren = !0, d.zIndex = -1, e.destroyCostume = function() {
+						e.a.static = !1, e.b.static = !1, e.c.static = !1, e.d.static = !1, e.a.destroyPhysics(), c.ticker.remove(s), d.destroy()
+					}
+				},
+				applyMinigame: function(e, t, i) {
+					R.none.apply(e, t), B(e.a.i, 36, "september2024"), W(e.a.e, "Sprites/EyesCostume25"), W(e.a.f, "Sprites/EyesCostume25"), W(e.a.g, "Sprites/EyesCostume25"), W(e.a.h, "Sprites/EyesCostume25"), W(e.a.d, "Sprites/Empty"), 1 != t && (W(e.b, "Sprites/Empty"), W(e.c, "Sprites/Empty"), "level" != i && "levelLayer2" != i && (e.tearDrop.sortableChildren = !0));
+					let n = [];
+					for (let e = 37; e < 53; e++) n.push(pe["Sprites/BodiesCostume_september2024"][e]);
+					let a = new PIXI.AnimatedSprite(n);
+					a.anchor.set(.5, .5), "gtttatint" == i ? (e.tearDrop.addChild(a), a.x = e.tearDrop.x, a.y = e.tearDrop.y - 30, e.tearDrop.sortableChildren = !0, a.zIndex = -1) : "tennis" != i && "levelLayer2" != i || (e.tearDrop.addChild(a), e.tearDrop.sortableChildren = !0, a.zIndex = -1, a.y = -40, "tennis" == i && (e.a.k.lockLayerFrame = !0, e.tearDrop.onNextFrame = function() {
+						e.a.k.gotoAndStop(0)
+					})), a.play(), a.animationSpeed = .4;
+					let o = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < o.length; e++) o[e].layerOffset = {
+						x: 0,
+						y: 6
+					};
+					if (e.a.d.layerOffset = {
+							x: 0,
+							y: 4
+						}, "tennis" == i) {
+						let t = {
+							x: e.tearDrop.x,
+							y: e.tearDrop.y
+						};
+						e.tearDrop.x -= 5, e.tearDrop.y -= 8, e.a.k.layerOffset = {
+							x: 0,
+							y: -10
+						}, _(e.tearDrop, t), e.tearDrop.destroyCostume = function() {
+							e.tearDrop.destroyPhysics()
+						}
+					}
+				}
+			},
+			mariposa: {
+				name: "Mariposa Drop",
+				sprite: 40,
+				cost: 1200,
+				owned: !1,
+				color: 14981240,
+				amountOfVotes: 124,
+				artist: G.chaosticies,
+				drawnBy: G.dialup,
+				apply: function(e, t, i) {
+					"levelLayer2" != i && R.none.apply(e, t), B(e.a.i, 32, "september2024"), W(e.a.e, "Sprites/EyesCostume25"), W(e.a.f, "Sprites/EyesCostume25"), W(e.a.g, "Sprites/EyesCostume25"), W(e.a.h, "Sprites/EyesCostume25"), W(e.a.d, "Sprites/MouthsCostume25");
+					let n = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < n.length; e++) n[e].layerOffset = {
+						x: 0,
+						y: 8
+					}, n[e].tint = 16708557;
+					if (e.a.d.layerOffset = {
+							x: 0,
+							y: 4
+						}, "gtttatint" != i && "level" != i && "levelLayer2" != i && "tennis" != i) {
+						let t = new PIXI.AnimatedSprite(pe["Sprites/BodiesCostume_september2024"]);
+						e.a.addChild(t);
+						let i = function() {
+							t.gotoAndStop(e.a.i.currentFrame + -13), e.a.i.updateTransform(), t.transform.setFromMatrix(e.a.i.transform.localTransform)
+						};
+						c.ticker.add(i), e.destroyCostume = function() {
+							c.ticker.remove(i), t.destroy()
+						}
+					}
+					if ("levelLayer2" == i && (e.tearDrop.a.sortableChildren = !0, e.tearDrop.a.i2.zIndex = e.a.i.zIndex + 6, e.tearDrop.a.j.zIndex = e.a.i.zIndex + 1), "gtttatint" == i || "level" == i) {
+						let t = new PIXI.AnimatedSprite(pe["Sprites/BodiesCostume_september2024"]);
+						"gtttatint" == i ? e.tearDrop.a_.addChild(t) : e.a.addChild(t), t.anchor.set(.5, .5), t.startInterpolation = !0;
+						let n = function() {
+							t.gotoAndStop(e.a.i.currentFrame + -13), "level" == i ? (e.a.i2.inactive ? t.zIndex = e.a.i.zIndex + 5 : (t.zIndex = e.a.i.zIndex + 6, e.a.j.zIndex = e.a.i.zIndex + 5), t.skew.x = 0, t.y = 80, t.x = u.linear(t.x, e.a.h.inactive ? -10 : e.a.h.x + 20, t.startInterpolation ? 1 : .2, Je), t.startInterpolation = !1, t.scale.x = .5 + Math.cos((t.x - 40) / Math.PI / 15) / 2, t.skew.x = t.x / 200 - .25, t.skew.y = .25 - t.x / 200) : (t.x = u.linear(t.x, e.a.h.inactive ? -10 : .75 * e.a.h.x + 10, .2, Je), t.scale.x = .1 + Math.cos((t.x - 10) / Math.PI / 15), t.skew.x = t.x / 200)
+						};
+						c.ticker.add(n), e.destroyCostume = function() {
+							c.ticker.remove(n), t.destroy()
+						}
+					}
+					if ("tennis" == i) {
+						let t = new PIXI.AnimatedSprite(pe["Sprites/BodiesCostume_september2024"]);
+						t.gotoAndStop(34), e.tearDrop.addChild(t), e.tearDrop.onNextFrame = function() {
+							e.a.i.updateTransform(), t.transform.setFromMatrix(e.a.i.transform.localTransform)
+						}, e.tearDrop.destroyCostume = function() {
+							e.tearDrop.onNextFrame = function() {}, t.destroy()
+						}
+					}
+				}
+			},
+			snowdrop: {
+				name: "Snow Drop",
+				sprite: 43,
+				cost: 400,
+				owned: !1,
+				color: 13492979,
+				artist: G.vendormint,
+				limited: !0,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 59, "1"), W(e.a.e, "Sprites/EyesCostume44"), W(e.a.f, "Sprites/EyesCostume44"), W(e.a.g, "Sprites/EyesCostume44"), W(e.a.h, "Sprites/EyesCostume44"), W(e.a.d, "Sprites/MouthsCostume44"), e.a.g.layerOffset = {
+						x: 0,
+						y: 5
+					}, e.a.h.layerOffset = {
+						x: 0,
+						y: 5
+					}
+				}
+			},
+			dinodrop: {
+				name: "Dino Drop!",
+				sprite: 44,
+				cost: 1200,
+				owned: !1,
+				color: 10679219,
+				artist: G.gokci,
+				apply: function(e, t, i) {
+					R.none.apply(e, t), B(e.a.i, 61, "1");
+					let n = new PIXI.Sprite(pe["Sprites/BodiesCostume_1"][63]);
+					U(n, e.a, 0, .95, 20), n.x = 85, n.y = 120, n.zIndex = -1, e.a.sortableChildren = !0, e.destroyCostume = function() {
+						n.destroyPhysics()
+					};
+					let a = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < a.length; e++) a[e].layerOffset = {
+						x: 0,
+						y: 6
+					};
+					e.a.d.layerOffset = {
+						x: 0,
+						y: 4
+					}
+				},
+				applyMinigame: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 64, "1");
+					let i = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < i.length; e++) i[e].layerOffset = {
+						x: 0,
+						y: 6
+					};
+					e.a.d.layerOffset = {
+						x: 0,
+						y: 4
+					}
+				}
+			},
+			_td_costume7: {
+				name: "Mistletoe!",
+				artist: G.teardrop,
+				sprite: 45,
+				cost: 100,
+				owned: !1,
+				limited: !0,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 0, "christmas2024")
+				}
+			},
+			snowglobe: {
+				name: "Snowglobe Drop",
+				sprite: 46,
+				cost: 1200,
+				owned: !1,
+				color: 8909567,
+				amountOfVotes: 81,
+				artist: G.adxmz_vll,
+				limited: !0,
+				apply: function(e, t, n) {
+					R.none.apply(e, t), W(e.a.j, "Sprites/Empty"), W(e.a.k, "Sprites/Empty"), B(e.a.i, 2, "christmas2024");
+					let a = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < a.length; e++) a[e].layerOffset = {
+						x: 0,
+						y: 8
+					};
+					e.a.d.layerOffset = {
+						x: 0,
+						y: 4
+					};
+					let o = new PIXI.AnimatedSprite(pe["Sprites/BodiesCostume_christmas2024"]);
+					e.a.i.addChild(o);
+					let r = new PIXI.Graphics;
+					o.mask = r, e.a.i.addChild(r);
+					let s = Math.floor(2763 * Math.random()),
+						l = (i.happiness, i.hunger, i.sleep);
+					"levelLayer2" == n && o.gotoAndStop(4);
+					let d = [],
+						h = function(e = !1) {
+							return {
+								x: 400 + 100 * (Math.random() - .5),
+								y: e ? 300 : 367.5 + 140 * (Math.random() - .5),
+								size: 1 + 1 * Math.random(),
+								speed: .5 + .5 * Math.random(),
+								horizontalSpeed: Math.random() - .5
+							}
+						};
+					for (let e = 0; e < 100; e++) d.push(h(!1));
+
+					function u() {
+						o.tint = 16777215, "levelLayer2" != n && o.gotoAndStop(Math.max(0, e.a.i.currentFrame + -43)), r.clear(), r.beginFill(16777215);
+						for (let e = 0; e < d.length; e++) d[e].y += d[e].speed, d[e].x += Math.cos(s + 2 * d[e].speed) * d[e].speed / 4, r.drawCircle(d[e].x, d[e].y, d[e].size), d[e].y > 435 && (d[e] = h(!0));
+						r.endFill(), s += Je / 40 * (.4 + l / 100 * .6)
+					}
+					c.ticker.add(u);
+					let p = function() {
+						o.destroy(), r.destroy(), c.ticker.remove(u)
+					};
+					"tennis" == n ? e.tearDrop.destroyCostume = p : "levelLayer2" == n ? e.tearDrop.destroyCostume2 = p : e.destroyCostume = p
+				}
+			},
+			snowflake: {
+				name: "Snowflake Drop",
+				sprite: 47,
+				artist: G.frostthesleepyone,
+				cost: 800,
+				owned: !1,
+				limited: !0,
+				color: 7992566,
+				apply: function(e, t) {
+					R.none.apply(e, t), W(e.a.d, "Sprites/Empty"), B(e.a.i, 6, "christmas2024")
+				}
+			},
+			treedrop: {
+				name: "Tree Drop",
+				sprite: 48,
+				artist: {
+					name: G.chaosticies.shortName + ", " + G.dopozy.name
+				},
+				cost: 1200,
+				owned: !1,
+				limited: !0,
+				color: 56132,
+				apply: function(e, t, i) {
+					R.none.apply(e, t), B(e.a.i, 8, "christmas2024");
+					let n = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < n.length; e++) n[e].layerOffset = {
+						x: 0,
+						y: 8
+					};
+					e.a.d.layerOffset = {
+						x: 0,
+						y: 4
+					};
+					let a = new PIXI.AnimatedSprite(pe["Sprites/BodiesCostume_christmas2024"]);
+					a.blendMode = PIXI.BLEND_MODES.ADD, e.a.i.addChild(a), a.gotoAndStop(10), a.alpha = .5;
+					let o = [
+							[10, 11],
+							[12, 13],
+							[14, 15, 16, 17, 11]
+						],
+						r = 0,
+						s = 0,
+						l = 4,
+						d = Date.now(),
+						h = Date.now(),
+						u = function() {
+							h < d && (h = Date.now() + 250, a.gotoAndStop(o[r][s]), s++, o[r].length <= s && (s = 0, l--, 0 == l && (l = 2, r++, r >= o.length && (r = 0)))), d = Date.now()
+						};
+					c.ticker.add(u);
+					let p = function() {
+						a.destroy(), c.ticker.remove(u)
+					};
+					"tennis" == i ? e.tearDrop.destroyCostume = p : "levelLayer2" == i ? e.tearDrop.destroyCostume2 = p : e.destroyCostume = p
+				}
+			},
+			_td_costume8: {
+				name: "TEARSHARK!!!",
+				sprite: 49,
+				cost: 1027,
+				owned: !1,
+				artist: G.teardrop,
+				limited: !0,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 65);
+					let i = new PIXI.AnimatedSprite(pe["Sprites/BodiesCostume_1"]);
+					e.a.addChild(i), i.gotoAndStop(67), i.anchor.set(.5, .5), i.x = e.a.i.x, i.y = e.a.i.y, i.zIndex = 10, W(e.a.j, "Sprites/LimbsCostume50"), W(e.a.k, "Sprites/LimbsCostume50"), W(e.b, "Sprites/LimbsCostume50"), W(e.c, "Sprites/LimbsCostume50");
+					let n = [e.a.j, e.a.k, e.b, e.c];
+					for (let e = 0; e < n.length; e++) n[e].scaleOffset = {
+						x: 1.1,
+						y: 1
+					};
+					e.onNextFrame = function() {
+						48 == e.a.i.currentFrame ? i.gotoAndStop(68) : i.gotoAndStop(67), 8 == e.a.j.currentFrame && e.a.j.scale.x > 0 && (e.a.j.scale.x *= -1)
+					};
+					let a = new PIXI.Sprite(pe["Sprites/BodiesCostume_1"][69]);
+					U(a, e.a, 0, .9, 20), a.x = 95, a.y = 130, a.zIndex = -1, e.a.sortableChildren = !0, e.destroyCostume = function() {
+						a.destroyPhysics(), i.destroy()
+					};
+					let o = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < o.length; e++) o[e].layerOffset = {
+						x: -2,
+						y: 15
+					}, o[e].scaleOffset = {
+						x: .95,
+						y: .9
+					};
+					e.a.g.layerOffset = {
+						x: -4,
+						y: 15
+					}, e.a.e.layerOffset = {
+						x: -4,
+						y: 15
+					}, e.a.d.layerOffset = {
+						x: -3,
+						y: 8
+					}, e.a.d.scaleOffset = {
+						x: .8,
+						y: .8
+					}, e.a.layerOffset = {
+						x: 0,
+						y: 5
+					}
+				},
+				applyMinigame: function(e, t, i) {
+					R.none.apply(e, t), B(e.a.i, 70), W(e.a.j, "Sprites/LimbsCostume50"), W(e.a.k, "Sprites/LimbsCostume50"), "faceMatch" != i ? (W(e.b, "Sprites/LimbsCostume50"), W(e.c, "Sprites/LimbsCostume50")) : W(e.a.c, "Sprites/LimbsCostume50");
+					let n = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < n.length; e++) n[e].layerOffset = {
+						x: 0,
+						y: 15
+					}, n[e].scaleOffset = {
+						x: .95,
+						y: .9
+					}, "gtttatint" == i && (n[e].scaleOffset = {
+						x: 1,
+						y: .9
+					});
+					e.a.g.layerOffset = {
+						x: 0,
+						y: 15
+					}, e.a.e.layerOffset = {
+						x: 0,
+						y: 15
+					}, e.a.d.layerOffset = {
+						x: 0,
+						y: 8
+					}, e.a.d.scaleOffset = {
+						x: .8,
+						y: .8
+					}, e.a.layerOffset = {
+						x: 0,
+						y: 5
+					}
+				}
+			},
+			_td_costume9: {
+				name: "Love Syrup!",
+				sprite: 50,
+				cost: 1432,
+				owned: !1,
+				color: 16603087,
+				artist: G.teardrop,
+				limited: !0,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 71);
+					let i = new PIXI.Sprite(pe["Sprites/BodiesCostume_1"][73]);
+					U(i, e.a, 0, .95, 20), i.x = 15, i.y = 120, i.zIndex = -1, i.scale.x = -1;
+					let n = new PIXI.Sprite(pe["Sprites/BodiesCostume_1"][73]);
+					U(n, e.a, 0, .95, 20), n.x = 110.5, n.y = 120, n.zIndex = -1, e.a.sortableChildren = !0, i.scale.x = -1.1, i.scale.y = 1.1, n.scale.x = 1.1, n.scale.y = 1.1, e.destroyCostume = function() {
+						n.destroyPhysics(), i.destroyPhysics()
+					};
+					let a = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < a.length; e++) a[e].layerOffset = {
+						x: 0,
+						y: 8
+					}, a[e].tint = 16765941;
+					e.a.d.layerOffset = {
+						x: 0,
+						y: 4
+					}
+				},
+				applyMinigame: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 74);
+					let i = [e.a.e, e.a.f, e.a.g, e.a.h, e.a.d];
+					for (let e = 0; e < i.length; e++) i[e].layerOffset = {
+						x: 0,
+						y: 8
+					};
+					e.a.d.layerOffset = {
+						x: 0,
+						y: 4
+					}
+				}
+			},
+			giant: {
+				name: "Giant",
+				sprite: 1,
+				artist: G.bluesky,
+				cost: 0,
+				owned: !1,
+				secret: !0,
+				applyMinigame: function() {},
+				apply: function(e, t = 0) {
+					let i;
+					switch (R.none.apply(e, t), e.size = 1.25, e.scale.x *= 1.25, e.scale.y *= 1.25, e.destroyCostume = function() {
+							e.size = 1, e.scale.x /= 1.25, e.scale.y /= 1.25
+						}, t) {
+						case 0:
+							i = [e.b, e.c, e.a.d, e.a.e, e.a.f, e.a.g, e.a.h, e.a.i, e.a.j, e.a.k];
+							break;
+						case 1:
+							i = [e.a.d, e.a.e, e.a.f, e.a.g, e.a.h, e.a.i, e.a.j, e.a.k]
+					}
+					for (let e = 0; e < i.length; e++) {
+						let t = i[e],
+							n = t.symbol.split("/")[1];
+						console.log("Sprites/" + n + "Costume21"), W(t, "Sprites/" + n + (n.includes("Mouth") ? "s" : "") + "Costume21")
+					}
+				}
+			},
+			lemon: {
+				name: o.costumes.lemon,
+				sprite: 7,
+				cost: -1,
+				achievement: "lemons",
+				owned: !1,
+				color: 16770969,
+				artist: G.vendormint,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 12)
+				}
+			},
+			sportsdrop: {
+				name: o.costumes.sportsdrop,
+				sprite: 9,
+				cost: -1,
+				achievement: "winagameoftennis",
+				owned: !1,
+				artist: G.vendormint,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 16)
+				}
+			},
+			limedrop: {
+				name: o.costumes.limedrop,
+				sprite: 15,
+				cost: -1,
+				achievement: "2763lemons",
+				owned: !1,
+				color: 5234769,
+				artist: G.jampu,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 28)
+				}
+			},
+			jockdrop: {
+				name: o.costumes.jockdrop,
+				sprite: 17,
+				cost: -1,
+				achievement: "5minuteGTTTATINT",
+				owned: !1,
+				artist: G.maple2,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 32), W(e.a.j, "Sprites/LimbsCostume17"), W(e.a.k, "Sprites/LimbsCostume17")
+				}
+			},
+			energydrink: {
+				name: o.costumes.energydrink,
+				sprite: 20,
+				cost: -1,
+				achievement: "10energydrinks",
+				owned: !1,
+				artist: G.tyblade,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 43)
+				}
+			},
+			_td_costume6: {
+				name: "Cakepop-Chip",
+				sprite: 26,
+				cost: -1,
+				achievement: "750altitudeCAKEWALK",
+				owned: !1,
+				color: 1108991,
+				artist: G.teardrop,
+				apply: function(e, t) {
+					R.none.apply(e, t), B(e.a.i, 55)
+				}
+			}
+		},
+		F = [{
+			name: "ALL",
+			items: []
+		}, {
+			name: "Achievements",
+			items: []
+		}, {
+			name: "Valentines",
+			items: ["_td_costume8", "_td_costume9"]
+		}, {
+			name: "Christmas 2024",
+			items: ["snowdrop", "_td_costume7", "snowglobe", "snowflake", "treedrop"]
+		}];
+	for (let e in R) F[0].items.push(e);
+	for (let e in R) - 1 == R[e].cost && F[1].items.push(e);
+
+	function z(e) {
+		let t = {
+			name: e.name,
+			items: []
+		};
+		for (let i in R) R[i].artist == e && t.items.push(i);
+		F.push(t)
+	}
+	z(G.teardrop), z(G.thinking909), z(G.vendormint), F.push({
+		name: "September 2024",
+		items: ["sundrop", "coladrop", "tropical", "moondrop", "softdrink", "mariposa", "glorp", "clouddrop", "waffle", "popdrop", "sealdrop", "aoracedrop", "gumdrop", "voiddrop", "potiondrop"],
+		votes: !0,
+		amaze: !0
+	});
+	let U = function(e, t, i, n, a, o = !1, r) {
+			e.anchor.set(.5, .5), e.offset = {}, t.addChild(e), e.vx = 0, e.vy = 0, e.actualAngle = 0, e.angleVelocity = 0;
+			let s = !1,
+				l = function() {
+					if (null != r) {
+						e.rotation = -r.rotation + i, e.actualAngle += e.angleVelocity * Je, e.rotation += e.actualAngle, e.angleVelocity += (r.rotation + i - e.actualAngle) / a * Je, e.angleVelocity *= n;
+						let t = {
+							x: r.x + e.offset.x * Math.cos(r.rotation) - e.offset.y * Math.sin(r.rotation),
+							y: r.y + e.offset.y * Math.cos(r.rotation) + e.offset.x * Math.sin(r.rotation)
+						};
+						s || (e.x = t.x, e.y = t.y, s = !0), e.vx += (t.x - e.x) / a * Je, e.vy += (t.y - e.y) / a * Je, e.vx *= n / 2, e.vy *= n, e.x += e.vx * Je, e.y += e.vy * Je
+					} else e.rotation = -t.rotation + i, e.actualAngle += e.angleVelocity * Je, e.rotation += e.actualAngle, e.angleVelocity += (t.rotation + i - e.actualAngle) / a * Je, e.angleVelocity *= n
+				};
+			c.ticker.add(l), e.destroyPhysics = function() {
+				c.ticker.remove(l), e.destroy()
+			}
+		},
+		_ = function(e, t, i, n = 1, a = 100, o = !1, r) {
+			e.offset = {}, e.vx = 0, e.vy = 0, e.actualAngle = 0, e.angleVelocity = 0, e.orbitSpeed = 1;
+			let s = function() {
+				e.rotation = e.vy / 20, e.vx += (t.x - e.x) / a * Je / 5 * e.orbitSpeed, e.vy += (t.y - e.y) / a * Je / 2 * e.orbitSpeed, e.vx *= n, e.vy *= n, e.x += e.vx * Je / 5 * e.orbitSpeed, e.y += e.vy * Je / 2 * e.orbitSpeed
+			};
+			c.ticker.add(s), e.destroyPhysics = function() {
+				c.ticker.remove(s)
+			}
+		};
+
+	function W(e, t) {
+		let i = e.currentFrame;
+		e.textures = pe[t], e.gotoAndStop(i)
+	}
+
+	function j(e) {
+		return e.split("").reverse().join("")
+	}
+
+	function V(e) {
+		return j(btoa(JSON.stringify(e)))
+	}
+	let H = !1;
+
+	function Y(e, t) {
+		try {
+			return null == e ? t : JSON.parse(atob(j(e)))
+		} catch (e) {
+			return alert("Error with save file. Potential corruption!"), H = !0, 0
+		}
+	}
+
+	function Q() {
+		if (n.privateBeta) return;
+		if (n.introMode) return;
+		let e = [];
+		e.push(V(t.coins)), e.push(V(t.fridge)), e.push(V(i.happiness)), e.push(V(i.hunger)), e.push(V(i.sleep)), e.push(V(n.skipIntro)), e.push(V(n.costume));
+		let a = {};
+		for (let e in R) a[e] = R[e].owned;
+		e.push(V(a)), e.push(V(n.lastLogin)), e.push(V(i.sleeping)), e.push(V(n.sfx)), e.push(V(n.music)), e.push(V(n.minigameMusic)), e.push(V(i.progress)), e.push(V(i.progressNeeded)), e.push(V(n.level));
+		let o = {};
+		for (let e in y) o[e] = y[e].done;
+		e.push(V(o)), e.push(V(n.lemonsFed)), e.push(V(n.totalSlaps)), e.push(V(n.minigameCostumes)), e.push(V(n.lastFridgePage)), e.push(V(n.drinksFed)), e.push(V(n.HQSprites)), e.push(V(n.language)), e.push(V(n.sfxVolume)), e.push(V(n.musicVolume)), e.push(V(n.HDrecommendation)), 0 == n.gameStartDate && (n.gameStartDate = Date.now()), e.push(V(n.gameStartDate)), e.push(V(n.saveFileWarning)), e.push(V(n.levelUpCostumes)), e.push(V(n.safeArea)), e.push(V(n.controllerProfile.GTTTATINT)), e.push(V(n.extendAnimationFrames)), e.push(V(n.minigames)), localStorage.setItem("myTeardrop", V(JSON.stringify(e)))
+	}
+	let K = setInterval((function() {
+		Q()
+	}), 1e4);
+
+	function J(e) {
+		H = !1;
+		let t = JSON.parse(Y(e));
+		return {
+			coins: Y(t[0]),
+			fridge: Y(t[1]),
+			happiness: Y(t[2]),
+			hunger: Y(t[3]),
+			sleep: Y(t[4]),
+			skipIntro: Y(t[5]),
+			costume: Y(t[6]),
+			boughtCostumes: Y(t[7]),
+			lastLogin: Y(t[8]),
+			sleeping: Y(t[9]),
+			sfx: Y(t[10], !0),
+			music: Y(t[11], !0),
+			minigameMusic: Y(t[12], !0),
+			progress: Y(t[13], 0),
+			progressNeeded: Y(t[14], 200),
+			level: Y(t[15], 1),
+			completedAchievements: Y(t[16], {}),
+			lemonsFed: Y(t[17], 0),
+			totalSlaps: Y(t[18], 0),
+			minigameCostumes: Y(t[19], !0),
+			lastFridgePage: Y(t[20], 0),
+			drinksFed: Y(t[21], 0),
+			HQSprites: Y(t[22], !1),
+			language: Y(t[23], "en-US"),
+			sfxVolume: Y(t[24], 1),
+			musicVolume: Y(t[25], 1),
+			HDrecommendation: Y(t[26], !1),
+			gameStartDate: Y(t[27], Date.now()),
+			saveFileWarning: Y(t[28], !1),
+			levelUpCostumes: Y(t[29], !0),
+			safeArea: Y(t[30], !1),
+			gtttatintProfile: Y(t[31], n.controllerProfile.GTTTATINT),
+			extendAnimationFrames: Y(t[32], !1),
+			minigames: Y(t[33], n.minigames)
+		}
+	}
+	if (null == localStorage.getItem("myTeardrop")) Q();
+	else if (!n.privateBeta) {
+		let e = J(localStorage.getItem("myTeardrop"));
+		t.coins = e.coins, t.fridge = e.fridge, i.happiness = e.happiness, i.hunger = e.hunger, i.sleep = e.sleep, n.skipIntro = e.skipIntro, n.lastLogin = e.lastLogin, i.sleeping = e.sleeping, "string" == typeof e.costume && (Object.keys(R).includes(e.costume) || (e.costume = "none"), n.costume = e.costume);
+		for (let t in R) {
+			let i = !1;
+			null != e.boughtCostumes[t] && (i = e.boughtCostumes[t]), R[t].owned = i
+		}
+		n.sfx = e.sfx, n.music = e.music, n.minigameMusic = e.minigameMusic, n.minigameCostumes = e.minigameCostumes, i.progress = e.progress, i.progressNeeded = e.progressNeeded, n.level = e.level, n.lemonsFed = e.lemonsFed, n.drinksFed = e.drinksFed, n.totalSlaps = e.totalSlaps, n.lastFridgePage = e.lastFridgePage, n.HQSprites = e.HQSprites, n.language = e.language, n.sfxVolume = e.sfxVolume, n.musicVolume = e.musicVolume, n.HDrecommendation = e.HDrecommendation, n.gameStartDate = e.gameStartDate, n.saveFileWarning = e.saveFileWarning, n.levelUpCostumes = e.levelUpCostumes, n.safeArea = e.safeArea, n.controllerProfile.GTTTATINT = e.gtttatintProfile, n.extendAnimationFrames = e.extendAnimationFrames, n.minigames = e.minigames;
+		for (let t in y) {
+			let i = !1;
+			null != e.completedAchievements[t] && (i = e.completedAchievements[t]), y[t].done = i
+		}
+	}
+	if (null != localStorage.getItem(n.language)) {
+		let e = JSON.parse(localStorage.getItem(n.language).replaceAll("\n", "\\n"));
+		for (let t in e)
+			for (let i in e[t]) "version" != t && (o[t][i] = e[t][i]);
+		for (let e in o.costumes) R[e].name = o.costumes[e]
+	} else n.language = "en-US";
+	let q = o.message.obtainCostume;
+	o.message.obtainCostume = function(e) {
+		return q.replace("{achievement}", '"' + e + '"')
+	};
+	let Z, $ = o.message.updateWarning;
+	o.message.updateWarning = function(e, t) {
+		return $.replace("{currentVersion}", e).replace("{latest}", t)
+	};
+	let ee = {
+			loadAttempts: 0,
+			useOldLoader: !1
+		},
+		te = localStorage.getItem("loaderData");
+	if (null == te) Z = {
+		loadAttempts: 0,
+		useOldLoader: !1
+	};
+	else try {
+		Z = JSON.parse(te)
+	} catch (e) {
+		Z = ee
+	}
+
+	function ie() {
+		localStorage.setItem("loaderData", JSON.stringify(Z))
+	}
+	Z.loadAttempts++, Z.loadAttempts >= 3 && (n.HQSprites = !1), ie();
+	let ne = document.createElement("div");
+	ne.classList.add("collectingDroplets");
+	let ae = document.createElement("img");
+	ae.src = "loadingDance.gif", ae.classList.add("loadingDance");
+	let oe = document.createElement("div");
+	oe.classList.add("loader");
+	let re = document.createElement("div");
+	re.classList.add("bar"), document.body.appendChild(ne), ne.appendChild(ae), ne.appendChild(oe), oe.appendChild(re);
+	let se = document.createElement("p");
+	if (se.innerText = "Collecting Droplets...", ne.appendChild(se), Z.useOldLoader) {
+		document.head.innerHTML += '<link rel="stylesheet" href="collectingDropletsClassic.css">';
+		let e = document.createElement("img");
+		e.src = "Resources/Load.png", e.style.bottom = "52%", ne.appendChild(e), ae.style.display = "none"
+	} else document.head.innerHTML += '<link rel="stylesheet" href="collectingDroplets.css">';
+	window.innerWidth, window.devicePixelRatio;
+	let le = 0,
+		de = 0,
+		ce = "?v=" + localStorage.version;
+
+	function he(e, t) {
+		le++, ue || (re.style.width = le / de * 100 + "%"), le == de && (ue || (oe.style.color = "white", oe.innerHTML += "<p>Tap/Click to play</p>"), function() {
+			if (!ue) {
+				if (ue = !0, n.extendAnimationFrames)
+					for (let e in h)
+						for (let t in h[e]) h[e][t].start *= 2, h[e][t].end *= 2;
+				ye.music = new Pizzicato.Group(ye.music), ye.sfx = new Pizzicato.Group(ye.sfx), ye.sfx.volume = n.sfxVolume, ye.music.volume = n.musicVolume, Ze()
+			}
+		}(), ne.remove())
+	}
+	let ue = !1,
+		pe = {},
+		me = {},
+		ye = {
+			music: [],
+			sfx: []
+		};
+
+	function fe(e, t, i) {
+		de++, PIXI.Assets.load("./Resources/" + e + ".json" + ce).then((e => {
+			e.cachePrefix = "?v=hello", pe[i] = [];
+			for (let n = 0; n < e._frameKeys.length; n++) {
+				let e = t + (n + 1e4).toString().slice(1);
+				pe[i].push(PIXI.Texture.from(e))
+			}
+			he()
+		}))
+	}
+
+	function ge(e, t, i) {
+		let a = {},
+			o = t;
+		pe[i] = [];
+		for (let r = 0; r < t; r++) {
+			a[r] = 0, de++;
+			let s = (r + 10001).toString().slice(1);
+			1 == t && (s = ""), PIXI.Assets.load("./Resources/" + e + s + ".png" + ce).then((e => {
+				a[r] = e, n.HQSprites && e.baseTexture.setResolution(2), o--, 0 == o && (pe[i] = a), he()
+			}))
+		}
+	}
+
+	function xe(e) {
+		de++, PIXI.Assets.load("./Fonts/" + e + ".fnt" + ce).then((e => {
+			he()
+		}))
+	}
+
+	function we(e, t) {
+		de++, PIXI.Assets.load("./Animations/" + e + ".json" + ce).then((e => {
+			me[t] = e, me[t].animation = t, me[t].extension = 1, n.extendAnimationFrames && Se(me[t]), he()
+		}))
+	}
+
+	function ve(e, t, i = 0) {
+		de++, ye[t] = new Pizzicato.Sound("./Audio/" + e + ".mp3" + ce, (function() {
+			ye[t].volume = 1, ye[t].loaded = !0, null != ye[t].onloadAudio && ye[t].onloadAudio(), he()
+		})), ye[t].loaded = !1, 0 == i ? ye.music.push(ye[t]) : ye.sfx.push(ye[t])
+	}
+	console.warn = function() {};
+	let Ie = "",
+		Ce = "";
+	"en-US" != n.language && (Ce = "Unicode"), n.HQSprites && (Ie = "hd/"), xe("MenuShag" + Ce), xe("arial"), xe("ShagBlueNumber"), xe("ShagGoldenNumber"), xe("ShagBlack" + Ce), xe("IndieFlower"), we("Teardrop", "Teardrop"), we("oil/Teardrop.TeardropBody", "oilTeardropBody"), we("oil/TeardropTired.TeardropBody", "oilTeardropTiredBody"), we("healthLose", "healthLose"), we("loading", "loading"), we("bfb", "bfb"), we("TeardropTired", "TeardropTired"), we("tearDropWatch", "tearDropWatch"), we("tearDropLevelUp", "tearDropLevelUp"), we("faceMinigame", "faceMinigame"), we("oddDroplets", "oddDroplets"), we("tearDropTennis", "tearDropTennis"), we("Tutorial/minigameInformation", "moreMiniInfo"), we("Tutorial/rotateDevice", "rotateDevice"), we("GTTTATINT", "GTTTATINT"), we("dropletDodge", "dropletDodge"), we("GTTTATINTLOSE", "GTTTATINTLOSE"), we("lollipopMode", "lollipopMode"), we("Box", "Box"), we("SkewMatrix", "SkewMatrix"), fe(Ie + "GameThumbnails", "GameThumbnails", "Sprites/GameThumbnails"), fe("tennisBall", "tennisBall", "Sprites/tennisBall"), fe("dodgeItems", "dodgeItems", "Sprites/dodgeItems"), fe("dodgeObjects", "dodgeObjects", "Sprites/dodgeObjects"), fe("TDlollipop", "TDlollipop", "TDlollipop"), fe("BGLayer", "BGLayer", "BGLayer"), ge(Ie + "Rooms/Rooms", 25, "Sprites/Rooms"), ge("dodgeBackgrounds/dodgeBackgrounds", 4, "Sprites/dodgeBackgrounds"), ge("GameBanners/GameBanners", 9, "Sprites/GameBanners"), ge("Logo", 1, "Logo"), ge("dodgeGrid", 1, "dodgeGrid"), ge("valentines_promo", 1, "valentines_promo"), fe(Ie + "Food", "Food", "Sprites/Food"), fe("Empty", "Empty", "Sprites/Empty"), ve("wave", "wave", 1), ve("yeah", "yeah"), n.events.christmas ? ve("frostwaltz", "brittlerille") : ve("brittlerille", "brittlerille"), ve("LevelUp", "levelup"), ve("Achievement", "achievement"), ve("switchoff", "switchoff", 1), ve("switchon", "switchon", 1), ve("purchase", "purchase", 1), ve("fail", "fail", 1), ve("coinlarge", "coinlarge", 1), ve("coinmedium", "coinmedium", 1), ve("coinsmall", "coinsmall", 1), ve("consume", "consume", 1), ve("slap1", "slap1", 1), ve("slap2", "slap2", 1), ve("slap3", "slap3", 1), ve("slap4", "slap4", 1), ve("collect", "collect", 1), fe("Oldies/Bodies/1", "Bodies", "oldiesCostume/Bodies"), fe("Oldies/Mouths", "Mouth", "oldiesCostume/Mouth"), fe("Oldies/Limbs", "Limbs", "oldiesCostume/Limbs"), fe("Oldies/Eyes", "Eyes", "oldiesCostume/Eyes"), fe(Ie + "Bodies/1", "Bodies", "Sprites/Bodies"), fe(Ie + "Bodies/2", "Bodies_2013rec", "Sprites/Bodies_2013rec"), fe(Ie + "Outline/BodiesOUTLINE12", "BodiesOUTLINE12", "Sprites/BodiesOUTLINE12"), fe(Ie + "Bodies/BodiesCostume_1", "BodiesCostume_1", "Sprites/BodiesCostume_1"), fe(Ie + "Bodies/BodiesCostume_september2024", "BodiesCostume_september2024", "Sprites/BodiesCostume_september2024"), fe(Ie + "Bodies/BodiesCostume_christmas2024", "BodiesCostume_christmas2024", "Sprites/BodiesCostume_christmas2024"), fe("MouthsCostume10", "MouthsCostume10", "Sprites/MouthsCostume10"), fe("MouthsCostume21", "MouthsCostume21", "Sprites/MouthsCostume21"), fe("MouthsCostume25", "MouthsCostume25", "Sprites/MouthsCostume25"), fe("MouthsCostume44", "MouthsCostume44", "Sprites/MouthsCostume44"), fe("EyesCostume25", "EyesCostume25", "Sprites/EyesCostume25"), fe("EyesCostume44", "EyesCostume44", "Sprites/EyesCostume44"), fe("LimbsCostume17", "LimbsCostume17", "Sprites/LimbsCostume17"), fe("LimbsCostume21", "LimbsCostume21", "Sprites/LimbsCostume21"), fe("LimbsCostume50", "LimbsCostume50", "Sprites/LimbsCostume50"), fe("Debug/Icons", "Icons", "Icons"), fe("Bodies/BodiesCostume21", "BodiesCostume21", "Sprites/BodiesCostume21"), fe(Ie + "Mouths", "Mouth", "Sprites/Mouth"), fe(Ie + "Limbs", "Limbs", "Sprites/Limbs"), fe(Ie + "Outline/LimbsOUTLINE12", "LimbsOUTLINE12", "Sprites/LimbsOUTLINE12"), fe("LimbsCostume1", "LimbsCostume1", "Sprites/LimbsCostume1"), fe(Ie + "Eyes", "Eyes", "Sprites/Eyes"), fe(Ie + "Outline/EyesOUTLINE12", "EyesOUTLINE12", "Sprites/EyesOUTLINE12"), fe("EyesCostume21", "EyesCostume21", "Sprites/EyesCostume21"), fe("CakeSlicePlane", "CakeSlicePlane", "Sprites/CakeSlicePlane"), fe("Clouds", "Clouds", "Sprites/Clouds"), fe(Ie + "Poses", "Poses", "Sprites/Poses"), fe("Blur", "Blur", "Sprites/Blur"), fe("Box", "Box", "Sprites/Box"), fe(Ie + "GameUI", "GameUI", "Sprites/GameUI"), fe("designerCredits", "designerCredits", "designerCredits"), fe("Placeholders", "Placeholders", "Sprites/Placeholders"), fe("Starfield", "Starfield", "Backgrounds/Starfield"), fe("RepeatingUI", "RepeatingUI", "Sprites/RepeatingUI"), fe(Ie + "inputNineSlice", "inputNineSlice", "inputNineSlice");
+	let be = ["Teardrop", "oilTeardropBody", "oilTeardropTiredBody", "healthLose", "loading", "TeardropTired", "tearDropWatch", "tearDropLevelUp", "tearDropTennis", "GTTTATINTLOSE", "Box"];
+
+	function Se(e) {
+		if (be.includes(e.animation) || null == e.animation) {
+			e.extension = 2;
+			for (let t in e.layers)
+				for (let i = 0; i < e.layers[t].frames.length; i++) {
+					let n = e.layers[t].frames[i];
+					n[0] *= 2, e.layers[t].isCustom && (n[ke.firstFrame] *= 2)
+				}
+			for (let t in e.symbols) Se(e.symbols[t]);
+			e.frameCount *= 2
+		}
+	}
+
+	function Me(e, t = 0) {
+		return {
+			scale: {
+				x: Math.sqrt(e.a ** 2 + e.b ** 2),
+				y: Math.sqrt(e.c ** 2 + e.d ** 2)
+			},
+			skew: {
+				x: 180 / Math.PI * Math.atan2(e.d, e.c) - 90,
+				y: 180 / Math.PI * Math.atan2(e.b, e.a)
+			},
+			rotation: t,
+			skewing: null == t
+		}
+	}
+	let ke = {
+		duration: 0,
+		transformX: 1,
+		transformY: 2,
+		a: 3,
+		b: 4,
+		c: 5,
+		d: 6,
+		rotation: 7,
+		pivotX: 8,
+		pivotY: 9,
+		firstFrame: 10,
+		loopMode: 11,
+		tween: 12,
+		opacity: 13
+	};
+
+	function Pe(e, t) {
+		let i = 0,
+			n = new PIXI.Container;
+		n.animationName = e.animation, n.idle = -1, n.frameCount = e.frameCount, n.customs = [], n.layers = [];
+		let a = {};
+		for (let t in e.layers) e.layers[t].isCustom ? (a[t] = Pe(e.symbols[e.layers[t].symbol]), a[t].symbol = e.layers[t].symbol, n.customs.push(a[t])) : a[t] = new PIXI.AnimatedSprite(pe[e.layers[t].symbol]), n.layers.push(t), a[t].symbol = e.layers[t].symbol, n.addChild(a[t]), n[t] = a[t], "FireyFlame" == e.layers[t].symbol && (a[t].gotoAndPlay(0), a[t].animationSpeed = .4);
+
+		function o(t, i = !0) {
+			let n = a[t].curframe == e.layers[t].frames.length - 1 ? 0 : e.layers[t].frames[a[t].curframe + 1],
+				o = e.layers[t].frames[a[t].curframe];
+			if (a[t].inactive = null == o[1], a[t].inactive) a[t].alpha = 0;
+			else {
+				if (1 != a[t].static)
+					if (1 != a[t].lockLayerPosition && (a[t].pivot.x = o[ke.pivotX], a[t].pivot.y = o[ke.pivotY]), a[t].alpha = 1, 0 != n && -2 != o[ke.tween] && i) {
+						let e = a[t].frameProgress - 1,
+							i = new PIXI.Matrix(o[ke.a], o[ke.b], o[ke.c], o[ke.d], 0, 0),
+							r = new PIXI.Matrix(n[ke.a], n[ke.b], n[ke.c], n[ke.d], 0, 0),
+							s = Me(i, o[ke.rotation]),
+							l = Me(r, n[ke.rotation]),
+							d = l.rotation - s.rotation;
+						d > 180 && (d = -180 - (180 - d)), d < -180 && (d = 180 + (180 + d));
+						let c = l.skew.x - s.skew.x;
+						c > 180 && (c = -180 - (180 - c)), c < -180 && (c = 180 + (180 + c));
+						let h = l.skew.y - s.skew.y;
+						h > 180 && (h = -180 - (180 - h)), h < -180 && (h = 180 + (180 + h));
+						let u = {
+							skew: {
+								x: ease[o[ke.tween] + 1](e, s.skew.x, c, o[ke.duration]),
+								y: ease[o[ke.tween] + 1](e, s.skew.y, h, o[ke.duration])
+							},
+							scale: {
+								x: ease[o[ke.tween] + 1](e, s.scale.x, l.scale.x - s.scale.x, o[ke.duration]),
+								y: ease[o[ke.tween] + 1](e, s.scale.y, l.scale.y - s.scale.y, o[ke.duration])
+							},
+							rotation: ease[o[ke.tween] + 1](e, s.rotation, d, o[ke.duration])
+						};
+						s.skewing || l.skewing ? u.rotation = 0 : (u.skew.x = 0, u.skew.y = 0), a[t].transform.setFromMatrix(function(e) {
+							let t = e.rotation * (Math.PI / 180),
+								i = e.skew.x * (Math.PI / 180),
+								n = e.skew.y * (Math.PI / 180);
+							isNaN(i) && (i = 0), isNaN(n) && (n = 0);
+							let a = e.scale.x,
+								o = e.scale.y,
+								r = new PIXI.Matrix(1, 0, 0, 1, 0, 0);
+							return r.a *= Math.cos(n), r.b = Math.sin(n), r.c = -Math.sin(i), r.d *= Math.cos(i), r.a *= Math.cos(t), r.b += Math.sin(t), r.c -= Math.sin(t), r.d *= Math.cos(t), r.a *= a, r.b *= a, r.c *= o, r.d *= o, r
+						}(u)), a[t].scale.x = u.scale.x, a[t].scale.y = u.scale.y, 1 != a[t].lockLayerPosition ? (a[t].x = ease[o[ke.tween] + 1](e, o[ke.transformX], n[ke.transformX] - o[ke.transformX], o[ke.duration]), a[t].y = ease[o[ke.tween] + 1](e, o[ke.transformY], n[ke.transformY] - o[ke.transformY], o[ke.duration])) : (a[t].x = a[t].firstFramePosition.x, a[t].y = a[t].firstFramePosition.y), null != a[t].layerOffset && (a[t].x += a[t].layerOffset.x, a[t].y += a[t].layerOffset.y), null != a[t].scaleOffset && (a[t].scale.x *= a[t].scaleOffset.x, a[t].scale.y *= a[t].scaleOffset.y);
+						let p = o[ke.opacity],
+							m = n[ke.opacity];
+						p == m && a[t].alpha == m || (a[t].alpha = ease[o[ke.tween] + 1](e, p, m - p, o[ke.duration]))
+					} else {
+						let e = new PIXI.Matrix(o[ke.a], o[ke.b], o[ke.c], o[ke.d], 0, 0);
+						a[t].transform.setFromMatrix(e), 1 != a[t].lockLayerPosition ? (a[t].x = o[ke.transformX], a[t].y = o[ke.transformY], null == a[t].firstFramePosition && (a[t].firstFramePosition = {
+							x: o[ke.transformX],
+							y: o[ke.transformY]
+						})) : (a[t].x = a[t].firstFramePosition.x, a[t].y = a[t].firstFramePosition.y), null != a[t].layerOffset && (a[t].x += a[t].layerOffset.x, a[t].y += a[t].layerOffset.y), null != a[t].scaleOffset && (a[t].scale.x *= a[t].scaleOffset.x, a[t].scale.y *= a[t].scaleOffset.y), a[t].alpha = o[ke.opacity]
+					} if (e.layers[t].isCustom || (o[ke.firstFrame] = o[ke.firstFrame] % a[t].textures.length), !e.layers[t].isCustom && "FireyFlame" != e.layers[t].symbol && 1 != a[t].lockLayerFrame) {
+					let e = o[ke.firstFrame];
+					null != a[t].overrideSprite && null != a[t].overrideSprite[e] && (e = a[t].overrideSprite[e]), a[t].gotoAndStop(e)
+				}
+			}
+		}
+
+		function r(t, i) {
+			let n = i.frames,
+				a = 0;
+			t = Math.min(e.frameCount - 1, t);
+			for (let e = 0; e < n.length; e++) {
+				if (t >= a && a + n[e][0] > t) return [e, t - a];
+				a += n[e][0]
+			}
+		}
+		new PIXI.Transform;
+		let s = !1;
+		return n.fps = 0, n.onAnimationEnd = function() {}, n.gotoAndStop = function(e) {
+			n.goto(e), n.stop()
+		}, n.gotoAndPlay = function(e, t) {
+			n.goto(e), n.play(t)
+		}, n.parts = t, n.currentPart = -1, n.gotoPart = function(e) {
+			null != n.parts[e] && n.currentPart != e && (n.currentPart = e, n.goto(n.parts[e].start), n.firstFrame = n.parts[e].start, n.playUntil = n.parts[e].end, n.loop = n.parts[e].loop)
+		}, n.goto = function(t) {
+			s = !1, null == t && (t = 0), i = t;
+			for (let i in a) {
+				let n = r(t, e.layers[i]);
+				a[i].curframe = n[0], a[i].frameProgress = n[1] + 1, e.layers[i].isCustom && null != e.layers[i].frames[a[i].curframe][ke.firstFrame] && (a[i].goto(e.layers[i].frames[a[i].curframe][ke.firstFrame] + (2 == e.layers[i].frames[a[i].curframe][ke.loopMode] ? 0 : a[i].frameProgress - 1)), a[i].l = e.layers[i].frames[a[i].curframe][ke.loopMode]), o(i, !1), o(i)
+			}
+		}, n.animationData = e, n.destroyAnimation = function() {
+			n.stop();
+			for (let e in a) a[e].parent.removeChild(a[e]), null != a[e].destroyAnimation ? a[e].destroyAnimation() : a[e].destroy({
+				children: !0
+			});
+			null != n.parent && n.parent.removeChild(n), n.destroy({
+				children: !0
+			})
+		}, n.onNextFrame = -1, n.play = function(t = 60) {
+			n.fps = t, null != n.ticker && c.ticker.remove(n.ticker);
+			let i = Date.now(),
+				a = Date.now();
+			n.ticker = function() {
+				for (; a < i;) a += 1e3 / (t * e.extension), n.nextFrame(), -1 != n.onNextFrame && n.onNextFrame(n), i - a > 5e3 && (a = i);
+				i = Date.now()
+			}, c.ticker.add(n.ticker)
+		}, n.playUntil = -1, n.firstFrame = 0, n.stop = function(e) {
+			null != n.ticker && c.ticker.remove(n.ticker)
+		}, n.getCurFrame = function() {
+			return i
+		}, n.goto(0), n.nextFrame = function() {
+			let t = n.playUntil;
+			if (-1 == n.playUntil && (t = e.frameCount - 1), i++, t < i) return n.loop && n.goto(n.firstFrame), void(0 == s && (s = !0, -1 != n.idle && n.gotoPart(n.idle), n.onAnimationEnd()));
+			for (let t in a) {
+				if (a[t].inactive = !1, null == a[t].curframe && (a[t].curframe = 0), null == a[t].frameProgress) a[t].frameProgress = 1;
+				else {
+					let i = e.layers[t].frames[a[t].curframe];
+					e.layers[t].isCustom && 2 != i[ke.loopMode] && a[t].nextFrame(), a[t].frameProgress >= e.layers[t].frames[a[t].curframe][ke.duration] && (a[t].frameProgress = 0, a[t].curframe < e.layers[t].frames.length - 1 ? (a[t].curframe++, e.layers[t].isCustom && (a[t].goto(e.layers[t].frames[a[t].curframe][ke.firstFrame]), a[t].l = i[ke.loopMode])) : a[t].inactive = !0), a[t].frameProgress++
+				}
+				o(t)
+			}
+		}, n.switchData = function(t) {
+			e = t;
+			for (let e = 0; e < n.customs.length; e++) n.customs[e].switchData(t.symbols[n.customs[e].symbol]);
+			n.animationName = e.animation
+		}, n.switchParts = function(e) {
+			n.parts = e
+		}, n
+	}
+	async function Te(e) {
+		try {
+			return await navigator.clipboard.writeText(e), 1
+		} catch (e) {
+			return 0
+		}
+	}
+	let Ae = {
+		"en-US": {
+			lang: "English",
+			button: ["DOWNLOAD", "USE", "UPDATE"],
+			downloaded: !0
+		},
+		"tr-TR": {
+			lang: "Türkçe",
+			translator: G.vendormint,
+			file: "./Languages/tr-TR",
+			available: !1,
+			button: ["INDIR", "KULLAN", "GUNCELLE"]
+		},
+		"fr-FR": {
+			lang: "Français",
+			translator: G.teardrop,
+			file: "./Languages/fr-FR",
+			button: ["TELECHARGER", "UTILISER", "MISE À JOUR"]
+		},
+		"es-ES": {
+			lang: "Türkçe",
+			translator: {
+				name: G.stevencrack.name + ", " + G.thinking909.name
+			},
+			file: "./Languages/es-ES",
+			available: !1,
+			button: ["DESCARGAR", "USAR", "ACTUALIZAR"]
+		}
+	};
+	for (let e in Ae) e in localStorage && (Ae[e].downloaded = !0);
+	let Le, Ee, De = {
+			0: {
+				name: "Match",
+				id: 0,
+				available: !1
+			},
+			1: {
+				name: "Pencil",
+				id: 1,
+				available: !1
+			},
+			2: {
+				name: "Bubble",
+				id: 2,
+				available: !1
+			},
+			5: {
+				width: 100,
+				height: 100,
+				name: "Ice Cube",
+				id: 5,
+				available: !0
+			},
+			6: {
+				width: 100,
+				height: 100,
+				name: "Leafy",
+				id: 6,
+				available: !0
+			},
+			9: {
+				width: 100,
+				height: 100,
+				name: "Rocky",
+				id: 9,
+				available: !0
+			},
+			13: {
+				name: "Woody",
+				id: 13,
+				available: !1
+			},
+			19: {
+				width: 300,
+				height: 200,
+				name: "Spongy",
+				id: 19,
+				available: !0
+			},
+			22: {
+				name: "Tennis Ball",
+				id: 22,
+				available: !1
+			},
+			23: {
+				name: "Pen",
+				id: 23,
+				available: !1
+			},
+			31: {
+				width: 75,
+				height: 100,
+				name: "Coiny",
+				id: 31,
+				available: !0
+			},
+			32: {
+				width: 75,
+				height: 100,
+				name: "Pin",
+				id: 32,
+				available: !0
+			},
+			33: {
+				name: "Firey",
+				id: 33,
+				available: !1
+			},
+			34: {
+				width: 60,
+				height: 100,
+				name: "Needle",
+				id: 34,
+				available: !0
+			},
+			39: {
+				name: "Golf Ball",
+				id: 39,
+				available: !1
+			},
+			44: {
+				name: "Blocky",
+				id: 44,
+				available: !1
+			},
+			51: {
+				name: "Eraser",
+				id: 51,
+				available: !1
+			},
+			54: {
+				name: "Flower",
+				id: 54,
+				available: !1
+			},
+			57: {
+				name: "Snowball",
+				id: 57,
+				available: !1
+			},
+			62: {
+				name: "Teardrop",
+				id: 62,
+				available: !1
+			}
+		},
+		Xe = function(e, t = function() {}) {
+			let i = function() {
+				n.music && ye.clouddancer.play()
+			};
+			n.music && (ye.brittlerille.pause(), ye.clouddancer.play(), ye.clouddancer.volume = .5, ye.clouddancer.release = 1, ye.clouddancer.on("end", i));
+			let o = new PIXI.Sprite(pe["Sprites/Rooms"][18]);
+			e.addChild(o), o.tint = 8818106, o.interactive = !0, o.x = e.screen.width / 2, o.y = e.screen.height / 2, o.anchor.set(.5, .5), o.scale.x = 1.5, o.scale.y = 1.5;
+			let r = new PIXI.Container;
+			e.addChild(r);
+			let l = {},
+				d = 0,
+				h = 0,
+				p = [],
+				m = a("", 32, "center");
+			m.x = e.screen.width / 2, m.y = e.screen.height - 150, n.costume;
+			let y = new PIXI.Container;
+			y.hitArea = new PIXI.Rectangle(-5e3, -5e3, 1e4, 1e4);
+			let f = new PIXI.Graphics;
+			y.mask = f, e.addChild(y), y.x = 0, y.y = 0;
+			let g = e.screen.width,
+				x = e.screen.height;
+			f.beginFill(0), f.drawRect(y.x, y.y, g, x), f.endFill(), y.interactive = !0, y.on("pointerdown", (function(e) {
+				let t = e.clientY / s;
+				y.dragOffset = {
+					y: t - y.y
+				}, y.prevY = y.y, y.vy = 0, y.scrolling = !0
+			}));
+			let w = function(e) {
+					if (!y.scrolling) return;
+					let t = e.clientY / s;
+					y.prevY = y.y, y.y = t - y.dragOffset.y
+				},
+				v = function(e) {
+					y.wheel = !0, y.vy = u.linear(y.vy, -e.deltaY / 2 * Je, .25), y.vy > 40 * Je && (y.vy = 40 * Je), y.vy < -40 * Je && (y.vy = -40 * Je)
+				};
+			document.addEventListener("wheel", v);
+			let I = function() {
+				y.scrolling = !1
+			};
+			document.addEventListener("pointermove", w), document.addEventListener("pointerup", I), y.vy = 0;
+			let C = function() {
+				let e = 80 - S - 50 + x;
+				y.vy = u.linear(y.vy, -.5, y.wheel ? .1 : .05, Je), y.scrolling ? y.vy = y.y - y.prevY : y.y += y.vy, b.targetAlpha = 1, y.y >= 0 && (y.y = 0, y.vy = 0), y.y <= e && (b.targetAlpha = 0, y.y = e, y.vy = 0), b.alpha = u.linear(b.alpha, b.targetAlpha, .1, Je), o.y = u.linear(o.y, y.y / 40 + 80 + 50, .1, Je)
+			};
+			c.ticker.add(C);
+			let b = new PIXI.Sprite(pe["Sprites/Rooms"][11]);
+			b.x = y.x, b.y = y.y + x - 90, b.width = g, b.height = 100;
+			let S = 0,
+				M = {
+					"User Interface": ["VENDORMINT"],
+					Characters: [],
+					"Early Supporters": ["semihasem142", "albertito9736", "leafsterzx", "rat_real.", "yourgurllucy", "infected_came_back.", "generalbonnie", "riverplayerone", "jampu", "tear_drop_bfb / pilowd", "alexpple", "donutmations", "orphan / cherryjrtheorphan_.", "coiny68617"],
+					"Beta Testers": ["tear_drop_bfb / pilowd", "oyui / thinking909", "NOOB / tyblade9", "BlueSky", "freesmart", "stevencrack", "ultimate1duck", "flanimations", "kenzie._kenz", "kyl9341", "veetheglaceon", "donutmations", G.thinking909.name, "anni_on_ayanna", "beetlebrick_", G.cringeindividual.name, "tawnypawzz", "geebweezer", "fridgethewhat123", "lufafa13", "infationtoons", "mationsBOMB", "lach15bro", "NOOB / tyblade9", "ricol3", "maple_two", "jampu", "mizosis", G.briteideajuni.name],
+					"Costume Artists": [],
+					Animation: ["VENDORMINT", "jacknjellify"],
+					"Graphic Design": ["VENDORMINT"],
+					"Original Games": ["Cary Huang - GTTTATINT101"],
+					"Minigame Help": ["Flanimations - Odd Droplets Posing", "Oyui - Odd Droplets Posing"],
+					Programming: ["VENDORMINT"],
+					Music: ["Kevin Macleod - New Friendly", "Kevin Macleod - Radio Martini", "Kevin Macleod - Brittle Rille", "Kevin Macleod - Shiny Tech", "Kevin Macleod - Pamgaea", "Kevin Macleod - Cloud Dancer", "FannToons - papshru"]
+				};
+			for (let e in De) M.Characters.push("jacknjellify - " + De[e].name);
+			for (let e in G) M["Costume Artists"].push(G[e].name);
+			S += 200;
+			let k = new PIXI.Sprite(pe.Logo[0]);
+			k.width = 200, k.scale.y = k.scale.x, k.x = e.screen.width / 2, k.y = 100, p.push(k), k.anchor.set(.5, .5), y.addChild(k);
+			for (let t in M) {
+				let i = a(t, 32, "center");
+				i.y = S, S += 48, y.addChild(i);
+				for (let i = 0; i < M[t].length; i++) {
+					let n = a(M[t][i], 16, "center");
+					n.y = S, S += 32, y.addChild(n), n.x = e.screen.width / 2, M[t][i].toLowerCase().includes("teardrop") && (n.tint = 6737151)
+				}
+				S += 30, i.x = e.screen.width / 2
+			}
+			S += 100;
+			let P = je.exitButton((function() {
+				t(), je.flash(e, !1, L)
+			}), e.screen.width - 40, 40, .4, 0);
+			e.addChild(P.sprite), r.origX = 0, r.time = 50;
+			let T = !1,
+				A = function() {
+					T || (r.x = 0, d > .01 && (r.x += Math.cos(h) * d * 5, h += .5 * Je, d = u.linear(d, 0, .1, Je)), m.alpha > 0 && (m.alpha -= .04))
+				};
+
+			function L() {
+				n.music && (ye.brittlerille.play(), ye.clouddancer.stop(), ye.clouddancer.off("end", i), delete ye.clouddancer), c.ticker.remove(C), document.removeEventListener("pointermove", w), document.removeEventListener("wheel", v), document.removeEventListener("pointerup", I);
+				for (let e in l) null != l[e].destroy && l[e].destroy(), delete l[e];
+				m.destroy(), P.destroy(), o.destroy();
+				for (let e = 0; e < p.length; e++) p[e].destroyed || p[e].destroy();
+				c.ticker.remove(A), T = !0
+			}
+			c.ticker.add(A), e.addChild(m), p.push(b), p.push(y), p.push(f)
+		},
+		Oe = [{
+			name: o.settings.music,
+			value: n.music,
+			enable: function() {
+				n.music = !0, ye.brittlerille.volume = .5, ye.brittlerille.play()
+			},
+			disable: function() {
+				ye.brittlerille.pause(), n.music = !1
+			}
+		}, {
+			name: o.settings.minigameMusic,
+			value: n.minigameMusic,
+			enable: function() {
+				n.minigameMusic = !0
+			},
+			disable: function() {
+				n.minigameMusic = !1
+			}
+		}, {
+			name: o.settings.sfx,
+			value: n.sfx,
+			enable: function() {
+				n.sfx = !0
+			},
+			disable: function() {
+				n.sfx = !1
+			}
+		}, {
+			name: o.settings.minigameCostumes,
+			value: n.minigameCostumes,
+			enable: function() {
+				n.minigameCostumes = !0
+			},
+			disable: function() {
+				n.minigameCostumes = !1
+			}
+		}, {
+			name: "Experimental Costumes",
+			value: n.levelUpCostumes,
+			enable: function() {
+				n.levelUpCostumes = !0
+			},
+			disable: function() {
+				n.levelUpCostumes = !1
+			}
+		}, {
+			name: "Safe Screen Area",
+			value: n.safeArea,
+			mobile: !0,
+			enable: function() {
+				n.safeArea = !0, A()
+			},
+			disable: function() {
+				n.safeArea = !1, A()
+			}
+		}, {
+			name: "Credits",
+			type: "button",
+			flash: !0,
+			enable: function() {
+				clearTimeout(Ee), je.loader(Le, Xe, [
+					["clouddancer", "clouddancer"]
+				])
+			}
+		}, {
+			name: "SFX Volume",
+			type: "slider",
+			enable: function(e) {
+				n.sfxVolume = e, ye.sfx.volume = e
+			},
+			value: n.sfxVolume,
+			preview: function() {
+				clearTimeout(Ee), n.music && (ye.brittlerille.pause(), Ee = setTimeout((function() {
+					n.music && ye.brittlerille.play()
+				}), 2e3)), ye.consume.stop(), ye.consume.play()
+			}
+		}, {
+			name: "Music Volume",
+			type: "slider",
+			preview: function() {
+				ye.achievement.stop(), clearTimeout(Ee), n.music && (ye.brittlerille.pause(), Ee = setTimeout((function() {
+					n.music && ye.brittlerille.play()
+				}), 2e3)), ye.achievement.play(), ye.achievement.sourceNode.playbackRate.value = 1.1
+			},
+			enable: function(e) {
+				n.musicVolume = e, ye.music.volume = e
+			},
+			value: n.musicVolume
+		}, {
+			name: "Advanced",
+			type: "button",
+			flash: !0,
+			enable: function() {
+				Ne(Le, (function() {}), [{
+					name: "Use older loading screen",
+					value: Z.useOldLoader,
+					enable: function() {
+						Z.useOldLoader = !0, ie()
+					},
+					disable: function() {
+						Z.useOldLoader = !1, ie()
+					}
+				}, {
+					name: "120hz Animation",
+					value: n.extendAnimationFrames,
+					enable: function(e) {
+						je.message(Le, "This feature is EXPERIMENTAL, and animations might look weird with it on. " + o.settings.enableReload, pe["Sprites/GameUI"][24], (function() {
+							n.extendAnimationFrames = !0, Q(), setTimeout((function() {
+								window.location = window.location
+							}), 100)
+						}), (function() {
+							e.activated = !1, e.sprite.texture = pe["Sprites/GameUI"][25]
+						}), [o.ui.reload, o.ui.cancel])
+					},
+					disable: function(e) {
+						je.message(Le, o.settings.disableReload, pe["Sprites/GameUI"][24], (function() {
+							n.extendAnimationFrames = !1, Q(), setTimeout((function() {
+								window.location = window.location
+							}), 100)
+						}), (function() {
+							e.activated = !0, e.sprite.texture = pe["Sprites/GameUI"][26]
+						}), [o.ui.reload, o.ui.cancel])
+					}
+				}], "Advanced Settings")
+			}
+		}, {
+			name: "Minigames",
+			type: "button",
+			flash: !0,
+			enable: function() {
+				Ne(Le, (function() {}), [{
+					name: "Face Match",
+					type: "button",
+					flash: !0,
+					enable: function() {
+						Ne(Le, (function() {}), [{
+							name: "Include completed face puzzles",
+							value: n.minigames.faceMatch.includeCompleted,
+							enable: function() {
+								n.minigames.faceMatch.includeCompleted = !0
+							},
+							disable: function() {
+								n.minigames.faceMatch.includeCompleted = !1
+							}
+						}])
+					}
+				}, {
+					name: "GTTTATINT",
+					type: "button",
+					flash: !0,
+					mobile: !0,
+					enable: function() {
+						Ne(Le, (function() {
+							n.controllerProfile.GTTTATINT = a;
+							for (let e = 0; e < r.length; e++) r[e].destroy()
+						}), [{
+							name: "Button Size",
+							type: "slider",
+							enable: function(t) {
+								e(t), a.buttonScale = t
+							},
+							preview: function() {},
+							value: .5
+						}, {
+							name: "Align",
+							type: "button",
+							enable: function() {
+								je.message(Le, "Align controllers", void 0, (function() {
+									let e = (t[" "].sprite.y + t.a.sprite.y + t.d.sprite.y) / 3;
+									t.a.sprite.y = e, t.d.sprite.y = e, t[" "].sprite.y = e;
+									for (let e in t) t[e].refreshProfile()
+								}), (function() {
+									let e = (t.a.sprite.y + t.d.sprite.y) / 2;
+									t.a.sprite.y = e, t.d.sprite.y = e;
+									for (let e in t) t[e].refreshProfile()
+								}), ["All", "Left/Right"])
+							}
+						}, {
+							name: "Reset",
+							type: "button",
+							enable: function() {
+								je.message(Le, "Are you sure you want to reset the controller configuration?", void 0, (function() {
+									for (let e in a.buttons) a.buttons[e].x = i.buttons[e].x, a.buttons[e].y = i.buttons[e].y, a.buttons[e].lock = i.buttons[e].lock;
+									for (let e in t) t[e].refresh();
+									a.buttonScale = i.buttonScale, e(a.buttonScale)
+								}), (function() {}), ["Yes", "Cancel"])
+							}
+						}], "GTTTATINT Controller Profile");
+						let e = function(e) {
+								for (let i in t) t[i].sprite.scale.x = e + .5, t[i].sprite.scale.y = e + .5, t[i].sprite.originalSize = {
+									x: t[i].sprite.scale.x,
+									y: t[i].sprite.scale.y
+								}, t[i].sprite.destinationSize = t[i].sprite.originalSize, t[i].sprite.animationSize = t[i].sprite.originalSize, t[i].sprite.animationTime = 0
+							},
+							t = {},
+							i = {
+								buttons: {
+									a: {
+										x: -150,
+										y: -50,
+										lock: 1
+									},
+									d: {
+										x: -50,
+										y: -50,
+										lock: 1
+									},
+									" ": {
+										x: 100,
+										y: -50,
+										lock: 0
+									}
+								},
+								buttonScale: .5
+							},
+							a = n.controllerProfile.GTTTATINT;
+
+						function o(e, i, n, o) {
+							let r = a.buttonScale + .5,
+								s = new k((function() {
+									je.message(Le, "Lock position to", void 0, (function() {
+										1 == a.buttons[o].lock && (a.buttons[o].x += Le.screen.width), a.buttons[o].lock = 0, s.refresh()
+									}), (function() {
+										0 == a.buttons[o].lock && (a.buttons[o].x -= Le.screen.width), a.buttons[o].lock = 1, s.refresh()
+									}), ["Bottom Left", "Bottom Right"])
+								}), pe["Sprites/GameUI"][n], {
+									x: e,
+									y: i,
+									scale: {
+										x: r,
+										y: r
+									}
+								});
+							s.sprite.on("pointerdown", (function() {
+								for (let e in t) t[e].sprite.interactive = !1;
+								s.sprite.interactive = !0
+							})), s.sprite.on("pointermove", (function() {
+								s.refreshProfile()
+							})), s.refreshProfile = function() {
+								0 == a.buttons[o].lock ? (a.buttons[o].x = s.sprite.x, a.buttons[o].y = s.sprite.y - Le.screen.height) : (a.buttons[o].x = s.sprite.x - Le.screen.width, a.buttons[o].y = s.sprite.y - Le.screen.height)
+							}, s.sprite.on("pointerup", (function() {
+								for (let e in t) t[e].sprite.interactive = !0, t[e].refresh()
+							})), I(s.sprite, s.sprite.hitArea), t[o] = s, c.stage.addChild(s.sprite)
+						}
+						o(0, 0, 21, "a"), o(0, 0, 22, "d"), o(0, 0, 23, " ");
+						let r = [];
+						for (let e in t) {
+							let i = new PIXI.Sprite(pe["Sprites/GameUI"][7]);
+							t[e].sprite.addChild(i), t[e].refresh = function() {
+								t[e].sprite.x = Le.screen.width * a.buttons[e].lock + a.buttons[e].x, t[e].sprite.y = Le.screen.height + a.buttons[e].y, i.anchor.set(.5, .5), i.x = -t[e].sprite.texture.trim.width / 2 + a.buttons[e].lock * t[e].sprite.texture.trim.width, i.y = t[e].sprite.texture.trim.height / 2, i.scale.x = .25, i.scale.y = .25, i.rotation = (1 - a.buttons[e].lock) * Math.PI / 2 - Math.PI / 4
+							}, r.push(i), r.push(t[e]), t[e].refresh()
+						}
+					}
+				}], "Minigames")
+			}
+		}, {
+			name: "Backup",
+			type: "button",
+			flash: !0,
+			enable: function() {
+				let e = -1;
+				Ne(Le, (function() {
+					-1 != e && document.body.removeChild(e)
+				}), [{
+					name: "Download",
+					type: "button",
+					flash: !1,
+					enable: function() {
+						let e = document.createElement("a"),
+							t = localStorage.myTeardrop;
+						e.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(t)), e.setAttribute("download", "myTeardrop.txt"), e.style.display = "none", document.body.appendChild(e), e.click(), document.body.removeChild(e)
+					}
+				}, {
+					name: "Upload",
+					type: "button",
+					flash: !1,
+					enable: function() {
+						je.message(Le, "This will overwrite your current save file and is an irreversible action.", pe["Sprites/GameUI"][24], (function() {
+							let t = function(t = document.createElement("button"), i = document.createElement("input")) {
+								return t.innerText = "Upload", i.type = "file", i.style.display = "none", t.style = "position:fixed;z-index: 100;top:0px;left:0px;", e = t, t.onclick = function() {
+									i.click(), i.onchange = function() {
+										let e = new FileReader;
+										e.onload = function(e) {
+											J(e.currentTarget.result), H ? je.message(Le, "Not genuine save file. Action cancelled", pe["Sprites/GameUI"][24], (function() {})) : (je.message(Le, "Success! Reloading game...", pe["Sprites/GameUI"][24], (function() {})), localStorage.setItem("myTeardrop", e.currentTarget.result), setTimeout((function() {
+												window.location = window.location
+											}), 500))
+										}, e.readAsText(i.files[0])
+									}
+								}, document.body.appendChild(i), t
+							}();
+							t.onclick(), document.body.appendChild(t)
+						}), (function() {}), ["Upload", "Cancel"])
+					}
+				}, {
+					name: "Clear",
+					type: "button",
+					flash: !1,
+					enable: function() {
+						je.message(Le, "This action is irreversible and will completely wipe your save file!", pe["Sprites/GameUI"][24], (function() {
+							setTimeout((function() {
+								je.message(Le, "Are you really sure??", pe["Sprites/GameUI"][24], (function() {
+									clearInterval(K), localStorage.removeItem("myTeardrop"), setTimeout((function() {
+										window.location = window.location
+									}), 500)
+								}), (function() {}), ["Proceed", "Cancel"])
+							}), 500)
+						}), (function() {}), ["Proceed", "Cancel"])
+					}
+				}, {
+					name: "Advanced",
+					type: "button",
+					flash: !0,
+					enable: function() {
+						Ne(Le, (function() {}), [{
+							name: "Copy Backup",
+							type: "button",
+							flash: !1,
+							enable: async function() {
+								await Te(localStorage.myTeardrop), je.message(Le, "Copied!")
+							}
+						}, {
+							name: "Upload",
+							type: "button",
+							flash: !1,
+							enable: function() {
+								je.message(Le, "This will overwrite your current save file and is an irreversible action.", pe["Sprites/GameUI"][24], (function() {
+									let e = prompt("Paste in your savefile!");
+									null != e && (J(e), H ? je.message(Le, "Not genuine save file. Action cancelled", pe["Sprites/GameUI"][24], (function() {})) : (je.message(Le, "Success! Reloading game...", pe["Sprites/GameUI"][24], (function() {})), localStorage.setItem("myTeardrop", e), setTimeout((function() {
+										window.location = window.location
+									}), 500)))
+								}), (function() {}), ["Upload", "Cancel"])
+							}
+						}], "Savefile tools")
+					}
+				}], "Savefile tools")
+			}
+		}],
+		Ne = function(e = new PIXI.Container, t = function() {}, i = Oe, n = Ve + (Ye ? "(release, offline)" : "(release)")) {
+			Le = e, je.initializeScreenResolution(e);
+			let o = new PIXI.Sprite(pe["Sprites/Rooms"][13]);
+			e.addChild(o), o.interactive = !0, o.x = e.screen.width / 2, o.y = e.screen.height / 2, o.anchor.set(.5, .5), o.scale.x = 1, o.scale.y = 1;
+			let r = new PIXI.Container;
+			e.addChild(r);
+			let l = je.exitButton((function() {
+				t(), Q(), je.flash(e, !1, b)
+			}), e.screen.width - 40, 40, .4, 0);
+			e.addChild(l.sprite), r.origX = 0, r.time = 50;
+			let d = !1,
+				u = function() {
+					d || (r.x = 0)
+				},
+				p = 0,
+				m = 10;
+			c.ticker.add(u);
+			let f = [],
+				g = new PIXI.Sprite(pe.Logo[0]);
+			g.width = 200, g.scale.y = g.scale.x, g.x = 80, g.y = 20, g.id = P(), v(g, (function() {
+				if (m--, 0 == m) {
+					if (y.tauntLogo.done) return je.message(e, "GET OUT!", -1), void setTimeout((function() {
+						setInterval((function() {
+							let t = Pe(me.Teardrop, h.Teardrop),
+								i = [];
+							for (let e in R) R[e].owned && i.push(R[e]);
+							i[Math.floor(Math.random() * i.length)].apply(t), t.x = e.screen.width * Math.random(), t.y = e.screen.height * Math.random(), t.rotation = Math.random() * Math.PI * 4, t.play(60);
+							let n = Object.keys(h.Teardrop);
+							t.gotoPart(n[Math.floor(Math.random() * n.length)]), e.addChild(t)
+						}), 1e3 / 60), setTimeout((function() {
+							window.location = window.location
+						}), 1e3)
+					}), 500);
+					switch (p) {
+						case 0:
+							m = 10, je.message(e, "don't.", -1);
+							break;
+						case 1:
+							m = 10, je.message(e, "no.", -1);
+							break;
+						case 2:
+							m = 5, je.message(e, "stop...", -1);
+							break;
+						case 3:
+							m = 20, je.message(e, "STOP!!", -1);
+							break;
+						case 4:
+						case 6:
+							m = 10, je.message(e, "...", -1);
+							break;
+						case 5:
+							m = 10, je.message(e, "Will you leave me alone if I give you a costume?", -1, (function() {
+								setTimeout((function() {
+									je.message(e, "I'll think about it.", -1, (function() {})), m = 10
+								}), 500)
+							}), (function() {
+								setTimeout((function() {
+									je.message(e, "get out.", -1, (function() {
+										t(), je.flash(e, !1, b)
+									}))
+								}), 1e3)
+							}), ["Yes", "No"]);
+							break;
+						case 7: {
+							function i() {
+								setTimeout((function() {
+									je.message(e, "Just kidding! Or am I... ok now please actually leave me alone here's your costume", -1, (function() {
+										je.blurPan(c.stage, (function() {
+											b(), je.achievementQueue("tauntLogo"), R.giant.owned = !0
+										}))
+									})), m = 10
+								}), 500)
+							}
+							m = 10, je.message(e, "WARNING: THIS ACTION WILL COMPLETELY ERASE YOUR SAVE FILE!", -1, i, i, ["Continue", "Continue"])
+						}
+					}
+					p++
+				}
+			})), x[g.id] = g, g.interactive = !0, f.push(g), e.addChild(g), g.anchor.set(.5, .5), g.x += g.width / 2, g.y += g.height / 2;
+			let w = a(n, 16);
+			w.x = 90, w.y = g.y + g.height / 2, f.push(w), e.addChild(w);
+			let I = 80,
+				C = 0;
+			for (let t = 0; t < i.length; t++) {
+				let n = new PIXI.Container;
+				n.pivot.y = e.screen.height / 2, n.pivot.x = e.screen.width / 2, n.x = n.pivot.x, n.y = n.pivot.y, e.addChild(n);
+				let o = i[t];
+				if (!o.hidden && (c.touchScreen || !o.mobile))
+					if (null == o.type) {
+						let t = new k((function() {
+							t.activated = !t.activated, t.activated ? (t.sprite.texture = pe["Sprites/GameUI"][26], o.enable(t), o.value = !0) : (t.sprite.texture = pe["Sprites/GameUI"][25], o.disable(t), o.value = !1)
+						}), o.value ? pe["Sprites/GameUI"][26] : pe["Sprites/GameUI"][25], {
+							scale: {
+								x: .75,
+								y: .75
+							}
+						});
+						t.sprite.x = I, t.sprite.y = 150 + C, n.addChild(t.sprite), t.activated = o.value;
+						let i = a(o.name, 24, "left", "middle");
+						i.x = 110, i.y = 148 + C, i.width > e.screen.width - I - i.x && (i.width = e.screen.width - I - i.x, i.scale.y = i.scale.x), n.addChild(i), f.push(t), f.push(i), C += 40
+					} else if ("button" == o.type) {
+					let t = new M((function() {
+						o.flash ? je.flash(e, !1, o.enable) : o.enable()
+					}), I, 150 + C, 200, 30, o.name, 0, 0, .5, 1, "center");
+					n.addChild(t.element), f.push(t), C += 40
+				} else if ("slider" == o.type) {
+					let e = 200,
+						t = 10,
+						i = I,
+						r = a(o.name, 20, "left", "middle");
+					r.x = I, r.y = 148 + C - 10, n.addChild(r);
+					let l = 150 + C + 20;
+					C += 50;
+					let d = new PIXI.NineSlicePlane(pe.inputNineSlice[17], 25, 25, 25, 25);
+					d.width = e + 5 + t, d.height = t + 5, n.addChild(d), d.x = i - 2.5 - t / 2, d.y = l - 2.5 - t / 2;
+					let c = new PIXI.NineSlicePlane(pe.inputNineSlice[15], 25, 25, 25, 25);
+					c.width = e + t, c.height = t, n.addChild(c), c.x = i - t / 2, c.y = l - t / 2;
+					let h = new PIXI.NineSlicePlane(pe.inputNineSlice[16], 25, 25, 25, 25);
+					h.width = e / 2 - 4 + t, h.height = t - 4, n.addChild(h), h.x = i + 2 - t / 2, h.y = l + 2 - t / 2;
+					let u = new k((function() {}), pe["Sprites/GameUI"][43], {
+						scale: {
+							x: .5,
+							y: .5
+						}
+					});
+					u.sprite.x = i, u.sprite.y = l, n.addChild(u.sprite), u.sprite.originalHitArea = u.sprite.hitArea, u.sprite.on("pointerdown", (function(e) {
+						u.sprite.hitArea = new PIXI.Rectangle(-3e3, -3e3, 6e3, 6e3), u.sprite.dragging = !0;
+						let t = e.clientX / s,
+							i = e.clientY / s;
+						u.sprite.dragOffset = {
+							x: t - u.sprite.x,
+							y: i - u.sprite.y
+						}
+					})), u.sprite.on("pointermove", (function(t) {
+						let n = t.clientX / s;
+						t.clientY, u.sprite.dragging && (u.sprite.x = Math.min(i + e, Math.max(i, n - u.sprite.dragOffset.x)), h.width = u.sprite.x - h.x, o.enable((u.sprite.x - i) / e), o.value = (u.sprite.x - i) / e)
+					})), u.sprite.on("pointerup", (function() {
+						u.sprite.dragging = !1, u.sprite.hitArea = u.sprite.originalHitArea, o.preview()
+					})), f.push(u), f.push(h), f.push(c), f.push(d), o.set = function(n) {
+						h.width = e * n - 4 + t, u.sprite.x = i + e * n
+					}, o.set(o.value), f.push(r)
+				}
+			}
+
+			function b() {
+				Q();
+				for (let e = 0; e < f.length; e++) f[e].destroy();
+				l.destroy(), o.destroy(), r.destroy(), c.ticker.remove(u), d = !0, delete x[g.id]
+			}
+			return e
+		},
+		Ge = function(e) {
+			let t = Math.floor(e / 1e3),
+				i = t % 60 + "s",
+				n = Math.floor(t / 60) % 60 + "m",
+				a = Math.floor(t / 3600) % 24 + "h";
+			return Math.floor(t / 86400) + "d " + a + " " + n + " " + i
+		},
+		Be = [],
+		Re = function(e, i = 0, o = 0, r = "gtttatint") {
+			let s = [],
+				l = function() {};
+			if ("tennis" == r || "tennis2" == r) {
+				let t = new PIXI.Sprite(pe["Sprites/Rooms"][15]);
+				t.interactive = !0, t.x = e.screen.width / 2, t.y = e.screen.height / 2, t.anchor.set(.5, .5), t.tint = 12576249, e.addChild(t), s.push(t);
+				let i = function(e, t) {
+						let i = new PIXI.Container;
+						e.addChild(i), i.pivot.x = -c.screen.width / 2, i.pivot.y = -c.screen.height / 2;
+						let n = Matter.Engine.create(),
+							a = {},
+							o = !1;
+						document.addEventListener("keydown", (function(e) {
+							let t = e.key.toLowerCase();
+							"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), a[t] = !0, ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key) && e.preventDefault()
+						})), document.addEventListener("keyup", (function(e) {
+							let t = e.key.toLowerCase();
+							"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), a[t] = !1
+						})), document.addEventListener("pointerdown", (function() {
+							o = !0
+						})), document.addEventListener("pointerup", (function() {
+							o = !1
+						}));
+						let r = [],
+							s = [];
+						if (t) {
+							let e = {},
+								t = 1,
+								n = Matter.Bodies.polygon(50 * (Math.random() - .5), -600, 16, 100);
+							e.box = n;
+							let a = Pe(me.faceMinigame);
+							a.goto(98), a.scale.x = t, a.scale.y = t, i.addChild(a), e.sprite = a, a.interactive = !0, a.hitArea = new PIXI.Rectangle(-100, -100, 200, 200), v(a, (function() {
+								a.goto(97)
+							})), a.buttonId = P(), x[a.buttonId] = a, r.push(e), s.push(n)
+						}
+						for (let e = 0; e < c.screen.width / 360 * 150; e++) {
+							let t = {},
+								n = .5 + Math.random() / 2,
+								a = Matter.Bodies.polygon(400 * (Math.random() - .5), -400 - 20 * e, 16, 30 * n);
+							t.box = a;
+							let o = new PIXI.Sprite(pe["Sprites/tennisBall"][Math.floor(Math.random() * pe["Sprites/tennisBall"].length)]);
+							o.scale.x = n, o.scale.y = n, o.anchor.set(.5, .5), i.addChild(o), t.sprite = o, r.push(t), s.push(a)
+						}
+						let l = Matter.Bodies.rectangle(0, 150, 16e3, 120, {
+								isStatic: !0
+							}),
+							d = Matter.Bodies.rectangle(-c.screen.width / 2 - 100, -0, 20, 900, {
+								isStatic: !0
+							}),
+							h = Matter.Bodies.rectangle(c.screen.width / 2 + 100, -0, 20, 900, {
+								isStatic: !0
+							});
+						Matter.Composite.add(n.world, [l, ...s, d, h]);
+						let u = function(e) {
+							for (let e = 0; e < r.length; e++) {
+								let t = r[e].sprite,
+									i = r[e].box;
+								t.rotation = i.angle, t.x = i.position.x, t.y = i.position.y
+							}
+							Matter.Engine.update(n, e * (1e3 / 60))
+						};
+						return c.ticker.add(u),
+							function() {
+								c.ticker.remove(u), Matter.World.clear(n.world), Matter.Engine.clear(n);
+								for (let e = 0; e < r.length; e++) null != r[e].sprite.destroyAnimation ? (r[e].sprite.destroyAnimation(), delete x[r[e].sprite.buttonId]) : r[e].sprite.destroy()
+							}
+					}(e, "tennis2" == r),
+					n = new PIXI.Sprite(pe["Sprites/Rooms"][20]);
+				n.x = 0, n.y = 0, e.addChild(n), n.blendMode = PIXI.BLEND_MODES.ADD, n.tint = 6737151, n.anchor.set(.5, .5), n.x = e.screen.width / 2, n.y = e.screen.height / 2, n.scale.y = 2, n.rotation = 1, n.alpha = .25, l = function() {
+					n.destroy(), i()
+				}
+			}
+			if ("gtttatint" == r) {
+				let t = new PIXI.Sprite(pe["Sprites/Rooms"][15]);
+				t.interactive = !0, t.x = e.screen.width / 2, t.y = e.screen.height / 2, t.anchor.set(.5, .5), t.tint = 12576249, e.addChild(t), s.push(t);
+				let i = Math.random,
+					n = {},
+					a = 0;
+				for (let t = 0; t < 60; t++) {
+					let o = new PIXI.Sprite(pe["Sprites/Clouds"][Math.floor(3 * i())]);
+					e.addChild(o), o.anchor.set(.5, .5), o.y = i() * e.screen.height, o.orig = {
+						y: o.y
+					}, o.scale.x = .2 + t / 150, o.scale.y = .2 + t / 150, o.speed = 1, o.x = e.screen.width / 2 + (i() - .5) * u.linear(e.screen.width, 360, .25) * u.linear(o.scale.x, 1, .5), i() > .5 && (o.scale.x *= -1);
+					let r = o.texture.trim;
+					null == r && (r = o.texture._frame), o.pivot.y = -r.height, n[a++] = o
+				}
+				for (let t = 0; t < 10; t++) {
+					pe.inputNineSlice[6];
+					let o = new PIXI.Sprite(pe["Sprites/Clouds"][3]);
+					e.addChild(o), o.y = e.screen.height / 10 * t, o.orig = {
+						y: o.y
+					}, o.scale.x = 1, o.scale.y = 1, o.speed = 8, o.x = e.screen.width / 2 + 360 * (i() - .5) * u.linear(o.scale.x, 1, .5), i() > .5 && (o.scale.x *= -1);
+					let r = o.texture.trim;
+					null == r && (r = o.texture._frame), o.pivot.y = -r.height, n[a++] = o
+				}
+				let o = Pe(me.GTTTATINTLOSE);
+				o.loop = !0, o.play(), o.x = e.screen.width / 2, o.y = 0, e.addChild(o);
+				let r = 1e3 * Math.random(),
+					d = function() {
+						o.x = u.linear(o.x, e.screen.width / 2 + 10 * Math.cos(r / 25), .025, Je), o.y = u.linear(o.y, e.screen.height / 2 - 50 + 10 * Math.cos(r / 30), .025, Je), o.rotation = u.linear(o.rotation, .1 * Math.cos(r / 20), .1, Je), r += Je;
+						for (let t in n) n[t].y -= n[t].scale.y * n[t].speed * 2 * Je, n[t].y < -100 && (n[t].y = e.screen.height)
+					};
+				c.ticker.add(d);
+				let h = new PIXI.Sprite(pe["Sprites/Rooms"][20]);
+				h.x = 0, h.y = 0, e.addChild(h), h.blendMode = PIXI.BLEND_MODES.ADD, h.tint = 16776960, h.anchor.set(.5, .5), h.x = e.screen.width / 2, h.y = e.screen.height / 2, h.scale.y = 2, h.rotation = 1, h.alpha = .1, l = function() {
+					for (let e in n) n[e].destroy(), delete n[e];
+					h.destroy(), o.destroyAnimation(), c.ticker.remove(d)
+				}
+			}
+			let d = function() {
+					h.y = u.linear(h.y, e.screen.height / 2 + 80, .1, Je)
+				},
+				h = (new PIXI.Container, new PIXI.NineSlicePlane(pe.inputNineSlice[10], 15, 15, 15, 15));
+			h.x = 0, h.y = e.screen.height, h.width = e.screen.width, h.height = e.screen.height / 2 + 100, e.addChild(h);
+			let p = a("Game Over!", 32, "center");
+			"tennis2" == r && (p.text = "Completed!"), p.x = e.screen.width / 2, p.y = 30, h.addChild(p);
+			let m = ["Score: " + i, "Coins: " + o];
+			for (let t = 0; t < m.length; t++) {
+				let i = a(m[t], 20, "left");
+				i.x = e.screen.width / 2 - p.width / 2 - 30, i.y = 70 + 30 * t, h.addChild(i), s.push(i)
+			}
+			let y = !1,
+				g = function() {
+					y || (y = !0, o > 0 && n.sfx && (ye.collect.stop(), ye.collect.play()), function() {
+						c.ticker.add(S);
+						for (let t = 0; t < b; t++) {
+							let t = new PIXI.Sprite(pe["Sprites/GameUI"][14]);
+							t.scale.x = .4 + .5 * Math.random(), t.scale.y = t.scale.x, t.anchor.set(.5, .5), t.y = w.transform.worldTransform.ty, t.vr = Math.random() - .5, t.facing = Math.random() * Math.PI * 2;
+							let i = 1 + 8 * Math.random();
+							t.vx = i * Math.cos(t.facing), t.vy = i * Math.sin(t.facing), t.x = w.transform.worldTransform.tx, e.addChild(t), I[C++] = t
+						}
+						0 != b && (w.visible = !1), setTimeout((function() {
+							t.coins += o, Q()
+						}), 500)
+					}())
+				},
+				w = new PIXI.Sprite(pe["Sprites/GameUI"][14]);
+			h.addChild(w), w.x = e.screen.width / 2 - p.width / 2 - 50, w.y = 112, w.scale.x = .5, w.scale.y = .5, w.anchor.set(.5, .5), c.ticker.add(d);
+			let I = {},
+				C = 0,
+				b = Math.min(1e4, o),
+				S = function() {
+					for (let e in I) {
+						let t = I[e];
+						t.y += t.vy * Je, t.x += t.vx * Je;
+						let i = 50,
+							n = 50;
+						t.facing = Math.atan2(n - t.y, i - t.x);
+						let a = 8,
+							o = f(t.x, t.y, i, n);
+						o < 50 ? (t.vx = a * Math.cos(t.facing), t.vy = a * Math.sin(t.facing)) : (t.vx = u.linear(t.vx, a * Math.cos(t.facing), .02, Je), t.vy = u.linear(t.vy, a * Math.sin(t.facing), .02, Je)), t.rotation += t.vr / 10 * Je, o < 5 * Je && (t.destroy(), b--, delete I[e]), b <= 0 && c.ticker.remove(S)
+					}
+					A && (M.updateCounter(u.linear(M.getCounterAmount(), t.coins, .05, Je)), M.y = u.linear(M.y, 20, .1, Je))
+				},
+				M = je.coinCounter(e);
+
+			function T() {
+				c.ticker.remove(d), l(), p.destroy(), M.destroyCounter(), A = !1;
+				for (let e = 0; e < s.length; e++) s[e].destroy()
+			}
+			M.x = 20, M.y = -80, e.addChild(M);
+			let A = !0,
+				L = !1,
+				E = new k((function() {
+					L || (L = !0, g(), setTimeout((function() {
+						je.blurPan(e, (function() {
+							T(), je.gameList(e)
+						}))
+					}), 1e3))
+				}), pe["Sprites/GameUI"][49], {
+					x: e.screen.width / 2 - 80,
+					y: 170,
+					scale: {
+						x: .75,
+						y: .75
+					}
+				});
+			h.addChild(E.sprite);
+			let D = new k((function() {
+				L || (L = !0, g(), setTimeout((function() {
+					je.blurPan(e, (function() {
+						T(), je[r](e)
+					}))
+				}), 1e3))
+			}), pe["Sprites/GameUI"][50], {
+				x: e.screen.width / 2 + 80,
+				y: 170,
+				scale: {
+					x: .75,
+					y: .75
+				}
+			});
+			h.addChild(D.sprite);
+			let X = a("Home", 20, "center");
+			h.addChild(X), X.x = E.sprite.x, X.y = E.sprite.y + 50;
+			let O = a("Retry", 20, "center");
+			h.addChild(O), O.x = D.sprite.x, O.y = D.sprite.y + 50, s.push(O), s.push(X), s.push(E), s.push(D), s.push(h)
+		},
+		Fe = function(e = new PIXI.Container, t = function() {}) {
+			je.initializeScreenResolution(e);
+			let i = new PIXI.Sprite(pe["Sprites/Rooms"][14]);
+			e.addChild(i), i.interactive = !0, i.x = c.screen.width / 2, i.y = c.screen.height / 2, i.anchor.set(.5, .5), i.scale.x = 1, i.scale.y = 1;
+			let r = new PIXI.Container;
+			e.addChild(r);
+			let l = {},
+				d = 0,
+				h = 0,
+				p = [],
+				m = 0;
+			for (let e in n.minigames.faceMatch.progressState) - 1 == n.minigames.faceMatch.progressState[e][0] && m++;
+			let y = new PIXI.BitmapText(o.ui.achievements + ": " + m + "/" + me.faceMinigame.frameCount, {
+				fontSize: 32,
+				fontName: "ShagBlack"
+			});
+			y.x = 40, y.y = 20, y.width > c.screen.width - 130 && (y.width = c.screen.width - 130, y.scale.y = y.scale.x), e.addChild(y);
+			let f = a("", 32, "center");
+			f.x = c.screen.width / 2, f.y = c.screen.height - 150, n.costume;
+			let g = new PIXI.Container,
+				x = new PIXI.Graphics;
+			g.mask = x, e.addChild(g), g.x = 0, g.y = 80;
+			let w = c.screen.width,
+				v = c.screen.height - 80;
+			x.beginFill(0), x.drawRect(g.x, g.y, w, v), x.endFill(), g.interactive = !0, g.on("pointerdown", (function(e) {
+				let t = e.clientY / s;
+				g.dragOffset = {
+					y: t - g.y
+				}, g.prevY = g.y, g.vy = 0, g.scrolling = !0, g.origY = g.y
+			}));
+			let I = function(e) {
+					if (!g.scrolling) return;
+					g.wheel = !1;
+					let t = e.clientY / s;
+					if (Math.abs(g.origY - g.y) > 10)
+						for (let e = 0; e < g.children.length; e++) g.children[e].emit("pointerout"), g.children[e].interactive = !1;
+					g.prevY = g.y, g.y = t - g.dragOffset.y
+				},
+				C = function(e) {
+					g.wheel = !0, g.vy = u.linear(g.vy, -e.deltaY / 2 * Je, .25), g.vy > 40 * Je && (g.vy = 40 * Je), g.vy < -40 * Je && (g.vy = -40 * Je)
+				};
+			document.addEventListener("wheel", C);
+			let b = function() {
+				g.scrolling = !1;
+				for (let e = 0; e < g.children.length; e++) g.children[e].interactive = !0
+			};
+			document.addEventListener("pointermove", I), document.addEventListener("pointerup", b), g.vy = 0;
+			let S = function() {
+				let e = 80 - P - 50 + v;
+				g.vy = u.linear(g.vy, 0, g.wheel ? .1 : .05, Je), g.scrolling ? g.vy = g.y - g.prevY : g.y += g.vy, k.targetAlpha = 1, g.y >= 80 && (g.y = 80, g.vy = 0), g.y <= e && (k.targetAlpha = 0, g.y = e, g.vy = 0), k.alpha = u.linear(k.alpha, k.targetAlpha, .1, Je)
+			};
+			c.ticker.add(S);
+			let k = new PIXI.Sprite(pe["Sprites/Rooms"][11]);
+			k.x = g.x, k.y = g.y + v - 90, k.width = w, k.height = 100;
+			let P = 0,
+				T = 2;
+			T = Math.floor(c.screen.width / 153);
+			for (let t = 0; t < me.faceMinigame.frameCount; t++) {
+				let i = new M((function() {
+					let i = je.popup(e, 310, 310);
+					je.faceMatch(i, !0, t)
+				}), t % T * 153 + w / 2 - T / 2 * 153, 203 * Math.floor(t / T), 150, 200, "", 0, 0, 0, 2);
+				g.addChild(i.element);
+				let o = Pe(me.faceMinigame);
+				o.gotoAndStop(t), i.element.addChild(o);
+				let r = o.body.texture.trim;
+				o.body.inactive && (r = o.body2.texture.trim);
+				let s = new PIXI.Rectangle(0, 0, 0, 0);
+				o.scale.x = 100 / (r.height > r.width ? r.height : r.width), o.scale.y = o.scale.x, o.x = 75, o.y = 80, o.hitArea = s;
+				let l = a("#" + (t + 1), 16, "left", void 0, 1);
+				l.x = 10, l.y = 8, l.alpha = .5, i.element.addChild(l);
+				let d = n.minigames.faceMatch.progressState[t];
+				null == d && (d = []);
+				let c = -1 == d[0] ? 26 : 25,
+					h = new PIXI.Sprite(pe["Sprites/GameUI"][c]);
+				h.scale.x = .6, h.scale.y = .6, h.anchor.set(.5, .5), i.element.addChild(h), h.x = 30, h.y = 170, h.hitArea = s;
+				let u = null == d[0] ? "-" : d[0] + "%"; - 1 == d[0] && (u = "100%");
+				let p = a(u, 16, "left", void 0, 1);
+				p.alpha = .5, p.anchor.y = .5, p.x = h.x + 20, p.y = h.y, i.element.addChild(p)
+			}
+			P = 203 * Math.ceil(me.faceMinigame.frameCount / T), p.push(y);
+			let A = je.exitButton((function() {
+				t(), je.flash(e, !1, D)
+			}), c.screen.width - 40, 40, .4, 0);
+			e.addChild(A.sprite), r.origX = 0, r.time = 50;
+			let L = !1,
+				E = function() {
+					L || (r.x = 0, d > .01 && (r.x += Math.cos(h) * d * 5, h += .5 * Je, d = u.linear(d, 0, .1, Je)), f.alpha > 0 && (f.alpha -= .04))
+				};
+
+			function D() {
+				c.ticker.remove(S), document.removeEventListener("pointermove", I), document.removeEventListener("pointerup", b), document.removeEventListener("wheel", C);
+				for (let e in l) null != l[e].destroy && l[e].destroy(), delete l[e];
+				f.destroy(), A.destroy(), i.destroy();
+				for (let e = 0; e < p.length; e++) p[e].destroyed || p[e].destroy();
+				c.ticker.remove(E), L = !0
+			}
+			return c.ticker.add(E), e.addChild(f), p.push(k), p.push(g), p.push(x), e
+		};
+	n.hideFridgeExit = !0;
+	let ze, Ue, _e, We = function() {
+		let e = new PIXI.Container,
+			t = new PIXI.Sprite(pe["Sprites/Rooms"][5]);
+		return je.initializeScreenResolution(e), e.addChild(t), t.interactive = !0, t.x = e.width / 2, t.y = e.height / 2, t.anchor.set(.5, .5), t.scale.x = 1, t.scale.y = 1, e
+	};
+	const je = {
+		language: function(e = function() {}) {
+			let t = new PIXI.Sprite(pe["Sprites/Rooms"][12]);
+			c.stage.addChild(t), t.interactive = !0, t.x = c.screen.width / 2, t.y = c.screen.height / 2, t.anchor.set(.5, .5), t.scale.x = 1, t.scale.y = 1;
+			let i = new PIXI.Container;
+			c.stage.addChild(i);
+			let r = 0,
+				l = {},
+				d = [],
+				h = a("", 32, "center");
+			h.x = c.screen.width / 2, h.y = c.screen.height - 150, n.costume;
+			let u = {},
+				p = new PIXI.Container,
+				m = new PIXI.Graphics;
+			p.mask = m, c.stage.addChild(p), p.x = 40, p.y = 80;
+			let y = c.screen.width - 80,
+				f = c.screen.height - 80;
+			m.beginFill(0), m.drawRect(p.x, p.y, y, f), m.endFill(), p.interactive = !0, p.on("pointerdown", (function(e) {
+				let t = e.clientY / s;
+				p.dragOffset = {
+					y: t - p.y
+				}, p.prevY = p.y, p.vy = 0, p.scrolling = !0
+			})), p.vy = 0;
+			let g = new PIXI.Sprite(pe["Sprites/Rooms"][11]);
+			g.alpha = 0, c.stage.addChild(g), g.x = p.x, g.y = p.y + f - 100, g.width = y, g.height = 100;
+			for (let e in Ae) {
+				let t = Ae[e];
+				if (t.hidden) continue;
+				let i = !1;
+				t.owned || -1 != t.cost || (i = !0);
+				let s = new M((function() {
+					h.text = ""
+				}), 0, 0 + 84 * r, y, 80, "", 0, 0, 0, 2);
+				u[e] = s, s.element.interactive = !1, p.addChild(s.element), new PIXI.Rectangle(0, 0, 0, 0);
+				let l, c = new PIXI.BitmapText(t.lang, {
+					fontSize: 24,
+					fontName: "arial"
+				});
+				if (c.x = 20, c.y = 5, s.element.addChild(c), null != t.translator) {
+					let e = a(o.ui.translator + ": " + t.translator.name, 12, "left", "middle", 1);
+					e.x = 20, e.y = 50, s.element.addChild(e)
+				}
+				c.width > y - 50 && (c.width = y - 50), c.scale.y = c.scale.x, -1 == t.sprite && (l.x -= 80, c.x -= 80), console.log(t);
+				let m = new M((function() {
+						if (t.downloaded) return void je.message(o.settings.enableReload, pe["Sprites/GameUI"][24], (function() {
+							n.language = e, Q(), setTimeout((function() {
+								window.location = window.location
+							}), 500)
+						}), (function() {}), [o.ui.reload, o.ui.cancel]);
+						let i = je.message("Downloading...", pe["Sprites/GameUI"][24]);
+						PIXI.Assets.load(t.file + ".json").then((t => {
+							setTimeout((function() {
+								i.exit(), t.version = f, localStorage.setItem(e, JSON.stringify(t)), n.language = e, Q(), setTimeout((function() {
+									window.location = window.location
+								}), 500)
+							}), 2e3)
+						}))
+					}), y - 10, 70, 100, 20, t.button[t.downloaded ? 1 : 0], 0, 1, 1, 1, "center"),
+					f = "";
+				PIXI.Assets.load(t.file + "-version.json").then((i => {
+					if (f = i.version, null != localStorage.getItem(e)) try {
+						let n = JSON.parse(localStorage.getItem(e));
+						i.version != n.version && (m.inputText.text = t.button[2], t.downloaded = !1)
+					} catch (i) {}
+				})), s.element.addChild(m.element), d.push(c), d.push(s), r++
+			}
+			let x = je.exitButton((function() {
+				e(), Q(), je.flash(!1, v)
+			}), c.screen.width - 40, 40, .4, 0);
+			c.stage.addChild(x.sprite);
+			let w = !1;
+
+			function v() {
+				for (let e in l) null != l[e].destroy && l[e].destroy(), delete l[e];
+				h.destroy(), x.destroy(), t.destroy();
+				for (let e = 0; e < d.length; e++) d[e].destroyed || d[e].destroy();
+				w = !0
+			}
+			c.stage.addChild(h), d.push(g), d.push(p), d.push(m)
+		},
+		oddDroplets: function(e, t = "", i = !1) {
+			let r = function() {
+				n.minigameMusic && ye.howitbegins.play()
+			};
+			ye.howitbegins.on("end", r), n.minigameMusic && (ye.howitbegins.play(), ye.howitbegins.volume = 1);
+			let s = new PIXI.Sprite(pe["Sprites/Rooms"][19]);
+			s.interactive = !0, s.x = c.screen.width / 2, s.y = c.screen.height / 2, s.anchor.set(.5, .5), e.addChild(s);
+			let l, d = Date.now(),
+				u = new PIXI.Container,
+				p = 0,
+				m = 0,
+				y = function() {
+					let t = [];
+					l = function() {
+						for (let e = 0; e < t.length; e++) t[e].destroy()
+					};
+					let i = 4,
+						a = 2,
+						o = 1,
+						r = {
+							x: c.screen.width / 2.5,
+							y: c.screen.height / 3
+						};
+					switch (m) {
+						case 1:
+							i = 6, c.screen.width > 640 ? (a = 3, o = .9, r.x = c.screen.width / 3.5) : (r.y /= 1.25, o = .92);
+							break;
+						case 2:
+							i = 10, c.screen.width > 640 ? (a = 5, o = .9, r.x = c.screen.width / 6) : (r.y /= 2, a = 2, o = .5);
+							break;
+						case 3:
+							i = 15, c.screen.width > 640 ? (a = 5, o = .75, r.x = c.screen.width / 6, r.y *= .9) : (r.y /= 2, a = 3, r.x *= .75, o = .5);
+							break;
+						case 4:
+							i = 24, c.screen.width > 640 ? (a = 6, o = .5, r.x = c.screen.width / 6, r.y = c.screen.height / 6) : (r.x = c.screen.width / 5, r.y = c.screen.height / 7, a = 4, o = .4)
+					}
+					let d = 0,
+						p = Math.floor(Math.random() * i),
+						y = 2 * Math.floor(20 * Math.random());
+					for (let e = 0; e < i; e++) {
+						let i = Pe(me.oddDroplets),
+							s = Pe(me.oddDroplets);
+						for (let e = 0; e < s.layers.length; e++) {
+							let t = s[i.layers[e]];
+							null != pe[t.symbol + "OUTLINE12"] && W(t, t.symbol + "OUTLINE12")
+						}
+						t[e] = {
+							destroy: function() {
+								i.destroyAnimation(), s.destroyAnimation()
+							},
+							disableInteractivity: function() {
+								i.interactive = !1
+							}
+						};
+						let l = y + (e == p ? 1 : 0);
+						i.hitArea = new PIXI.Rectangle(-45, -75, 90, 150), i.goto(l), i.x = c.screen.width / 2 - (a - 1) / 2 * r.x + r.x * (e % a), i.y = c.screen.height / 2 + Math.floor(e / a) * r.y, d = Math.floor(e / a), i.scale.x = o, i.scale.y = o, s.goto(l), s.x = i.x, s.y = i.y, s.scale.x = o, s.scale.y = o, u.addChild(s), u.addChild(i), i.interactive = !0, i.on("pointerup", (function() {
+							for (let e = 0; e < t.length; e++) t[e].disableInteractivity();
+							let a = 1 + Math.floor(4 * Math.random());
+							n.sfx && (ye["slap" + a].attack = 0, ye["slap" + a].stop(), ye["slap" + a].play());
+							let r = Pe(me.Teardrop, h.Teardrop);
+							R.outline.apply(r);
+							let l = Pe(me.Teardrop, h.Teardrop);
+							u.addChild(r), u.addChild(l), r.gotoPart("Slap"), r.d.visible = !1, r.play(), r.x = i.x, r.y = i.y + 80 * o, r.scale.x = o, r.scale.y = o, l.gotoPart("Slap"), l.d.visible = !1, l.play(), l.x = i.x, l.y = i.y + 80 * o, l.scale.x = o, l.scale.y = o, i.destroy(), s.destroy(), t[e] = {
+								destroy: function() {
+									r.destroyAnimation(), l.destroyAnimation()
+								}
+							}, p == e ? (x++, 40 == x && je.achievementQueue("oddDroplets40"), f += v) : (x = 0, f -= v, ye.fail.play(), L()), f < 0 && (f = 0), b.text = "score: " + f, I = w + 60
+						}))
+					}
+					e.addChild(u), s.scale.x = .95, s.scale.y = .95, w = 0, u.pivot.x = c.screen.width / 2, u.pivot.y = c.screen.height / 2 - -d * r.y / 2, u.x = u.pivot.x, u.y = u.pivot.y + -d * r.y / 2
+				},
+				f = 0,
+				g = function() {
+					ye.howitbegins.off("end", r), ye.howitbegins.stop(), b.destroy();
+					for (let e = 0; e < T.length; e++) T[e].destroyAnimation();
+					s.destroy(), c.ticker.remove(C), je.gameList(e, "oddDroplets"), je.results(e, f, Math.floor(f / 100)), P.destroyPause(), l(), window.onblur = function() {}
+				},
+				x = 0,
+				w = 0;
+			y();
+			let v = 0,
+				I = -1,
+				C = function() {
+					let t = 600 * (m / 2 + 1);
+					if (v = Math.floor(eases.easeOutQuint(Math.max(0, Math.min(t, w - 60)), 200, -190, t) * (m / 2 + 1)), u.scale.x = eases.easeOutQuad(Math.min(50, w), .9, .1, 50), u.scale.y = u.scale.x, s.scale.x = u.scale.x / 2 + .5, s.scale.y = s.scale.x, w += Je, I <= w && -1 != I) {
+						if (I = -1, P.interactive = !1, A <= -1) return void je.blurPan(e, g);
+						je.blurPan(e, (function() {
+							if (P.interactive = !0, l(), p++, m = Math.floor(p / 10), m >= 5) {
+								let e = [0, 0, 1, 1, 1, 1, 2, 2, 2, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 4];
+								m = e[Math.floor(Math.random() * e.length)]
+							}
+							y()
+						}))
+					}
+				};
+			c.ticker.add(C);
+			let b = a("score: 0", 32);
+			b.anchor.set(0, 0), b.x = 20, b.y = 20, e.addChild(b), window.onblur = function() {
+				S || k()
+			};
+			let S = !1,
+				M = 0;
+
+			function k() {
+				S = !S, P.changePause(S), S ? (n.inGame = !1, c.ticker.remove(C), M = -Date.now(), ye.howitbegins.pause(), je.message(e, o.ui.gamePaused, pe["Sprites/GameUI"][32], (function() {
+					k()
+				}), (function() {
+					je.blurPan(e, (function() {
+						g()
+					}))
+				}), [o.ui.play, o.ui.home], !1)) : (M += Date.now(), d += M, n.inGame = !0, n.minigameMusic && ye.howitbegins.play(), c.ticker.add(C))
+			}
+			let P = je.pauseButton((function() {
+				k()
+			}), .4);
+			e.addChild(P), P.x = c.screen.width - 40, P.y = 40;
+			let T = [];
+			for (let t = 0; t < 3; t++) {
+				let i = Pe(me.healthLose);
+				e.addChild(i), i.gotoAndStop(0), i.x = c.screen.width - 90 - 35 * t, i.y = 40, i.scale.x = .4, i.scale.y = .4, T.push(i)
+			}
+			let A = 2,
+				L = function() {
+					A--;
+					for (let e = 0; e < T.length; e++) e > A && T[e].play()
+				}
+		},
+		dropletDodge: function(e, t = "", i = !1) {
+			je.initializeScreenResolution(e, !0);
+			let r = new PIXI.Sprite(pe["Sprites/Rooms"][15]);
+			if (e.addChild(r), r.interactive = !0, r.x = c.screen.width / 2, r.y = c.screen.height / 2, r.anchor.set(.5, .5), e.screen.width < e.screen.height) {
+				let n = Pe(me.rotateDevice);
+				e.addChild(n), n.x = c.screen.width / 2, n.y = c.screen.height / 2, n.play(), n.loop = !0;
+				let o = a("Rotate your screen to play this minigame!", 16, "center", void 0, 1);
+				return e.addChild(o), o.maxWidth = 320, o.x = c.screen.width / 2, o.y = c.screen.height / 2 + 100, void(onresize = function() {
+					onresize = function() {}, o.destroy(), n.destroyAnimation(), je.flash(e, !1, (function() {
+						je.dropletDodge(e, t, i)
+					}))
+				})
+			}
+			let s = function() {
+				n.minigameMusic && (ye.howitbegins.play(), ye.howitbegins.sourceNode.playbackRate.value = 1.05)
+			};
+			ye.howitbegins.on("end", s), n.minigameMusic && (ye.howitbegins.play(), ye.howitbegins.sourceNode.playbackRate.value = 1.05, ye.howitbegins.volume = 1);
+			let l = {
+					0: {
+						name: "Coin",
+						collect: function() {
+							D(2)
+						}
+					},
+					1: {
+						name: "Silver Coin",
+						collect: function() {
+							D(1)
+						}
+					},
+					2: {
+						name: "Heart",
+						collect: function() {}
+					},
+					3: {
+						name: "Fireball",
+						float: !0,
+						collect: function() {}
+					}
+				},
+				d = {
+					0: {
+						name: "Spike",
+						box: {
+							x: .35,
+							y: .2,
+							width: .3,
+							height: .4
+						},
+						hurt: !0
+					},
+					1: {
+						name: "Short Spike",
+						box: {
+							x: .35,
+							y: .2,
+							width: .3,
+							height: .4
+						},
+						hurt: !0
+					},
+					2: {
+						name: "Double Spike",
+						box: {
+							x: .35,
+							y: .2,
+							width: .3,
+							height: .4
+						},
+						hurt: !0
+					}
+				},
+				p = new PIXI.TilingSprite(pe["Sprites/dodgeBackgrounds"][2]);
+			p.interactive = !0, p.x = 0, p.y = 0, p.width = e.screen.width, p.height = e.screen.height, p.tileScale.x = 1.28, p.tileScale.y = 1.28, e.addChild(p);
+			let m = new PIXI.TilingSprite(pe["Sprites/dodgeBackgrounds"][3]);
+			m.interactive = !0, m.x = 0, m.y = 0, m.width = e.screen.width, m.height = e.screen.height, m.tileScale.x = 1.28, m.tileScale.y = 1.28, e.addChild(m);
+			let y = Date.now(),
+				x = {},
+				w = !1;
+			document.addEventListener("keydown", (function(e) {
+				let t = e.key.toLowerCase();
+				"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), x[t] = !0, ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key) && e.preventDefault()
+			})), document.addEventListener("keyup", (function(e) {
+				let t = e.key.toLowerCase();
+				"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), x[t] = !1
+			})), document.addEventListener("pointerdown", (function() {
+				w = !0
+			})), document.addEventListener("pointerup", (function() {
+				w = !1
+			}));
+			let v = {
+					x: 80,
+					y: -100,
+					width: 60,
+					height: 60,
+					vx: 0,
+					vy: 0,
+					boost: 0,
+					box: new PIXI.Graphics,
+					hurt: !1,
+					invincibility: 0
+				},
+				I = function() {
+					v.hurt || (x.a && (v.vx -= .5 * Je), v.vx += .5 * Je), v.x += v.vx * Je, v.y += v.vy * Je, v.vx = u.linear(v.vx, 0, 1 - .92, Je), v.vy += .4 * Je, v.vy += v.boost, v.vy > 10 && (v.vy = 10), v.boost /= 16, S.x = v.x + v.width / 2, S.y = v.y + v.height, v.vx, S.scale.x = u.linear(S.scale.x, .4 - Math.abs(v.vy / 100), .1, Je), S.scale.y = u.linear(S.scale.y, .4 + Math.abs(v.vy / 100), .5, Je), v.box.x = v.x, v.box.y = v.y, v.isOnGround = !1;
+					for (let e in X) {
+						let t = X[e];
+						if (t.transparent && (t.sprite.rotation += (t.rotateTo < 0 ? -.1 : .1) * Je, t.sprite.x += t.sprite.vx * Je, t.sprite.y += t.sprite.vy * Je, t.sprite.vy += .2 * Je, t.sprite.vx = u.linear(t.sprite.vx, 0, .05)), g(v, t) && !t.transparent && (t.ladder || v.vy > 0 && v.y < t.y - v.height + (4 + v.vy) * Je)) {
+							t.broken && (t.sprite.vy = v.vy / 2, t.transparent = !0, t.rotateTo = v.x + v.width / 2 - t.sprite.x, t.sprite.vx = 10 * (Math.random() - .5)), t.ladder || (v.y = t.y - v.height, v.isOnGround = !0), t.blocky && !i && je.achievementQueue("blockplatformgtttatint"), v.vy = 0, v.max < t.id && !t.ladder && (t.id, v.max), v.max = t.id;
+							let e = 7;
+							t.boost && (e *= 2), (x[" "] || t.boost || t.ladder) && (t.ladder ? (v.y -= 2 * Je, v.vy -= 10) : v.boost -= 10)
+						}
+					}
+					for (let e in X) X[e];
+					C.x = u.linear(C.x, -v.x - e.screen.width / 5, .1, Je), C.y = u.linear(C.y, Math.max(0, -v.y), .1, Je), p.tilePosition.x = C.x / 10, m.tilePosition.x = C.x / 5, m.y = C.y / 5, v.hurt || (v.isOnGround ? x.a ? S.gotoPart("Idle") : S.gotoPart("Running") : S.gotoPart("Jump"));
+					for (let e in K)
+						if (l[K[e].item].float && (K[e].y += K[e].vy * Je, K[e].x += K[e].vx * Je, K[e].sprite.x = K[e].x, K[e].sprite.y = K[e].y), g(v, K[e]) && 1 != K[e].collecting && (l[K[e].item].collect(), l[K[e].item].float || (K[e].collecting = !0)), K[e].collecting) {
+							K[e].y += K[e].vy * Je, K[e].x += K[e].vx * Je, K[e].sprite.x = K[e].x, K[e].sprite.y = K[e].y;
+							let t = v.x + v.width / 2 + v.vx,
+								i = v.y + v.height / 2 + v.vy;
+							K[e].facing = Math.atan2(i - K[e].y, t - K[e].x);
+							let n = 32,
+								a = f(K[e].x, K[e].y, t, i);
+							K[e].sprite.scale.x = Math.min(1, a / 40), K[e].sprite.scale.y = K[e].sprite.scale.x, a < 20 ? (K[e].vx = n / 2 * Math.cos(K[e].facing), K[e].vy = n / 2 * Math.sin(K[e].facing)) : (K[e].vx = u.linear(K[e].vx, n * Math.cos(K[e].facing), .05, Je), K[e].vy = u.linear(K[e].vy, n * Math.sin(K[e].facing), .05, Je)), K[e].rotation += K[e].vr / 10 * Je, a < 10 * Je && (K[e].sprite.destroy(), delete K[e])
+						} for (let e in J) g(v, J[e]) && d[J[e].object].hurt && 1 != v.hurt && v.invincibility <= 0 && (se(), v.hurt = !0, S.gotoPart("Hurt"), v.vx = -5, v.vy = -5, S.onAnimationEnd = function() {
+						v.vy = -5, S.onAnimationEnd = function() {}, v.hurt = !1, v.invincibility = 120
+					});
+					v.invincibility > 0 ? (v.invincibility -= Je, S.visible = !S.visible) : S.visible = !0, v.x + 1e3 > G && Q()
+				};
+			c.ticker.add(I);
+			let C = new PIXI.Container;
+			e.addChild(C);
+			let b = new PIXI.Graphics;
+			C.addChild(b), C.addChild(v.box), C.pivot.x = -e.screen.width / 2, C.pivot.y = -e.screen.height / 2;
+			let S = Pe(me.dropletDodge, h.dropletDodge),
+				M = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
+			for (let e = 0; e < M.length; e++) null == S.a[M[e]] && (S.a[M[e]] = {
+				symbol: "Sprites/Empty",
+				currentFrame: 0,
+				gotoAndStop: function() {}
+			});
+
+			function P(t, i, n, a) {
+				let o = new k((function() {}), pe["Sprites/GameUI"][n], {
+					x: t,
+					y: i,
+					scale: {
+						x: 1,
+						y: 1
+					}
+				});
+				o.sprite.on("pointerdown", (function() {
+					x[a] = !0
+				})), o.sprite.on("pointermove", (function() {
+					w && o.sprite.emit("pointerdown")
+				})), o.sprite.on("pointerout", (function() {
+					o.sprite.emit("pointerup")
+				})), o.sprite.on("pointerup", (function() {
+					x[a] = !1
+				})), e.addChild(o.sprite)
+			}
+			R[n.costume].apply(S), C.addChild(S), S.x = e.screen.width / 2, S.y = e.screen.height / 2, S.scale.x = .4, S.scale.y = .4, S.play(), S.gotoPart("Idle"), c.touchScreen && (P(150, e.screen.height - 50, 54, "a"), P(e.screen.width - 100, e.screen.height - 50, 53, " "));
+			let T = new PIXI.Sprite(pe["Sprites/GameUI"][55]);
+			T.anchor.set(.5, .5), T.x = e.screen.width / 2, T.y = -20, e.addChild(T);
+			let A = a("0", 24);
+			A.x = -100, A.y = 35, T.addChild(A);
+			let L = a("0", 24);
+			L.x = 55, L.y = 35, T.addChild(L);
+			let E = 0,
+				D = function(e) {
+					E += e, A.text = E
+				},
+				X = {},
+				O = u.linear(e.screen.width - 60, 300, .75),
+				N = 0,
+				G = 0,
+				B = 0;
+
+			function F(e, t, i, n) {
+				let a = function() {
+					let a = 5 * t;
+					return a = 9 * (a << 7 | a >>> 25), n ^= t, t ^= i ^= e, e ^= n, n = n << 11 | n >>> 21, (a >>> 0) / 2 ** 32
+				};
+				for (let e = 0; e < 100; e++) a();
+				return a
+			}
+			let z = function(e) {
+				let t = [];
+				for (let i = 0; i < 4; i++) {
+					let n = 2 ** 32;
+					for (let t = 0; t < 4; t++) n -= (e.charCodeAt(t + 4 * i) + 30 * i) ** 4;
+					t.push(n)
+				}
+				return t
+			};
+			if ("" == t) {
+				let e = function() {
+					return Math.floor(1e6 + 9999999 * Math.random()).toString(36)
+				};
+				t = e() + e() + e() + e()
+			}
+			if (t.length < 16) {
+				let e = "";
+				for (let i = 0; i < 16; i++) e += t, t.length / 2 == Math.floor(t.length / 2) && (e += "}");
+				t = e
+			}
+			let U = z(t),
+				_ = F(U[0], U[1], U[2], U[3]),
+				W = 0,
+				j = 0,
+				V = 0,
+				H = 0,
+				Y = 10 + Math.floor(10 * _());
+
+			function Q(i = !1) {
+				50 * Math.floor(B / 50) == B && 0 != B && (t = function(e) {
+					let t = "";
+					for (let i = 0; i < e.length; i++) t += 0 == i ? e[e.length - 1] : e[i - 1];
+					return t
+				}(t), U = z(t), _ = F(U[0], U[1], U[2], U[3])), Y--, 0 == Y && (H = Math.floor(3 * _()), Y = 0 == H ? 5 + Math.floor(5 * _()) : 10 + Math.floor(10 * _()), 2 == H && (Y = 1));
+				let n = 40 * (4 + Math.floor(10 * _()));
+				2 == H && (n *= 4), _();
+				let a = !(_() < .5);
+				V >= 200 && (a = !0);
+				let o = G + 40 * Math.floor(1 + 2 * _()),
+					r = V + (a ? 40 : -40);
+				a && _() > .75 && (r -= 80);
+				let s = !1;
+				!a && _() > .75 && (r += 80, o += 160, s = !0), r >= 240 && (r = 240), V = r, G = o + n;
+				let l = {
+					x: o,
+					y: r,
+					width: n,
+					height: 40,
+					id: B,
+					transparent: !1,
+					ladder: W > 1,
+					blocky: j > 0
+				};
+				N < O && (N += 12);
+				let d = pe.inputNineSlice[19];
+				1 == H && (d = pe.inputNineSlice[6]), 2 == H && (d = pe.inputNineSlice[20]);
+				let c = new PIXI.NineSlicePlane(d, 25, 25, 25, 25);
+				c.width = l.width, c.height = 0 == B ? e.screen.height : l.height / 4, 2 == H && (c.height *= 2), 0 == H && (c.height = 3e3 - r), c.pivot.x = l.width / 2, c.pivot.y = c.height / 2, c.x = l.x + c.pivot.x, c.y = l.y + c.pivot.y, c.vy = 0, c.vx = 0, C.addChild(c), l.sprite = c, c.zIndex = 0, X[B] = l, B++, W--, j--;
+				let h = function(e, t) {
+					let i = {
+							x: e,
+							y: t,
+							width: 60,
+							height: 60,
+							vx: 5,
+							vy: 0,
+							boost: 0
+						},
+						n = {
+							a: !1,
+							d: !1,
+							" ": !1
+						};
+					return i.setKey = function(e, t) {
+						n[e] = t
+					}, i.nextFrame = function() {
+						n.a && (i.vx -= .5), i.vx += .5, i.x += i.vx, i.y += i.vy, i.vx = u.linear(i.vx, 0, 1 - .92), i.vy += .4, i.vy += i.boost, i.vy > 10 && (i.vy = 10), i.boost /= 16, i.isOnGround = !1;
+						for (let e in X) {
+							let t = X[e];
+							g(i, t) && !t.transparent && (t.ladder || i.vy > 0 && i.y < t.y - i.height + (4 + i.vy) * Je) && (i.hurt ? i.vy *= -2 : i.vy = 0, i.max < t.id && !t.ladder && (t.id, i.max), i.max = t.id, (n[" "] || t.boost || t.ladder) && (t.ladder ? (i.y -= 2, i.vy -= 10) : i.hurt ? i.boost -= 5 : i.boost -= 10))
+						}
+					}, i.simulate = function(e) {
+						let t = [];
+						for (let n = 0; n < e; n++) i.nextFrame(), t.push({
+							x: i.x,
+							y: i.y
+						});
+						return t
+					}, i
+				}(o + n - 50, r - v.height);
+				h.setKey("d", !0), h.setKey(" ", !0);
+				let p = h.simulate(50),
+					m = {};
+				if (_() > .75) {
+					let e = _() > .95;
+					for (let t = 0; t < 2; t++)
+						for (let i = 0; i < p.length; i++) {
+							let n, a, o = p[i].x,
+								r = p[i].y + 40 * t;
+							for (let e = 0; e < 3; e++)
+								for (let t = 0; t < 3; t++) {
+									let i = Math.round(o / 40),
+										s = Math.round(r / 40);
+									g({
+										x: o,
+										y: r,
+										width: 0,
+										height: 0
+									}, {
+										x: 40 * i + 40 * e,
+										y: 40 * s + 40 * t,
+										width: 40,
+										height: 40
+									}) && (n = i + e, a = s + t)
+								}
+							null == m[n + " " + a] && (m[n + " " + a] = !0, $(e || i > 45 ? 0 : 1, 40 * n, 40 * a))
+						}
+				}
+				let y = _() > .5 && l.width > 160 ? 1 + Math.round(_()) : 0,
+					f = Math.round(2 * (_() - .5));
+				s && (f -= 2);
+				for (let e = 0; e < y; e++) {
+					let t = {
+							x: l.x + (l.width / 2 + 40 * f) + 40 * e,
+							y: l.y - 40
+						},
+						i = 0;
+					i = y >= 2 ? Math.round(_()) : _() > .7 ? 2 : 0, ee(i, t.x, t.y)
+				}
+			}
+			let K = {},
+				J = {},
+				q = 0,
+				Z = 0;
+
+			function $(e, t, i) {
+				let n = {
+					x: t,
+					y: i,
+					width: 10,
+					height: 10,
+					vx: 0,
+					vy: 0,
+					item: e
+				};
+				n.id = q++, K[n.id] = n;
+				let a = new PIXI.Sprite(pe["Sprites/dodgeItems"][e]);
+				return a.x = t, a.y = i, C.addChild(a), n.sprite = a, a.anchor.set(.5, .5), n
+			}
+
+			function ee(e, t, i) {
+				let n = d[e].box,
+					a = {
+						x: t + 40 * n.x,
+						y: i + 40 * n.y,
+						width: 40 * n.width,
+						height: 40 * n.height,
+						vx: 0,
+						vy: 0,
+						object: e
+					};
+				a.id = Z++, J[a.id] = a;
+				let o = new PIXI.Sprite(pe["Sprites/dodgeObjects"][e]);
+				o.x = t, o.y = i, C.addChild(o), a.sprite = o
+			}
+			for (let e = 0; e < 4; e++) Q();
+			v.x = X[0].x + X[0].width / 2 - v.width / 2, window.onblur = function() {
+				te || ne()
+			};
+			let te = !1,
+				ie = 0;
+
+			function ne() {
+				te = !te, ae.changePause(te), te ? (n.inGame = !1, c.ticker.remove(I), ie = -Date.now(), ye.howitbegins.pause(), je.message(e, o.ui.gamePaused, pe["Sprites/GameUI"][32], (function() {
+					ne()
+				}), (function() {
+					je.blurPan(e, (function() {
+						ye.howitbegins.off("end", s), ye.howitbegins.stop(), p.destroy(), c.ticker.remove(I), je.gameList("dropdodge"), je.results(0, Math.floor(0)), ae.destroyPause(), clearDroplets(), window.onblur = function() {}
+					}))
+				}), [o.ui.play, o.ui.home], !1)) : (ie += Date.now(), y += ie, n.inGame = !0, n.minigameMusic && ye.howitbegins.play(), c.ticker.add(I))
+			}
+			let ae = je.pauseButton((function() {
+				ne()
+			}), .4);
+			e.addChild(ae), ae.x = e.screen.width - 40, ae.y = 40;
+			let oe = [];
+			for (let t = 0; t < 3; t++) {
+				let i = Pe(me.healthLose);
+				e.addChild(i), i.gotoAndStop(0), i.x = 50 + 35 * t, i.y = 40, i.scale.x = .4, i.scale.y = .4, oe.push(i)
+			}
+			let re = 2,
+				se = function() {
+					re--;
+					for (let e = 0; e < oe.length; e++) e > re && oe[e].play()
+				}
+		},
+		setUpTints: function() {
+			ze = new PIXI.Sprite(pe["Sprites/Blur"][1]), Ue = new PIXI.Sprite(pe["Sprites/RepeatingUI"][2]), _e = new PIXI.Sprite(pe["Sprites/RepeatingUI"][3])
+		},
+		achievementQueue: function(e, t = !1) {
+			0 == p.length && (m = 0), t && 0 != p.length && (m++, je.achievement(e, (function() {
+				p.shift(), je.achievementQueue(p[0], !0)
+			}))), t || y[e].done || (p.push(e), y[e].done = !0, 1 == p.length && je.achievement(e, (function() {
+				p.shift(), je.achievementQueue(p[0], !0)
+			})))
+		},
+		achievement: function(e, t = function() {}) {
+			let i = ["get2763intennis", "get2763gtttatint", "slapTD2763", "2763lemons"],
+				a = 0;
+			for (let e = 0; e < i.length; e++) y[i[e]].done && a++;
+			a == i.length && je.achievementQueue("get2763"), n.sfx && (ye.achievement.stop(), ye.achievement.play(), ye.achievement.sourceNode.playbackRate.value = 1 + m / 16);
+			let o = y[e],
+				r = new PIXI.NineSlicePlane(pe.inputNineSlice[2]);
+			r.width = 320, r.x = c.screen.width / 2, r.y = -500, c.stage.addChild(r);
+			let s = new PIXI.BitmapText(o.title, {
+				fontName: "ShagBlack",
+				fontSize: 24
+			});
+			r.height = s.height + 50, s.anchor.set(0, .5), s.x = 80, s.y = 20, r.addChild(s);
+			let l = new PIXI.BitmapText(o.description, {
+				fontName: "ShagBlack",
+				fontSize: 16,
+				breakWords: !0,
+				wordWrap: !0,
+				wordWrapWidth: 200,
+				maxWidth: r.width - 80,
+				whiteSpace: "normal"
+			});
+			l.anchor.set(0, 0), r.height += l.height, l.anchor.set(0, .5), l.x = 80, l.y = 35 + l.height / 2, r.addChild(l), r.pivot.set(r.width / 2, r.height / 2), null == o.icon && (o.icon = 11);
+			let d = pe["Sprites/GameUI"][o.icon],
+				h = new PIXI.Sprite(d);
+			r.addChild(h), h.anchor.set(.5, .5), h.y = r.height / 2 - 5, h.x = 40, h.scale.x = .5, h.scale.y = .5;
+			let u = 0,
+				p = Math.random() - .5;
+			setTimeout((function() {
+				f.x = r.x, f.y = r.y, f.rotation = r.rotation, f.scale = r.scale, r.closing = !0, u = 0
+			}), 2500);
+			let f = {
+				x: c.screen.width / 2,
+				y: -r.height / 2,
+				rotation: p,
+				scale: .5
+			};
+			r.onDestroyed = function() {}, r.destroyBook = function() {
+				r.onDestroyed(), c.ticker.remove(g), s.destroy(), h.destroy(), r.destroy({
+					children: !0
+				}), t()
+			};
+			let g = function() {
+				if (r.closing) {
+					if (r.y = ease[16](Math.min(40, u), f.y, -f.y - r.height, 40), r.rotation = ease[1](Math.min(70, u), f.rotation, p, 70), u > 40) return void r.destroyBook()
+				} else r.x = ease[17](Math.min(80, u), f.x, 0, 80), r.y = ease[8](Math.min(70, u), f.y, r.height + 20, 70);
+				r.scale.y = r.scale.x, u += Je
+			};
+			return c.ticker.add(g), r
+		},
+		updateWarning: function() {
+			je.message(o.message.updateWarning(Ve, He), pe["Sprites/GameUI"][24], (function() {
+				window.location = window.location
+			}), (function() {}), [o.ui.reload, o.ui.ignore]), console.log(o.ui)
+		},
+		exitButton: function(e = function() {}, t, i, n = 1, a = 0) {
+			let o = !1,
+				r = new k((function() {
+					o || (o = !0, e())
+				}), pe["Sprites/GameUI"][11], {
+					scale: {
+						x: n,
+						y: n
+					},
+					x: t,
+					y: i
+				}, !0);
+			return r.sprite.on("pointerover", (function() {
+				r.sprite.texture = pe["Sprites/GameUI"][12]
+			})), r.sprite.on("pointerout", (function() {
+				r.sprite.texture = pe["Sprites/GameUI"][11]
+			})), r
+		},
+		pauseButton: function(e = function() {}, t = 1) {
+			let i = new PIXI.Sprite(pe["Sprites/GameUI"][32]);
+			i.anchor.set(.5, .5), i.interactive = !0;
+			let n = pe["Sprites/GameUI"][32].trim;
+			return i.scale.x = t, i.scale.y = t, i.hitArea = new PIXI.Rectangle(-n.width / 2, -n.height / 2, n.width, n.height), i.id = w, x[P()] = i, v(i, e), i.destroyPause = function() {
+				delete x[i.id], i.destroy()
+			}, i.changePause = function(e) {
+				e ? (i.texture = pe["Sprites/GameUI"][34], i.interactive = !1) : (i.texture = pe["Sprites/GameUI"][32], i.interactive = !0)
+			}, i
+		},
+		skew: function() {
+			let e = Pe(me.SkewMatrix);
+			e.play(20), c.stage.addChild(e), e.x = 180, e.y = 320, setInterval((function() {}), 1e3 / 60)
+		},
+		fade: function(e, t = 20, i = 20) {
+			c.stage.children.includes(Ue) && c.stage.removeChild(Ue), Ue.interactive = !0, c.stage.addChild(Ue), Ue.alpha = 0;
+			let n = 1 / t,
+				a = !1;
+			c.ticker.add((function t() {
+				Ue.alpha += n * Je, Ue.alpha >= 1 && (Ue.alpha = 1, a || (a = !0, e()), c.stage.removeChild(Ue), c.stage.addChild(Ue), n = -1 / i), Ue.alpha < 0 && (c.ticker.remove(t), c.stage.removeChild(Ue))
+			}))
+		},
+		flash: function(e, t = !1, i = function() {}, n = !1) {
+			let a = new PIXI.Sprite(pe["Sprites/RepeatingUI"][3]);
+			a.width = c.screen.width, a.height = c.screen.height, e.addChild(a), a.alpha = t ? 1 : 0;
+			let o = t ? -1 / 60 : 1 / 8;
+			n ? (a.interactive = !0, o /= 4) : a.interactive = !1;
+			let r = !1;
+			c.ticker.add((function n() {
+				a.alpha += o * Je, a.alpha >= 1 && !t && (a.alpha = 1, r || (r = !0, i(), a.interactive = !1), e.removeChild(a), e.addChild(a), o = -1 / 60), a.alpha < 0 && (c.ticker.remove(n), a.destroy())
+			}))
+		},
+		blackTint: function(e, t = .5, i = !0) {
+			if ("number" == typeof e) return void console.log("forgotten source code rework!!");
+			let n = new PIXI.Sprite(pe["Sprites/RepeatingUI"][3]);
+
+			function a() {
+				n.alpha += r * Je, n.alpha >= t && (n.alpha = t, r = 0), n.alpha < 0 && (n.alpha = 0, n.delete && (c.ticker.remove(a), e.removeChild(n)))
+			}
+			n.interactive = !0, n.width = c.screen.width, n.height = c.screen.height, i ? (n.blendMode = PIXI.BLEND_MODES.SUBTRACT, n.tint = 16777215) : (n.blendMode = PIXI.BLEND_MODES.NORMAL, n.tint = 0), e.children.includes(n) && e.removeChild(n), e.addChild(n);
+			let o = !1;
+			n.start = function() {
+				r = 1 / 60, o || (o = !0, c.ticker.add(a))
+			}, n.end = function() {
+				r = -1 / 60
+			}, n.delete = !0, n.alpha = 0;
+			let r = 1 / 60;
+			return n
+		},
+		book: function(e, t, i = function() {}, n = 30) {
+			let a = je.blackTint(e, .2);
+			a.start();
+			let o = new PIXI.Sprite(pe["Sprites/GameUI"][10]);
+			o.x = c.screen.width / 2, o.y = c.screen.height / 2, o.anchor.set(.5, .5), e.addChild(o);
+			let r = [],
+				s = 0,
+				l = 0,
+				d = [],
+				h = t.split(" "),
+				u = "",
+				p = new PIXI.BitmapText(t, {
+					fontName: "IndieFlower",
+					fontSize: 24
+				});
+			for (let e = 0; e < h.length; e++) {
+				let t = u;
+				u += h[e] + " ", p.text = u, p.width > 200 && (d.push(t), e--, u = "")
+			}
+			"" != u && d.push(u), p.destroy();
+			let m = 0,
+				y = 2 * Math.round(Math.random()) - 1,
+				f = d;
+			for (let e = 0; e < f.length; e++) {
+				let t = new PIXI.BitmapText("", {
+					fontName: "IndieFlower",
+					fontSize: 24
+				});
+				t.x = -70, t.y = 29.5 * e - 195, o.addChild(t), r.push(t)
+			}
+			let g, x = function() {
+				r[l].text += f[l][s], s >= f[l].length - 1 && (l++, s = -1), s++, l == r.length && clearInterval(g)
+			};
+			setTimeout((function() {
+				g = setInterval(x, 1e3 / n)
+			}), 500);
+			let w = je.exitButton((function() {
+				w.interactive = !1, v.x = o.x, v.y = o.y, v.rotation = o.rotation, v.scale = o.scale, o.closing = !0, m = 0
+			}), 150, -220, .4, .1);
+			w.sprite.alpha = 0, o.addChild(w.sprite), w.sprite.interactive = !1, w.show = !1, setTimeout((function() {
+				w.show = !0, w.sprite.interactive = !0
+			}), 1500);
+			let v = {
+				x: 0,
+				y: c.screen.height + 500,
+				rotation: y,
+				scale: .5
+			};
+			o.onDestroyed = function() {}, o.destroyBook = function() {
+				o.onDestroyed(), c.ticker.remove(I);
+				for (let e = 0; e < r.length; e++) r[e].parent.removeChild(r[e]), r[e].destroy();
+				w.destroy(), o.destroy({
+					children: !0
+				}), i()
+			};
+			let I = function() {
+				if (w.show && (w.sprite.alpha += .05), w.sprite.alpha >= 1 && (w.sprite.alpha = 1, w.show = !1), o.closing) {
+					if (o.y = ease[16](Math.min(40, m), v.y, -v.y + c.screen.height + 500, 40), o.rotation = ease[1](Math.min(70, m), v.rotation, y, 70), m > 40) return a.end(), void o.destroyBook()
+				} else o.x = ease[17](Math.min(80, m), v.x, c.screen.width / 2, 80), o.y = ease[8](Math.min(70, m), v.y, -c.screen.height / 2 - 29.5 * (f.length + 5), 70), o.rotation = ease[17](Math.min(90, m), v.rotation, -y, 90), o.scale.x = ease[17](Math.min(90, m), v.scale, .5, 90);
+				o.scale.y = o.scale.x, m += Je
+			};
+			return c.ticker.add(I), o
+		},
+		blurPan: function(e, t = function() {}) {
+			ze.visible = !0, ze.x = 4 * -ze.texture.orig.width / 2, ze.y = c.screen.height / 2, ze.scale.x = 4, ze.scale.y = 4, ze.anchor.set(.5, .5), e.addChild(ze);
+			let i = !1,
+				n = function() {
+					ze.x += 300 * Je, ze.x > c.screen.width / 2 && !i && (t(), i = !0, e.addChild(ze)), ze.x > c.screen.width + 4 * ze.texture.orig.width / 2 && (c.ticker.remove(n), e.removeChild(ze), ze.visible = !1)
+				};
+			c.ticker.add(n)
+		},
+		animationSelector: function() {
+			let e = 0,
+				t = [];
+
+			function i() {
+				for (let e = 0; e < t.length; e++) t[e].destroy()
+			}
+			for (let n in me) {
+				let a = new M((function() {
+					let e = {};
+					null != h[n] && (e = h[n]), i(), je.animationTester(me[n], e)
+				}), 20, 20 + 28 * e, c.screen.width - 40, 24, n, 10, 0, 0);
+				c.stage.addChild(a.element), t.push(a), e++
+			}
+			return {
+				destroy: i
+			}
+		},
+		animationTester: function(e, t) {
+			let i = Pe(e, t),
+				n = new PIXI.Sprite(PIXI.Texture.from("./Sprites/anchor.png"));
+			n.anchor.set(.5, .5), i.addChild(n), c.stage.addChild(i), i.x = c.screen.width / 2, i.y = c.screen.height / 2, i.onNextFrame = function() {
+				r.value = i.getCurFrame()
+			};
+			let o = 0,
+				r = new class {
+					constructor(e, t) {
+						this._value = t, this.info = e, this.text = a(this.info + ": " + this._value, 12, "left"), this.text.x = 20, this.text.y = c.screen.height - 60 - 16 * o, o++, c.stage.addChild(this.text)
+					}
+					set value(e) {
+						this._value = e, this.text.text = this.info + ": " + this._value
+					}
+				}("Frame", "0");
+			i.play(60), i.interactive = !0, I(i);
+			let s = new S(20, c.screen.height - 20, 150, 20, "FPS", 10, 0, 1);
+			s.confirmation = function() {
+				i.play(parseInt(s.inputText.value))
+			}, c.stage.addChild(s.element);
+			let l = 0,
+				d = new M((function() {
+					i.currentPart = -1, i.playUntil = -1, i.loop = !0
+				}), 20, 20 + 20 * l, 90, 18, "none", 10, 0, 0);
+			c.stage.addChild(d.element), l++;
+			for (let e in t) {
+				let t = new M((function() {
+					i.gotoPart(e)
+				}), 20, 20 + 20 * l, 90, 18, e, 10, 0, 0);
+				c.stage.addChild(t.element), l++
+			}
+		},
+		intro: function(e = !1) {
+			if (0 == e) return void je.loader((function() {
+				je.intro(!0)
+			}), [
+				["plodder", "plodder"]
+			]);
+			let t = 0;
+			Se(me.bfb), Se(me.bfb), Se(me.bfb);
+			for (let e in me.bfb.layers) {
+				for (let i = 0; i < me.bfb.layers[e].frames.length; i++) {
+					let n = me.bfb.layers[e].frames[i];
+					n[ke.firstFrame] = t, n[ke.loopMode] = 2, n[ke.tween] = 0
+				}
+				t += 5
+			}
+			me.bfb.symbols.Test = me.faceMinigame;
+			let i = n.music;
+			setTimeout((function() {
+				setTimeout((function() {
+					o.play(192)
+				}), 1e3), n.music = !1, ye.brittlerille.stop(), ye.plodder.play(), ye.plodder.sourceNode.playbackRate.value = 1, ye.plodder.on("end", (function() {
+					o.destroyAnimation(), a.destroy(), n.music = i, i && ye.brittlerille.play()
+				}))
+			}), 10 / 24 * 1e3);
+			let a = new PIXI.Sprite(pe["Sprites/RepeatingUI"][3]);
+			a.width = c.screen.width + 80, a.height = c.screen.height + 80, a.tint = 13421772, a.x = -40, a.y = -40, c.stage.addChild(a);
+			let o = Pe(me.bfb);
+			c.stage.addChild(o), o.scale.x = 1 / .56, o.scale.y = 1 / .56, o.x = -2762, o.y = -1736
+		},
+		lollipop: function(e = !1) {
+			let t = new PIXI.Sprite(pe["Sprites/RepeatingUI"][3]);
+			t.width = c.screen.width + 80, t.height = c.screen.height + 80, t.tint = 16752989, t.x = -40, t.y = -40, c.stage.addChild(t);
+			let i = Pe(me.lollipopMode);
+			i.x = c.screen.width / 2 - 320, i.scale.x = 640 / 360, i.scale.y = i.scale.x, c.stage.addChild(i), i.play(24), i.loop = !0, i.onNextFrame = function() {
+				console.log(i.children[0].x)
+			}, console.log(pe)
+		},
+		myTeardrop: function() {
+			let e = new PIXI.Container;
+			je.initializeScreenResolution(e);
+			let r = Math.floor((Date.now() - n.lastLogin) / 1e3),
+				l = 288;
+			if (i.happiness -= r / 180, i.hunger -= r / 108, i.sleeping) {
+				let F = i.sleep;
+				i.sleep += r / l * 8, i.sleep > 100 && (i.sleep = 100), i.progress += 4 * (i.sleep - F)
+			}
+			i.sleep >= 100 && (i.sleeping = !1), i.happiness = Math.max(0, i.happiness), i.hunger = Math.max(0, i.hunger), i.sleep = Math.max(0, i.sleep);
+			let d = function() {},
+				p = new PIXI.Container;
+			e.addChild(p), p.x = c.screen.width / 2, p.y = c.screen.height / 2;
+			let m = "livingRoom",
+				g = {
+					sky: pe["Sprites/Rooms"][8],
+					rooms: {
+						livingRoom: {
+							bg: pe["Sprites/Rooms"][8]
+						},
+						kitchen: {
+							bg: pe["Sprites/Rooms"][1],
+							bgFront: pe["Sprites/Rooms"][2]
+						},
+						bedroom: {
+							bg: pe["Sprites/Rooms"][3],
+							bgFront: pe["Sprites/Rooms"][4]
+						}
+					}
+				};
+			n.events.christmas && (g.rooms.livingRoom.bg = pe["Sprites/Rooms"][23], g.sky = pe["Sprites/Rooms"][22]);
+			let x = new PIXI.Sprite(g.sky);
+			p.addChild(x), x.x = 0, x.y = 0, x.anchor.set(.5, .5), x.scale.x = 1, x.scale.y = 1;
+			let w = new PIXI.TilingSprite(pe["Sprites/Rooms"][24]);
+			p.addChild(w), w.width = x.width, w.height = 1e3, w.x = -x.width / 2, w.y = -500, w.tileScale.x = .75, w.tileScale.y = .75;
+			let I = new PIXI.Sprite(g.rooms.livingRoom.bg);
+			p.addChild(I), I.x = 0, I.y = -100, I.anchor.set(.5, .5), I.scale.x = 1, I.scale.y = 1, I.visible = !1;
+			let b = new PIXI.Sprite(g.rooms.livingRoom.bg);
+			p.addChild(b), b.x = 0, b.y = 0, b.anchor.set(.5, .5), b.scale.x = 1, b.scale.y = 1;
+			let S = new PIXI.Sprite(pe["Sprites/Rooms"][0]);
+			S.x = 0, S.y = 0, S.anchor.set(.5, .5), S.scale.x = 1, S.scale.y = 1;
+			let P = n.skipIntro,
+				E = 1,
+				D = 0,
+				G = new PIXI.BitmapText(o.intro.mail, {
+					fontSize: 24,
+					fontName: "MenuShag"
+				});
+
+			function B() {
+				setInterval((function() {
+					n.inGame ? (i.happiness += .2, i.progress += 1) : i.happiness -= 1 / 180;
+					let t = 1 / 108;
+					n.inGame && (t *= 8), i.hunger -= t;
+					let a = .003472222222222222;
+					n.inGame && (a *= 16, n.temporaryInGameTime++), i.sleeping ? (i.sleep += .027777777777777776, i.progress += .1111111111111111) : n.introMode || (i.sleep -= a), n.lastLogin = Date.now(), i.happiness = Math.max(0, i.happiness), i.hunger = Math.max(0, i.hunger), i.sleep = Math.max(0, i.sleep), i.happiness = Math.min(100, i.happiness), i.hunger = Math.min(100, i.hunger), i.sleep = Math.min(100, i.sleep), i.sleeping || (i.sleep < 20 && !T.tired && (T.tired = !0, T.switchData(me[X.tired]), T.switchParts(h[N]), T.gotoPart("Sleepy")), i.sleep > 20 && T.tired && (T.tired = !1, T.switchData(me[X.awake]), T.switchParts(h[O]), T.gotoPart("Realize")), i.progress > i.progressNeeded && !n.inGame && n.canLevelUp && (je.flash(e, !1, (function() {
+						n.level++, te.text = n.level, i.progress = i.progress - i.progressNeeded, i.progressNeeded = 200 + (n.level - 1) ** 1.25 * 20, ee.offset = i.progress / i.progressNeeded, je.levelUp(e), Q()
+					})), n.canLevelUp = !1), i.progress < 0 && (i.progress = 0))
+				}), 1e3), n.canLevelUp = !0;
+				let l = new PIXI.Sprite(pe["Sprites/GameUI"][19]);
+				l.anchor.set(.5, .5), l.scale.x = .1, l.scale.y = .1, l.rotation = -1;
+				let x = new k((function() {
+						l.active = !1, je.flash(e, !1, (function() {
+							je.wardrobe(e, (function() {
+								$.updateCounter(t.coins), null != T.destroyCostume && (T.destroyCostume(), T.destroyCostume = void 0), R.none.apply(T), T.getCurFrame() > T.playUntil ? T.gotoAndStop(T.playUntil) : T.gotoAndStop(T.getCurFrame()), T.play(), R[n.costume].apply(T), T.applyCostumeAnimations()
+							}))
+						}))
+					}), pe["Sprites/GameUI"][17], {
+						x: 100,
+						y: 100,
+						scale: {
+							x: .6,
+							y: .6
+						}
+					}),
+					E = new k((function() {
+						l.active = !1, je.flash(e, !1, (function() {
+							je.gameList(e)
+						}))
+					}), pe["Sprites/GameUI"][20], {
+						x: 100,
+						y: 100,
+						scale: {
+							x: .6,
+							y: .6
+						}
+					}),
+					G = new k((function() {
+						l.active = !1, je.flash(e, !1, (function() {
+							je.settings(e)
+						}))
+					}), pe["Sprites/GameUI"][33], {
+						x: 100,
+						y: 100,
+						scale: {
+							x: .4,
+							y: .4
+						}
+					});
+				G.sprite.title = [o.ui.settings, 32], E.sprite.title = [o.ui.games, 24], x.sprite.title = [o.ui.wardrobe, 24];
+				let B = new k((function() {
+					l.active = !1, je.flash(e, !1, (function() {
+						je.achievements(e)
+					}))
+				}), pe["Sprites/GameUI"][35], {
+					x: 100,
+					y: 100,
+					scale: {
+						x: .6,
+						y: .6
+					}
+				});
+				B.sprite.title = [o.ui.achievements, 24];
+				let F = [x.sprite, E.sprite, B.sprite],
+					z = [G.sprite];
+				for (let e = 0; e < F.length; e++) {
+					let t = F[e],
+						i = a(t.title[0], t.title[1], "center");
+					t.addChild(i), i.y = -80;
+					let n = Math.cos((e + .5 - 2) / 8 * Math.PI * 2),
+						o = Math.sin((e + .5 - 2) / 8 * Math.PI * 2);
+					t.x = 100 * n, t.y = 100 * o, t.original = {
+						x: t.x,
+						y: t.y
+					}, l.addChild(t), t.speed = .05
+				}
+				for (let e = 0; e < z.length; e++) {
+					let t = z[e];
+					F.push(t), t.speed = .03;
+					let i = a(t.title[0], t.title[1], "center");
+					t.addChild(i), i.y = -80;
+					let n = Math.cos((e + 1 - 2) / 8 * Math.PI * 2),
+						o = Math.sin((e + 1 - 2) / 8 * Math.PI * 2);
+					t.x = 160 * n, t.y = 160 * o, t.original = {
+						x: t.x,
+						y: t.y
+					}, l.addChild(t)
+				}
+				e.addChild(l);
+				let U = function(r, f = !1) {
+					if (m == r && "livingRoom" == r ? (l.x = K.buttonContainer.x, l.y = K.buttonContainer.y, n.introMode || (l.active = !l.active)) : l.active = !1, m == r) return;
+					m = r, b.interactive = !1, b.removeAllListeners();
+					let x = function() {
+						if (i.sleeping && (T.visible = !1), d(), K.selected.visible = !1, J.selected.visible = !1, q.selected.visible = !1, T.rotation = 0, I.visible = !1, "livingRoom" == r && (b.texture = g.rooms.livingRoom.bg, S.texture = pe["Sprites/Rooms"][0], S.visible = !1, T.x = 0, T.y = 100, K.selected.visible = !0), "kitchen" == r) {
+							function l() {
+								for (let e = 0; e < 3; e++) "" != t.fridge[20 + e] && null != t.fridge[20 + e] ? (f[e].eated = !1, f[e].x = m.x - 50 + 50 * e, f[e].interactive = !0, f[e].y = m.y, f[e].alpha = 1, f[e].eating = !1, f[e].visible = !0, f[e].food = t.fridge[20 + e], f[e].foodId = 20 + e, f[e].texture = pe["Sprites/Food"][L[t.fridge[20 + e]].texture]) : f[e].visible = !1
+							}
+							P || (_ = 1.5), b.interactive = !0, b.hitArea = new PIXI.Rectangle(100, -290, 300, 350), b.on("pointerdown", (function() {
+								b.interactive = !1, 2 == _ && (_ = 3), je.flash(e, !1, (function() {
+									je.fridge(e, (function() {
+										$.updateCounter(t.coins), l(), n.introMode && ($.visible = !0)
+									})), b.interactive = !0
+								}))
+							})), S.visible = !0, b.texture = g.rooms.kitchen.bg, S.texture = g.rooms.kitchen.bgFront, p.addChild(S), I.visible = !0, T.x = -10, T.y = 100, J.selected.visible = !0;
+							let m = new PIXI.Sprite(pe["Sprites/Food"][0]);
+							m.anchor.set(.5, .5), m.x = 0, m.y = 70, p.addChild(m);
+							let f = [];
+							for (let v = 0; v < 3; v++) {
+								let C = new PIXI.Sprite(pe["Sprites/Food"][1]);
+								C.visible = !0, C.x = m.x - 50 + 50 * v, C.y = m.y, C.x2 = C.x, C.y2 = C.y, C.anchor.set(.5, .5), p.addChild(C), C.interactive = !0, C.hitArea = new PIXI.Rectangle(-C.texture.trim.width / 2, -C.texture.trim.height, 2 * C.texture.trim.width, 2 * C.texture.trim.height), C.on("pointerdown", (function(e) {
+									C.hitArea = new PIXI.Rectangle(-3e3, -3e3, 6e3, 6e3), C.dragging = !0;
+									let t = e.clientX / s,
+										i = e.clientY / s;
+									C.dragOffset = {
+										x: t - C.x,
+										y: i - C.y
+									};
+									for (let e = 0; e < f.length; e++) f[e].interactive = !1;
+									C.interactive = !0
+								})), C.on("pointermove", (function(e) {
+									let t = e.clientX / s,
+										i = e.clientY / s;
+									C.dragging && (C.x2 = t - C.dragOffset.x, C.y2 = i - C.dragOffset.y)
+								})), C.eated = !1, C.on("pointerup", (function(a) {
+									n.introMode && _ <= 3 && setTimeout((function() {
+										i.sleep = 19, _ = 4, Z.alpha = 0, Z.rotation = 0, q.buttonContainer.alpha = 0, q.buttonContainer.visible = !0
+									}), 2e3), C.hitArea = new PIXI.Rectangle(-C.texture.trim.width / 2, -C.texture.trim.height, 2 * C.texture.trim.width, 2 * C.texture.trim.height), C.dragging = !1;
+									for (let e = 0; e < f.length; e++) f[e].interactive = !0;
+									if (C.x2 = m.x - 50 + 50 * v, C.y2 = m.y, i.sleeping) return;
+									if (C.eated) return;
+									C.eated = !0;
+									let o = L[C.food].adds;
+									if ("lemon" == n.costume && ("sourlemon" == C.food ? o = 12 : o /= 3), !C.food.includes("potion")) {
+										if (T.tired) return;
+										if (i.hunger + o / 2 >= 100) return C.eated = !1, T.gotoPart("Nope"), void(T.currentPart = -1)
+									}
+									C.eating = !0, T.interactive = !1, setTimeout((function() {
+										"sleeppotion" == C.food && (i.sleep = 100, n.drinksFed += 1, 10 == n.drinksFed && (je.achievementQueue("10energydrinks"), R.energydrink.owned = !0)), "maxpotion" == C.food && (i.sleep = 0, i.happiness = 100, i.hunger = 100), T.food.textures = [C.texture], "voiddrop" == n.costume ? T.gotoPart("EatVoid") : "sourlemon" == C.food && "lemon" != n.costume ? T.gotoPart("EatSour") : T.gotoPart("Eat"), "sourlemon" == C.food && (n.lemonsFed += 1, n.lemonsFed >= 2763 && !y["2763lemons"].done && je.flash(e, !1, (function() {
+											R.limedrop.apply(T), R.limedrop.owned = !0, n.costume = "limedrop", Q(), je.achievementQueue("2763lemons")
+										}), !0), n.lemonsFed >= 100 && !y.lemons.done && je.flash(e, !1, (function() {
+											R.lemon.apply(T), R.lemon.owned = !0, n.costume = "lemon", Q(), je.achievementQueue("lemons")
+										}), !0), Q()), n.sfx && (ye.consume.stop(), ye.consume.play()), t.fridge[C.foodId] = "", setTimeout((function() {
+											i.hunger += o, i.progress += 20 + L[C.food].adds / 4, i.happiness += Math.round(Math.max(0, (40 - i.happiness) / 2)), i.hunger >= 100 && (i.hunger = 100), T.currentPart = -1
+										}), 400), T.onAnimationEnd = function() {
+											T.interactive = !0, T.onAnimationEnd = function() {}
+										}
+									}), 100)
+								})), f.push(C)
+							}
+							l();
+							let x = function() {
+									if (!w)
+										for (let e = 0; e < f.length; e++) {
+											let t = f[e];
+											t.dragging ? (t.x = u.linear(t.x, t.x2, .4, Je), t.y = u.linear(t.y, t.y2, .4, Je)) : t.eating ? (t.x = u.linear(t.x, T.x - 75, .2, Je), t.y = u.linear(t.y, T.y - 100, .3, Je), t.alpha = u.linear(t.alpha, 0, .2, Je), t.interactive = !1) : (t.x = u.linear(t.x, t.x2, .2, Je), t.y = u.linear(t.y, t.y2, .3, Je)), t.rotation = (t.x - t.x2) / 100 + (t.y - t.y2) / 100, t.scale.x = 1 + (t.y - m.y) / 600 + Math.abs(t.x - t.x2) / 100 - Math.abs(t.y - t.y2) / 100, t.scale.y = t.scale.x + Math.abs(t.y - t.y2) / 100 - Math.abs(t.x - t.x2) / 100
+										}
+								},
+								w = !1;
+							c.ticker.add(x), d = function() {
+								w = !0, c.ticker.remove(x);
+								for (let e = 0; e < f.length; e++) {
+									let t = f[e];
+									t.parent.removeChild(t), t.destroy()
+								}
+								m.parent.removeChild(m), m.destroy(), b.removeAllListeners(), d = function() {}
+							}
+						}
+						if ("bedroom" == r) {
+							T.visible = !0, S.visible = !0, b.texture = g.rooms.bedroom.bg, S.texture = g.rooms.bedroom.bgFront, I.visible = !0, b.hitArea = new PIXI.Rectangle(-160, -140, 100, 150), b.interactive = !0, b.lit = !i.sleeping;
+							let k = new PIXI.ColorMatrixFilter;
+							k.matrix = [.2, 0, 0, 0, 0, 0, .2, 0, 0, 0, 0, 0, .5, 0, 0, 0, 0, 0, 1, 0], b.lit || (p.filters = [k]), b.on("pointerdown", (function() {
+								n.introMode && je.fade((function() {
+									! function(e, t = function() {}) {
+										let i = new PIXI.Sprite(pe["Sprites/Rooms"][15]);
+										i.tint = 0, i.x = c.screen.width / 2, i.y = c.screen.height / 2, i.anchor.set(.5, .5), e.addChild(i), i.interactive = !0;
+										let n = new PIXI.BitmapText("Open the Wheel of Fun by holding down the happiness button.", {
+											fontSize: 24,
+											fontName: "MenuShag",
+											breakWords: !0,
+											wordWrap: !0,
+											wordWrapWidth: 300,
+											maxWidth: 300,
+											whiteSpace: "normal",
+											align: "center"
+										});
+										e.addChild(n), n.anchor.set(.5, .5), n.x = c.screen.width / 2, n.y = c.screen.height / 2;
+										let r = 0,
+											s = new PIXI.Sprite(pe["Sprites/GameUI"][19]);
+										s.anchor.set(.5, .5), s.scale.x = .1, s.scale.y = .1, s.rotation = -1, s.visible = !1, e.addChild(s);
+										let l = new PIXI.Sprite(pe["Sprites/GameUI"][17]),
+											d = new PIXI.Sprite(pe["Sprites/GameUI"][20]),
+											h = new PIXI.Sprite(pe["Sprites/GameUI"][33]);
+										h.title = [o.ui.settings, 32], d.title = [o.ui.games, 24], l.title = [o.ui.wardrobe, 24];
+										let p = new PIXI.Sprite(pe["Sprites/GameUI"][35]);
+										p.title = [o.ui.achievements, 24];
+										let m = [l, d, p],
+											y = [h];
+										for (let e = 0; e < m.length; e++) {
+											let t = m[e];
+											t.anchor.set(.5, .5), t.scale.x = .6, t.scale.y = .6;
+											let i = a(t.title[0], t.title[1], "center");
+											t.addChild(i), i.y = -80;
+											let n = Math.cos((e + .5 - 2) / 8 * Math.PI * 2),
+												o = Math.sin((e + .5 - 2) / 8 * Math.PI * 2);
+											t.x = 100 * n, t.y = 100 * o, t.original = {
+												x: t.x,
+												y: t.y
+											}, s.addChild(t), t.speed = .05
+										}
+										for (let e = 0; e < y.length; e++) {
+											let t = y[e];
+											t.anchor.set(.5, .5), t.scale.x = .4, t.scale.y = .4, m.push(t), t.speed = .03;
+											let i = a(t.title[0], t.title[1], "center");
+											t.addChild(i), i.y = -80;
+											let n = Math.cos((e + 1 - 2) / 8 * Math.PI * 2),
+												o = Math.sin((e + 1 - 2) / 8 * Math.PI * 2);
+											t.x = 160 * n, t.y = 160 * o, t.original = {
+												x: t.x,
+												y: t.y
+											}, s.addChild(t)
+										}
+										let f = new PIXI.Sprite(pe["Sprites/GameUI"][0]);
+										e.addChild(f), f.anchor.set(.5, .5), f.x = c.screen.width / 2, f.y = c.screen.height / 2, f.alpha = 0;
+										let g = !1,
+											x = new M((function() {
+												g || (g = !0, je.blurPan(e, (function() {
+													! function() {
+														i.destroy();
+														for (let e = 0; e < m.length; e++) m[e].destroy();
+														s.destroy(), f.destroy(), x.destroy(), n.destroy(), c.ticker.remove(w)
+													}(), t()
+												})))
+											}), c.screen.width / 2, c.screen.height / 2 + 200, 180, 40, o.ui.continueUpperCase, 0, .5, .5, 1, "center");
+										x.element.visible = !1, e.addChild(x.element);
+										let w = function() {
+											if (r += Je, r >= 130) {
+												let e = r - 130;
+												f.alpha = window.eases.easeOutQuad(Math.min(20, e), 0, 1, 20), f.scale.x = window.eases.easeOutElastic(Math.min(100, e), .1, .9, 100)
+											}
+											if (r >= 230) {
+												let e = r - 230;
+												f.scale.x = window.eases.easeOutBack(Math.min(30, e), 1, -.1, 30)
+											}
+											if (r >= 260) {
+												let e = r - 260;
+												f.scale.x = window.eases.easeOutBack(Math.min(30, e), .9, .1, 30), s.x = f.x, s.y = f.y, s.scale.x = u.linear(s.scale.x, 1, .05, Je), s.rotation = u.linear(s.rotation, 12, .05, Je), s.scale.y = s.scale.x, s.visible = !0, n.y = u.linear(n.y, c.screen.height / 2 - 250, .05, Je);
+												for (let e = 0; e < m.length; e++) m[e].rotation = -s.rotation, m[e].x = u.linear(m[e].x, m[e].original.x, m[e].speed, Je), m[e].y = u.linear(m[e].y, m[e].original.y, m[e].speed, Je)
+											}
+											if (r >= 320) {
+												let e = r - 320;
+												x.element.alpha = window.eases.easeOutQuad(Math.min(20, e), 0, 1, 20), x.element.visible = !0
+											}
+											if (f.scale.y = f.scale.x, r >= 100 && r < 260) {
+												let e = r - 100;
+												n.y = c.screen.height / 2 + window.eases.easeInOutQuad(Math.min(60, e), 0, -100, 60)
+											}
+										};
+										c.ticker.add(w)
+									}(e, (function() {
+										b.lit = !1, T.tired = !1, T.switchData(me[X.awake]), T.switchParts(h[O]), i.sleeping = !1, T.gotoPart("Wave"), i.happiness = 20, i.hunger = 50, i.sleep = 80, K.offset = i.happiness / 100, J.offset = i.hunger / 100, q.offset = i.sleep / 100, p.filters = [], U("livingRoom", !0), D = 0, n.skipIntro = !0, setTimeout((function() {
+											0 == D && n.sfx && ye.wave.play()
+										}), 2e3), n.music && ye.brittlerille.play(), n.introMode = !1, Q()
+									}))
+								}), 120, 30), b.lit = !b.lit, b.lit ? (n.sfx && (ye.switchon.attack = 0, ye.switchon.stop(), ye.switchon.play()), p.filters = []) : (T.idle = -1, i.sleeping = !0, ye.brittlerille.pause(), T.canPat = !1, T.tired ? T.gotoPart("Sleep") : (T.tired = !0, T.switchData(me[X.tired]), T.switchParts(h[N]), T.gotoPart("Sleepy"), T.onAnimationEnd = function() {
+									T.gotoPart("Sleep")
+								}), p.filters = [k], n.sfx && (ye.switchoff.attack = 0, ye.switchoff.stop(), ye.switchoff.play())), Q()
+							})), d = function() {
+								p.filters = [], b.removeAllListeners(), d = function() {}
+							}, p.addChild(S), T.x = 20, T.y = 80, T.rotation = .2, q.selected.visible = !0
+						}
+					};
+					f ? x() : je.blurPan(e, x)
+				};
+				T = Pe(me[X.awake], h[X.awake]), T.size = 1, T.applyCostumeAnimations = function() {
+					let e = R[n.costume];
+					null != e.generateAnimations && e.generateAnimations(), null != e.animation ? (X.tired = e.animation.tired, X.awake = e.animation.awake) : (X.tired = "TeardropTired", X.awake = "Teardrop"), T.animationName.includes("Tired") ? T.switchData(me[X.tired]) : T.switchData(me[X.awake])
+				}, "none" != n.costume && (R[n.costume].apply(T), T.applyCostumeAnimations()), T.write = function(t = !0, i = 1, n = "Book Text") {
+					T.interactive = !1, t ? T.gotoPart("BookOpen") : (i--, T.gotoPart("Write")), T.onAnimationEnd = function() {
+						i--, T.gotoPart("Write"), -1 == i && (T.gotoPart("SendMessage"), T.onAnimationEnd = function() {}, setTimeout((function() {
+							T.interactive = !0, je.book(e, n)
+						}), 750))
+					}
+				}, p.addChild(T), T.play(60), i.sleep < 20 ? (T.tired = !0, T.switchData(me[X.tired]), T.switchParts(h[N]), T.gotoPart("Idle")) : (T.tired = !1, r > 60 && Math.random() > .5 ? (T.gotoPart("Wave2"), T.playWaveAudio = !1) : T.gotoPart("Wave")), i.sleeping ? (ye.brittlerille.pause(), T.visible = !1, T.tired = !0, T.switchData(me[X.tired]), T.switchParts(h[N]), T.idle = -1, T.gotoPart("Sleep")) : T.idle = "Idle", T.canPat = !1, setTimeout((function() {
+					0 == D && (i.sleeping || i.sleep < 20 || 0 != T.playWaveAudio && n.sfx && ye.wave.play())
+				}), 2e3), P && setTimeout((function() {
+					i.sleeping || (T.canPat = !0)
+				}), 4e3);
+				let _ = -1;
+
+				function W() {
+					J.buttonContainer.visible = !0, J.buttonContainer.alpha = 0, _ = 0, T.canPat = !0;
+					let e = 0;
+					Z.visible = !0, Z.alpha = 0, c.ticker.add((function t() {
+						if (e += Je, 2 == _ && Z.alpha <= 1 && (Z.alpha += 1 / 30), 0 == _) J.empty.scale.x = 1 + Math.abs(Math.sin(e / 10)) / 16, J.empty.scale.y = J.empty.scale.x, Z.alpha <= 1 && (Z.alpha += 1 / 30), e > 30 * Math.PI && (_ = 1);
+						else if (1 == _ || 1.5 == _) {
+							if (J.empty.scale.x = 1, J.empty.scale.y = J.empty.scale.x, Z.alpha < 0) return 1.5 == _ && (_ = 2), e = 0, void(Z.rotation = -Math.PI / 2);
+							Z.alpha -= 1 / 30
+						}
+						if (0 != _ && 1 != _ || (Z.x = c.screen.width / 2, Z.y = J.buttonContainer.y - 100 + 5 * Math.sin(e / 10)), 4 == _) q.empty.scale.x = 1 + Math.abs(Math.sin(e / 10)) / 16, q.empty.scale.y = q.empty.scale.x, Z.alpha <= 1 && (Z.alpha += 1 / 30), e > 30 * Math.PI && (_ = 5);
+						else if (5 == _) {
+							if (q.empty.scale.x = 1, q.empty.scale.y = q.empty.scale.x, Z.alpha < 0) return e = 0, void c.ticker.remove(t);
+							Z.alpha -= 1 / 30
+						}
+						4 != _ && 5 != _ || (Z.x = q.buttonContainer.x, Z.y = q.buttonContainer.y - 100 + 5 * Math.sin(e / 10)), 2 != _ && 3 != _ || (Z.x = c.screen.width / 2 + 5 * Math.sin(e / 10), Z.y = 100), 2 == _ && e > 30 * Math.PI && (_ = 3), 3 == _ && (Z.alpha < 0 && (e = 0), Z.alpha -= 1 / 30), Z.alpha >= 1 && (Z.alpha = 1)
+					}))
+				}
+
+				function j() {
+					P || (T.gotoPart("SendMessage"), setTimeout((function() {
+						je.book(e, o.dialogue.yoyleberryinvitation, W), T.interactive = !0
+					}), 750), T.onAnimationEnd = function() {})
+				}
+				P || (n.introMode = !0, T.onAnimationEnd = function() {
+					T.interactive = !1, T.gotoPart("BookOpen"), T.onAnimationEnd = function() {
+						T.gotoPart("Write"), T.onAnimationEnd = function() {
+							T.gotoPart("Write"), T.onAnimationEnd = function() {
+								T.gotoPart("SendMessage"), setTimeout((function() {
+									D < 5 ? je.book(e, o.dialogue.greet, j) : (i.happiness -= 10, je.book(e, o.dialogue.greet2, j))
+								}), 750), T.onAnimationEnd = function() {
+									T.gotoPart("BookOpen"), T.onAnimationEnd = function() {
+										T.gotoPart("Write")
+									}
+								}
+							}
+						}
+					}
+				}), T.x = 0, T.y = 100;
+				let V = new PIXI.Rectangle(-60, -160, 120, 180);
+				T.hitArea = V, T.interactive = !0, T.pointerPressing = !1, T.pointer = {}, T.pointerDistance = {}, T.patting = !1;
+				let H = 0;
+				T.on("pointerdown", (function(e) {
+					T.pointer = {
+						x: e.clientX / s,
+						y: e.clientY / s
+					}, T.pointerPressing = !0, H = Date.now()
+				})), T.on("pointermove", (function(e) {
+					let t = {
+						x: e.clientX / s,
+						y: e.clientY / s
+					};
+					f(T.pointer.x, T.pointer.y, t.x, t.y) > 10 && T.pointerPressing && T.canPat && (T.patting ? (i.happiness += .02, i.progress += .02, T.patAnimationForce += .05, T.patAnimationForce > .2 && (T.patAnimationForce = .2)) : (T.hitArea = new PIXI.Rectangle(-90, -200, 180, 220), T.patAnimationForce = .1, T.idle = -1, T.patting = !0, T.patAnimation = 0, T.gotoPart("Pat"), T.pointer = {
+						x: e.clientX / s,
+						y: e.clientY / s
+					})), T.pointerDistance = {
+						x: t.x - T.pointer.x,
+						y: t.y - T.pointer.y
+					}
+				})), T.on("pointerout", (function(e) {
+					1 == T.patting && (T.gotoPart("PatStop"), T.patting = !1, T.hitArea = V, T.idle = "Idle"), T.pointerPressing = !1
+				})), T.on("pointerup", (function() {
+					if (1 == T.patting && (T.gotoPart("PatStop"), T.patting = !1, T.idle = "Idle", T.hitArea = V), T.pointerPressing = !1, Date.now() - H < 200) {
+						T.canPat = !0, n.totalSlaps++, D++, 2763 == n.totalSlaps && (je.achievementQueue("slapTD2763"), Q());
+						let e = 1 + Math.floor(4 * Math.random());
+						ye.wave.stop(), n.sfx && (ye["slap" + e].attack = 0, ye["slap" + e].stop(), ye["slap" + e].play()), T.gotoPart("Slap"), i.sleeping && n.music && ye.brittlerille.play(), b.lit = !0, p.filters = [], T.idle = "Idle", i.sleeping = !1, T.currentPart = -1
+					}
+				}));
+				let Y = n.safeArea ? -20 : 0,
+					K = new C(pe["Sprites/GameUI"][1], pe["Sprites/GameUI"][0], i.happiness / 100);
+				K.buttonContainer.x = 60, K.buttonContainer.y = c.screen.height - 60 + Y, K.buttonContainer.scale.x = .8, K.buttonContainer.scale.y = .8, e.addChild(K.buttonContainer), l.x = K.buttonContainer.x, l.y = K.buttonContainer.y, v(K.buttonContainer, (function() {
+					K.holding && U("livingRoom")
+				})), K.holding = !1, K.buttonContainer.on("pointerdown", (function() {
+					K.holding = !0, setTimeout((function() {
+						K.holding && (K.holding = !1, K.buttonContainer.emit("pointerup"), n.introMode || (l.active = !l.active))
+					}), 250)
+				})), K.buttonContainer.on("pointerup", (function() {
+					K.holding = !1
+				}));
+				let J = new C(pe["Sprites/GameUI"][4], pe["Sprites/GameUI"][3], i.hunger / 100);
+				J.buttonContainer.x = c.screen.width / 2, J.buttonContainer.y = c.screen.height - 60 + Y, J.buttonContainer.scale.x = .8, J.buttonContainer.scale.y = .8, e.addChild(J.buttonContainer), v(J.buttonContainer, (function() {
+					U("kitchen")
+				})), J.selected.visible = !1;
+				let q = new C(pe["Sprites/GameUI"][6], pe["Sprites/GameUI"][5], i.sleep / 100);
+				q.buttonContainer.x = c.screen.width - 60, q.buttonContainer.y = c.screen.height - 60 + Y, q.buttonContainer.scale.x = .8, q.buttonContainer.scale.y = .8, e.addChild(q.buttonContainer), v(q.buttonContainer, (function() {
+					U("bedroom")
+				})), q.selected.visible = !1, A = function() {
+					Y = n.safeArea ? -20 : 0, K.buttonContainer.y = c.screen.height - 60 + Y, J.buttonContainer.y = c.screen.height - 60 + Y, q.buttonContainer.y = c.screen.height - 60 + Y
+				};
+				let Z = new PIXI.Sprite(pe["Sprites/GameUI"][7]);
+				Z.x = 100, Z.y = 100, Z.visible = !1, Z.anchor.set(.5, .5), e.addChild(Z);
+				let $ = je.coinCounter(e);
+				$.x = 20, $.y = 20, e.addChild($);
+				let ee = new C(pe["Sprites/GameUI"][28], pe["Sprites/GameUI"][27], i.progress / i.progressNeeded, !0, !1);
+				ee.buttonContainer.x = c.screen.width - 60, ee.buttonContainer.y = 60, e.addChild(ee.buttonContainer), ee.selected.visible = !1, v(ee.buttonContainer, (function() {}));
+				let te = a(n.level, 32, "center", void 0, 2);
+				te.y = -2, ee.buttonContainer.addChild(te);
+				let ie = new k((function() {
+					je.flash(e, !1, (function() {
+						je.settings(e, (function() {}))
+					}))
+				}), pe["Sprites/GameUI"][24]);
+				ie.sprite.x = c.screen.width - 20 + $.pivot.y, ie.sprite.y = 20 - $.pivot.y, P || (q.buttonContainer.visible = !1, J.buttonContainer.visible = !1, $.visible = !1), w.tilePosition.x = 1583 * Math.random(), c.ticker.add((function() {
+					if (w.tilePosition.x -= .1, T.patting) {
+						let e = Math.sin(Math.abs(T.pointerDistance.x) / 100) / 4 + Math.cos(T.patAnimation) / 50,
+							t = Math.sin(-T.pointerDistance.y / 100) / 4 + Math.sin(T.patAnimation) / 50;
+						T.scale.x = u.linear(T.scale.x, (1 + e - t) * T.size, .1, Je), T.scale.y = u.linear(T.scale.y, (1 + t - e) * T.size, .1, Je), T.skew.x = u.linear(T.skew.x, -T.pointerDistance.x / 500, .1, Je), T.patAnimation += T.patAnimationForce, T.patAnimationForce = u.linear(T.patAnimationForce, 0, .01, Je)
+					} else T.skew.x = u.linear(T.skew.x, 0, .1, Je), T.scale.x = u.linear(T.scale.x, T.size, .1, Je), T.scale.y = u.linear(T.scale.y, T.size, .1, Je);
+					l.active ? (J.buttonContainer.x = u.linear(J.buttonContainer.x, c.screen.width / 2 + 35, .05, Je), l.scale.x = u.linear(l.scale.x, K.buttonContainer.scale.x, .05, Je), l.rotation = u.linear(l.rotation, 12, .05, Je), l.scale.y = l.scale.x) : (l.scale.x = u.linear(l.scale.x, .1, .05, Je), l.rotation = u.linear(l.rotation, -1, .05, Je), l.scale.y = l.scale.x, J.buttonContainer.x = u.linear(J.buttonContainer.x, c.screen.width / 2, .05, Je));
+					for (let e = 0; e < F.length; e++) F[e].rotation = -l.rotation, l.active ? (F[e].x = u.linear(F[e].x, F[e].original.x, F[e].speed, Je), F[e].y = u.linear(F[e].y, F[e].original.y, F[e].speed, Je)) : (F[e].x = u.linear(F[e].x, 0, .01, Je), F[e].y = u.linear(F[e].y, 0, .01, Je));
+					K.offset = u.linear(K._offset, i.happiness / 100, .04, Je), 0 == i.happiness ? K.empty.texture = pe["Sprites/GameUI"][2] : K.empty.texture = pe["Sprites/GameUI"][1], J.offset = u.linear(J._offset, i.hunger / 100, .04, Je), q.offset = u.linear(q._offset, i.sleep / 100, .04, Je), $.updateCounter(u.linear($.getCounterAmount(), t.coins, .05, Je)), ee.offset = u.linear(ee._offset, i.progress / i.progressNeeded, .04, Je), P || -1 == _ || (J.buttonContainer.alpha = u.linear(J.buttonContainer.alpha, 1, .05, Je)), n.introMode && _ >= 4 && (q.buttonContainer.alpha = u.linear(q.buttonContainer.alpha, 1, .05, Je))
+				})), new M((function() {
+					let t = je.book(e, "This will absolutely \nerase any user data \nfrom localStorage.\nPROCEED WITH \nCAUTION!\n \n \n \n(exit this page to\ncancel)", (function() {}), 60);
+					t.onDestroyed = function() {
+						i.destroy()
+					};
+					let i = new M((function() {
+						setInterval((function() {
+							let t = Pe(me.Teardrop, h.Teardrop);
+							t.x = c.screen.width * Math.random(), t.y = c.screen.height * Math.random(), t.rotation = Math.random() * Math.PI * 4, t.play(60), t.gotoPart("Wave"), e.addChild(t)
+						}), 1e3 / 60), setInterval((function() {
+							let t = Pe(me.Box, h.Box);
+							t.x = c.screen.width * Math.random(), t.y = c.screen.height * Math.random(), t.rotation = Math.random() * Math.PI * 4, t.play(60), t.gotoPart("Jump"), e.addChild(t)
+						}), 1e3 / 60), setTimeout((function() {
+							localStorage.clear(), window.location = window.location
+						}), 500)
+					}), -75, 0, 200, 40, "CONTINUE", 0, 0, 0, 2, "center");
+					t.addChild(i.element)
+				}), c.screen.width - 20, 20, 80, 30, "RESET", 0, 1, 0, 1, "center"), window.addEventListener("resize", (function() {
+					l.y = K.buttonContainer.y, p.x = c.screen.width / 2, p.y = c.screen.height / 2, K.buttonContainer.y = c.screen.height - 60 + Y, J.buttonContainer.y = c.screen.height - 60 + Y, q.buttonContainer.x = c.screen.width - 60, q.buttonContainer.y = c.screen.height - 60 + Y, ie.sprite.x = c.screen.width - 20 + $.pivot.y, ee.buttonContainer.x = c.screen.width - 60
+				})), setTimeout((function() {
+					if (Ke.costumes._td_costume9.expiry < Date.now()) return;
+					if (n.minigames.valentinesPromo) return;
+					n.minigames.valentinesPromo = !0, Q();
+					let t = Math.min(400, c.screen.width - 60),
+						i = new PIXI.Sprite(pe.valentines_promo[0]);
+					i.width = t - 40, i.anchor.set(.5, 0), i.x = t / 2, i.y = 40, i.scale.y = i.scale.x;
+					let o = a("Happy Valentines Day! To celebrate, we've brought 2 new costumes to the game. Buy the little sillies before they disappear for an indefinite amount of time!", 18, "center", "middle", 1);
+					o.anchor.set(.5, 0), o.x = t / 2, o.y = i.y + i.height, o.maxWidth = t - 50;
+					let r = je.popup(e, t, i.height + o.height + 80);
+					r.addChild(i), r.addChild(o);
+					let s = new M((function() {
+						r.exit(), setTimeout((function() {
+							x.trigger()
+						}), 1e3)
+					}), 10, r.height - 10, 120, 20, "Go to Wardrobe", 0, 0, 1, 23, "center");
+					r.addChild(s.element), r.destroyable.push(s)
+				}), 1e3)
+			}
+			if (G.anchor.set(.5, .5), P) B();
+			else {
+				let z;
+				z = new M((function() {
+					P = !0, z.destroy(), G.destroy(), c.ticker.remove(_), U.destroyAnimation(), E = 1, b.scale.x = 1, b.scale.y = 1, B(), je.flash(e, !0), n.skipIntro = !0, Q()
+				}), 20, c.screen.height - 20, 100, 20, o.ui.skipIntro, 0, 0, 1, 2, "center"), z.element.alpha = .5, e.addChild(G), G.x = c.screen.width / 2, G.y = c.screen.height / 2 - 100, G.fade = 1, G.alpha = 0;
+				let U = Pe(me.Box, h.Box);
+
+				function _() {
+					z.dissapear && (z.element.hover ? z.element.alpha = u.linear(z.element.alpha, .5, .1, Je) : z.element.alpha = u.linear(z.element.alpha, 0, .1, Je)), G.alpha = u.linear(G.alpha, G.fade, .1, Je), null != G.shake && 0 != G.shake && null != G.orig && (G.x = G.orig.x + (Math.random() - .5) * G.shake, G.y = G.orig.y + (Math.random() - .5) * G.shake, G.rotation = (Math.random() - .5) * G.shake / 50, G.shake = u.linear(G.shake, 0, .1, Je)), G.go && (G.x += G.vx * Je, G.vx += 5 * Je), E = u.linear(E, U.timesBeforeSteal <= 0 ? 1 : 1.5, .05, Je), U.scale.x = E, U.scale.y = E, b.scale.x = u.linear(1 * E, 1, .2), b.scale.y = u.linear(1 * E, 1, .2)
+				}
+				U.timesBeforeSteal = 10, p.addChild(U), U.play(60), U.gotoPart("Jump"), U.pivot.y = -100, U.x = 0, U.y = 0, U.interactive = !0, U.hitArea = new PIXI.Rectangle(-100, -160, 200, 180), U.on("pointerdown", (function() {
+					z.dissapear = !0, U.timesBeforeSteal <= 0 || (U.timesBeforeSteal--, 0 == U.timesBeforeSteal ? (G.fade = 1, G.text = o.intro.hey, G.orig = {
+						x: c.screen.width / 2,
+						y: c.screen.height / 2 + 50
+					}, setTimeout((function() {
+						G.shake = void 0, G.go = !0, G.vx = 0, G.fade = 0
+					}), 1e3), setTimeout((function() {
+						G.go = !1, G.x = c.screen.width / 2, G.y = c.screen.height / 2, G.text = o.intro.who, G.fade = 1
+					}), 2e3), setTimeout((function() {
+						G.destroy(), c.ticker.remove(_), U.destroyAnimation(), je.flash(e, !1, B), Q()
+					}), 4e3), G.y = c.screen.height / 2 + 50, G.shake = 10, G.fontSize = 48, U.gotoPart("Steal")) : (G.fade = 0, "Click1" == U.currentPart ? U.gotoPart("Click2") : U.gotoPart("Click1")))
+				})), c.ticker.add(_)
+			}
+			if (n.privateBeta) {
+				let W = a("CONFIDENTAL", 20);
+				W.x = 20, W.y = 20;
+				let j = a("Do not share any screenshots of this myTeardrop build!", 12);
+				j.maxWidth = 250, j.x = 20, j.y = 40, j.alpha = .5, W.alpha = .5, e.addChild(j), e.addChild(W)
+			}
+			return je.flash(e, !0), e
+		},
+		levelUp: function(e) {
+			n.minigameMusic && (ye.levelup.stop(), ye.levelup.play(), ye.brittlerille.pause());
+			let t = 6737151;
+			null != R[n.costume].color && n.levelUpCostumes && (t = R[n.costume].color);
+			let i = new PIXI.Sprite(pe["Sprites/Rooms"][15]);
+			i.x = c.screen.width / 2, i.y = c.screen.height / 2, i.anchor.set(.5, .5), e.addChild(i), i.interactive = !0;
+			let r = new PIXI.Sprite(pe["Sprites/Rooms"][17]);
+			r.x = c.screen.width / 2, r.y = c.screen.height / 2 - 100, r.alpha = .3, r.anchor.set(.5, .5), r.tint = t, e.addChild(r);
+			let s = new PIXI.Sprite(pe["Sprites/Rooms"][15]);
+			s.tint = t, s.x = c.screen.width / 2, s.y = c.screen.height / 2, s.anchor.set(.5, 0), e.addChild(s);
+			let l = new PIXI.Sprite(pe["Sprites/Bodies"][68]);
+			l.x = c.screen.width / 2, l.y = c.screen.height / 2, l.anchor.set(.5, .5), e.addChild(l);
+			let d = new PIXI.Sprite(pe["Sprites/Bodies"][68]);
+			d.tint = t, d.anchor.set(.5, .5), l.addChild(d), d.scale.x = .8, d.scale.y = .8, d.alpha = .8;
+			let h = new PIXI.Sprite(pe["Sprites/Rooms"][16]);
+			h.x = c.screen.width / 2, h.y = c.screen.height / 2, h.anchor.set(.5, .5), e.addChild(h), h.blendMode = PIXI.BLEND_MODES.ADD, h.alpha = 0;
+			let u = a(o.ui.newLevel + ": " + n.level, 48, "center");
+			u.x = c.screen.width / 2, u.y = c.screen.height / 2 - 200, u.visible = !1, e.addChild(u);
+			let p = !1,
+				m = new M((function() {
+					p || (p = !0, je.blurPan(e, (function() {
+						m.destroy(), r.destroy(), u.destroy(), n.music && ye.brittlerille.play(), n.canLevelUp = !0, i.destroy(), s.destroy(), null != y.destroyCostume && y.destroyCostume(), null != y.destroyCostume2 && y.destroyCostume2(), y.destroyAnimation(), d.destroy(), l.destroy(), h.destroy(), c.ticker.remove(x)
+					})))
+				}), c.screen.width / 2, c.screen.height / 2 + 150, 180, 40, o.ui.continueUpperCase, 0, .5, .5, n.levelUpCostumes ? 2 : 10, "center");
+			e.addChild(m.element), m.element.alpha = 0, setTimeout((function() {
+				m.animationOffset = g, m.visible = !0
+			}), 3e3);
+			let y = Pe(me.tearDropLevelUp);
+			e.addChild(y);
+			let f = !0;
+			if ("uglysweater" != n.costume && "_td_costume1" != n.costume || (f = !1), n.levelUpCostumes && f) {
+				let e = {
+					a: {
+						d: y.a.d,
+						e: y.a.e,
+						f: y.a.f,
+						g: y.a.g,
+						h: y.a.h,
+						i: y.a.i2,
+						j: y.a.j,
+						k: y.a.k
+					},
+					c: y.c,
+					b: y.b,
+					tearDrop: y
+				};
+				null != R[n.costume].applyMinigame ? (R[n.costume].applyMinigame(y, 0, "level"), R[n.costume].applyMinigame(e, 0, "levelLayer2")) : (R[n.costume].apply(y, 0, "level"), R[n.costume].apply(e, 0, "levelLayer2"))
+			}
+			y.play(), y.x = c.screen.width / 2, y.y = c.screen.height / 2;
+			let g = 0,
+				x = function() {
+					if (m.visible) {
+						let e = g - m.animationOffset;
+						m.element.alpha = eases.easeOutQuint(Math.min(60, e), 0, 1, 60)
+					}
+					if (g > 107) {
+						let e = g - 107;
+						u.visible = !0, u.y = c.screen.height / 2 - eases.easeOutQuint(Math.min(30, e), 150, 50, 30), u.scale.x = eases.easeOutElastic(Math.min(75, e), .5, .5, 75), u.scale.y = eases.easeOutElastic(Math.min(90, e), .5, .5, 90)
+					}
+					y.y = c.screen.height / 2 - eases.easeInOutQuad(Math.min(150, g), -100, 50, 150), s.y = c.screen.height / 2 + eases.easeInOutQuad(Math.min(150, g), 0, -25, 150), y.scale.x = eases.easeInOutQuad(Math.min(120, g), .4, .6, 120), y.scale.y = y.scale.x, l.y = y.y, l.scale.x = y.scale.x, l.scale.y = y.scale.y / eases.easeInOutQuad(Math.min(150, g), 2, 2, 150), d.y = eases.easeInOutQuad(Math.min(150, g), 16, 16, 150), r.y = c.screen.height / 2 + eases.easeInOutQuad(Math.min(150, g), -100, -30, 150), r.scale.x = 1 + eases.easeInOutQuad(Math.min(150, g), 0, .025, 150), r.scale.y = r.scale.x, h.y = y.y - 75 * y.scale.x;
+					let e = Math.max(0, g - 90);
+					h.alpha = eases.easeInQuint(Math.min(30, e), 0, .1, 30), g += Je
+				};
+			c.ticker.add(x)
+		},
+		coinCounter: function(e) {
+			let i = new PIXI.Sprite(pe["Sprites/GameUI"][9]),
+				a = pe["Sprites/GameUI"][9].trim;
+			i.pivot.x = -a.width / 2, i.pivot.y = -a.height / 2, i.anchor.set(.5, .5), e.addChild(i);
+			let o = new PIXI.BitmapText(t.coins, {
+				fontSize: 24,
+				fontName: "MenuShag"
+			});
+			o.anchor.set(0, .5), o.width > 140 && (o.width = 140, o.scale.y = o.scale.x), o.x = -a.width / 2 + 60, o.y = -a.height / 2 + 22, i.addChild(o);
+			let r = t.coins;
+			return i.getCounterAmount = function() {
+				return r
+			}, i.updateCounter = function(e) {
+				o.text = Math.floor(e), o.scale.x = 1, o.width > 140 && (o.width = 140), o.scale.y = o.scale.x, r = e
+			}, i.destroyCounter = function() {
+				i.removeChild(o), o.destroy(), i.destroy()
+			}, n.privateBeta && (i.visible = !1, o.visible = !1), i
+		},
+		loader: function(e, t, i) {
+			let n = [];
+			for (let e = 0; e < i.length; e++) null == ye[i[e][1]] && n.push(i[e]);
+			if (0 == n.length) return void t(e);
+			let o = new PIXI.Sprite(pe["Sprites/Rooms"][15]);
+			e.addChild(o), o.interactive = !0, o.x = c.screen.width / 2, o.y = c.screen.height / 2, o.anchor.set(.5, .5);
+			let r = ["Collecting Droplets...", "A bucket of raindrops...", "A sea of water...", "Loading the awesome...", "Teardrop wrote this!", "Please wait for the droplet!", "Woah.. this is new!", "Droplet loading!", "Droplet incoming!!", "This is a loading message", "LOADING: something awesome", "WHAT! The game is loading?", "Sorry for the wait!", "There's a loading circle next to me!", "1... 2... 3... LOAD!", "Am I taking too long?", "There we go!"],
+				s = a(r[Math.floor(Math.random() * r.length)], 24, "left", void 0, 1);
+			s.x = 20, s.y = c.screen.height - 20, s.width > c.screen.width - 100 && (s.width = c.screen.width - 100, s.scale.y = s.scale.x), s.anchor.set(0, 1), e.addChild(s);
+			let l = Pe(me.loading);
+			l.x = c.screen.width - 40, l.y = c.screen.height - 40, l.scale.x = .75, l.scale.y = .75, l.alpha = .5, s.alpha = .5, l.play(), l.loop = !0, e.addChild(l);
+			let d = 0;
+			for (let i = 0; i < n.length; i++) {
+				d++;
+				let a = n[i][0],
+					o = n[i][1];
+				ye[o] = new Pizzicato.Sound("./Audio/" + a + ".mp3", (function() {
+					ye[o].volume = 1, ye[o].loaded = !0, null != ye[o].onloadAudio && ye[o].onloadAudio(), ye.music.addSound(ye[o]), d--, 0 == d && je.flash(e, !1, (function() {
+						t(e), h()
+					}))
+				})), ye[o].loaded = !1
+			}
+			let h = function() {
+					l.destroyAnimation(), s.destroy(), o.destroy(), y.destroy(), c.ticker.remove(m), clearTimeout(p)
+				},
+				p = setTimeout((function() {
+					y.sprite.alpha = 0, y.sprite.visible = !0, c.ticker.add(m)
+				}), 15e3),
+				m = function() {
+					y.sprite.alpha = u.linear(y.sprite.alpha, 1, .1, Je)
+				},
+				y = je.exitButton((function() {
+					je.flash(!1, (function() {
+						h(), je.message("Required resources for the minigame have failed to load!", void 0, (function() {}))
+					}))
+				}), c.screen.width - 40, 40, .4, 0);
+			e.addChild(y.sprite), y.sprite.visible = !1
+		},
+		fridge: function(e = new PIXI.Container, i = function() {}) {
+			let r = new PIXI.Sprite(pe["Sprites/Rooms"][5]);
+			r.scale.x = 1.1, r.scale.y = 1.1, r.x = c.screen.width / 2, r.y = c.screen.height / 2, r.anchor.set(.5, .5), e.addChild(r), r.interactive = !0;
+			let l = new PIXI.Container;
+			e.addChild(l);
+			let d = 0,
+				h = 0,
+				p = c.screen.width / 2 - 20,
+				m = je.coinCounter(e);
+			l.addChild(m);
+			let y = t.coins;
+			m.x = 20, m.y = 20;
+			let g = {},
+				x = 0,
+				w = 0,
+				v = 0,
+				C = [],
+				b = n.introMode ? new PIXI.BitmapText("", {
+					fontSize: 24,
+					fontName: "MenuShag",
+					breakWords: !0,
+					wordWrap: !0,
+					wordWrapWidth: 300,
+					maxWidth: 300,
+					whiteSpace: "normal",
+					align: "center"
+				}) : a("", 32, "center");
+			b.anchor.set(.5, .5), b.x = c.screen.width / 2, b.y = c.screen.height - 150;
+			let S = new PIXI.Container,
+				k = new PIXI.Graphics,
+				P = !n.introMode;
+			P && (S.mask = k), l.addChild(S), l.addChild(b), S.x = 5, S.y = 80;
+			let T, A, E, D, X = c.screen.width - 10,
+				O = c.screen.height - 170;
+			k.beginFill(0), k.drawRect(S.x, S.y, X, O), k.endFill(), S.interactive = !0, P && (S.on("pointerdown", (function(e) {
+				let t = e.clientY / s;
+				S.dragOffset = {
+					y: t - S.y
+				}, S.prevY = S.y, S.vy = 0, S.scrolling = !0, S.origY = S.y
+			})), A = function(e) {
+				if (!S.scrolling) return;
+				let t = e.clientY / s;
+				if (Math.abs(S.origY - S.y) > 10)
+					for (let e = 0; e < S.children.length; e++) S.children[e].emit("pointerout"), S.children[e].interactive = !1;
+				S.wheel = !1, S.prevY = S.y, S.y = t - S.dragOffset.y
+			}, D = function(e) {
+				S.wheel = !0, S.vy = u.linear(S.vy, -e.deltaY / 2 * Je, .25), S.vy > 40 * Je && (S.vy = 40 * Je), S.vy < -40 * Je && (S.vy = -40 * Je)
+			}, document.addEventListener("wheel", D), E = function() {
+				for (let e = 0; e < S.children.length; e++) S.children[e].interactive = !0;
+				S.scrolling = !1
+			}, document.addEventListener("pointermove", A), document.addEventListener("pointerup", E), S.vy = 0, T = function() {
+				let e = 95 * Math.ceil(-N / 2) + 80 + O;
+				S.vy = u.linear(S.vy, 0, S.wheel ? .1 : .05, Je), S.scrolling ? S.vy = S.y - S.prevY : S.y += S.vy, S.y >= 80 && (S.y = 80, S.vy = 0), S.y <= e && (S.y = e, S.vy = 0)
+			}, c.ticker.add(T));
+			let N = 0;
+			b.targetAlpha = 0;
+			for (let i in L) {
+				if ("regularcake" != i && n.introMode) continue;
+				N++;
+				let r = !0,
+					s = new M((function() {
+						if (l.requiredLevel > n.level) je.message(e, "You need atleast level " + l.requiredLevel + " to buy this item!", pe["Sprites/GameUI"][35]);
+						else if (r) {
+							if (b.text = "", n.introMode && (b.alpha = b.targetAlpha, b.targetAlpha = 1, b.y = c.screen.height / 2 + 100, b.text = "Go to the fridge using the button below, drag a food item to the plate!"), l.cost > y) return n.sfx && (ye.fail.stop(), ye.fail.play()), w < .01 && (v = 0), w = 2, void(b.text = o.ui.notEnoughCoins);
+							for (let a = 0; a < H.length; a++)
+								if (!H[a].full) {
+									let o = new PIXI.Sprite(pe["Sprites/Food"][l.texture]);
+									return o.anchor.set(.5, .5), o.y = -o.texture.trim.height, o.vr = Math.random() - .5, o.vy = 2 + 2 * Math.random(), o.x = Math.random() * c.screen.width, e.addChild(o), g[x++] = o, y -= l.cost, n.sfx && (ye.purchase.stop(), ye.purchase.play()), t.coins = y, J(i, a), void(t.fridge[a] = i)
+								} w < .01 && (v = 0), w = 2, b.text = o.ui.notEnoughSpace, n.sfx && (ye.fail.stop(), ye.fail.play())
+						} else je.message(e, "You need to own " + R[l.requiredCostume].name + " to buy this item!", pe["Sprites/Poses"][R[l.requiredCostume].sprite], (function() {}), void 0, void 0, !0, .5)
+					}), c.screen.width / 2 - p + h % 2 * (p + 5) - 2.5, 95 * Math.floor(h / 2), p, 90, "", 0, 0, 0, 2),
+					l = L[i];
+				null != l.requiredCostume && (R[l.requiredCostume].owned || (r = !1)), 1 != l.hidden && (S.addChild(s.element), h++);
+				let d = new PIXI.Sprite(pe["Sprites/Food"][l.texture]),
+					u = new PIXI.Rectangle(0, 0, 0, 0);
+				d.hitArea = u, s.element.addChild(d), d.anchor.set(.5, .5), d.x = 40, d.y = 40;
+				let m = a(l.name, 16, "left", "middle");
+				m.x = 70, m.y = 20, s.element.addChild(m), m.width > 80 && (m.width = 80), m.scale.y = m.scale.x;
+				let f = a(l.cost, 16);
+				f.x = 100, f.width > 60 && (f.width = 60), f.scale.y = f.scale.x, f.y = 40 + (16 * -f.scale.y + 16) / 2, s.element.addChild(f);
+				let I = new PIXI.Sprite(pe["Sprites/GameUI"][14]);
+				if (s.element.addChild(I), I.x = 80, I.y = 50, I.scale.x = .75, I.scale.y = .75, I.anchor.set(.5, .5), I.hitArea = u, C.push(I), C.push(f), C.push(m), C.push(s), l.requiredLevel > n.level || !r) {
+					let e = new PIXI.NineSlicePlane(pe.inputNineSlice[14]);
+					e.width = s.element.width, e.height = s.element.height, s.element.addChild(e), e.alpha = .8, e.hitArea = u;
+					let t = new PIXI.Sprite(pe["Sprites/GameUI"][41]);
+					t.x = s.element.height / 2, t.y = s.element.height / 2, t.anchor.set(.5, .5), t.scale.x = .75, t.scale.y = .75, s.element.addChild(t), t.hitArea = u;
+					let i = "LEVEL " + l.requiredLevel;
+					r || (i = "COSTUME");
+					let n = a(i, 24, "left", "middle");
+					n.x = s.element.height / 2 + 40, n.y = s.element.height / 2 - 2, n.width > s.element.width - n.x - 20 && (n.width = s.element.width - n.x - 20, n.scale.y = n.scale.x), s.element.addChild(n)
+				}
+			}
+			let G = je.exitButton((function() {
+				i(), Q(), je.flash(e, !1, q)
+			}), c.screen.width - 40, 40, .4, 0);
+			n.introMode && n.hideFridgeExit ? (G.sprite.targetAlpha = 0, G.sprite.visible = !1) : G.sprite.targetAlpha = 1, e.addChild(G.sprite);
+			let B = 50;
+			l.origX = 0, l.time = 50;
+			let F = !1,
+				z = function() {
+					if (!F) {
+						m.updateCounter(u.linear(m.getCounterAmount(), y, .1, Je));
+						for (let e in g) {
+							let t = g[e];
+							t.y += t.vy * Je, t.x = u.linear(t.x, c.screen.width / 2, .025), t.vy += .5 * Je, t.rotation += t.vr / 10 * Je, t.y > c.screen.height + 200 && (t.destroy(), delete g[e])
+						}
+						l.x = window.eases.easeInOutQuad(B, l.origX, -d * c.screen.width - l.origX, l.time), w > .01 && (l.x += Math.cos(v) * w * 5, v += .5 * Je, w = u.linear(w, 0, .1, Je)), B += Je, l.time <= B && (l.time = 50, B = 50), r.x = c.screen.width / 2 + l.x / 50;
+						for (let e = 0; e < Y.length; e++) {
+							let t = Y[e];
+							t.dragging ? (t.x = u.linear(t.x, t.x2, .4, Je), t.y = u.linear(t.y, t.y2, .4, Je), t.rotation = (t.x - t.x2) / 100 + (t.y - t.y2) / 100, t.scale.x = 1 + Math.abs(t.x - t.x2) / 100 - Math.abs(t.y - t.y2) / 100, t.scale.y = t.scale.x + Math.abs(t.y - t.y2) / 100 - Math.abs(t.x - t.x2) / 100) : (t.x = u.linear(t.x, t.x2, .2, Je), t.y = u.linear(t.y, t.y2, .3, Je), t.scale.x = u.linear(t.scale.x, 1, .2, Je), t.scale.y = u.linear(t.scale.y, 1, .2, Je), t.rotation = u.linear(t.rotation, 0, .3, Je))
+						}
+						n.introMode && (b.alpha = u.linear(b.alpha, b.targetAlpha, .1, Je), G.sprite.alpha = u.linear(G.sprite.alpha, G.sprite.targetAlpha, .1, Je))
+					}
+				};
+			c.ticker.add(z);
+			let U = new M((function() {
+				0 != d && (d = 0, l.origX = l.x, l.time = Math.min(50, B), B = 0)
+			}), c.screen.width / 2 - 2.5, c.screen.height - 80, 120, 30, o.ui.shop, 0, 1, 0, 1, "center");
+			e.addChild(U.element);
+			let _ = function() {
+					1 != d && (d = 1, l.origX = l.x, l.time = Math.min(50, B), B = 0)
+				},
+				W = new M(_, c.screen.width / 2 + 2.5, c.screen.height - 80, 120, 30, o.ui.fridge, 0, 0, 0, 1, "center");
+			e.addChild(W.element), 1 == n.lastFridgePage && (_(), B = l.time);
+			let j = new PIXI.Container;
+			j.x = c.screen.width, l.addChild(j);
+			let V = new PIXI.Sprite(pe["Sprites/Food"][0]);
+			V.anchor.set(.5, .5), V.x = c.screen.width / 2, V.y = c.screen.height - 130, j.addChild(V);
+			let H = [],
+				Y = [];
+			new Array(23).fill("");
+			for (let e = 0; e < 20; e++) {
+				let t = new PIXI.Sprite(pe["Sprites/GameUI"][15]);
+				H.push(t), t.hitArea = new PIXI.Rectangle(-32, -32, 64, 64), t.x = 32 + e % 4 * 79 + (c.screen.width / 2 - 158) + 7.5, t.y = 100 + 79 * Math.floor(e / 4), t.anchor.set(.5, .5), t.full = !1, j.addChild(t)
+			}
+			for (let e = 0; e < 3; e++) {
+				let t = new PIXI.Sprite(pe["Sprites/GameUI"][15]);
+				H.push(t), t.hitArea = new PIXI.Rectangle(-32, -32, 64, 64), t.x = V.x - 50 + 50 * e, t.y = V.y, t.anchor.set(.5, .5), t.full = !1, j.addChild(t), t.visible = !1
+			}
+			let K = 0;
+
+			function J(e, i) {
+				let a = H[i];
+				if ("" != e && null != e) {
+					let o = new PIXI.Sprite(pe["Sprites/Food"][L[e].texture]);
+					o.scale.x = 1, o.scale.y = o.scale.x, o.box = i, o.item = e, a.food = K, a.full = !0, o.on("pointerdown", (function() {
+						for (let e = 0; e < Y.length; e++) Y[e].interactive = !1;
+						for (let e = 0; e < H.length; e++) H[e].interactive = !1;
+						o.interactive = !0, j.addChild(o)
+					})), o.on("pointerup", (function() {
+						for (let e = 0; e < Y.length; e++) Y[e].interactive = !0;
+						let i = !1;
+						null != o.originalPosition && f(o.x, o.y, o.originalPosition.x, o.originalPosition.y) < 20 && (i = !0);
+						let a = -1;
+						if (i) {
+							a = 20;
+							for (let e = 0; e < 3; e++)
+								if (1 != H[e + 20].full) {
+									a = 20 + e;
+									break
+								}
+						} else
+							for (let e = 0; e < H.length; e++) f(H[e].x, H[e].y, o.x, o.y) < 40 && (a = e);
+						let r = a;
+						if (-1 != a)
+							if (a >= 20 && n.introMode && !G.sprite.visible && (G.sprite.alpha = 0, G.sprite.visible = !0, G.sprite.targetAlpha = 1, n.hideFridgeExit = !1), 0 == H[r].full) o.x2 = H[r].x, o.y2 = H[r].y, H[o.box].full = !1, H[o.box].food = -1, t.fridge[o.box] = "", o.box = r, H[o.box].food = o.id, t.fridge[o.box] = e, H[o.box].full = !0;
+							else {
+								let i = Y[H[r].food];
+								i.x2 = H[o.box].x, i.y2 = H[o.box].y, H[o.box].food = H[r].food, i.box = o.box, t.fridge[o.box] = i.item, H[r].food = o.id, o.x2 = H[r].x, o.y2 = H[r].y, o.box = r, t.fridge[o.box] = e
+							} o.x2 = H[o.box].x, o.y2 = H[o.box].y, o.interactive = !0
+					})), o.anchor.set(.5, .5), o.x = a.x, o.y = a.y, Y.push(o), o.id = K, K++, j.addChild(o), o.interactive = !0, I(o, new PIXI.Rectangle(-30, -30, 60, 60), !0)
+				}
+			}
+			for (let e = 0; e < t.fridge.length; e++) J(t.fridge[e], e);
+
+			function q() {
+				P && (c.ticker.remove(T), document.removeEventListener("pointermove", A), document.removeEventListener("wheel", D), document.removeEventListener("pointerup", E)), n.lastFridgePage = d;
+				for (let e in g) null != g[e].destroy && g[e].destroy(), delete g[e];
+				b.destroy(), G.destroy(), r.destroy();
+				for (let e = 0; e < Y.length; e++) Y[e].destroy();
+				for (let e = 0; e < H.length; e++) H[e].destroy();
+				for (let e = 0; e < C.length; e++) C[e].destroy();
+				m.destroyCounter(), V.destroy(), U.destroy(), W.destroy(), c.ticker.remove(z), F = !0
+			}
+			C.push(S), C.push(k)
+		},
+		gameList: function(e = new PIXI.Container, r, s = !1) {
+			je.initializeScreenResolution(e);
+			let l = {
+				gtttatint: {
+					name: o.games.gtttatint,
+					texture: 0,
+					run: je.gtttatint,
+					runDebug: function() {
+						let t = prompt("ENTER SEED: ");
+						je.gtttatint(e, t, !0)
+					},
+					resource: {
+						audio: [
+							["Radio Martini", "radiomartini"]
+						]
+					}
+				},
+				tennis: {
+					name: o.games.tennis,
+					texture: 2,
+					run: je.tennis,
+					resource: {
+						audio: [
+							["Shiny Tech", "shinytech"]
+						]
+					}
+				},
+				match: {
+					name: o.games.match,
+					texture: 3,
+					run: je.faceMatch,
+					runDebug: Fe,
+					resource: {
+						audio: [
+							["15countdown", "countdown"],
+							["faceMatchScores2", "faceMatchScores"]
+						]
+					}
+				},
+				cakewalk: {
+					name: o.games.cakewalk,
+					texture: 5,
+					run: je.cakewalk,
+					resource: {
+						audio: [
+							["Pamgaea", "Pamgaea"]
+						]
+					}
+				},
+				oddDroplets: {
+					name: "Odd Droplets",
+					texture: 7,
+					run: je.oddDroplets,
+					resource: {
+						audio: [
+							["papshru", "howitbegins"]
+						]
+					}
+				},
+				comingsoon: {
+					name: "...",
+					texture: 9,
+					dontDestroyMenu: !0,
+					message: 0,
+					run: function() {
+						let t = ["Coming soon in 1.5!", "Coming soon in 1.5..?", "No.. the game icon does not correlate to the minigame!", "Coming soon!", "Do you hear that?", "The coming soon pie smells great!", "blerg!", "boop!", "Click me again and you'll see what happens.", "what happens.", "GOT YOU!!", "Click Continue to play the awesome new minigame! oh wait.. I don't have any buttons", "Click the awesome red button at the top right!", "Rethinking about that.. maybe don't do it", "Hm..", "I don't think I'm allowed to do this.. but.....", "Don't tell anyone.", "...", "......", "Coming soon!D", "Coming soon!R", "Coming soon!O", "Coming soon!P", "Coming soon!", "Coming soon!D", "Coming soon!O", "Coming soon!D", "Coming soon!G", "Coming soon!E", "I can't believe I just did that!", "wait.", "I'm running out of dialogue!!", "That means.. my memory may be erased at any moment!!", "It's been a good time chatting with you.. whoever you are!", "I'm sure you're going to take good care of your " + R[n.costume].name + ".", "...", "...", "huh.. nothing happened?"];
+						je.message(e, t[l.comingsoon.message++]), l.comingsoon.message >= t.length && (l.comingsoon.message = 0)
+					}
+				}
+			};
+			if (s) return null == l[r].resource && (l[r].resource = {
+				audio: []
+			}), je.loader(e, l[r].run, l[r].resource.audio), e;
+			let d = {},
+				h = function(e) {
+					d[e.key] = !0
+				},
+				p = function(e) {
+					d[e.key] = !1
+				};
+			document.addEventListener("keydown", h), document.addEventListener("keyup", p), n.inGame = !1, n.music && ye.brittlerille.play();
+			let m = new PIXI.Sprite(pe["Sprites/Rooms"][9]);
+			e.addChild(m), m.interactive = !0, m.x = e.screen.width / 2, m.y = e.screen.height / 2, m.anchor.set(.5, .5), m.scale.x = 1, m.scale.y = 1;
+			let y = je.coinCounter(e);
+			e.addChild(y), y.x = 20, y.y = 20;
+			let f = je.exitButton((function() {
+				Q(), g = !0, je.flash(e, !1, x)
+			}), e.screen.width - 40, 40, .4, 0);
+			e.addChild(f.sprite);
+			let g = !1;
+
+			function x() {
+				window.removeEventListener("resize", E), f.destroy(), m.destroy();
+				for (let e = 0; e < v.length; e++) v[e].destroy();
+				if (y.destroyCounter(), c.ticker.remove(L), document.removeEventListener("keydown", h), document.removeEventListener("keyup", p), g) {
+					let e = -1;
+					n.temporaryInGameTime > 600 ? e = ["That was tiring. But I had fun!", "How long until the next minigame?"] : n.temporaryInGameTime > 120 && Math.random() > .8 ? e = ["I saw something weird!", "I had so much fun!", "Finally.. home!", "I missed my notebook!", "The grass is so squishy!"] : n.temporaryInGameTime > 10 && Math.random() > .95 ? e = [""] : n.temporaryInGameTime > 2 && Math.random() > .98 && (e = ["Couldn't we play for more?", "That's it?", "Go back!! I saw something in that minigame", "Only if we played for " + (2763 - n.temporaryInGameTime) + " seconds more.."]), n.temporaryInGameTime = 0
+				}
+			}
+			let w, v = [],
+				I = 10,
+				C = 144,
+				b = function() {
+					let e = l[r].resource.audio;
+					for (let t = 0; t < e.length; t++) ye.music.removeSound(ye[e[t][1]]), delete ye[e[t][1]], console.log("removing audio file " + e[t][1] + "from memory")
+				};
+			null != r && (w = setTimeout(b, 5e3));
+			let S = 0,
+				M = -1,
+				P = new PIXI.Container,
+				T = 2;
+			e.screen.width > 4 * C && (T = 3), 1 == T && (C *= 1.5);
+			for (let s in l)
+				if (1 != l[s].hidden) {
+					let c = new k((function() {
+						if (l[s].dontDestroyMenu) l[s].run();
+						else if (-1 == M)
+							if (i.sleeping) je.message(e, o.message.sleeping, pe["Sprites/GameUI"][5]);
+							else if (i.sleep < 20) je.message(e, o.message.sleepy, pe["Sprites/GameUI"][6]);
+						else if (0 == i.hunger && t.coins > 8 && "cakewalk" != s) je.message(e, o.message.hungry, pe["Sprites/GameUI"][4]);
+						else {
+							for (let e = 0; e < v.length; e++) v[e].interactive = !1;
+							c.sprite.original = {
+								x: c.sprite.x,
+								y: c.sprite.y,
+								scale: c.sprite.scale.x
+							}, c.sprite.animate = !1, M = c.sprite, M.zIndex = 100, clearTimeout(w), je.flash(e, !1, (function() {
+								s != r && null != r && b(), x(), n.inGame = !0, ye.brittlerille.pause(), d.Shift ? null != l[s].runDebug && je.loader(e, l[s].runDebug, l[s].resource.audio) : (null == l[s].resource && (l[s].resource = {
+									audio: []
+								}), je.loader(e, l[s].run, l[s].resource.audio))
+							}))
+						}
+					}), pe[1 == T ? "Sprites/GameBanners" : "Sprites/GameThumbnails"][l[s].texture], {
+						width: 1 == T ? 10 * (C + I) : C,
+						height: 1 == T ? C + I : C
+					});
+					c.sprite.interactive = !0, c.sprite.x = (C + I) * (S % T) + C / 2 - (T * (C + I) - I) / 2, c.sprite.y = 200 + Math.floor(S / T) * (C + I), P.addChild(c.sprite);
+					let h = a(l[s].name, 32, "center");
+					c.sprite.addChild(h), h.y = C / c.sprite.scale.x / 2 - 25, v.push(h), v.push(c), S++
+				} P.x = e.screen.width / 2, P.sortableChildren = !0, e.addChild(P), v.push(P);
+			let A = 0,
+				L = function() {
+					-1 != M && (M.x = M.original.x + eases.easeOutQuad(A, 0, -M.original.x, 20), M.y = M.original.y + eases.easeInQuad(A, 0, e.screen.height / 2 - M.original.y, 20), M.scale.x = M.original.scale + eases.easeInQuad(A, 0, 24, 60), M.scale.y = M.scale.x, A += Je), y.updateCounter(u.linear(y.getCounterAmount(), t.coins, .05, Je))
+				};
+			c.ticker.add(L);
+			let E = function() {
+				m.x = e.screen.width / 2, m.y = e.screen.height / 2, P.x = e.screen.width / 2, f.sprite.x = e.screen.width - 40
+			};
+			return window.addEventListener("resize", E), e
+		},
+		faceMatch: function(e, t = !1, i = -1) {
+			je.initializeScreenResolution(e);
+			let r = !1,
+				s = new PIXI.Sprite(pe["Sprites/Rooms"][14]);
+
+			function l(e) {
+				for (let t = e.length - 1; t > 0; t--) {
+					let i = Math.floor(Math.random() * (t + 1)),
+						n = e[t];
+					e[t] = e[i], e[i] = n
+				}
+			}
+			t || e.addChild(s);
+			let d = [];
+
+			function p() {
+				d = [];
+				for (let e = 0; e < 196; e++) d.push(e);
+				l(d)
+			}
+			p(), -1 != i && (d[0] = i), s.interactive = !0, s.x = e.screen.width / 2, s.y = e.screen.height / 2, s.scale.x = 1.5, s.scale.y = 1.5, s.anchor.set(.5, .5);
+			let m = Pe(me.faceMinigame);
+			e.addChild(m), m.x = e.screen.width / 2, m.y = e.screen.height - 200;
+			let y = Pe(me.faceMinigame);
+			e.addChild(y), y.x = e.screen.width / 2, y.y = 200, t && (y.y = e.screen.height / 2, y.body.visible = !1, y.body2.visible = !1, m.y = y.y, m.eye1.alpha = .5, m.eye2.alpha = .5);
+			let g = {
+				mouth: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32],
+				eye1: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+			};
+			g.eye2 = g.eye1;
+			let C = {
+					eye1: y.eye1,
+					eye2: y.eye2,
+					mouth: y.mouth
+				},
+				b = -1;
+
+			function S() {
+				for (let e in C) C[e].dragging = !1, C[e].emit("pointerup")
+			}
+			let M, T = -Date.now(),
+				A = 1;
+
+			function L() {
+				if (r = !1, M = function() {
+						let e = d[0];
+						return d = d.slice(1), 0 == d.length && p(), e
+					}(), m.gotoAndStop(M), y.gotoAndStop(m.getCurFrame()), t)
+					for (let e in C) m[e].alpha *= .4;
+				let i = e.screen.height / 3 / m.body.texture.trim.height;
+				t && (i *= 2), i = Math.min(1, i), m.scale.x = i, m.scale.y = i, y.scale.x = i, y.scale.y = i;
+				let n = [0, 1, 2];
+				l(n);
+				let a = 0;
+				for (let o in C) {
+					let r = C[o],
+						s = 1;
+					"mouth" == o && (s = 2);
+					let l = Math.floor((r.textures.length - s) * Math.random());
+					"mouth" == o && l++, r.originalFrame = r.currentFrame, r.gotoAndStop(l), r.originalSize = {
+						x: r.scale.x,
+						y: r.scale.y
+					}, r.destinationSize = {
+						x: r.scale.x,
+						y: r.scale.y
+					}, r.interactive = !0;
+					let d = r.texture.trim,
+						c = new PIXI.Rectangle(d.x - 2, d.y - 2, d.width + 4, d.height + 4);
+					1 != r.canDrag && (I(r, c, !1, y.scale.x), v(r, (function() {
+						if (t) return void r.gotoAndStop(r.originalFrame);
+
+						function i() {
+							S(), n.end();
+							for (let e = 0; e < s.length; e++) delete x[s[e].id], s[e].item.destroy(), s[e].destroy();
+							b = -1, _ = 5
+						}
+						b = i;
+						let n = je.blackTint(e, .2);
+						n.start();
+						let a = 4;
+						e.screen.width > 400 && (a = 5);
+						let s = [];
+						for (let t = 0; t < g[o].length; t++) {
+							let n = new PIXI.Sprite(pe["Sprites/GameUI"][31]);
+							s.push(n), n.interactive = !0, n.hitArea = new PIXI.Rectangle(-32, -32, 64, 64), n.x = 32 + t % a * 79 - 79 * a / 2 + e.screen.width / 2 + 7.5, n.y = 79 * Math.floor(t / a), n.y += e.screen.height / 2 - 79 * Math.floor((g[o].length - 1) / a) / 2, n.anchor.set(.5, .5), e.addChild(n);
+							let l = new PIXI.Sprite(r.textures[g[o][t]]),
+								d = l.texture.trim;
+							l.x = -d.x - d.width / 2, l.y = -d.y - d.height / 2, n.addChild(l), n.item = l, n.id = w, x[P()] = n, v(n, (function() {
+								r.gotoAndStop(g[o][t]);
+								let e = r.texture.trim,
+									n = new PIXI.Rectangle(e.x - 2, e.y - 2, e.width + 4, e.height + 4);
+								r.originalHitArea = n, r.hitArea = n, i()
+							}))
+						}
+					}), !1), r.id = w, x[P()] = r), r.originalHitArea = c, r.dragScale = i, r.hitArea = c, r.x = 100 * (n[a] - 1), r.y = -120, r.on("pointerdown", (function() {
+						for (let e in C) C[e].interactive = !1;
+						r.interactive = !0
+					})), r.on("pointerup", (function() {
+						for (let e in C) C[e].interactive = !0
+					})), a++
+				}
+			}
+			L();
+			let E = 1e3 * Math.random(),
+				D = 1,
+				X = function() {
+					(T + Date.now()) / 1e3 * D > A && (A++, G()), j.alpha -= .02, j.scale.x = u.linear(j.scale.x, 1.5, .05, Je), j.scale.y = j.scale.x, E += Je, s.scale.x = u.linear(s.scale.x, 1.5, .05, Je), s.scale.y = s.scale.x, s.rotation = Math.cos(E / 100) / 10, s.x = e.screen.width / 2 + 20 * Math.cos(E / 90), s.y = e.screen.width / 2 + 20 * Math.cos(E / 110)
+				},
+				O = 15,
+				N = 0;
+			n.minigameMusic && !t && (ye.countdown.attack = 1, ye.countdown.release = 1, ye.countdown.play(0, 0));
+			let G = function() {
+					-1 != O && (s.scale.x = 1.52, s.scale.y = 1.52, 1 == O && ye.countdown.pause(), 0 == O ? (O = -1, W(), j.text = 15) : (O--, j.text = O, j.scale.x = 1, j.scale.y = 1, j.alpha = 1))
+				},
+				B = function() {
+					let e = 100,
+						t = !1,
+						i = f(m.eye1.x, m.eye1.y, y.eye1.x, y.eye1.y),
+						n = f(m.eye2.x, m.eye2.y, y.eye1.x, y.eye1.y),
+						a = f(m.eye1.x, m.eye1.y, y.eye2.x, y.eye2.y),
+						o = f(m.eye2.x, m.eye2.y, y.eye2.x, y.eye2.y);
+					i > n && i > n && (t = !0), 0 != y.eye1.alpha && 0 != y.eye2.alpha || (t = !1), t ? (m.eye1.currentFrame != y.eye2.currentFrame && (e -= 10), m.eye2.currentFrame != y.eye1.currentFrame && (e -= 10), e -= n / 3, e -= a / 3) : (0 != y.eye1.alpha && (m.eye1.currentFrame != y.eye1.currentFrame && (e -= 10), e -= i / 3), 0 != y.eye2.alpha && (m.eye2.currentFrame != y.eye2.currentFrame && (e -= 10), e -= o / 3));
+					for (let t in C) t.includes("eye") || 0 != y.mouth.alpha && (m[t].currentFrame != y[t].currentFrame && (e -= 10), e -= f(m[t].x, m[t].y, y[t].x, y[t].y) / 3);
+					return e
+				};
+
+			function F() {
+				-1 != b && b(), s.destroy(), c.ticker.remove(X);
+				for (let e in C) delete x[C[e].id];
+				if (m.destroyAnimation(), y.destroyAnimation(), null != V.destroyCostume && V.destroyCostume(), V.destroyAnimation(), j.destroy(), K.destroyPause(), J.destroy(), je.gameList(e, "match"), 0 == z.length) return;
+				let t = 0;
+				for (let e = 0; e < z.length; e++) t += z[e];
+				t /= z.length, je.results(e, Math.round(t) + "%", Math.floor(U), void 0, o.ui.average), window.onblur = function() {}
+			}
+			let z = [],
+				U = 0,
+				_ = 0;
+
+			function W() {
+				r = !0, _++, Y = !0, S(), -1 != b && b();
+				let t = B(),
+					i = Math.max(0, Math.round(t));
+				z.push(i), U += ((10 + i) / (51 - i / 2) + i / 4) / 2;
+				let a = function() {
+					if (2 == _) return _++, void setTimeout((function() {
+						je.message(e, "Click/Tap on an eye or mouth to switch it to another!", pe["Sprites/Mouth"][10], (function() {
+							a()
+						}))
+					}), 500);
+					ye.countdown.attack = 1, N++, N > 3 && (D += .05, N = 0), n.minigameMusic && (ye.countdown.play(0, 16 * N), ye.countdown.sourceNode.playbackRate.value = D), O = 15, T = -Date.now(), A = 1, je.blurPan(e, (function() {
+						L(), Y = !1, V.gotoPart("Idle")
+					}))
+				};
+				je.message(e, o.ui.accuracy + ": " + i + "%", pe["Sprites/GameUI"][26], a, (function() {
+					je.blurPan(e, (function() {
+						F()
+					}))
+				}), [o.ui.next, o.ui.leave]), 100 == Math.round(t) ? (je.achievementQueue("perfectfacematch"), ye.faceMatchScores.play(0, 24), V.gotoPart("percent100")) : t > 90 ? (ye.faceMatchScores.play(0, 16), V.gotoPart("percent90")) : t > 75 ? (ye.faceMatchScores.play(0, 8), V.gotoPart("percent75")) : t > 50 ? (ye.faceMatchScores.play(0, 0), V.gotoPart("percent50")) : t > 10 ? V.gotoPart("percent10") : V.gotoPart("Laugh"), t > 50 && (ye.faceMatchScores.sourceNode.playbackRate.value = D, ye.faceMatchScores.attack = 0, ye.faceMatchScores.release = 1 / D), n.minigames.faceMatch.progressState[M] = [t > 95 ? -1 : Math.floor(t)], setTimeout((function() {
+					ye.faceMatchScores.stop()
+				}), 3e3 / D)
+			}
+			t || c.ticker.add(X);
+			let j = a(O, 32, "center", void 0, 2);
+			t || e.addChild(j), j.x = e.screen.width / 2, j.y = e.screen.height / 2;
+			let V = Pe(me.tearDropWatch, h.tearDropWatch);
+			V.play(), V.gotoPart("Idle"), V.y = e.screen.height, V.x = e.screen.width / 2 + 120, t || e.addChild(V), n.minigameCostumes && (null != R[n.costume].applyMinigame ? R[n.costume].applyMinigame(V, 1, "faceMatch") : R[n.costume].apply(V, 1, "faceMatch"));
+			let H = 0,
+				Y = !1;
+
+			function Q() {
+				Y = !Y, K.changePause(Y), Y ? (H = -Date.now(), n.inGame = !1, ye.countdown.pause(), c.ticker.remove(X), V.stop(), je.message(e, o.ui.gamePaused, pe["Sprites/GameUI"][32], (function() {
+					Q()
+				}), (function() {
+					je.blurPan(e, (function() {
+						F()
+					}))
+				}), [o.ui.play, o.ui.home], !1)) : (H += Date.now(), T -= H, n.inGame = !0, V.play(), n.minigameMusic && ye.countdown.play(), c.ticker.add(X))
+			}
+			t || (window.onblur = function() {
+				Y || Q()
+			});
+			let K = je.pauseButton((function() {
+				Q()
+			}), .4);
+			t || e.addChild(K), K.x = e.screen.width - 40, K.y = 40;
+			let J = new k((function() {
+				r || (r = !0, O = -1, ye.countdown.stop(), W(), j.text = 15)
+			}), pe["Sprites/GameUI"][42], {
+				scale: {
+					x: .4,
+					y: .4
+				}
+			});
+			J.sprite.x = e.screen.width - 90, J.sprite.y = 40, t || e.addChild(J.sprite)
+		},
+		tennis: function(e) {
+			n.minigameMusic ? ye.shinytech.volume = 1 : ye.shinytech.volume = 0, ye.shinytech.play();
+			let t = new PIXI.Container;
+			t.x = c.screen.width / 2, t.y = c.screen.height / 2, t.pivot.x = c.screen.width / 2, t.pivot.y = c.screen.height / 2;
+			let i = new PIXI.Sprite(pe["Sprites/Rooms"][12]);
+			t.addChild(i), i.interactive = !0, i.x = c.screen.width / 2, i.y = c.screen.height / 2, i.scale.x = 1, i.scale.y = 1, i.anchor.set(.5, .5);
+			let r = Pe(me.tearDropTennis, h.tearDropTennis),
+				s = {
+					a: {
+						d: r.e,
+						e: r.c,
+						f: r.d,
+						g: r.f,
+						h: r.g,
+						i: r.h,
+						j: r.j,
+						k: r.i
+					},
+					c: r.a,
+					b: r.b,
+					tearDrop: r
+				};
+			r.x = c.screen.width / 2, r.y = c.screen.height / 2, n.minigameCostumes && ("uglysweater" == n.costume ? R.uglysweater2.apply(s) : null != R[n.costume].applyMinigame ? R[n.costume].applyMinigame(s, 0, "tennis") : R[n.costume].apply(s, 0, "tennis"), "_td_costume1" == n.costume && (r.sortableChildren = !0, r.i.zIndex = 10, r.j.zIndex = 10)), r.play(), r.gotoPart("hit"), t.addChild(r);
+			let l = 0,
+				d = c.screen.width / 2 + 30,
+				p = c.screen.height / 2 - 180;
+			e.addChild(t);
+			let m = a("0", 16, "center");
+			m.x = c.screen.width / 2, m.y = 20, e.addChild(m);
+			let y = {},
+				f = 0,
+				g = function() {
+					let e = new PIXI.AnimatedSprite(pe["Sprites/tennisBall"]);
+					e.x = c.screen.width / 2 + 30, e.y = c.screen.height / 2 - 180, e.anchor.set(.5, .5), e.play(), t.addChild(e), e.towards = 1, e.animationTimer = 0, e.interactive = !0, e.mouseTransform = {
+						x: 0
+					}, e.timerCache = 0, e.on("pointerdown", (function() {
+						e.animationTimer > 140 && 1 == e.towards && (e.towards *= -1, e.vy = -10, e.mouseTransform = {
+							x: e.x
+						}, e.randomX = c.screen.width * (Math.random() - .5), e.timerCache = e.animationTimer, e.animationSpeed = 2)
+					})), e.rotation = 0, e.randomX = 0, e.r = 0, e.id = f, y[f++] = e
+				};
+			g();
+			let x = 1,
+				w = a(o.score.perfect, 32, "center", "middle");
+			w.anchor.set(.5, .5), w.x = c.screen.width / 2, w.y = c.screen.height / 2 + 200, e.addChild(w);
+			let v = Date.now();
+			t.sortableChildren = !0;
+			let I = function() {
+					let e = (Date.now() - v) / (6e4 / 138) / 4;
+					e > C && (C += 4, g()), e > 4 && (t.scale.x = eases.easeOutQuad((e + .25) % .5, 1.02, -.02, .5), t.scale.y = t.scale.x), w.alpha > 0 && (w.scale.x += .02 * Je, w.scale.y = w.scale.x, w.alpha -= .04 * Je, w.rotation += w.rotationAmount);
+					for (let t in y) {
+						let i = y[t];
+						if (i.animationTimer < 0) {
+							w.rotation = 0, w.rotationAmount = (Math.random() - .5) / 100, w.scale.x = 1, w.scale.y = 1, w.text = o.score.bad;
+							let t = 5,
+								i = e % .5;
+							(i < .2 || i > .4) && (w.text = o.score.meh, t = 20), (i < .125 || i > .375) && (w.text = o.score.nice, t = 50), (i < .05 || i > .45) && (w.text = o.score.perfect, t = 100), l += t, m.text = l
+						}
+						i.animationTimer <= 0 && (r.gotoPart("hit"), i.towards = 1, i.randomX = c.screen.width / 2 * (Math.random() - .5), w.alpha = 1), i.animationTimer < 50 && 1 != i.towards && r.gotoPart("prepare"), i.animationTimer += 4 * i.towards * x * Je, i.scale.x = 1 + window.eases.easeOutQuad(i.animationTimer, 0, 2, 300), i.scale.y = i.scale.x, i.y = p - window.eases.easeOutQuad(i.animationTimer, 0, 100, 100), i.rotation = i.r / 60, i.zIndex = i.scale.x, 1 == i.towards ? i.x = d + window.eases.easeOutQuad(i.animationTimer, 0, i.randomX, 100) : i.x = i.mouseTransform.x + window.eases.easeInOutQuad(Math.min(i.timerCache, i.timerCache - i.animationTimer), 0, d - i.mouseTransform.x, i.timerCache), i.animationSpeed = u.linear(i.animationSpeed, .5, .01, Je), i.r += i.animationSpeed, i.y > c.screen.height + 300 && (l -= 10, m.text = l, y[t].destroy(), delete y[t])
+					}
+					x += 5e-5 * Je, 0 == Object.keys(y).length && S()
+				},
+				C = 4;
+			ye.shinytech.release = 1, c.ticker.add(I);
+			let b = !1;
+
+			function S(n = !1) {
+				b || (b = !0, ye.shinytech.stop(), c.ticker.remove(I), T.destroyPause(), w.destroy(), je.fade((function() {
+					for (let e in y) y[e].destroy(), delete y[e];
+					null != r.destroyCostume && r.destroyCostume(), r.destroyAnimation(), t.destroy(), i.destroy(), m.destroy(), n ? (Re(e, l, Math.floor(l / 75), "tennis2"), R.sportsdrop.owned = !0, je.achievementQueue("winagameoftennis"), Q()) : Re(e, l, Math.max(0, Math.floor(l / 100)), "tennis"), l >= 2763 && je.achievementQueue("get2763intennis")
+				})), window.onblur = function() {})
+			}
+			ye.shinytech.on("end", (function() {
+				S(!0)
+			}));
+			let M = 0;
+			window.onblur = function() {
+				k || P()
+			};
+			let k = !1;
+
+			function P() {
+				k = !k, T.changePause(k), k ? (M = -Date.now(), n.inGame = !1, ye.shinytech.pause(), c.ticker.remove(I), r.stop(), je.message(e, o.ui.gamePaused, pe["Sprites/GameUI"][32], (function() {
+					P()
+				}), (function() {
+					S()
+				}), [o.ui.play, o.ui.home], !1)) : (M += Date.now(), v += M, n.inGame = !0, r.play(), ye.shinytech.play(), c.ticker.add(I))
+			}
+			let T = je.pauseButton((function() {
+				P()
+			}), .4);
+			e.addChild(T), T.x = c.screen.width - 40, T.y = 40
+		},
+		gtttatint: function(e, t = "", i = !1) {
+			let r = function() {
+				n.minigameMusic && ye.radiomartini.play()
+			};
+			ye.radiomartini.stopWithStyle = function() {
+				if (!n.minigameMusic) return;
+				let e = function() {
+					null != ye.radiomartini ? (ye.radiomartini.volume -= 1 / 60 * Je, ye.radiomartini.sourceNode.playbackRate.value -= 1 / 120 * Je, ye.radiomartini.volume <= .01 && (ye.radiomartini.stop(), c.ticker.remove(e))) : c.ticker.remove(e)
+				};
+				c.ticker.add(e), ye.radiomartini.off("end", r)
+			}, n.minigameMusic && (ye.radiomartini.play(), ye.radiomartini.sourceNode.playbackRate.value = 1, ye.radiomartini.volume = 1), ye.radiomartini.on("end", r);
+			let s = new PIXI.Sprite(pe["Sprites/Rooms"][10]);
+			s.interactive = !0, s.x = e.screen.width / 2, s.anchor.set(.5, 0);
+			let l = new PIXI.Sprite(pe["Backgrounds/Starfield"][0]);
+			e.addChild(s), e.addChild(l), l.anchor.set(.5, .5), l.x = e.screen.width / 2 - 50, l.y = e.screen.height / 2 - 100, l.alpha = 0, l.scale.x = 1.25, l.scale.y = 1.25;
+			let d = new PIXI.Container,
+				h = {},
+				p = 0;
+			e.addChild(d), s.x = e.screen.width / 2 - 180, s.height = 20 * e.screen.height;
+			let m = {
+					x: 0,
+					y: 0,
+					vx: 0,
+					vy: 0,
+					box: new PIXI.Graphics,
+					width: 30,
+					height: 30,
+					acceleration: 0
+				},
+				y = [];
+			y.push(s), y.push(l), y.push(m.box);
+			let f = new PIXI.Container;
+			e.addChild(f), y.push(f);
+			let x = {},
+				w = u.linear(e.screen.width - 60, 300, .75),
+				v = 0,
+				I = w / 2 - 60,
+				C = 0;
+
+			function b(e, t, i, n) {
+				let a = function() {
+					let a = 5 * t;
+					return a = 9 * (a << 7 | a >>> 25), n ^= t, t ^= i ^= e, e ^= n, n = n << 11 | n >>> 21, (a >>> 0) / 2 ** 32
+				};
+				for (let e = 0; e < 100; e++) a();
+				return a
+			}
+			let S = function(e) {
+				let t = [];
+				for (let i = 0; i < 4; i++) {
+					let n = 2 ** 32;
+					for (let t = 0; t < 4; t++) n -= (e.charCodeAt(t + 4 * i) + 30 * i) ** 4;
+					t.push(n)
+				}
+				return t
+			};
+			if ("" == t) {
+				let e = function() {
+					return Math.floor(1e6 + 9999999 * Math.random()).toString(36)
+				};
+				t = e() + e() + e() + e()
+			}
+			if (t.length < 16) {
+				let e = "";
+				for (let i = 0; i < 16; i++) e += t, t.length / 2 == Math.floor(t.length / 2) && (e += "}");
+				t = e
+			}
+			let M = S(t),
+				P = b(M[0], M[1], M[2], M[3]);
+			for (let t = 0; t < 30; t++) {
+				let i = new PIXI.Sprite(pe["Sprites/Clouds"][Math.floor(3 * P())]);
+				d.addChild(i), i.anchor.set(.5, .5), i.y = e.screen.height / 2 + (P() - .5) * e.screen.height - 1200 * P(), i.orig = {
+					y: i.y
+				}, i.scale.x = .2 + t / 150, i.scale.y = .2 + t / 150, i.x = e.screen.width / 2 + (P() - .5) * w * u.linear(i.scale.x, 1, .5), P() > .5 && (i.scale.x *= -1);
+				let n = i.texture.trim;
+				null == n && (n = i.texture._frame), i.pivot.y = -n.height, h[p++] = i
+			}
+			let T = 0,
+				A = 0;
+
+			function L(i = !1, n = -1) {
+				50 * Math.floor(C / 50) == C && 0 != C && (t = function(e) {
+					let t = "";
+					for (let i = 0; i < e.length; i++) t += 0 == i ? e[e.length - 1] : e[i - 1];
+					return t
+				}(t), M = S(t), P = b(M[0], M[1], M[2], M[3]));
+				let a = 120;
+				a *= (Math.cos(C / 10) / 2 + .5 + 1) / 2;
+				let o = (P() - .5) * v;
+				C > 200 && P() > .998 && (A = 10 + Math.floor(40 * P())), A > 0 && (o = 60 * Math.round(o / 60), T = T > 1 ? 1 : 0), T > 0 && (o /= 10, a = 70);
+				let r = I + o;
+				(r < 0 || r > w - a) && (r = I - o), r < 0 && (r = 0), 100 * Math.floor(C / 100) == C && (i = !0), i && (a = w, r = 0), r > w - a && (r = w - a), i && T > 1 && (T = 1), A > 0 && (a = 60);
+				let s = {
+					x: r,
+					y: -60 * C,
+					width: a,
+					height: 40,
+					id: C,
+					transparent: !1,
+					ladder: T > 1,
+					blocky: A > 0
+				};
+				i || (I = s.x), v < w && (v += 12);
+				let l = P() < .01 || 1 == T;
+				1 == T && (s.y += 30), s.boost = l;
+				let d = l ? pe.inputNineSlice[7] : pe.inputNineSlice[6];
+				T > 1 && (d = pe.inputNineSlice[8]);
+				let c = new PIXI.NineSlicePlane(d, 15, 15, 15, 15);
+				c.width = s.width, c.height = 0 == C ? e.screen.height : s.height / 4, A > 0 && (c.height = 60), T > 1 && (c.height *= 4), c.pivot.x = s.width / 2, c.pivot.y = c.height / 2, c.x = s.x + c.pivot.x, c.y = s.y + c.pivot.y, c.vy = 0, c.vx = 0, (P() < .01 + C / 1e3 && !i || s.ladder && !i) && (c.rotation = P() > .5 ? .1 : -.1, s.broken = !0), f.addChild(c), s.sprite = c, c.zIndex = 0, x[C] = s, C++, T--, A--, P() < .005 && (T = 20 + Math.floor(P() * P() * 50))
+			}
+			L(), m.x = x[0].x + x[0].width / 2 - m.width / 2, m.y = x[0].y - m.height, m.zIndex = 1e4;
+			let E = {},
+				D = function(e) {
+					let t = e.key.toLowerCase();
+					"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), E[t] = !0, ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key) && e.preventDefault()
+				},
+				X = function(e) {
+					let t = e.key.toLowerCase();
+					"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), E[t] = !1
+				},
+				O = 0,
+				N = 10;
+			for (let e = 0; e < 10; e++) L();
+			let G = Pe(me.GTTTATINT);
+			if (n.minigameCostumes) {
+				let e = {
+					a: {
+						d: G.a_.c,
+						e: G.a_.e,
+						f: G.a_.d,
+						g: G.a_.e,
+						h: G.a_.d,
+						i: G.a_.f,
+						j: G.d,
+						k: G.c
+					},
+					c: G.b.b,
+					b: G.b.a,
+					tearDrop: G
+				};
+				null != R[n.costume].applyMinigame ? R[n.costume].applyMinigame(e, 0, "gtttatint") : R[n.costume].apply(e, 0, "gtttatint")
+			}
+			let B = !1,
+				F = function() {
+					B = !0
+				},
+				z = function() {
+					B = !1
+				};
+			document.addEventListener("keydown", D), document.addEventListener("keyup", X), document.addEventListener("pointerdown", F), document.addEventListener("pointerup", z), G.onNextFrame = function(e) {
+				let t = Math.min(59, Math.max(0, Math.round(30 - 30 * m.acceleration)));
+				e.a_.gotoAndStop(t), "moondrop" == n.costume && (t <= 18 ? (e.a_.d.tint = 0, e.a_.e.tint = 16777215) : (e.a_.d.tint = 16777215, e.a_.e.tint = 0), t >= 40 && (e.a_.e.tint = 16777215), t >= 43 && (e.a_.e.tint = 0)), e.b.scale.x = m.acceleration < 0 ? -1 : 1, e.c.rotation += -1.5 + Math.abs(2 * m.acceleration) + Math.abs(m.vy / 4), 0 == m.vy && e.a_.c.gotoAndStop(1), E.a || E.d || (e.b.gotoAndStop(20), e.b.a.rotation = -Math.abs(m.vy / 4), e.b.b.rotation = -Math.abs(m.vy / 4)), e.d.rotation = -e.c.rotation
+			}, G.play(), G.loop = !0, G.scale.x = .4, G.scale.y = .4;
+			let U = new PIXI.NineSlicePlane(pe.inputNineSlice[5], 15, 15, 15, 15);
+			U.width = (e.screen.width - w) / 2, U.height = e.screen.height, U.x = 0, U.y = 0, e.addChild(U);
+			let _ = new PIXI.NineSlicePlane(pe.inputNineSlice[5], 15, 15, 15, 15);
+
+			function W(t, i, a, o) {
+				let r = 1;
+				if (null != n.controllerProfile.GTTTATINT) {
+					let a = n.controllerProfile.GTTTATINT;
+					console.log(a), t = a.buttons[o].x + e.screen.width * a.buttons[o].lock, i = a.buttons[o].y + e.screen.height, r = a.buttonScale + .5
+				}
+				let s = new k((function() {}), pe["Sprites/GameUI"][a], {
+					x: t,
+					y: i,
+					scale: {
+						x: r,
+						y: r
+					}
+				});
+				s.sprite.on("pointerdown", (function() {
+					E[o] = !0
+				})), s.sprite.on("pointermove", (function() {
+					B && s.sprite.emit("pointerdown")
+				})), s.sprite.on("pointerout", (function() {
+					s.sprite.emit("pointerup")
+				})), s.sprite.on("pointerup", (function() {
+					E[o] = !1
+				})), e.addChild(s.sprite), y.push(s)
+			}
+			_.width = (e.screen.width - w) / 2, _.height = e.screen.height, _.x = e.screen.width - _.width, _.y = 0, e.addChild(_), c.touchScreen && (W(e.screen.width - 150, e.screen.height - 50, 21, "a"), W(e.screen.width - 50, e.screen.height - 50, 22, "d"), W(100, e.screen.height - 50, 23, " ")), f.y = 300;
+			let j = Date.now(),
+				V = -1,
+				H = function() {
+					-1 != V && (Date.now() - j) / 1e3 > V && V++, n.minigameMusic && (ye.radiomartini.sourceNode.playbackRate.value = u.linear(ye.radiomartini.sourceNode.playbackRate.value, 1 - m.vy / 400 + O / 80, .01, Je)), s.y = -s.height + e.screen.height, s.y += f.y, l.alpha = (f.y - 8e3) / 1e3, s.y > 0 && (s.y = 0), s.y < -s.height + e.screen.height && (s.y = -s.height + e.screen.height), C - 640 / 60 < -m.y / 60 && L();
+					for (let t in x) parseInt(t) < Math.floor((f.y - e.screen.height) / 60) && (K.add(Math.max(1, O)), x[t].sprite.destroy(), delete x[t]);
+					m.isOnGround = !1, G.x = m.x + m.width / 2, G.y = m.y + m.height, E.d && (m.acceleration += .075 * Je), E.a && (m.acceleration -= .075 * Je), m.vy += .4 * Je, m.acceleration = u.linear(m.acceleration, 0, 1 - .95, Je), m.vx += m.acceleration * Je, m.vx = u.linear(m.vx, 0, 1 - .8, Je), m.y += m.vy * Je, m.x += m.vx * Je;
+					let t = Math.abs(m.vx / 40),
+						a = Math.abs(m.vy / 40);
+					G.scale.x = .4 * (1 + t - a), G.scale.y = .4 * (1 + a - t), (m.x < 0 || m.x > w - m.width) && (m.vx /= -1, m.acceleration /= -1), m.x < 0 && (m.x = 0), m.x > w - m.width && (m.x = w - m.width);
+					for (let e in x) {
+						let t = x[e];
+						if (t.transparent && (t.sprite.rotation += (t.rotateTo < 0 ? -.1 : .1) * Je, t.sprite.x += t.sprite.vx * Je, t.sprite.y += t.sprite.vy * Je, t.sprite.vy += .2 * Je, t.sprite.vx = u.linear(t.sprite.vx, 0, .05)), g(m, t) && !t.transparent && (t.ladder || m.vy > 0 && m.y < t.y - m.height + (4 + m.vy) * Je)) {
+							if (t.broken && (t.sprite.vy = m.vy / 2, t.transparent = !0, t.rotateTo = m.x + m.width / 2 - t.sprite.x, t.sprite.vx = 10 * (Math.random() - .5)), t.ladder || (m.y = t.y - m.height, m.isOnGround = !0), t.blocky && !i && je.achievementQueue("blockplatformgtttatint"), m.vy = 0, m.max < t.id && !t.ladder) {
+								let e = t.id - m.max;
+								K.add(10 * (e - 1)), N--, 0 == N && (O++, 2 == O && (j = Date.now(), V = 0), J.text = o.ui.mph + ": " + O, N = 10)
+							}
+							m.max = t.id;
+							let e = 7;
+							O >= 7 && (e *= 2), O >= 10 && (e *= 1.5), O >= 16 && (e *= 1.5), O >= 20 && (e *= 2), t.boost && (e *= 2), (E[" "] || t.boost || t.ladder) && (t.ladder ? (m.y -= 2 * Je, m.vy -= 10) : m.vy -= e + Math.abs(1.5 * m.vx))
+						}
+					}
+					f.x = e.screen.width / 2 - w / 2, m.y < e.screen.height / 2 - f.y - 200 && (f.y = u.linear(f.y, e.screen.height / 2 - m.y - 200, .1, Je)), -f.y + e.screen.height < m.y && !Y && (Y = !0, ye.radiomartini.stopWithStyle(), je.blurPan(e, (function() {
+						q()
+					}))), f.y += O / 2 * Je;
+					for (let t in h) h[t].y = h[t].orig.y + f.y * h[t].scale.y / 2, h[t].y > e.screen.height && (h[t].destroy(), delete h[t])
+				},
+				Y = !1;
+			c.ticker.add(H);
+			let Q = 0,
+				K = a(Q, 32);
+			K.add = function(e) {
+				Q += e, i ? (K.text = "Set seed", K.alpha = .2) : K.text = Q
+			}, K.add(0), K.anchor.set(1, 0), K.x = e.screen.width - 20 - 50, K.y = 20, e.addChild(K);
+			let J = a(o.ui.mph + ": 0", 32);
+			J.anchor.set(0, 0), J.x = 20, J.y = 20, e.addChild(J), y.push(J), y.push(K), y.push(_), y.push(U), f.addChild(G), f.sortableChildren = !0, G.zIndex = 1e3, y.push(G);
+			let q = function() {
+				for (let e in x) x[e].sprite.destroy();
+				for (let e in h) h[e].destroy(), delete h[e];
+				null != G.destroyCostume && G.destroyCostume();
+				for (let e = 0; e < y.length; e++) y[e].destroy();
+				document.removeEventListener("keydown", D), document.removeEventListener("keyup", X), document.removeEventListener("pointerdown", F), document.removeEventListener("pointerup", z), c.ticker.remove(H), te.destroyPause(), i || (O >= 5 ? Re(e, Q, Math.floor(Q / 50)) : (je.gameList(e, "gtttatint"), je.results(e, Q, Math.floor(Q / 50)))), V >= 120 && (je.achievementQueue("5minuteGTTTATINT"), R.jockdrop.owned = !0), Q >= 2763 && je.achievementQueue("get2763gtttatint"), Q >= 15e3 && je.achievementQueue("get15000gtttatint"), window.onblur = function() {}
+			};
+			window.onblur = function() {
+				Z || ee()
+			};
+			let Z = !1,
+				$ = 0;
+
+			function ee() {
+				Z = !Z, te.changePause(Z), Z ? (n.inGame = !1, ye.radiomartini.pause(), c.ticker.remove(H), G.stop(), $ = -Date.now(), je.message(e, o.ui.gamePaused, pe["Sprites/GameUI"][32], (function() {
+					ee()
+				}), (function() {
+					je.blurPan(e, (function() {
+						ye.radiomartini.stop(), q()
+					}))
+				}), [o.ui.play, o.ui.home], !1)) : ($ += Date.now(), j += $, n.inGame = !0, G.play(), n.minigameMusic && ye.radiomartini.play(), c.ticker.add(H))
+			}
+			let te = je.pauseButton((function() {
+				ee()
+			}), .4);
+			e.addChild(te), te.x = e.screen.width - 40, te.y = 40
+		},
+		cakewalk: function(e, t = "", r = !1) {
+			let s = function() {
+				n.minigameMusic && (ye.Pamgaea.play(), ye.Pamgaea.sourceNode.playbackRate.value = 1.15)
+			};
+			n.minigameMusic && (ye.Pamgaea.play(), ye.Pamgaea.sourceNode.playbackRate.value = 1.15, ye.Pamgaea.on("end", s));
+			let l = new PIXI.Sprite(pe["Sprites/Rooms"][10]);
+			l.interactive = !0, l.x = c.screen.width / 2, l.anchor.set(.5, 0);
+			let d = new PIXI.Sprite(pe["Backgrounds/Starfield"][0]);
+			e.addChild(l), e.addChild(d), d.anchor.set(.5, .5), d.x = c.screen.width / 2 - 50, d.y = c.screen.height / 2 - 100, d.alpha = 0, d.scale.x = 1.25, d.scale.y = 1.25;
+			let h = new PIXI.Container,
+				p = {},
+				m = 0;
+			e.addChild(h), l.x = c.screen.width / 2 - 180, l.height = 20 * c.screen.height;
+			let y = {
+					x: 0,
+					y: 0,
+					vx: 0,
+					vy: 0,
+					box: new PIXI.Graphics,
+					width: 30,
+					height: 30,
+					acceleration: 0
+				},
+				f = [];
+			f.push(l), f.push(d), f.push(y.box);
+			let g = new PIXI.Container;
+			e.addChild(g), f.push(g);
+			let x = 360;
+			if ("" == t) {
+				let e = function() {
+					return Math.floor(1e6 + 9999999 * Math.random()).toString(36)
+				};
+				t = e() + e() + e() + e()
+			}
+			if (t.length < 16) {
+				let e = "";
+				for (let i = 0; i < 16; i++) e += t, t.length / 2 == Math.floor(t.length / 2) && (e += "}");
+				t = e
+			}
+			let w = function(e) {
+					let t = [];
+					for (let i = 0; i < 4; i++) {
+						let n = 2 ** 32;
+						for (let t = 0; t < 4; t++) n -= (e.charCodeAt(t + 4 * i) + 30 * i) ** 4;
+						t.push(n)
+					}
+					return t
+				}(t),
+				I = function(e, t, i, n) {
+					let a = function() {
+						let a = 5 * t;
+						return a = 9 * (a << 7 | a >>> 25), n ^= t, t ^= i ^= e, e ^= n, n = n << 11 | n >>> 21, (a >>> 0) / 2 ** 32
+					};
+					for (let e = 0; e < 100; e++) a();
+					return a
+				}(w[0], w[1], w[2], w[3]);
+			for (let e = 0; e < 30; e++) {
+				let t = new PIXI.Sprite(pe["Sprites/Clouds"][Math.floor(3 * I())]);
+				h.addChild(t), t.anchor.set(.5, .5), t.y = c.screen.height / 2 + (I() - .5) * c.screen.height - 1200 * I(), t.orig = {
+					y: t.y
+				}, t.scale.x = .2 + e / 150, t.scale.y = .2 + e / 150, t.x = c.screen.width / 2 + (I() - .5) * x * u.linear(t.scale.x, 1, .5), I() > .5 && (t.scale.x *= -1);
+				let i = t.texture.trim;
+				null == i && (i = t.texture._frame), t.pivot.y = -i.height, p[m++] = t
+			}
+			y.zIndex = 1e4;
+			let b = {},
+				S = function(e) {
+					b[e.key.toLowerCase()] = !0
+				},
+				M = function(e) {
+					b[e.key.toLowerCase()] = !1
+				},
+				k = !1,
+				P = function() {
+					k = !0
+				},
+				T = function() {
+					k = !1
+				};
+			document.addEventListener("keydown", S), document.addEventListener("keyup", M), document.addEventListener("pointerdown", P), document.addEventListener("pointerup", T);
+			let A = new PIXI.NineSlicePlane(pe.inputNineSlice[12], 2, 2, 2, 2);
+			A.width = (c.screen.width - x) / 2, A.height = c.screen.height, A.x = 0, A.y = 0, e.addChild(A);
+			let L = new PIXI.NineSlicePlane(pe.inputNineSlice[12], 2, 2, 2, 2);
+			L.width = (c.screen.width - x) / 2, L.height = c.screen.height, L.x = c.screen.width - L.width, L.y = 0, e.addChild(L), g.y = 300;
+			let E = {},
+				D = 0,
+				X = -1,
+				O = -1,
+				N = !0;
+
+			function G() {
+				let e = {
+					x: 0,
+					y: -1 == X ? 0 : X.y - 100,
+					width: -1 == X ? 200 : X.width,
+					height: 50,
+					speed: 1,
+					scaleTimer: 0
+				};
+				N && (e.x = x - e.width, e.speed *= -1), e.width <= 100 && (e.x = N ? X.x + X.width + 40 : X.x - e.width - 40), e.x < 0 && (e.x = 0), e.x > x + e.width && (e.x = x + e.width), N = !N, e.original = {
+					y: e.y
+				}, -1 == X && (e.scaleTimer = 110, e.x = 80), e.previous = X, X = e, e.container = new PIXI.Container, e.container.x = e.x, e.container.y = e.y, g.addChild(e.container), e.setWidth = function(t, o) {
+					i.width = t, i.tilePosition.x += o, e.width = t, a.width = t, n.width = t, n.tilePosition.x += o, i.pivot.x = e.width / 2, i.pivot.y = e.height / 2, i.x = i.pivot.x, i.y = i.pivot.y
+				}, e.destroy = function() {
+					n.destroy(), a.destroy(), i.destroy(), e.container.destroy(), delete E[e.id]
+				};
+				let t = 3 * Math.floor(3 * Math.random());
+				e.texture = t;
+				let i = new PIXI.TilingSprite(pe["Sprites/CakeSlicePlane"][1 + t]);
+				i.pivot.x = e.width / 2, i.pivot.y = e.height / 2, i.x = i.pivot.x, i.y = i.pivot.y, i.clampMargin = 1, i.width = e.width, i.height = 50, e.container.addChild(i), e.sprite = i;
+				let n = new PIXI.TilingSprite(pe["Sprites/CakeSlicePlane"][2 + t]);
+				n.y = -90, n.clampMargin = 1, e.container.roundPixels = !0, n.width = e.width, n.height = 90, i.addChild(n);
+				let a = new PIXI.NineSlicePlane(pe["Sprites/CakeSlicePlane"][0 + t]);
+				i.addChild(a), a.width = e.width, a.height = 50, e.id = D, E[D] = e, O = D, D++
+			}
+			let B = new PIXI.NineSlicePlane(pe.inputNineSlice[13]);
+			g.addChild(B), B.x = -20, B.y = 50, B.width = 400, B.height = c.screen.height, l.on("pointerdown", (function() {
+				E[O].dropping || (E[O].dropping = !0, E[O].speed = 0, E[O].animationTimer = 0)
+			})), G(), G();
+			let F = !1,
+				z = 0,
+				U = {},
+				_ = 0,
+				W = 0,
+				j = function() {
+					if (E[O].x += E[O].speed * Je, (E[O].x > x - E[O].width || E[O].x < 0) && (E[O].speed *= -1), E[O].x > x - E[O].width && (E[O].x = x - E[O].width), E[O].x < 0 && (E[O].x = 0), E[O].container.x = E[O].x, E[O].dropping) {
+						E[O].y = E[O].original.y + eases.easeInQuad(E[O].animationTimer, 0, 50, 24), E[O].container.y = E[O].y, E[O].animationTimer += Je;
+						let t = E[O],
+							n = E[O].previous;
+						if ((t.x - n.x > n.width || n.x - t.x > t.width) && (E[O].sprite.rotation = eases.easeInQuad(E[O].animationTimer, 0, 8, 100), F || (F = !0, $.interactive = !1, setTimeout((function() {
+								je.blurPan(e, (function() {
+									J()
+								}))
+							}), 500))), E[O].animationTimer > 24)
+							if (t.x - n.x > n.width || n.x - t.x > t.width);
+							else {
+								E[O].sprite.scale.x = 1, E[O].sprite.scale.y = 1, E[O].y = E[O].original.y + 50, E[O].container.y = E[O].y;
+								let e = 0;
+								Math.abs(n.x - t.x) < 30 && (e = o.score.nice), Math.abs(n.x - t.x) < 10 && (e = o.score.good);
+								let a = {
+										x: t.x,
+										y: t.y,
+										width: 100,
+										height: 50,
+										vy: 0,
+										vx: 0,
+										vr: 0
+									},
+									r = 4;
+								if (t.width < 8 && (r = 2), Math.abs(n.x - t.x) < r ? (a = -1, e = o.score.perfect, t.x = n.x, Q.add(100), z++, W++, _ < W && (_ = W), z >= 3 && t.width <= 200 && (t.x -= 20, t.width += 40, t.setWidth(t.width, 20), t.container.x = t.x, z = 1)) : (z = 0, W = 0, Q.add(Math.max(10, 100 - Math.floor(Math.abs(n.x - t.x)))), n.x < t.x && (t.width -= t.x - n.x, t.setWidth(t.width, 0), t.x = n.x + n.width - t.width, a.width = t.x - n.x, a.x = t.x + t.width, a.vx = 2 + 2 * Math.random(), a.vr = 5 + 5 * Math.random()), n.x > t.x && (a.width = -(t.x - n.x), t.width -= n.x - t.x, t.setWidth(t.width, t.x - n.x), t.x = n.x, a.x = t.x - a.width, a.vx = 2 * -Math.random() - 2, a.vr = -5 - 5 * Math.random()), a.vy = 2 * -Math.random() - 2), i.hunger += t.width / 1200, t.container.x = t.x, K.text = o.ui.altitude + ": " + D, 500 == D && (je.achievementQueue("750altitudeCAKEWALK"), R._td_costume6.owned = !0), 1e3 == D && je.achievementQueue("1000altitudeCAKEWALK"), -1 != a) {
+									let e = new PIXI.Container;
+									e.x = a.x, e.y = a.y, g.addChild(e);
+									let i = new PIXI.TilingSprite(pe["Sprites/CakeSlicePlane"][1 + t.texture]);
+									i.clampMargin = 1, i.width = a.width, i.height = a.height, i.pivot.x = a.width / 2, i.pivot.y = a.height / 2, i.x = i.pivot.x, i.y = i.pivot.y, e.addChild(i);
+									let n = new PIXI.NineSlicePlane(pe["Sprites/CakeSlicePlane"][0 + t.texture]);
+									i.addChild(n), n.width = a.width, n.height = 50, a.sprite = i, a.container = e, a.id = O, U[O] = a, a.destroy = function() {
+										delete U[a.id], n.destroy(), i.destroy(), e.destroy()
+									}
+								}
+								G(), V.text = e, 0 != e && (V.animationTimer = 0, V.rotateTo = N ? 1 : -1)
+							}
+					}
+					V.alpha = eases.easeInQuad(Math.min(100, V.animationTimer), 1, -1, 50), V.scale.x = eases.easeOutQuad(Math.min(100, V.animationTimer), 1, .5, 30), V.scale.y = eases.easeOutQuad(Math.min(110, V.animationTimer), 1, .5, 30), V.rotation = eases.easeInQuad(Math.min(110, V.animationTimer), 0, .1 * V.rotateTo, 40), V.animationTimer += Je;
+					for (let e in E) {
+						let t = E[e];
+						E[e].sprite.scale.x = eases.easeOutElastic(Math.min(90, E[e].scaleTimer), .1, .9, 90), E[e].sprite.scale.y = eases.easeOutElastic(Math.min(80, E[e].scaleTimer), .1, .9, 80), E[e].scaleTimer += Je, t.container.transform.worldTransform.ty > c.screen.height && t.destroy()
+					}
+					for (let e in U) {
+						let t = U[e];
+						t.x += t.vx, t.y += t.vy, t.sprite.rotation += t.vr / 100, t.vy += .4, t.vx = u.linear(t.vx, 0, .02, Je), t.container.x = t.x, t.container.y = t.y, t.container.transform.worldTransform.ty > c.screen.height + 100 && t.destroy()
+					}
+					l.y = -l.height + c.screen.height, l.y += g.y, d.alpha = (g.y - 8e3) / 1e3, l.y > 0 && (l.y = 0), l.y < -l.height + c.screen.height && (l.y = -l.height + c.screen.height), g.x = c.screen.width / 2 - 180, g.y = u.linear(g.y, c.screen.height / 2 - E[O].original.y - 100, .05, Je);
+					for (let e in p) p[e].y = p[e].orig.y + g.y * p[e].scale.y / 2, p[e].y > c.screen.height && (p[e].destroy(), delete p[e]);
+					H.offset = u.linear(H._offset, i.hunger / 100, .04, Je)
+				},
+				V = a("Bruh", 32, "center");
+			e.addChild(V), V.x = c.screen.width / 2, V.y = c.screen.height / 2 + 200;
+			let H = new C(pe["Sprites/GameUI"][4], pe["Sprites/GameUI"][3], i.hunger / 100);
+			H.buttonContainer.x = 60, H.buttonContainer.y = c.screen.height - 60, H.buttonContainer.scale.x = .8, H.buttonContainer.scale.y = .8, e.addChild(H.buttonContainer), v(H.buttonContainer, (function() {})), H.selected.visible = !1, c.ticker.add(j);
+			let Y = 0,
+				Q = a(Y, 32);
+			Q.add = function(e) {
+				Y += e, r ? (Q.text = "Set seed", Q.alpha = .2) : Q.text = Y
+			}, Q.add(0), Q.anchor.set(1, 0), Q.x = c.screen.width - 20 - 50, Q.y = 20, e.addChild(Q);
+			let K = a(o.ui.altitude + ": 1", 32);
+			K.anchor.set(0, 0), K.x = 20, K.y = 20, e.addChild(K), f.push(K), f.push(Q), f.push(L), f.push(A), g.sortableChildren = !0;
+			let J = function() {
+				V.destroy(), H.destroy(), ye.Pamgaea.release = .5, n.minigameMusic && ye.Pamgaea.off("end", s), ye.Pamgaea.stop();
+				for (let e in E) E[e].destroy();
+				for (let e in U) U[e].destroy();
+				for (let e in p) p[e].destroy(), delete p[e];
+				for (let e = 0; e < f.length; e++) f[e].destroy();
+				document.removeEventListener("keydown", S), document.removeEventListener("keyup", M), document.removeEventListener("pointerdown", P), document.removeEventListener("pointerup", T), c.ticker.remove(j), je.gameList(e, "cakewalk"), $.destroyPause(), r || setTimeout((function() {
+					je.results(e, Y, Math.floor(Y / 50)), _ >= 10 && je.achievementQueue("get10perfectsCAKEWALK")
+				}), 100), window.onblur = function() {}
+			};
+			window.onblur = function() {
+				q || Z()
+			};
+			let q = !1;
+
+			function Z() {
+				q = !q, $.changePause(q), q ? (n.inGame = !1, c.ticker.remove(j), n.minigameMusic && (ye.Pamgaea.release = .2, ye.Pamgaea.pause()), je.message(e, o.ui.gamePaused, pe["Sprites/GameUI"][32], (function() {
+					Z()
+				}), (function() {
+					je.blurPan(e, (function() {
+						J()
+					}))
+				}), [o.ui.play, o.ui.home], !1)) : (n.minigameMusic && (ye.Pamgaea.play(), ye.Pamgaea.sourceNode.playbackRate.value = 1.15), n.inGame = !0, c.ticker.add(j))
+			}
+			let $ = je.pauseButton((function() {
+				Z()
+			}), .4);
+			e.addChild($), $.x = c.screen.width - 40, $.y = 40
+		},
+		dropdodge: function() {
+			let e = new PIXI.Sprite(pe["Sprites/RepeatingUI"][3]);
+			e.interactive = !0, c.stage.addChild(e), e.width = c.screen.width, e.height = c.screen.height;
+			let t = {
+					x: 0,
+					y: 0,
+					vx: 0,
+					vy: 0,
+					box: new PIXI.Graphics,
+					width: 30,
+					height: 50,
+					acceleration: 0
+				},
+				i = [];
+			i.push(e), i.push(t.box);
+			let n = new PIXI.Container;
+			c.stage.addChild(n), i.push(n);
+			let o = {},
+				r = 3e3;
+			t.x = 0, t.y = 0, t.zIndex = 1e4;
+			let s = {},
+				l = function(e) {
+					s[e.key] = !0
+				},
+				d = function(e) {
+					s[e.key] = !1
+				},
+				h = 0,
+				p = 15;
+			for (let e = 0; e < 1e4; e++);
+			let m = Pe(me.GTTTATINT),
+				y = !1,
+				f = function() {
+					y = !0
+				},
+				x = function() {
+					y = !1
+				};
+			document.addEventListener("keydown", l), document.addEventListener("keyup", d), document.addEventListener("pointerdown", f), document.addEventListener("pointerup", x), m.onNextFrame = function(e) {
+				s.w || s.a || s.s || s.d || (e.goto(0), e.b.gotoAndStop(20)), e.a_.gotoAndStop(Math.min(59, Math.max(0, Math.round(30 - 30 * t.acceleration)))), e.b.scale.x = t.acceleration < 0 ? -1 : 1, e.c.rotation += -1.5 + Math.abs(2 * t.acceleration), 0 == t.vy && e.a_.c.gotoAndStop(1), e.d.rotation = -e.c.rotation
+			}, m.play(), m.loop = !0, m.scale.x = .4, m.scale.y = .4;
+			let w = new PIXI.NineSlicePlane(pe.inputNineSlice[5], 15, 15, 15, 15);
+			w.width = 100, w.height = r, w.x = r, w.y = 0, n.addChild(w);
+			let v = new PIXI.NineSlicePlane(pe.inputNineSlice[5], 15, 15, 15, 15);
+			v.width = 100, v.height = r, v.x = -100, v.y = 0, n.addChild(v);
+			let I = new PIXI.NineSlicePlane(pe.inputNineSlice[5], 15, 15, 15, 15);
+			I.width = r, I.height = 100, I.x = 0, I.y = -100, n.addChild(I);
+			let C = new PIXI.NineSlicePlane(pe.inputNineSlice[5], 15, 15, 15, 15);
+			C.width = r, C.height = 100, C.x = 0, C.y = r, n.addChild(C);
+			let b = function() {
+					t.y;
+					for (let e in o) parseInt(e) < Math.floor((n.y - 640) / 1) && (k.add(Math.max(1, h)), o[e].sprite.destroy(), delete o[e]);
+					t.isOnGround = !1, m.x = t.x + t.width / 2, m.y = t.y + t.height;
+					let e = .4;
+					s.d && (t.vx += e), s.a && (t.vx -= e), s.w && (t.vy -= e), s.s && (t.vy += e), t.acceleration = u.linear(t.acceleration, t.vx / 5, .5, Je), t.vx *= .9, t.vy *= .9, t.y += t.vy, t.x += t.vx;
+					let i = Math.abs(t.vx / 40 / 4),
+						a = Math.abs(t.vy / 40 / 4);
+					m.scale.x = .4 * (1 + i - a), m.scale.y = .4 * (1 + a - i), (t.x < 0 || t.x > r - t.width) && (t.vx /= -1, t.acceleration /= -1), (t.y < 0 || t.y > r - t.height) && (t.vy /= -1), t.x < 0 && (t.x = 0), t.y < 0 && (t.y = 0), t.x > r - t.width && (t.x = r - t.width), t.y > r - t.height && (t.y = r - t.height);
+					for (let e in o) {
+						let i = o[e];
+						if (g(t, i) && t.vy > 0 && t.y < i.y - t.height + 4 + t.vy) {
+							if (t.y = i.y - t.height, t.isOnGround = !0, t.vy = 0, t.max < i.id) {
+								let e = i.id - t.max;
+								k.add(10 * (e - 1)), p--, 0 == p && (h++, P.text = "mph: " + h, p = 10)
+							}
+							t.max = i.id;
+							let e = 7;
+							h >= 7 && (e *= 2), h >= 10 && (e *= 1.5), h >= 16 && (e *= 1.5), h >= 20 && (e *= 2), s[" "] && (t.vy -= e + Math.abs(1.5 * t.vx))
+						}
+					}
+					n.x = u.linear(n.x, c.screen.width / 2 - t.x, .2, Je), n.y = u.linear(n.y, c.screen.height / 2 - t.y, .2, Je), -n.y + c.screen.height < t.y && !S && (S = !0, je.blurPan(c.stage, (function() {
+						T()
+					}))), n.y += h / 2
+				},
+				S = !1;
+			c.ticker.add(b);
+			let M = 0,
+				k = a(M, 32);
+			k.add = function(e) {
+				M += e, k.text = M
+			}, k.anchor.set(1, 0), k.x = c.screen.width - 20, k.y = 20, c.stage.addChild(k);
+			let P = a("mph: 0", 32);
+			P.anchor.set(0, 0), P.x = 20, P.y = 20, c.stage.addChild(P), i.push(P), i.push(k), i.push(C), i.push(w), n.addChild(m), i.push(m);
+			let T = function() {
+				for (let e in o) o[e].sprite.destroy();
+				for (let e = 0; e < i.length; e++) i[e].destroy();
+				document.removeEventListener("keydown", l), document.removeEventListener("keyup", d), document.removeEventListener("pointerdown", f), document.removeEventListener("pointerup", x), c.ticker.remove(b), je.gameList(), je.results(M, Math.floor(M / 50))
+			}
+		},
+		results: function(e, i = 10, r = 50, s = -1, l = o.ui.score) {
+			if ("number" == typeof e) return void je.message(c.stage, "Forgotten source code rework for this results page!");
+			let d = je.blackTint(e, .2);
+			d.start();
+			let h = new PIXI.NineSlicePlane(pe.inputNineSlice[2]);
+			h.width = 200, h.height = 200, h.x = c.screen.width / 2, h.y = c.screen.height / 2, h.pivot.set(h.width / 2, h.height / 2), e.addChild(h);
+			let p = new PIXI.BitmapText(-1 == s ? o.ui.gameOver : s, {
+				fontName: "ShagBlack",
+				fontSize: 24
+			});
+			p.anchor.set(.5, 0), p.x = h.width / 2, p.y = 30, h.addChild(p);
+			let m = h.width / 2,
+				y = a(l + ": " + i, 20, "center", void 0, 1);
+			y.x = m, y.y = p.y + 70, -1 == s && h.addChild(y), [].push(y);
+			let g = 0,
+				x = new PIXI.Container,
+				w = new PIXI.Sprite(pe["Sprites/GameUI"][14]);
+			x.addChild(w), w.x = 0, w.y = 0, w.scale.x = .75, w.scale.y = .75, w.anchor.set(.5, .5), g += w.texture.trim.width / 2 * w.scale.x;
+			let v = a(r, 20, "left", "center", 1);
+			v.anchor.set(0, .5), v.x = g + 10, v.y = -2, g += v.width, x.addChild(v), x.x = m - g / 2, x.y = p.y + 50, h.addChild(x);
+			let I = {},
+				C = 0,
+				b = Math.min(1e4, r),
+				S = !1,
+				k = new M((function() {
+					S || (S = !0, r > 0 && n.sfx && (ye.collect.stop(), ye.collect.play()), function() {
+						for (let t = 0; t < b; t++) {
+							let t = new PIXI.Sprite(pe["Sprites/GameUI"][14]);
+							t.scale.x = .4 + .5 * Math.random(), t.scale.y = t.scale.x, t.anchor.set(.5, .5), t.y = w.transform.worldTransform.ty, t.vr = Math.random() - .5, t.facing = Math.random() * Math.PI * 2;
+							let i = 1 + 8 * Math.random();
+							t.vx = i * Math.cos(t.facing), t.vy = i * Math.sin(t.facing), t.x = w.transform.worldTransform.tx, e.addChild(t), I[C++] = t
+						}
+						0 != b && (w.visible = !1), setTimeout((function() {
+							t.coins += r, Q()
+						}), 500), A()
+					}())
+				}), 20, h.height - 20, h.width - 40, 30, o.ui.continue, 0, 0, 1, 1, "center");
+			h.addChild(k.element);
+			let P = 0,
+				T = Math.random() - .5,
+				A = function() {
+					k.interactive = !1, L.x = h.x, L.y = h.y, L.rotation = h.rotation, L.scale = h.scale, h.closing = !0, P = 0
+				},
+				L = {
+					x: c.screen.width / 2,
+					y: c.screen.height / 2,
+					rotation: T,
+					scale: .5
+				};
+			h.onDestroyed = function() {}, h.destroyBook = function() {
+				h.onDestroyed(), c.ticker.remove(D), k.destroy(), w.destroy(), v.destroy(), h.destroy({
+					children: !0
+				})
+			};
+			let E = function() {
+					for (let e in I) {
+						let t = I[e];
+						t.y += t.vy * Je, t.x += t.vx * Je;
+						let i = 50,
+							n = 50;
+						t.facing = Math.atan2(n - t.y, i - t.x);
+						let a = 8,
+							o = f(t.x, t.y, i, n);
+						o < 50 ? (t.vx = a * Math.cos(t.facing), t.vy = a * Math.sin(t.facing)) : (t.vx = u.linear(t.vx, a * Math.cos(t.facing), .02, Je), t.vy = u.linear(t.vy, a * Math.sin(t.facing), .02, Je)), t.rotation += t.vr / 10 * Je, o < 5 * Je && (t.destroy(), b--, delete I[e]), b <= 0 && c.ticker.remove(E)
+					}
+				},
+				D = function() {
+					if (h.closing) {
+						if (h.y = ease[16](Math.min(40, P), L.y, -L.y + c.screen.height + 500, 40), h.rotation = ease[1](Math.min(70, P), L.rotation, T, 70), P > 40) return d.end(), void h.destroyBook()
+					} else h.x = ease[17](Math.min(80, P), L.x, 0, 80), h.y = ease[8](Math.min(70, P), L.y, -20, 70), h.rotation = window.eases.easeOutElastic(Math.min(100, P), L.rotation, -T, 100), h.scale.x = window.eases.easeOutElastic(Math.min(90, P), L.scale, .5, 90);
+					h.scale.y = h.scale.x, P += Je
+				};
+			return c.ticker.add(D), c.ticker.add(E), h
+		},
+		message: function(e, t, i = -1, n = function() {}, a = -1, o, r = !0, s = 1) {
+			let l = !1;
+			"string" == typeof e && (e = c.stage, t = "Forgotten source code rework for this page!", i = -1, n = function() {}, a = -1, l = !0);
+			let d = je.blackTint(e, .2, r);
+			d.start();
+			let h = new PIXI.NineSlicePlane(pe.inputNineSlice[2]);
+			l && (h.zIndex = 20), h.width = Math.max(320, c.screen.width / 2), h.x = c.screen.width / 2, h.y = c.screen.height / 2, e.addChild(h);
+			let u = 0; - 1 == i && (u += -70);
+			let p, m = new PIXI.BitmapText(t, {
+				fontName: "ShagBlack",
+				fontSize: 24,
+				breakWords: !0,
+				wordWrap: !0,
+				wordWrapWidth: 200,
+				maxWidth: h.width - 90 - 30 - u,
+				whiteSpace: "normal"
+			});
+			h.height = m.height + 90, m.anchor.set(0, .5), m.x = 110 + u, m.y = h.height / 2 - 10, h.addChild(m), -1 != i && (p = new PIXI.Sprite(i), h.addChild(p), p.anchor.set(.5, .5), p.y = h.height / 2 - 10, p.x = 60, p.scale.x = .8 * s, p.scale.y = .8 * s);
+			let y = 0; - 1 != a && (h.height += 40), h.pivot.set(h.width / 2, h.height / 2);
+			let f, g, x, w = Math.random() - .5,
+				v = function() {
+					h.closing || (C.x = h.x, C.y = h.y, C.rotation = h.rotation, C.scale = h.scale, h.closing = !0, y = 0)
+				}; - 1 == a ? (f = je.exitButton(v, h.width - 20, 20, .3, .1), f.sprite.alpha = 0, h.addChild(f.sprite), f.interactive = !1, f.show = !1, setTimeout((function() {
+				f.show = !0, f.sprite.interactive = !0
+			}), 500)) : (g = new M((function() {
+				I = 0, v()
+			}), 15, h.height - 15, h.width / 2 - 20, 30, o[0], 0, 0, 1, 1, "center"), h.addChild(g.element), x = new M((function() {
+				n = a, v()
+			}), h.width - 15, h.height - 15, h.width / 2 - 20, 30, o[1], 0, 1, 1, 1, "center"), h.addChild(x.element));
+			let I = 0,
+				C = {
+					x: c.screen.width / 2,
+					y: c.screen.height / 2,
+					rotation: w,
+					scale: .5
+				};
+			h.onDestroyed = function() {}, h.destroyBook = function() {
+				h.onDestroyed(), c.ticker.remove(b), -1 == a ? f.destroy() : (g.destroy(), x.destroy()), m.destroy(), -1 != i && p.destroy(), h.destroy({
+					children: !0
+				}), n()
+			};
+			let b = function() {
+				if (-1 == a && (f.show && (f.sprite.alpha += .05), f.sprite.alpha >= 1 && (f.sprite.alpha = 1, f.show = !1)), h.closing) {
+					if (h.y = ease[16](Math.min(40, y), C.y, -C.y + c.screen.height + 500, 40), h.rotation = ease[1](Math.min(70, y), C.rotation, w, 70), y > 40) return d.end(), void h.destroyBook()
+				} else h.x = ease[17](Math.min(80, y), C.x, 0, 80), h.y = ease[8](Math.min(70, y), C.y, -20, 70), h.rotation = window.eases.easeOutElastic(Math.min(100, y), C.rotation, -w, 100), h.scale.x = window.eases.easeOutElastic(Math.min(90, y), C.scale, .5, 90);
+				h.scale.y = h.scale.x, y += Je
+			};
+			return c.ticker.add(b), h.exit = v, h
+		},
+		wardrobe: function(e = new PIXI.Container, r = function() {}) {
+			je.initializeScreenResolution(e);
+			let l = new PIXI.Sprite(pe["Sprites/Rooms"][7]);
+			e.addChild(l), l.interactive = !0, l.x = c.screen.width / 2, l.y = c.screen.height / 2, l.anchor.set(.5, .5), l.scale.x = 1, l.scale.y = 1;
+			let d = new PIXI.Container;
+			e.addChild(d);
+			let p = je.coinCounter(e);
+			d.addChild(p);
+			let m = t.coins;
+			p.x = 20, p.y = 20;
+			let f = {},
+				g = 0,
+				x = 0,
+				w = 0,
+				v = [],
+				I = a("", 32, "center");
+			I.x = c.screen.width / 2, I.y = c.screen.height - 150;
+			let C = n.costume,
+				b = new PIXI.Container,
+				S = [],
+				P = 0;
+
+			function T(r) {
+				null != S[r] && S[r].destroyPage();
+				let l = function(r) {
+					let l = [],
+						d = new PIXI.Container,
+						h = {},
+						v = new PIXI.Container,
+						b = new PIXI.Graphics;
+					v.mask = b, d.addChild(b), d.addChild(v), v.x = 40, v.y = 130;
+					let S = c.screen.width - 80,
+						k = c.screen.height - 300 - 50;
+					b.beginFill(0), b.drawRect(v.x, v.y, S, k), b.endFill(), v.interactive = !0, v.on("pointerdown", (function(e) {
+						let t = e.clientY / s;
+						v.dragOffset = {
+							y: t - v.y
+						}, v.prevY = v.y, v.vy = 0, v.scrolling = !0
+					}));
+					let T = function(e) {
+							if (!v.scrolling) return;
+							v.wheel = !1;
+							let t = e.clientY / s;
+							v.prevY = v.y, v.y = t - v.dragOffset.y
+						},
+						A = function(e) {
+							v.wheel = !0, v.vy = u.linear(v.vy, -e.deltaY / 2 * Je, .25), v.vy > 40 * Je && (v.vy = 40 * Je), v.vy < -40 * Je && (v.vy = -40 * Je)
+						};
+					document.addEventListener("wheel", A);
+					let E = function() {
+						v.scrolling = !1
+					};
+					document.addEventListener("pointermove", T), document.addEventListener("pointerup", E), v.vy = 0;
+					let X = function() {
+						let e = 120 - B - 50 + k;
+						v.vy = u.linear(v.vy, 0, v.wheel ? .1 : .05, Je), v.scrolling ? v.vy = v.y - v.prevY : v.y += v.vy, N.targetAlpha = 1, v.y >= 130 && (v.y = 130, v.vy = 0), v.y <= e && (N.targetAlpha = 0, v.y = e, v.vy = 0), N.alpha = u.linear(N.alpha, N.targetAlpha, .1, Je)
+					};
+					c.ticker.add(X);
+					let N = new PIXI.Sprite(pe["Sprites/Rooms"][11]);
+					d.addChild(N), N.x = v.x, N.y = v.y + k - 90, N.width = S, N.height = 100;
+					let G = F[r].items,
+						B = 0;
+					for (let s = 0; s < G.length; s++) {
+						let d = G[s],
+							c = R[d],
+							u = !1;
+						if (null != c.drawnBy && (u = !0), c.hidden) continue;
+						if (c.secret && !c.owned) continue;
+						let b = !1;
+						if (null != c.checkAvailability && c.checkAvailability() && (c.owned = !0), null != Ke.costumes[d] && (Ke.costumes[d].expiry > Date.now() && 0 == c.owned && (b = !0, c.discount = Ke.costumes[d]), Ke.costumes[d].expiry > Date.now() && c.limited && (b = !0, c.discount = Ke.costumes[d])), -1 == c.cost && (b = !1), c.limited && !b && !c.owned) continue;
+						let k = !1,
+							T = !1;
+						c.owned || -1 != c.cost || (k = !0), c.limited && (T = !0);
+						let A = k ? 11 : 3;
+						T && (A = 2);
+						let E = new M((function() {
+								I.text = ""
+							}), 0, 0 + B, S, 120 + (c.limited && !c.owned ? 30 : 0), "", 0, 0, 0, A),
+							X = 0,
+							N = -1;
+						c.limited && !c.owned && (N = new M((function() {}), S / 2, 10, S - 20, 20, "LIMITED! - ", 0, .5, 0, 1, "center"), l.push(N), E.element.addChild(N.element), N.element.interactive = !1, X = 30), h[d] = E, E.element.interactive = !1, v.addChild(E.element);
+						let z = new PIXI.Rectangle(0, 0, 0, 0),
+							_ = -1;
+						if (-1 != c.sprite && (_ = new PIXI.Sprite(pe["Sprites/Poses"][c.sprite]), _.scale.x = .5, _.scale.y = .5, _.hitArea = z, E.element.addChild(_), _.anchor.set(.5, .5), _.x = 50, _.y = 60 + X, u && (_.scale.x = .34, _.scale.y = .34, _.y -= 14), k)) {
+							let e = new PIXI.ColorMatrixFilter;
+							e.matrix = [.5, 0, 0, 0, 0, 0, .5, 0, 0, 0, 0, 0, .5, 0, 0, 0, 0, 0, 1, 0], e.blackAndWhite(1), _.filters = [e]
+						}
+						let W, j, V = a(c.name, 24, "left", "middle", T ? 1 : 0);
+						if (k && (V.text = "???"), V.x = 100, F[r].votes) {
+							let e = a(s + 1 + ".", 24, "center", "middle", 3);
+							E.element.addChild(e), e.y = 20 + X, e.x = 100, V.x += e.width + 10
+						}
+						if (V.width > E.element.width - V.x - 30 && (V.width = E.element.width - V.x - 30, V.scale.y = V.scale.x), V.y = 20 + X, E.element.addChild(V), null != c.artist) {
+							let e = a(o.ui.artist + ": " + c.artist.name, 12, "left", "middle", T ? 1 : 0);
+							e.x = 100, e.y = 50 + X, E.element.addChild(e)
+						}
+						if (V.width > S - 50 && (V.width = S - 50), V.scale.y = V.scale.x, c.owned || k ? (W = a(o.ui.owned, 16, void 0, void 0, T ? 1 : 0), k && (W.text = ""), W.x = 100, W.scale.y = W.scale.x, W.y = 50 + (16 * -W.scale.y + 16) / 2 + (null == c.artist ? 0 : 15) + X, E.element.addChild(W)) : (W = a(c.cost, 16, void 0, void 0, T ? 1 : 0), W.x = 130, W.width > 60 && (W.width = 60), W.scale.y = W.scale.x, W.y = 50 + (16 * -W.scale.y + 16) / 2 + (null == c.artist ? 0 : 15) + X, E.element.addChild(W), l.push(W), j = new PIXI.Sprite(pe["Sprites/GameUI"][14]), E.element.addChild(j), j.x = 110, j.y = 60 + (null == c.artist ? 0 : 15) + X, j.scale.x = .75, j.scale.y = .75, j.anchor.set(.5, .5), j.hitArea = z, l.push(j), -1 == c.sprite && (j.x -= 80), 0 == c.cost && (W.text = "FREE", W.x = 100, j.visible = !1)), b) {
+							let e, t, i;
+							1 != c.discount.price && (e = new PIXI.NineSlicePlane(pe.inputNineSlice[18], 15, 15, 15, 15), e.x = W.x - 3, e.y = W.y + 7, e.width = W.width + 6, e.height = W.height - 11, E.element.addChild(e), l.push(e), t = a(c.cost * c.discount.price, 16, void 0, void 0, T ? 1 : 0), t.x = 130, t.width > 60 && (t.width = 60), t.scale.y = t.scale.x, t.y = W.y + 20, E.element.addChild(t), l.push(t), i = a(Ge(c.discount.expiry - Date.now()), 16, void 0, void 0, T ? 1 : 0), i.y = 100, i.x = 20, u && (i.anchor.set(.5, .5), i.x = _.x, i.y = 10, i.scale.x = .8, i.scale.y = .8), E.element.addChild(i));
+							let n = setInterval((function() {
+									b && (1 != c.discount.price && (i.text = Ge(c.discount.expiry - Date.now())), c.limited && !c.owned && (N.inputText.text = "LIMITED! " + Ge(c.discount.expiry - Date.now())), Date.now() > c.discount.expiry && (b = !1, W.destroyDiscount(), c.limited && !c.owned && (N.inputText.text = "The time period to buy costume is over!")))
+								}), 1e3),
+								o = !1;
+							1 == c.discount.price && (o = !0), W.destroyDiscount = function() {
+								o || (o = !0, t.destroy(), i.destroy(), e.destroy())
+							}, Be.push(n)
+						}
+						if (-1 == c.sprite && (W.x -= 80, V.x -= 80), !c.owned) {
+							let a = new M((function() {
+								if (P != r) return void je.message(e, "You need to be in the same page as the category you're buying from!");
+								if (c.requiredLevel > n.level) return void je.message(e, "You need atleast level " + c.requiredLevel + " to buy this item!", pe["Sprites/GameUI"][35]);
+								if (c.limited && !b) return void je.message(e, "The time period to buy the costume is over!");
+								if (-1 == c.cost) {
+									if ("object" == typeof c.achievement) {
+										let t = y[c.achievement[0]].name;
+										for (let e = 1; e < c.achievement.length; e++) t += (e == c.achievement.length - 1 ? '" and "' : '", "') + y[c.achievement[e]].name;
+										je.message(e, o.message.obtainCostume(t), pe["Sprites/GameUI"][y[c.achievement[0]].icon])
+									} else je.message(e, o.message.obtainCostume(y[c.achievement].name), pe["Sprites/GameUI"][y[c.achievement].icon]);
+									return
+								}
+								let s = c.cost;
+								if (b && (s = c.cost * c.discount.price), s > m) return x < .01 && (w = 0), x = 2, I.text = "Not enough coins!", I.alpha = 2, void(n.sfx && (ye.fail.stop(), ye.fail.play()));
+								b && (W.destroyDiscount(), c.limited && (N.inputText.text = "OWNED"));
+								let l = Math.floor(Math.max(600, s) / 6);
+								i.happiness += 40 - s / 100, i.progress += 50;
+								let d = Math.floor(s / 10),
+									h = d / l;
+								setTimeout((function() {
+									if (n.sfx) {
+										if (0 == s) return;
+										s > 500 ? ye.coinlarge.play() : s > 100 ? ye.coinmedium.play() : ye.coinsmall.play()
+									}
+								}), 750);
+								let u = setInterval((function() {
+									if (h <= 0 || U) clearInterval(u);
+									else {
+										h--;
+										for (let t = 0; t < (h <= 0 ? d % l : l); t++) {
+											let t = new PIXI.Sprite(pe["Sprites/GameUI"][14]);
+											t.scale.x = .4 + .5 * Math.random(), t.scale.y = t.scale.x, t.anchor.set(.5, .5), t.y = p.y + 20, t.vr = Math.random() - .5, t.vy = 20 * (Math.random() - .6), t.vx = 20 * (Math.random() - .1), t.x = p.x + 20, e.addChild(t), f[g++] = t
+										}
+									}
+								}), 1e3 / 24);
+								c.owned = !0, n.sfx && (ye.purchase.stop(), ye.purchase.play()), a.destroy(), Y.element.y += 30, Y.inputText.text = o.ui.wear, m -= s, t.coins = m, j.destroy(), W.text = o.ui.owned, c.owned = !0, 0 != c.cost && (W.x -= 30), H()
+							}), S - 10, 110 + X, 80, 20, k ? o.ui.info : o.ui.get, 0, 1, 1, T ? 1 : 4, "center");
+							E.element.addChild(a.element)
+						}
+						let H = function() {
+								if (C != d && ("Look" == O.currentPart ? O.onAnimationEnd = function() {
+										O.gotoPart("Look2"), O.onAnimationEnd = function() {
+											O.currentPart = -1
+										}
+									} : (O.gotoPart("Look2"), O.onAnimationEnd = function() {
+										O.currentPart = -1
+									}), L = 0, C = d, null != O.destroyCostume && (O.destroyCostume(), O.destroyCostume = void 0), c.apply(O), D = 1, c.owned)) {
+									for (let e in h) h[e].wear.inputText.text == o.ui.wearing && (h[e].wear.inputText.text = o.ui.wear);
+									n.costume = d, Y.inputText.text = o.ui.wearing
+								}
+							},
+							Y = new M(H, S - 10, 110 - (c.owned ? 0 : 30) + X, 80, 20, c.owned ? n.costume == d ? o.ui.wearing : o.ui.wear : o.ui.preview, 0, 1, 1, T ? 1 : 4, "center");
+						if (E.wear = Y, k || E.element.addChild(Y.element), l.push(V), l.push(E), u) {
+							let e = new PIXI.Sprite(pe.designerCredits[c.drawnBy.icon]);
+							E.element.addChild(e), e.anchor.set(.5, 1), e.x = _.x, e.y = E.element.height - 10, e.width = 80, e.scale.y = e.scale.x, l.push(e)
+						}
+						if (c.requiredLevel > n.level) {
+							let e = new PIXI.NineSlicePlane(pe.inputNineSlice[14]);
+							e.tint = 0, e.width = E.element.width, e.height = E.element.height, E.element.addChild(e), e.alpha = .8, e.interactive = !0;
+							let t = new PIXI.Sprite(pe["Sprites/GameUI"][41]);
+							t.x = E.element.height / 2, t.y = E.element.height / 2, t.anchor.set(.5, .5), t.scale.x = .75, t.scale.y = .75, E.element.addChild(t), t.hitArea = z;
+							let i = a("LEVEL " + c.requiredLevel, 24, "left", "middle");
+							i.x = E.element.height / 2 + 40, i.y = E.element.height / 2 - 2, i.width > E.element.width - i.x - 20 && (i.width = E.element.width - i.x - 20, i.scale.y = i.scale.x), E.element.addChild(i)
+						}
+						B += E.element.height + 4
+					}
+					let z = a(o.ui.comingsoon, 24, "center");
+					v.addChild(z), z.x = S / 2, z.y = B + 20, l.push(N), l.push(v), l.push(b);
+					let U = !1;
+					return d.destroyPage = function() {
+						if (!U) {
+							U = !0;
+							for (let e = 0; e < l.length; e++) l[e].destroyed || l[e].destroy(), null != l[e].destroyDiscount && l[e].destroyDiscount();
+							c.ticker.remove(X), document.removeEventListener("pointermove", T), document.removeEventListener("wheel", A), document.removeEventListener("pointerup", E), d.destroy()
+						}
+					}, d
+				}(r);
+				l.x = r * K, S[r] = l, b.addChild(l)
+			}
+			e.addChild(b);
+			let A = je.exitButton((function() {
+				r(), Q(), je.flash(e, !1, B)
+			}), c.screen.width - 40, 40, .4, 0);
+			e.addChild(A.sprite);
+			let L = 50;
+			d.origX = 0, d.time = 50;
+			let E = !1,
+				D = 0,
+				X = function() {
+					for (let e in f) {
+						let t = f[e];
+						t.y += t.vy * Je, t.x += t.vx * Je, t.vy += .5 * Je, t.vx = u.linear(t.vx, 0, .05, Je), t.rotation += t.vr / 10 * Je, t.y > c.screen.height + 200 && (t.destroy(), delete f[e])
+					}
+					G.matrix = [1 - D, 0, 0, 0, D, 0, 1 - D, 0, 0, D, 0, 0, 1 - D, 0, D, 0, 0, 0, 1, 0], G.resolution = s, D = u.linear(D, 0, .05, Je), L < 180 && L++, O.scale.x = window.eases.easeOutElastic(L, .9, -.15, 180), O.scale.y = window.eases.easeOutElastic(L, .7, .05, 180), E || (p.updateCounter(u.linear(p.getCounterAmount(), m, .1, Je)), d.x = 0, x > .01 && (d.x += Math.cos(w) * x * 5, w += .5 * Je, x = u.linear(x, 0, .1, Je)), I.alpha > 0 && (I.alpha -= .04))
+				};
+			c.ticker.add(X);
+			let O = Pe(me.Teardrop, h.Teardrop),
+				N = new PIXI.Rectangle(-60, -160, 120, 180);
+			O.hitArea = N, O.interactive = !0, O.on("pointerup", (function() {
+				n.totalSlaps++, 2763 == n.totalSlaps && (je.achievementQueue("slapTD2763"), Q());
+				let e = 1 + Math.floor(4 * Math.random());
+				ye.wave.stop(), n.sfx && (ye["slap" + e].attack = 0, ye["slap" + e].stop(), ye["slap" + e].play()), O.gotoPart("Slap"), O.currentPart = -1
+			})), O.onAnimationEnd = function() {
+				O.currentPart = -1
+			}, i.sleep < 20 && (O.visible = !1), R[n.costume].apply(O), e.addChild(O), O.x = c.screen.width / 2, O.y = c.screen.height / 2 + 250, O.scale.x = .8, O.scale.y = .8, O.play(60), O.gotoPart("Look");
+			let G = new PIXI.ColorMatrixFilter;
+
+			function B() {
+				for (let e = 0; e < Be.length; e++) clearInterval(Be[e]);
+				for (let e in f) null != f[e].destroy && f[e].destroy(), delete f[e];
+				I.destroy(), A.destroy(), l.destroy();
+				for (let e = 0; e < v.length; e++) v[e].destroyed || v[e].destroy();
+				p.destroyCounter(), null != O.destroyCostume && (O.destroyCostume(), O.destroyCostume = void 0), O.destroyAnimation(), c.ticker.remove(X), c.ticker.remove(H);
+				for (let e = 0; e < S.length; e++) S[e].destroyPage();
+				z.destroy(), W.destroy(), j.destroy(), E = !0
+			}
+			G.matrix = [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0], O.filters = [G], e.addChild(I);
+			let z = a("CATEGORY", 24, "center");
+			z.x = c.screen.width / 2, z.y = 100, e.addChild(z);
+			let U = !1;
+
+			function _() {
+				if (z.text = F[P].name, W.sprite.visible = !0, j.sprite.visible = !0, 0 == P && (W.sprite.visible = !1), P == F.length - 1 && (j.sprite.visible = !1), V = 0, F[P].amaze)
+					if (-1 == O.currentPart) {
+						if (U) return;
+						O.gotoPart("Look3"), U = !0
+					} else O.onAnimationEnd = function() {
+						U || (O.gotoPart("Look3"), U = !0)
+					}
+			}
+			let W = new k((function() {
+				Z(1), P--, _(), T(P)
+			}), pe["Sprites/GameUI"][51], {
+				x: z.x - 120,
+				y: z.y + 2,
+				scale: {
+					x: .5,
+					y: .5
+				}
+			});
+			e.addChild(W.sprite);
+			let j = new k((function() {
+				Z(-1), P++, _(), T(P)
+			}), pe["Sprites/GameUI"][52], {
+				x: z.x + 120,
+				y: z.y + 2,
+				scale: {
+					x: .5,
+					y: .5
+				}
+			});
+			e.addChild(j.sprite);
+			let V = 0;
+			_(), V = 30;
+			let H = function() {
+					let e = Y;
+					for (let t in J) {
+						let i = eases.easeOutCubic(Math.min(50, J[t].time), 0, 1, 50),
+							n = eases.easeInOutQuad(Math.min(50, 50 * i), 0, J[t].direction, 50) * K;
+						e += n, J[t].time += Je, J[t].time > 50 && (Y += n, delete J[t])
+					}
+					z.y = eases.easeOutBack(Math.min(25, V), 95, 5, 25), V += Je, b.x = e
+				},
+				Y = 0,
+				K = c.screen.width,
+				J = {},
+				q = 0;
+
+			function Z(e) {
+				J[q] = {
+					direction: e,
+					time: 0
+				}, q++
+			}
+			return T(0), c.ticker.add(H), e
+		},
+		achievements: function(e = new PIXI.Container, t = function() {}) {
+			je.initializeScreenResolution(e);
+			let i = new PIXI.Sprite(pe["Sprites/Rooms"][18]);
+			e.addChild(i), i.interactive = !0, i.x = c.screen.width / 2, i.y = c.screen.height / 2, i.anchor.set(.5, .5), i.scale.x = 1, i.scale.y = 1;
+			let r = new PIXI.Container;
+			e.addChild(r);
+			let l = {},
+				d = 0,
+				h = 0,
+				p = [],
+				m = 0;
+			for (let e in y) y[e].done && m++;
+			let f = new PIXI.BitmapText(o.ui.achievements + ": " + m + "/" + Object.keys(y).length, {
+				fontSize: 32,
+				fontName: "arial"
+			});
+			f.x = 40, f.y = 20, f.width > c.screen.width - 130 && (f.width = c.screen.width - 130, f.scale.y = f.scale.x), e.addChild(f);
+			let g = a("", 32, "center");
+			g.x = c.screen.width / 2, g.y = c.screen.height - 150, n.costume;
+			let x = new PIXI.Container,
+				w = new PIXI.Graphics;
+			x.mask = w, e.addChild(x), x.x = 40, x.y = 80;
+			let v = c.screen.width - 80,
+				I = c.screen.height - 80;
+			w.beginFill(0), w.drawRect(x.x, x.y, v, I), w.endFill(), x.interactive = !0, x.on("pointerdown", (function(e) {
+				let t = e.clientY / s;
+				x.dragOffset = {
+					y: t - x.y
+				}, x.prevY = x.y, x.vy = 0, x.scrolling = !0
+			}));
+			let C = function(e) {
+					if (!x.scrolling) return;
+					x.wheel = !1;
+					let t = e.clientY / s;
+					x.prevY = x.y, x.y = t - x.dragOffset.y
+				},
+				b = function(e) {
+					x.wheel = !0, x.vy = u.linear(x.vy, -e.deltaY / 2 * Je, .25), x.vy > 40 * Je && (x.vy = 40 * Je), x.vy < -40 * Je && (x.vy = -40 * Je)
+				};
+			document.addEventListener("wheel", b);
+			let S = function() {
+				x.scrolling = !1
+			};
+			document.addEventListener("pointermove", C), document.addEventListener("pointerup", S), x.vy = 0;
+			let M = function() {
+				let e = 80 - P - 50 + I;
+				x.vy = u.linear(x.vy, 0, x.wheel ? .1 : .05, Je), x.scrolling ? x.vy = x.y - x.prevY : x.y += x.vy, k.targetAlpha = 1, x.y >= 80 && (x.y = 80, x.vy = 0), x.y <= e && (k.targetAlpha = 0, x.y = e, x.vy = 0), k.alpha = u.linear(k.alpha, k.targetAlpha, .1, Je)
+			};
+			c.ticker.add(M);
+			let k = new PIXI.Sprite(pe["Sprites/Rooms"][11]);
+			k.x = x.x, k.y = x.y + I - 90, k.width = v, k.height = 100;
+			let P = 0;
+			for (let e in y) {
+				let t = y[e];
+				if (t.secret && !t.done) continue;
+				let i = new PIXI.NineSlicePlane(pe.inputNineSlice[2]);
+				i.width = v, i.x = 0, i.y = P, x.addChild(i);
+				let n = new PIXI.BitmapText(t.title, {
+					fontName: "ShagBlack",
+					fontSize: 24
+				});
+				i.height = n.height + 50, n.anchor.set(0, .5), n.x = 80, n.y = 20, i.addChild(n);
+				let o = new PIXI.BitmapText(t.description, {
+					fontName: "ShagBlack",
+					fontSize: 16,
+					breakWords: !0,
+					wordWrap: !0,
+					wordWrapWidth: 200,
+					maxWidth: i.width - 140,
+					whiteSpace: "normal"
+				});
+				o.anchor.set(0, 0), i.height += o.height, o.anchor.set(0, .5), o.x = 80, o.y = 35 + o.height / 2, i.addChild(o), null == t.icon && (t.icon = 11);
+				let r = pe["Sprites/GameUI"][t.icon],
+					s = new PIXI.Sprite(r);
+				i.addChild(s), s.anchor.set(.5, .5), s.y = i.height / 2 - 5, s.x = 40, s.scale.x = .5, s.scale.y = .5, p.push(i);
+				let l = t.done ? 26 : 25,
+					d = new PIXI.Sprite(pe["Sprites/GameUI"][l]);
+				if (d.anchor.set(.5, .5), i.addChild(d), d.x = v - 40, d.y = i.height / 2 - 5, null != t.getProgress) {
+					let e = a(t.getProgress(), 12, "center", void 0, 1);
+					e.x = v - 40, e.y = d.y + 25, i.addChild(e)
+				}
+				P += i.height + 4
+			}
+			p.push(f);
+			let T = je.exitButton((function() {
+				t(), je.flash(e, !1, E)
+			}), c.screen.width - 40, 40, .4, 0);
+			e.addChild(T.sprite), r.origX = 0, r.time = 50;
+			let A = !1,
+				L = function() {
+					A || (r.x = 0, d > .01 && (r.x += Math.cos(h) * d * 5, h += .5 * Je, d = u.linear(d, 0, .1, Je)), g.alpha > 0 && (g.alpha -= .04))
+				};
+
+			function E() {
+				c.ticker.remove(M), document.removeEventListener("pointermove", C), document.removeEventListener("pointerup", S), document.removeEventListener("wheel", b);
+				for (let e in l) null != l[e].destroy && l[e].destroy(), delete l[e];
+				g.destroy(), T.destroy(), i.destroy();
+				for (let e = 0; e < p.length; e++) p[e].destroyed || p[e].destroy();
+				c.ticker.remove(L), A = !0
+			}
+			return c.ticker.add(L), e.addChild(g), p.push(k), p.push(x), p.push(w), e
+		},
+		settings: Ne,
+		cargame: function() {
+			let e = new PIXI.TilingSprite(pe["Sprites/RepeatingUI"][0]);
+			c.stage.addChild(e), e.interactive = !0, e.x = 0, e.y = 0, e.width = c.screen.width, e.height = c.screen.height, e.clampMargin = 1;
+			let t = 0,
+				i = !1;
+			window.onblur = function() {
+				i || f()
+			};
+			let a = new PIXI.Container;
+			c.stage.addChild(a), a.pivot.x = -c.screen.width / 2, a.pivot.y = -c.screen.height / 2;
+			let o = Matter.Engine.create(),
+				r = {},
+				s = !1;
+			document.addEventListener("keydown", (function(e) {
+				let t = e.key.toLowerCase();
+				"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), r[t] = !0, ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key) && e.preventDefault()
+			})), document.addEventListener("keyup", (function(e) {
+				let t = e.key.toLowerCase();
+				"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), r[t] = !1
+			})), document.addEventListener("pointerdown", (function() {
+				s = !0
+			})), document.addEventListener("pointerup", (function() {
+				s = !1
+			}));
+			let l = [],
+				d = [],
+				h = {
+					box: Matter.Bodies.rectangle(0, -400, 100, 100),
+					sprite: function() {
+						let e = new PIXI.NineSlicePlane(pe.inputNineSlice[5], 15, 15, 15, 15);
+						return e.width = 100, e.height = 100, a.addChild(e), e.pivot.x = 50, e.pivot.y = 50, e
+					}()
+				};
+			l.push(h), d.push(h.box);
+			for (let e = 0; e < 500; e++) {
+				let t = {},
+					i = .1 + Math.random() / 2,
+					n = Matter.Bodies.polygon(400 * (Math.random() - .5), -300 - 100 * e, 16, 48 * i);
+				t.box = n;
+				let o = new PIXI.Sprite(pe["Sprites/GameUI"][Math.round(6 * Math.random())]);
+				o.scale.x = i, o.scale.y = i, o.anchor.set(.5, .5), a.addChild(o), t.sprite = o, l.push(t), d.push(n), t.sprite.tint = 16777215 * Math.random()
+			}
+			let p = Matter.Bodies.rectangle(0, 200, 16e3, 120, {
+				isStatic: !0
+			});
+			Matter.Composite.add(o.world, [p, ...d]);
+			let m = Pe(me.faceMinigame);
+			a.addChild(m);
+			let y = function(t) {
+				for (let e = 0; e < l.length; e++) {
+					let t = l[e].sprite,
+						i = l[e].box;
+					t.rotation = i.angle, t.x = i.position.x, t.y = i.position.y
+				}
+				r.a && Matter.Body.setAngularVelocity(h.box, h.box.angularVelocity - .01 * Je), r[" "] && null != Matter.Collision.collides(p, h.box) && Matter.Body.setVelocity(h.box, {
+					x: h.box.velocity.x,
+					y: h.box.velocity.y - 20
+				}), r.d && Matter.Body.setAngularVelocity(h.box, h.box.angularVelocity + .01 * Je), m.x = h.sprite.x, m.y = h.sprite.y, m.rotation = h.sprite.rotation, a.x = u.linear(a.x, -l[0].sprite.x, .05, Je), e.tilePosition.x = a.x / 2, Matter.Engine.update(o, t * (1e3 / 60))
+			};
+
+			function f() {
+				i = !i, g.changePause(i), i ? (t = -Date.now(), n.inGame = !1, c.ticker.remove(y), je.message("Game paused", pe["Sprites/GameUI"][32], (function() {
+					f()
+				}), (function() {
+					je.blurPan(c.stage, (function() {
+						! function() {
+							g.destroyPause(), Matter.World.clear(o.world), Matter.Engine.clear(o);
+							for (let e = 0; e < l.length; e++) l[e].sprite.destroy();
+							m.destroyAnimation(), e.destroy()
+						}(), je.gameList(), je.results(0, 0, "what", "what")
+					}))
+				}), ["Play", "Home"], !1)) : (n.inGame = !0, c.ticker.add(y))
+			}
+			m.gotoAndStop(Math.floor(100 * Math.random())), h.sprite.visible = !1, c.ticker.add(y);
+			let g = je.pauseButton((function() {
+				f()
+			}), .4);
+			c.stage.addChild(g), g.x = c.screen.width - 40, g.y = 40
+		},
+		cargame2: function() {
+			let e = new PIXI.TilingSprite(pe["Sprites/RepeatingUI"][0]);
+			c.stage.addChild(e), e.interactive = !0, e.x = 0, e.y = 0, e.width = c.screen.width, e.height = c.screen.height, e.clampMargin = 1;
+			let t = 0,
+				i = !1;
+			window.onblur = function() {
+				i || f()
+			};
+			let a = new PIXI.Container;
+			c.stage.addChild(a), a.pivot.x = -c.screen.width / 2, a.pivot.y = -c.screen.height / 2;
+			let o = Matter.Engine.create(),
+				r = {},
+				s = !1;
+			document.addEventListener("keydown", (function(e) {
+				let t = e.key.toLowerCase();
+				"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), r[t] = !0, ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(e.key) && e.preventDefault()
+			})), document.addEventListener("keyup", (function(e) {
+				let t = e.key.toLowerCase();
+				"ArrowLeft" == e.key && (t = "a"), "ArrowRight" == e.key && (t = "d"), "ArrowUp" == e.key && (t = " "), "w" == e.key && (t = " "), r[t] = !1
+			})), document.addEventListener("pointerdown", (function() {
+				s = !0
+			})), document.addEventListener("pointerup", (function() {
+				s = !1
+			}));
+			let l = [],
+				d = [],
+				h = {
+					box: Matter.Bodies.rectangle(0, -400, 100, 100),
+					sprite: function() {
+						let e = new PIXI.NineSlicePlane(pe.inputNineSlice[5], 15, 15, 15, 15);
+						return e.width = 100, e.height = 100, a.addChild(e), e.pivot.x = 50, e.pivot.y = 50, e
+					}()
+				};
+			l.push(h), d.push(h.box);
+			for (let e = 0; e < 500; e++) {
+				let t = {},
+					i = .1 + Math.random() / 2,
+					n = Matter.Bodies.polygon(400 * (Math.random() - .5), -300 - 100 * e, 16, 48 * i);
+				t.box = n;
+				let o = new PIXI.Sprite(pe["Sprites/GameUI"][Math.round(6 * Math.random())]);
+				o.scale.x = i, o.scale.y = i, o.anchor.set(.5, .5), a.addChild(o), t.sprite = o, l.push(t), d.push(n), t.sprite.tint = 16777215 * Math.random()
+			}
+			let p = Matter.Bodies.rectangle(0, 200, 16e3, 120, {
+				isStatic: !0
+			});
+			Matter.Composite.add(o.world, [p, ...d]);
+			let m = Pe(me.faceMinigame);
+			a.addChild(m);
+			let y = function(t) {
+				for (let e = 0; e < l.length; e++) {
+					let t = l[e].sprite,
+						i = l[e].box;
+					t.rotation = i.angle, t.x = i.position.x, t.y = i.position.y
+				}
+				r.a && Matter.Body.setAngularVelocity(h.box, h.box.angularVelocity - .01 * Je), r[" "] && null != Matter.Collision.collides(p, h.box) && Matter.Body.setVelocity(h.box, {
+					x: h.box.velocity.x,
+					y: h.box.velocity.y - 20
+				}), r.d && Matter.Body.setAngularVelocity(h.box, h.box.angularVelocity + .01 * Je), m.x = h.sprite.x, m.y = h.sprite.y, m.rotation = h.sprite.rotation, a.x = u.linear(a.x, -l[0].sprite.x, .05, Je), e.tilePosition.x = a.x / 2, Matter.Engine.update(o, t * (1e3 / 60))
+			};
+
+			function f() {
+				i = !i, g.changePause(i), i ? (t = -Date.now(), n.inGame = !1, c.ticker.remove(y), je.message("Game paused", pe["Sprites/GameUI"][32], (function() {
+					f()
+				}), (function() {
+					je.blurPan(c.stage, (function() {
+						! function() {
+							g.destroyPause(), Matter.World.clear(o.world), Matter.Engine.clear(o);
+							for (let e = 0; e < l.length; e++) l[e].sprite.destroy();
+							m.destroyAnimation(), e.destroy()
+						}(), je.gameList(), je.results(0, 0, "what", "what")
+					}))
+				}), ["Play", "Home"], !1)) : (n.inGame = !0, c.ticker.add(y))
+			}
+			m.gotoAndStop(Math.floor(100 * Math.random())), h.sprite.visible = !1, c.ticker.add(y);
+			let g = je.pauseButton((function() {
+				f()
+			}), .4);
+			c.stage.addChild(g), g.x = c.screen.width - 40, g.y = 40
+		},
+		crashHandler: function(e, t = -1) {
+			let i = "Unknown";
+			e.message.includes("(reading 'off')") && (i = "ERR_PIXI_DESTROYOBJECT"), e.message.includes("(reading 'stop')") && (i = "ERR_PIZZICATO_FAILURETOSTOPAUDIO"), e.message.includes("(reading 'buffer')") && (i = "ERR_PIZZICATO_AUDIOBUFFER"), e.message.includes("getRawSourceNode") && (i = "ERR_PIZZICATO_NOTLOADED"), e.message.includes("(setting 'x')") && (i = "ERR_FOODSYSTEM_FAILURETOSETPOSITION"), -1 != t && (i = t);
+			const n = new PIXI.Application({
+				background: "#000011",
+				width: c.screen.width,
+				height: c.screen.height,
+				resolution: s * window.devicePixelRatio
+			});
+			document.body.appendChild(n.view);
+			let r = new PIXI.Sprite(pe["Sprites/GameThumbnails"][4]);
+			r.x = n.screen.width / 2, r.y = n.screen.height / 2 - 100, r.scale.x = .5, r.scale.y = .5, r.anchor.set(.5, .5), n.stage.addChild(r);
+			let l = a(o.crashHandler.whoops, 16, "center");
+			l.x = c.screen.width / 2, l.y = c.screen.height / 2 - 200, n.stage.addChild(l);
+			let d = a(i, 16, "center");
+			d.x = c.screen.width / 2, d.y = c.screen.height / 2 + 175, n.stage.addChild(d);
+			let h = a(o.crashHandler.description, 16, "center");
+			h.x = c.screen.width / 2, h.y = c.screen.height / 2 - 30, h.anchor.set(.5, 0), n.stage.addChild(h);
+			let u = new M((function() {
+				! function() {
+					d.destroy(), h.destroy(), u.destroy(), p.destroy(), m.destroy(), n.destroy(!0);
+					for (let e in ye) ye[e].volume = ye[e].defaultVolume
+				}()
+			}), c.screen.width / 2 - 80, c.screen.height / 2 + 100, 150, 30, o.ui.continue, 0, .5, .5, 1, "center");
+			n.stage.addChild(u.element);
+			let p = new M((function() {
+				window.location = window.location, setTimeout((function() {
+					p.inputText.text = "Couldn't reload", p.inputText.scale.set(.9, .9)
+				}), 100)
+			}), c.screen.width / 2 + 80, c.screen.height / 2 + 100, 150, 30, o.ui.reload, 0, .5, .5, 1, "center");
+			n.stage.addChild(p.element);
+			let m = new M((async function() {
+				1 == await Te(JSON.stringify({
+					message: e.message,
+					lineno: e.lineno,
+					colno: e.colno
+				})) && (m.inputText.text = "Copied", m.element.resetSize(), m.element.interactive = !1, m.element.texture = pe.inputNineSlice[9])
+			}), c.screen.width / 2, c.screen.height / 2 + 100 + 40, 310, 30, o.crashHandler.copyErrorText, 0, .5, .5, 1, "center");
+			n.stage.addChild(m.element);
+			for (let e in ye) ye[e].defaultVolume = ye[e].volume, ye[e].volume = 0
+		},
+		debugMenu: function(e = function() {}) {
+			let t = new PIXI.Sprite(pe["Sprites/Rooms"][15]);
+			t.tint = 6737151, c.stage.addChild(t), t.interactive = !0, t.x = c.screen.width / 2, t.y = c.screen.height / 2, t.anchor.set(.5, .5), t.scale.x = 1, t.scale.y = 1;
+			let i = "Home";
+			onkeyup = function(e) {
+				"k" == e.key && n()
+			};
+			let n = function() {
+					let e = o[i].container;
+					e.container.zIndex = 5, o[i].container.icon.zIndex = 2, setTimeout((function() {
+						y(o[i].container.icon, "alpha", 1, .5, .5)
+					}), 150), y(e.container.pivot, "x", 0, .3, .1), y(e.container.pivot, "y", 0, .3, .1), y(e.container.scale, "x", 1, .5, .15), y(e.container.scale, "y", 1, .5, .15), y(e.container, "x", e.container.appPosition.x, .4, .25), y(e.container, "y", e.container.appPosition.y, .5, .2), y(e.graphics, "extension", 0, .2, .1), y(e.graphics, "round", s / 5, .5, .1), o[i].container.icon.interactive = !0
+				},
+				o = {
+					gtttatint: {
+						icon: 0,
+						name: "GTTTATINT101",
+						app: function() {
+							return je.gameList(void 0, "gtttatint", !0)
+						}
+					},
+					tennis: {
+						icon: 1,
+						name: "Tennis",
+						app: function() {
+							return je.gameList(void 0, "tennis", !0)
+						}
+					},
+					match: {
+						icon: 2,
+						name: "Face Match",
+						app: function() {
+							return je.gameList(void 0, "match", !0)
+						}
+					},
+					cakewalk: {
+						icon: 3,
+						name: "CAKEWALK",
+						app: function() {
+							return je.gameList(void 0, "cakewalk", !0)
+						}
+					},
+					oddDroplets: {
+						icon: 4,
+						name: "Odd Droplets",
+						app: function() {
+							return je.gameList(void 0, "oddDroplets", !0)
+						}
+					},
+					dropletDodge: {
+						icon: 5,
+						name: "Dodge",
+						app: function() {
+							return je.gameList(void 0, "dropdodge", !0)
+						}
+					},
+					settings: {
+						icon: 6,
+						name: "Settings",
+						app: je.settings
+					},
+					myTeardrop: {
+						icon: 7,
+						name: "myTeardrop",
+						app: je.myTeardrop
+					},
+					achievements: {
+						icon: 8,
+						name: "Achievements",
+						app: je.achievements
+					},
+					wardrobe: {
+						icon: 9,
+						name: "Wardrobe",
+						app: je.wardrobe
+					},
+					games: {
+						icon: 10,
+						name: "Games",
+						app: je.gameList
+					}
+				},
+				r = 4,
+				s = 65,
+				l = s + 18,
+				d = s + 35,
+				h = 0;
+			s /= u.linear(window.devicePixelRatio - 1, 1, .85), l /= u.linear(window.devicePixelRatio - 1, 1, .9), c.screen.width >= 640 && (r = 6, s = 60, l += 20), c.stage.sortableChildren = !0;
+			for (let e in o) {
+				let t = o[e],
+					n = new PIXI.Container;
+				n.zIndex = 0, n.sortableChildren = !0, c.stage.addChild(n);
+				let u = new PIXI.Graphics;
+				u.beginFill(16777215), u.drawRoundedRect(0, 0, s, s, s / 5), u.endFill();
+				let p = new PIXI.NineSlicePlane(pe.Icons[t.icon], 252, 252, 4, 4);
+				p.width = s, p.height = s, n.x = c.screen.width / 2 + h % r * l - l * (r - 1) / 2 - s / 2, n.y = c.screen.height / 2 + Math.floor(h / r) * d - 4 * d / 2 - 40 - s / 2, n.appPosition = {
+					x: n.x,
+					y: n.y
+				}, n.addChild(p), p.interactive = !0, n.addChild(u), p.mask = u;
+				let m = {};
+				u.extension = 0, u.round = s / 5, v(p, (function() {
+					if (null == o[e].container.app) {
+						if (null != t.app) {
+							let e = new PIXI.Container;
+							m = t.app(e)
+						} else m = We();
+						o[e].container.app = m
+					}
+					p.tint = 16777215, n.zIndex = 100, n.x += (s / 2 - n.pivot.x) * n.scale.y, n.y += (s / 2 - n.pivot.x) * n.scale.y, n.pivot.x = s / 2, n.pivot.y = s / 2, y(n.pivot, "x", s / 2, 1, 1), y(n.pivot, "y", s / 2, 1, 1), y(n, "x", c.screen.width / 2, .35, .15), y(n, "y", c.screen.height / 2, .35, .125), y(g, "alpha", .5, .5, .1), g.interactive = !0, y(n.scale, "x", c.screen.width / s / (c.screen.width / m.screen.width) * .9, .3, .125), y(n.scale, "y", c.screen.width / s / (c.screen.width / m.screen.width) * .9, .3, .125), g.onDrag = function() {
+						y(n, "x", g.x2, .4, .3), y(n, "y", g.y2 - (-(s / 2 + u.extension / 2) * n.scale.x + 10), .4, .3)
+					}, y(p, "height", 2 * s, .3, .125), y(p, "width", s, .3, .125), y(u, "round", .5, .4, .1), y(u, "extension", s * (m.screen.height / m.screen.width) - s, .3, .1), f((function() {
+						u.clear(), u.beginFill(16777215), u.drawRoundedRect(0, -u.extension / 2, s, s + u.extension, u.round), u.endFill(), p.y = -u.extension / 2, m.y = p.y, n.originalHitArea = new PIXI.Rectangle(0, -u.extension / 2, s, s), n.dragged || (n.hitArea = n.originalHitArea), g.x = n.x, g.y = n.y - (s / 2 + u.extension / 2) * n.scale.x + 10
+					}), u), setTimeout((function() {
+						i = e, m.mask = u, n.addChild(m), m.scale.x = s / m.screen.width, m.scale.y = m.scale.x, p.zIndex = 10, p.interactive = !1, y(p, "alpha", 0, .5, .5)
+					}), 100)
+				}), !1);
+				let g = new PIXI.Sprite(pe["Sprites/GameUI"][65]);
+				g.anchor.set(.5, .5), g.x = n.x, g.y = n.y, g.scale.x = .3, g.scale.y = .3, g.alpha = 0, c.stage.addChild(g), I(g, new PIXI.Rectangle(-100, -15, 200, 30), !0), g.zIndex = 100, o[e].container = {
+					container: n,
+					icon: p,
+					graphics: u,
+					windowDrag: g
+				}, p.on("pointerdown", (function() {
+					p.tint = 13421772
+				})), p.on("pointerout", (function() {
+					p.tint = 16777215
+				}));
+				let x = a(t.name, 16, "center", "center", 1);
+				x.x = n.x + s / 2, x.y = n.y + s + 12;
+				for (let e = 0; e < 20; e++) x.width > s + 10 && (x.letterSpacing -= 1);
+				c.stage.addChild(x), h++
+			}
+			let p = {},
+				m = 0,
+				y = function(e, t, i, n = .5, a = .1, o = 1) {
+					if (null != e[t + "_animationId"]) {
+						let r = p[e[t + "_animationId"]];
+						return r.stiffness = n, r.to = i, r.speed = a, void(r.globalSpeed = o)
+					}
+					e[t + "_animationId"] = m, console.log("new animation!");
+					let r = {
+						velocity: 0,
+						to: i,
+						stiffness: n,
+						speed: a,
+						globalSpeed: o,
+						frame: function() {
+							r.velocity = u.linear(r.velocity, r.to - e[t], r.stiffness, r.globalSpeed), e[t] = e[t] + r.velocity * r.speed * r.globalSpeed
+						},
+						id: m
+					};
+					p[m++] = r
+				},
+				f = function(e, t) {
+					if (null != t.motionId) return;
+					t.motionId = m;
+					let i = {
+						frame: e,
+						id: m
+					};
+					p[m++] = i
+				};
+			c.ticker.add((function() {
+				for (let e in p) p[e].frame()
+			}))
+		},
+		launch: function(e, t = c.stage) {
+			let i = e();
+			return t.addChild(i), i
+		},
+		popup: function(e, t, i, n = function() {}, a = -1, o, r = !0, s = 1) {
+			let l = !1;
+			"string" == typeof e && (e = c.stage, n = function() {}, a = -1, l = !0);
+			let d = je.blackTint(e, .2, r);
+			d.start();
+			let h = new PIXI.NineSlicePlane(pe.inputNineSlice[2]);
+			h.destroyable = [], h.screen = {
+				width: t,
+				height: i
+			}, l && (h.zIndex = 20), h.width = t, h.height = i, h.x = c.screen.width / 2, h.y = c.screen.height / 2, e.addChild(h);
+			let u = 0; - 1 != a && (h.height += 40), h.pivot.set(h.width / 2, h.height / 2);
+			let p, m, y, f = Math.random() - .5,
+				g = function() {
+					h.closing || (w.x = h.x, w.y = h.y, w.rotation = h.rotation, w.scale = h.scale, h.closing = !0, u = 0)
+				}; - 1 == a ? (p = je.exitButton(g, h.width - 20, 20, .3, .1), p.sprite.alpha = 0, h.addChild(p.sprite), p.interactive = !1, p.show = !1, setTimeout((function() {
+				p.show = !0, p.sprite.interactive = !0
+			}), 500)) : (m = new M((function() {
+				x = 0, g()
+			}), 15, h.height - 15, h.width / 2 - 20, 30, o[0], 0, 0, 1, 1, "center"), h.addChild(m.element), y = new M((function() {
+				n = a, g()
+			}), h.width - 15, h.height - 15, h.width / 2 - 20, 30, o[1], 0, 1, 1, 1, "center"), h.addChild(y.element));
+			let x = 0,
+				w = {
+					x: c.screen.width / 2,
+					y: c.screen.height / 2,
+					rotation: f,
+					scale: .5
+				};
+			h.onDestroyed = function() {}, h.destroyBook = function() {
+				h.onDestroyed(), c.ticker.remove(v), -1 == a ? p.destroy() : (m.destroy(), y.destroy());
+				for (let e = 0; e < h.destroyable.length; e++) h.destroyable[e].destroy();
+				h.destroy({
+					children: !0
+				}), n()
+			};
+			let v = function() {
+				if (-1 == a && (p.show && (p.sprite.alpha += .05), p.sprite.alpha >= 1 && (p.sprite.alpha = 1, p.show = !1)), h.closing) {
+					if (h.y = ease[16](Math.min(40, u), w.y, -w.y + c.screen.height + 500, 40), h.rotation = ease[1](Math.min(70, u), w.rotation, f, 70), u > 40) return d.end(), void h.destroyBook()
+				} else h.x = ease[17](Math.min(80, u), w.x, 0, 80), h.y = ease[8](Math.min(70, u), w.y, -20, 70), h.rotation = window.eases.easeOutElastic(Math.min(100, u), w.rotation, -f, 100), h.scale.x = window.eases.easeOutElastic(Math.min(90, u), w.scale, .5, 90);
+				h.scale.y = h.scale.x, u += Je
+			};
+			return c.ticker.add(v), h.exit = g, h
+		},
+		initializeScreenResolution(e, t = !1) {
+			(null == e.screen || t) && (e.screen = {
+				width: c.screen.width,
+				height: c.screen.height
+			})
+		}
+	};
+	let Ve = "1.4.2a";
+	null == localStorage.version && (localStorage.version = Ve);
+	let He, Ye = !0,
+		Qe = !1,
+		Ke = {
+			costumes: {},
+			foods: {}
+		};
+	PIXI.Assets.load("/discount.json?nocache=" + Date.now()).then((e => {
+		Ke = e
+	})), PIXI.Assets.load("./latest.json?nocache=" + Date.now()).then((e => {
+		e.latestVersion != Ve && (Qe = !0, He = e.latestVersion), localStorage.version = e.latestVersion, Ye = !1
+	}));
+	let Je = 2;
+	/iPhone|iPad|iPod|Android/i.test(navigator.userAgent), window.addEventListener("error", (function(e) {
+		setTimeout((function() {
+			je.crashHandler(e)
+		}), 100)
+	}));
+	let qe = !1;
+
+	function Ze() {
+		je.setUpTints(), D(), PIXI.settings.MIPMAP_TEXTURES = PIXI.MIPMAP_MODES.OFF, "ontouchstart" in document.documentElement && (c.touchScreen = !0, ontouchstart = function(e) {
+			e.returnValue = !1
+		}, ontouchend = function(e) {
+			e.returnValue = !1
+		}, ontouchmove = function(e) {
+			e.returnValue = !1
+		}, ontouchcancel = function(e) {
+			e.returnValue = !1
+		}), window.book = je.book, c.ticker.add((function() {
+			Je = c.ticker.deltaTime;
+			for (let e in x) {
+				let t = x[e];
+				x[e].animate && (t.animationTime += Je, t.scale.x = eases.easeOutBack(Math.min(24, t.animationTime), t.animationSize.x, t.destinationSize.x - t.animationSize.x, 24), t.scale.y = eases.easeOutBack(Math.min(24, t.animationTime), t.animationSize.y, t.destinationSize.y - t.animationSize.y, 24))
+			}
+		})), qe = !0;
+		let e = function() {
+			n.music && ye.brittlerille.play(), ye.brittlerille.volume = .5, ye.brittlerille.pausing = !1, ye.brittlerille.attack = 2, ye.brittlerille.release = 3, ye.brittlerille.on("end", (function() {
+				n.music && ye.brittlerille.play()
+			})), window.brittlerille = ye.brittlerille
+		};
+		0 == ye.brittlerille.loaded ? ye.brittlerille.onloadAudio = function() {
+			e()
+		} : e(), window.setFps = function(e) {
+			c.ticker.maxFPS = e
+		}, document.body.appendChild(c.view), _e.blendMode = PIXI.BLEND_MODES.SUBTRACT, _e.interactive = !0, Ue.width = c.screen.width, Ue.height = c.screen.height, _e.width = c.screen.width, _e.height = c.screen.height, -1 != n.lollipopMode ? (ye.brittlerille.pause(), je.lollipop(), je.gameList(n.lollipopMode, !0)) : je.launch(je.myTeardrop);
+		let t = "";
+		onkeydown = function(e) {
+			t += e.key, "bfdibfdiaidfbbfbtpot".includes(t.toLowerCase()) && t.toLowerCase().startsWith("b") ? "bfdibfdiaidfbbfbtpot" == t && (je.intro(), t = "") : "lollipop".includes(t.toLowerCase()) && t.toLowerCase().startsWith("l") ? "lollipop" == t && (je.lollipop(), t = "") : t = ""
+		}, Qe && je.updateWarning(), n.lastLogin = Date.now(), Q(), (Date.now() - n.gameStartDate) / 1e3 / 60 / 60 / 24 > .5 && !n.saveFileWarning && setTimeout((function() {
+			n.saveFileWarning = !0, je.message(c.stage, "Your save file is over 2 days old now! Since this is a web game, there's a high chance of your browser removing the game data after 7 days of inactivity. To prevent this, regularly backup/download your save file!", -1, (function() {
+				je.flash(c.stage, !1, (function() {
+					je.launch(je.settings)
+				}))
+			}), (function() {}), ["Settings", "Ignore"])
+		}), 500), Z.loadAttempts = 0, ie()
+	}
+})();

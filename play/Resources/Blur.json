@@ -1,0 +1,27 @@
+﻿{"frames": {
+
+"Blur0000":
+{
+	"frame": {"x":4,"y":4,"w":1161,"h":245},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":2,"w":1246,"h":252},
+	"sourceSize": {"w":1246,"h":252}
+},
+"Blur0001":
+{
+	"frame": {"x":4,"y":253,"w":1246,"h":252},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1246,"h":252},
+	"sourceSize": {"w":1246,"h":252}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "24.0.0.305",
+	"image": "Blur.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":512},
+	"scale": "1"
+}
+}

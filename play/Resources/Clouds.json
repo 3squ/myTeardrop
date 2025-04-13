@@ -1,0 +1,43 @@
+﻿{"frames": {
+
+"Clouds0000":
+{
+	"frame": {"x":4,"y":4,"w":207,"h":109},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":4,"w":307,"h":117},
+	"sourceSize": {"w":307,"h":117}
+},
+"Clouds0001":
+{
+	"frame": {"x":221,"y":4,"w":184,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":25,"w":307,"h":117},
+	"sourceSize": {"w":307,"h":117}
+},
+"Clouds0002":
+{
+	"frame": {"x":4,"y":123,"w":307,"h":117},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":307,"h":117},
+	"sourceSize": {"w":307,"h":117}
+},
+"Clouds0003":
+{
+	"frame": {"x":321,"y":123,"w":110,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":51,"w":307,"h":117},
+	"sourceSize": {"w":307,"h":117}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "24.0.0.305",
+	"image": "Clouds.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":256},
+	"scale": "1"
+}
+}
