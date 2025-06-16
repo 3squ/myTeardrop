@@ -1,0 +1,35 @@
+﻿{"frames": {
+
+"BodiesCostume_june20250000":
+{
+	"frame": {"x":4,"y":4,"w":119,"h":146},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":342,"y":328,"w":800,"h":800},
+	"sourceSize": {"w":800,"h":800}
+},
+"BodiesCostume_june20250001":
+{
+	"frame": {"x":128,"y":4,"w":114,"h":165},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":347,"y":309,"w":800,"h":800},
+	"sourceSize": {"w":800,"h":800}
+},
+"BodiesCostume_june20250002":
+{
+	"frame": {"x":4,"y":174,"w":800,"h":800},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":800},
+	"sourceSize": {"w":800,"h":800}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "24.0.9.73",
+	"image": "BodiesCostume_june2025.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1"
+}
+}

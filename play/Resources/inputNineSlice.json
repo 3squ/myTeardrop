@@ -2,7 +2,7 @@
 
 "inputNineSlice0000":
 {
-	"frame": {"x":5,"y":5,"w":50,"h":50},
+	"frame": {"x":4,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -10,7 +10,7 @@
 },
 "inputNineSlice0001":
 {
-	"frame": {"x":60,"y":5,"w":50,"h":50},
+	"frame": {"x":59,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -18,7 +18,7 @@
 },
 "inputNineSlice0002":
 {
-	"frame": {"x":115,"y":5,"w":50,"h":50},
+	"frame": {"x":114,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -26,7 +26,7 @@
 },
 "inputNineSlice0003":
 {
-	"frame": {"x":170,"y":5,"w":50,"h":50},
+	"frame": {"x":169,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -34,7 +34,7 @@
 },
 "inputNineSlice0004":
 {
-	"frame": {"x":225,"y":5,"w":50,"h":50},
+	"frame": {"x":224,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -42,7 +42,7 @@
 },
 "inputNineSlice0005":
 {
-	"frame": {"x":280,"y":5,"w":50,"h":50},
+	"frame": {"x":279,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -50,7 +50,7 @@
 },
 "inputNineSlice0006":
 {
-	"frame": {"x":335,"y":5,"w":50,"h":50},
+	"frame": {"x":334,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -58,7 +58,7 @@
 },
 "inputNineSlice0007":
 {
-	"frame": {"x":390,"y":5,"w":50,"h":50},
+	"frame": {"x":389,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -66,7 +66,7 @@
 },
 "inputNineSlice0008":
 {
-	"frame": {"x":445,"y":5,"w":50,"h":50},
+	"frame": {"x":444,"y":4,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -74,7 +74,7 @@
 },
 "inputNineSlice0009":
 {
-	"frame": {"x":5,"y":60,"w":50,"h":50},
+	"frame": {"x":4,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -82,7 +82,7 @@
 },
 "inputNineSlice0010":
 {
-	"frame": {"x":60,"y":60,"w":50,"h":50},
+	"frame": {"x":59,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -90,7 +90,7 @@
 },
 "inputNineSlice0011":
 {
-	"frame": {"x":115,"y":60,"w":50,"h":50},
+	"frame": {"x":114,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -98,7 +98,7 @@
 },
 "inputNineSlice0012":
 {
-	"frame": {"x":170,"y":60,"w":50,"h":50},
+	"frame": {"x":169,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -106,7 +106,7 @@
 },
 "inputNineSlice0013":
 {
-	"frame": {"x":225,"y":60,"w":50,"h":50},
+	"frame": {"x":224,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -114,7 +114,7 @@
 },
 "inputNineSlice0014":
 {
-	"frame": {"x":280,"y":60,"w":50,"h":50},
+	"frame": {"x":279,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -122,7 +122,7 @@
 },
 "inputNineSlice0015":
 {
-	"frame": {"x":335,"y":60,"w":50,"h":50},
+	"frame": {"x":334,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -130,7 +130,7 @@
 },
 "inputNineSlice0016":
 {
-	"frame": {"x":390,"y":60,"w":50,"h":50},
+	"frame": {"x":389,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -138,7 +138,7 @@
 },
 "inputNineSlice0017":
 {
-	"frame": {"x":445,"y":60,"w":50,"h":50},
+	"frame": {"x":444,"y":59,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -146,7 +146,7 @@
 },
 "inputNineSlice0018":
 {
-	"frame": {"x":5,"y":115,"w":50,"h":50},
+	"frame": {"x":4,"y":114,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -154,7 +154,7 @@
 },
 "inputNineSlice0019":
 {
-	"frame": {"x":60,"y":115,"w":50,"h":50},
+	"frame": {"x":59,"y":114,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -162,7 +162,7 @@
 },
 "inputNineSlice0020":
 {
-	"frame": {"x":115,"y":115,"w":50,"h":50},
+	"frame": {"x":114,"y":114,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -170,7 +170,7 @@
 },
 "inputNineSlice0021":
 {
-	"frame": {"x":170,"y":115,"w":50,"h":50},
+	"frame": {"x":169,"y":114,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -178,7 +178,7 @@
 },
 "inputNineSlice0022":
 {
-	"frame": {"x":225,"y":115,"w":50,"h":50},
+	"frame": {"x":224,"y":114,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -186,7 +186,47 @@
 },
 "inputNineSlice0023":
 {
-	"frame": {"x":280,"y":115,"w":50,"h":50},
+	"frame": {"x":279,"y":114,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50}
+},
+"inputNineSlice0024":
+{
+	"frame": {"x":334,"y":114,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50}
+},
+"inputNineSlice0025":
+{
+	"frame": {"x":389,"y":114,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50}
+},
+"inputNineSlice0026":
+{
+	"frame": {"x":444,"y":114,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50}
+},
+"inputNineSlice0027":
+{
+	"frame": {"x":4,"y":169,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+	"sourceSize": {"w":50,"h":50}
+},
+"inputNineSlice0028":
+{
+	"frame": {"x":59,"y":169,"w":50,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
@@ -194,7 +234,7 @@
 }},
 "meta": {
 	"app": "Adobe Animate",
-	"version": "24.0.0.305",
+	"version": "24.0.7.61",
 	"image": "inputNineSlice.png",
 	"format": "RGBA8888",
 	"size": {"w":512,"h":256},
